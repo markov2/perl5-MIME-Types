@@ -6,3 +6,4 @@ MIME/Types.pm
 README
 t/10type.t
 t/20types.t
+t/30export.t

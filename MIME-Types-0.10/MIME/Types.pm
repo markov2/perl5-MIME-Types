@@ -5,7 +5,7 @@ use warnings;
 
 use MIME::Type;
 
-our $VERSION = '0.02';
+our $VERSION = '0.10';
 
 =head1 NAME
 
@@ -78,7 +78,7 @@ sub init($)
             my ($type, $extensions, $encoding) = split;
             my $extent = $extensions ? [ split /\,/, $extensions ] : undef;
 
-            next if $args->{only_complete)
+            next if $args->{only_complete}
                  && ! ($extensions && $encoding);
                     
             my $simplified = MIME::Type->simplified($type);
@@ -145,7 +145,7 @@ Examples:
  my MIME::Type  $mime = $types->mimeTypeOf('gif');
 
  my MIME::Type  $mime = $types->mimeTypeOf('jpg');
- print $mime->isbase64;
+ print $mime->isBinary;
 
 =cut
 
@@ -160,21 +160,128 @@ sub mimeTypeOf($)
 
 =back
 
+=head1 EXPORT
+
+The next methods are provided for backward compatibility with MIME::Types
+versions 0.06 and below.  This code originates from Jeff Okamoto
+<F<okamoto@corp.hp.com>> and others.
+
+=over 4
+
+=cut
+
+#-------------------------------------------
+
+require Exporter;
+our @ISA = qw(Exporter);
+our @EXPORT_OK = qw(by_suffix by_mediatype import_mime_types);
+
+#-------------------------------------------
+
+=item by_suffix FILENAME|SUFFIX
+
+Like C<mimeTypeOf> but does not return an C<MIME::Type> object.
+
+Example:
+
+ use MIME::Types 'by_suffix';
+ my ($mediatype, $encoding) = by_suffix 'image.gif';
+
+ my $refdata =  by_suffix 'image.gif';
+ my ($mediatype, $encoding) = @$refdata;
+
+=cut
+
+my $mime_types;
+
+sub by_suffix($)
+{   my $filename = shift;
+    $mime_types ||= MIME::Types->new;
+    my $mime     = $mime_types->mimeTypeOf($filename);
+
+    my @data     = defined $mime ? ($mime->type, $mime->encoding) : ('','');
+    wantarray ? @data : \@data;
+}
+
+#-------------------------------------------
+
+=item by_mediatype TYPE
+
+This function takes a media type and returns a list or anonymous array of
+anonymous three-element arrays whose values are the file name suffix used to
+identify it, the media type, and a content encoding.
+
+TYPE can be a full type name (contains '/', and will be matched in full),
+a partial type (which is used as regular expression) or a real regular
+expression.
+
+=cut
+
+sub by_mediatype($)
+{   my $type = shift;
+    my @found;
+
+    if($type =~ m!/!)
+    {   my $simplified = MIME::Type->simplified($type);
+        my $mime = $list{$simplified};
+        push @found, @$mime if defined $mime;
+    }
+    else
+    {   my $mime = ref $type ? $type : qr/$type/i;
+        @found = map {@{$list{$_}}}
+                    grep {$_ =~ $mime}
+                        keys %list;
+    }
+
+    my @data;
+    foreach my $mime (@found)
+    {   push @data, map { [$_, $mime->type, $mime->encoding] }
+                       $mime->extensions;
+    }
+
+    wantarray ? @data : \@data;
+}
+
+#-------------------------------------------
+
+=item import_mime_types
+
+This method has been removed, because it was primarily used to add info
+from the Apache mime definitions to the tables of C<MIME::Types>.  However
+this data is included now by default, so the method is not useful anymore
+and will croak.
+
+=cut
+
+sub import_mime_types($)
+{   my $filename = shift;
+    use Carp;
+    croak <<'CROAK';
+import_mime_types is not supported anymore: if you have types to add
+please send them to the author.
+CROAK
+}
+
+#-------------------------------------------
+
+=back
+
 =head1 SEE ALSO
 
 L<MIME::Type>
 
 =head1 AUTHOR
 
+Original module and data collection by Jeff Okamoto and the Apache team.
 Mark Overmeer (F<mimetypes@overmeer.net>).
 All rights reserved.  This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is alpha version 0.02.
+This code is beta version 0.10.
 
-Copyright (c) 2001 Mark Overmeer. All rights reserved.
+Copyright (c) 2001 by Jeff Okamoto and Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
@@ -599,7 +706,7 @@ text/richtext			rtx				8bit
 text/rtf			rtf
 text/sgml			sgml,sgm
 text/t140
-text/tab-separated-values	tsv				8bit
+text/tab-separated-values	tsv
 text/uri-list
 text/vnd.abc
 text/vnd.curl

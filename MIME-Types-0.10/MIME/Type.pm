@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '0.02';
+our $VERSION = '0.10';
 
 =head1 NAME
 
@@ -15,6 +15,15 @@ our $VERSION = '0.02';
  use MIME::Types;
  my $mimetypes = MIME::Types->new;
  my MIME::Type $plaintext = $mimetype->type('text/plain');
+ print $plaintext->mainType;    # text
+ print $plaintext->subType;     # plain
+
+ my @ext = $plaintext->extensions;
+ print "@ext"                   # asc txt c cc h hh cpp
+
+ print $plaintext->exconding    # 8bit
+ if($plaintext->isBinary)       # false
+ if($plaintext->isAscii)        # true
 
  print MIME::Type->simplified('x-appl/x-zip') #  'appl/zip'
 
@@ -23,6 +32,10 @@ our $VERSION = '0.02';
 MIME types are used in MIME entities, for instance as part of e-mail
 and HTTP traffic.  Sometimes real knowledge about a mime-type is need.
 Objects of C<MIME::Type> store the information on one such type.
+
+This module is built to conform to the MIME types standard defined in RFC 1341
+and updated by RFC's 1521 and 1522. It follows the collection kept at
+F<http://www.ltsw.se/knbase/internet/mime.htp>
 
 =cut
 
@@ -95,7 +108,7 @@ sub init($)
     $self->{MT_extensions} = $args->{extensions} || [];
 
     $self->{MT_encoding}
-       = defined $args->{encoding} ? $args->{encoding}
+       = $args->{encoding}         ? $args->{encoding}
        : $self->mainType eq 'text' ? 'quoted-printable'
        :                             'base64';
 
@@ -235,7 +248,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is alpha version 0.02.
+This code is beta version 0.10.
 
 Copyright (c) 2001 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify

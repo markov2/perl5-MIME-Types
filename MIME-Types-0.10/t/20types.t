@@ -8,7 +8,7 @@ use strict;
 
 use lib qw(. t);
 
-BEGIN {plan tests => 13}
+BEGIN {plan tests => 15}
 
 use MIME::Types;
 
