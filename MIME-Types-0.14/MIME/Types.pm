@@ -1,6 +1,6 @@
 package MIME::Types;
 
-$VERSION = '0.13';
+$VERSION = '0.14';
 
 use strict;
 use MIME::Type;
@@ -180,8 +180,9 @@ versions 0.06 and below.  This code originates from Jeff Okamoto
 #-------------------------------------------
 
 require Exporter;
-our @ISA = qw(Exporter);
-our @EXPORT_OK = qw(by_suffix by_mediatype import_mime_types);
+use vars qw/@ISA @EXPORT_OK/;
+@ISA       = qw(Exporter);
+@EXPORT_OK = qw(by_suffix by_mediatype import_mime_types);
 
 #-------------------------------------------
 
@@ -286,7 +287,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.13.
+This code is beta version 0.14.
 
 Copyright (c) 2001 by Jeff Okamoto and Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify

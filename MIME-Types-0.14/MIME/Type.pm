@@ -1,6 +1,6 @@
 package MIME::Type;
 
-$VERSION = '0.13';
+$VERSION = '0.14';
 
 use strict;
 use Carp;
@@ -263,7 +263,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.13.
+This code is beta version 0.14.
 
 Copyright (c) 2001 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
