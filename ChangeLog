@@ -6,6 +6,11 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler <austin@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.10:
+
+	- [Miha Lampret] and [Jean-Marc Delafont] bumped into __DATA__
+	  conflict between MIME::Types table and mod_perl.
+
 version 1.09: Wed Nov  5 10:51:52 CET 2003
 
 	- Translated tests to use Test::More
