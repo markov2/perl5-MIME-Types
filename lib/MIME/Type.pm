@@ -17,7 +17,7 @@ MIME::Type - Definition of one MIME type
  print $plaintext->subType;     # plain
 
  my @ext = $plaintext->extensions;
- print "@ext"                   # asc txt c cc h hh cpp
+ print "@ext"                   # txt asc c cc h hh cpp
 
  print $plaintext->encoding     # 8bit
  if($plaintext->isBinary)       # false

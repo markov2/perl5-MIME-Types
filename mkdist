@@ -39,13 +39,20 @@ tar -czf $DIST_OODOC README.oodoc MANIFEST.extra mkdist mkdoc html || exit $?
 # Create a distribution
 #
 
-[ -n "$VERBOSE" ] && echo "* Run make to see if everything works"
-
 ( cd $DIST              || exit $?
 
+  [ -n "$VERBOSE" ] && echo "* Preparing test"
   perl Makefile.PL      || exit $?
+  make clean >/dev/null || exit $?
+  mv Makefile.old Makefile
+
+  [ -n "$VERBOSE" ] && echo "* Running make"
   make >/dev/null       || exit $?
+
+  [ -n "$VERBOSE" ] && echo "* Running tests"
   make test             || exit $?
+
+  [ -n "$VERBOSE" ] && echo "* Building distribution"
   make dist >/dev/null  || exit $?
 )
 

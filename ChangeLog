@@ -6,7 +6,15 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler <austin@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
-version 1.08:
+version 1.09: Wed Nov  5 10:51:52 CET 2003
+
+	- Translated tests to use Test::More
+
+	- tests failed for detection '.doc', because OS-detection
+	  failed, which (with 5.8.1 random hash order) made VMS'es
+	  version of doc (plain/text) prevail in some situations.
+
+version 1.08: Mon Nov  3 17:44:57 CET 2003
 
 	- [Tuomas Salo] removed warning on "undef".
 

@@ -3,7 +3,7 @@
 # Test overloading on MIME::Type objects.
 #
 
-use Test;
+use Test::More;
 use strict;
 
 use lib qw(. t);
@@ -18,13 +18,13 @@ my $c = MIME::Type->new(type => 'x-appl/zip');
 my $d = MIME::Type->new(type => 'appl/zip');
 my $e = MIME::Type->new(type => 'text/plain');
 
-ok($a eq $b);
-ok($a eq $c);
-ok($a eq $d);
-ok($b eq $c);
-ok($b eq $d);
-ok($c eq $d);
-ok($a ne $e);
+is($a, $b);
+is($a, $c);
+is($a, $d);
+is($b, $c);
+is($b, $d);
+is($c, $d);
+isnt($a, $e);
 
 ok(!$a->isRegistered);
 ok(!$b->isRegistered);
@@ -32,13 +32,13 @@ ok(!$c->isRegistered);
 ok( $d->isRegistered);
 ok( $e->isRegistered);
 
-ok("$a" eq 'x-appl/x-zip');
-ok("$b" eq 'appl/x-zip');
-ok("$c" eq 'x-appl/zip');
-ok("$d" eq 'appl/zip');
-ok("$e" eq 'text/plain');
+is("$a", 'x-appl/x-zip');
+is("$b", 'appl/x-zip');
+is("$c", 'x-appl/zip');
+is("$d", 'appl/zip');
+is("$e", 'text/plain');
 
-ok($a eq 'appl/zip');
-ok($b eq 'APPL/ZIP');
-ok($c eq 'x-appl/x-zip');
-ok($e eq 'text/plain');
+is($a, 'appl/zip');
+is($b, 'APPL/ZIP');
+is($c, 'x-appl/x-zip');
+is($e, 'text/plain');

@@ -106,11 +106,11 @@ sub create_type_index()
     my @os_specific;
     while(my ($simple, $definitions) = each %list)
     {   foreach my $def (@$definitions)
-        {   if(defined $def->system && $^O =~ $def->system)
+        {   if(defined(my $sys = $def->system))
             {   # OS specific definitions will overrule the
                 # unspecific definitions, so must be postponed till
                 # the end.
-                push @os_specific, $def;
+                push @os_specific, $def if $^O =~ $sys;
             }
             else
             {   $type_index{$_} = $def foreach $def->extensions;
