@@ -1,6 +1,9 @@
 Revision history for Perl extension MIME::Types.
 
-0.12 Wed Nov 28 09:39:44 CET 2001
+0.13  Sat Dec  1 01:53:20 CET 2001
+	- [Slaven Radic] back-port to 5.005
+
+0.12  Wed Nov 28 09:39:44 CET 2001
 	Mark Overmeer took the namespace over from Jeff Okamoto
 	- In scalar context MIME::Types::type will return only the
 	  first type that fits.

@@ -1,10 +1,9 @@
 package MIME::Type;
 
-use strict;
-use warnings;
-use Carp;
+$VERSION = '0.13';
 
-our $VERSION = '0.12';
+use strict;
+use Carp;
 
 =head1 NAME
 
@@ -264,7 +263,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.12.
+This code is beta version 0.13.
 
 Copyright (c) 2001 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify

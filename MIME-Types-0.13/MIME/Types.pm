@@ -1,11 +1,10 @@
 package MIME::Types;
 
-use strict;
-use warnings;
+$VERSION = '0.13';
 
+use strict;
 use MIME::Type;
 
-our $VERSION = '0.12';
 
 =head1 NAME
 
@@ -287,7 +286,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.12.
+This code is beta version 0.13.
 
 Copyright (c) 2001 by Jeff Okamoto and Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
