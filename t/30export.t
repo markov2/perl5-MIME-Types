@@ -29,11 +29,11 @@ is($cte, "base64");
 is($mt, "");
 is($cte, "");
 
-my @c = MIME::Types::by_mediatype("pdF");
+my @c = MIME::Types::by_mediatype("oGG");
 cmp_ok(scalar @c, '==', 1);
 cmp_ok(scalar @{$c[0]}, '>', 2);
-is($c[0]->[0], "pdf");
-is($c[0]->[1], "application/pdf");
+is($c[0]->[0], "ogg");
+is($c[0]->[1], "application/ogg");
 is($c[0]->[2], "base64");
 
 @c = MIME::Types::by_mediatype("Application/pDF");
@@ -65,10 +65,10 @@ $aref = MIME::Types::by_suffix("flurfl");
 is($aref->[0], "");
 is($aref->[1], "");
 
-$aref = MIME::Types::by_mediatype("pdF");
+$aref = MIME::Types::by_mediatype("ogg");
 cmp_ok(scalar @$aref, '==', 1);
-is($aref->[0]->[0], "pdf");
-is($aref->[0]->[1], "application/pdf");
+is($aref->[0]->[0], "ogg");
+is($aref->[0]->[1], "application/ogg");
 is($aref->[0]->[2], "base64");
 
 $aref = MIME::Types::by_mediatype("Application/pDF");

@@ -6,7 +6,23 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler <austin@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
-version 1.10:
+version 1.12: Wed Jan 21 10:09:43 CET 2004
+
+	- [Ville Skyttä] requested removal of application/excel, because
+	  it is not IANA registered.  Applied.
+
+	- Documented that alternative types for a certain extension will
+	  be used at random in mimeTypeOf()
+
+	- Documentation fix: only_complete returns all types with defined
+	  extensions. Transfer-encoding is optional.
+
+version 1.11: Tue Jan 13 10:36:41 CET 2004
+
+	- [Ville Skyttä] contributed a large set of new mime-types, and
+	  applied some fixes. New IANA names are now all included.
+
+version 1.10: Wed Dec 17 12:47:00 CET 2003
 
 	- [Miha Lampret] and [Jean-Marc Delafont] bumped into __DATA__
 	  conflict between MIME::Types table and mod_perl.
