@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 =head1 NAME
 
@@ -240,11 +240,13 @@ Returns true when the type is in the list of known signatures.
 
 =cut
 
+# simplified names only!
 my %sigs = map { ($_ => 1) }
   qw(application/pgp-keys application/pgp application/pgp-signature
-     application/pkcs10 application/pkcs7-mime application/pkcs7-signature);
+     application/pkcs10 application/pkcs7-mime application/pkcs7-signature
+     text/vCard);
 
-sub isSignature() { $sigs{shift->{MT_type}} }
+sub isSignature() { $sigs{shift->{MT_simplified}} }
 
 #-------------------------------------------
 
@@ -262,7 +264,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.11.
+This code is beta version 0.12.
 
 Copyright (c) 2001 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
