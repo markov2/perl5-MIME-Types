@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 =head1 NAME
 
@@ -21,7 +21,7 @@ our $VERSION = '0.10';
  my @ext = $plaintext->extensions;
  print "@ext"                   # asc txt c cc h hh cpp
 
- print $plaintext->exconding    # 8bit
+ print $plaintext->encoding     # 8bit
  if($plaintext->isBinary)       # false
  if($plaintext->isAscii)        # true
 
@@ -234,6 +234,20 @@ sub isAscii() { shift->{MT_encoding} ne 'base64' }
 
 #-------------------------------------------
 
+=item isSignature
+
+Returns true when the type is in the list of known signatures.
+
+=cut
+
+my %sigs = map { ($_ => 1) }
+  qw(application/pgp-keys application/pgp application/pgp-signature
+     application/pkcs10 application/pkcs7-mime application/pkcs7-signature);
+
+sub isSignature() { $sigs{shift->{MT_type}} }
+
+#-------------------------------------------
+
 =back
 
 =head1 SEE ALSO
@@ -248,7 +262,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.10.
+This code is beta version 0.11.
 
 Copyright (c) 2001 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify

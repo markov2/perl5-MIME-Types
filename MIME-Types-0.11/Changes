@@ -1,5 +1,10 @@
 Revision history for Perl extension MIME::Types.
 
+0.11
+	Mark Overmeer
+	- In scalar context MIME::Types::type will return only the
+	  first type which fits.
+
 0.10  Sat Nov  3 22:46:22 2001
 	Mark Overmeer
 	- Total redesign of the interface, object oriented with two

@@ -5,7 +5,7 @@ use warnings;
 
 use MIME::Type;
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 =head1 NAME
 
@@ -125,11 +125,19 @@ sub create_type_index()
 
 =item type STRING
 
-Return the C<MIME::Type> which describes the type related to STRING.
+Return the C<MIME::Type> which describes the type related to STRING.  One
+type may be described more than once.  Different extensions is use for
+this type, and different operating systems may cause more than one
+C<MIME::Type> object to be defined.  In scalar context, only the first
+is returned.
 
 =cut
 
-sub type($) { @{$list{MIME::Type->simplified($_[1])}} }
+sub type($)
+{  my $mime  = MIME::Type->simplified($_[1]);
+   return () unless exists $list{$mime};
+   wantarray ? @{$list{$mime}} : $list{$mime}[0];
+}
 
 #-------------------------------------------
 
@@ -279,7 +287,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.10.
+This code is beta version 0.11.
 
 Copyright (c) 2001 by Jeff Okamoto and Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
