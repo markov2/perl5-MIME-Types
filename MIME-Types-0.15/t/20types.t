@@ -8,7 +8,7 @@ use strict;
 
 use lib qw(. t);
 
-BEGIN {plan tests => 15}
+BEGIN {plan tests => 19}
 
 use MIME::Types;
 
@@ -43,3 +43,30 @@ my $q = $a->mimeTypeOf('windows.doc');
 ok($q->type eq 'application/msword');
 ok($a->mimeTypeOf('my.lzh')->type eq 'application/octet-stream');
 
+my $r1 = MIME::Type->new(type => 'text/fake1');
+my $warn;
+{   $SIG{__WARN__} = sub {$warn = join '',@_};
+    $a->addType($r1);
+}
+ok($warn =~ m/report/);
+
+undef $warn;
+my $r2 = MIME::Type->new(type => 'text/x-fake2');
+{   $SIG{__WARN__} = sub {$warn = join '',@_};
+    $a->addType($r2);
+}
+ok(!defined $warn);
+
+undef $warn;
+my $r3 = MIME::Type->new(type => 'x-appl/x-fake3');
+{   $SIG{__WARN__} = sub {$warn = join '',@_};
+    $a->addType($r3);
+}
+ok(!defined $warn);
+
+undef $warn;
+my $r4 = MIME::Type->new(type => 'x-appl/fake4');
+{   $SIG{__WARN__} = sub {$warn = join '',@_};
+    $a->addType($r4);
+}
+ok(!defined $warn);

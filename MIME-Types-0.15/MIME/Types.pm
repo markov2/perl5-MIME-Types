@@ -1,10 +1,9 @@
 package MIME::Types;
 
-$VERSION = '0.14';
+$VERSION = '0.15';
 
 use strict;
 use MIME::Type;
-
 
 =head1 NAME
 
@@ -165,6 +164,36 @@ sub mimeTypeOf($)
 
 #-------------------------------------------
 
+=item addType TYPE, ...
+
+Add one or more TYPEs to the set of known types.  Each TYPE is a
+C<MIME::Type> which must be experimental: either the main-type or
+the sub-type must start with C<x->.
+
+Please inform the maintainer of this module when registered types
+are missing.
+
+=cut
+
+sub addType(@)
+{   my $self = shift;
+    foreach my $type (@_)
+    {
+        if($type->isRegistered)
+        {   use Carp;
+            carp "Please report the registered type $type to the module author."
+        }
+
+        my $simplified = $type->simplified;
+        push @{$list{$simplified}}, $type;
+    }
+
+    %type_index = ();
+    $self;
+}
+
+#-------------------------------------------
+
 =back
 
 =head1 EXPORT
@@ -254,10 +283,11 @@ sub by_mediatype($)
 
 =item import_mime_types
 
-This method has been removed, because it was primarily used to add info
-from the Apache mime definitions to the tables of C<MIME::Types>.  However
-this data is included now by default, so the method is not useful anymore
-and will croak.
+This method has been removed: mime-types are only useful if understood
+by many parties.  Therefore, the IANA assigns names which can be used.
+In the table kept by this C<MIME::Types> module all these names, plus
+the most often used termporary names are kept.  When names seem to be
+missing, please contact the maintainer for inclussion.
 
 =cut
 
@@ -287,7 +317,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.14.
+This code is beta version 0.15.
 
 Copyright (c) 2001 by Jeff Okamoto and Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
@@ -298,9 +328,8 @@ it under the same terms as Perl itself.
 1;
 
 #-------------------------------------------
-# For more information about Internet media types,
-# please read RFC 2045, 2046, 2047, 2048, and 2077.  The Internet media type
-# registry is at <ftp://ftp.iana.org/in-notes/iana/assignments/media-types/>.
+# Internet media type registry is at
+# <ftp://ftp.iana.org/in-notes/iana/assignments/media-types/>.
 
 __DATA__
 application/activemessage
@@ -437,7 +466,7 @@ application/vnd.groove-injector
 application/vnd.groove-tool-message
 application/vnd.groove-tool-template
 application/vnd.groove-vcard
-application/vnd.hp-HPGL
+application/vnd.hp-HPGL		plt,hpgl	
 application/vnd.hp-hpid
 application/vnd.hp-hps
 application/vnd.hp-PCL
@@ -494,7 +523,7 @@ application/vnd.ms-excel	xls
 application/vnd.msign
 application/vnd.ms-lrm
 application/vnd.ms-powerpoint	ppt
-application/vnd.ms-project
+application/vnd.ms-project	mpp
 application/vnd.ms-tnef
 application/vnd.ms-works
 application/vnd.musician
@@ -650,7 +679,8 @@ image/prs.btif
 image/prs.pti
 image/tiff			tiff,tif			base64
 image/vnd.cns.inf2
-image/vnd.dwg
+image/vnd.dgn			dgn
+image/vnd.dwg			dwg
 image/vnd.dxf
 image/vnd.fastbidsheet
 image/vnd.fpx
@@ -704,6 +734,7 @@ multipart/signed
 multipart/voice-message
 text/calendar
 text/css			css				8bit
+text/comma-separated-values	csv				8bit
 text/directory
 text/enriched
 text/html			html,htm,htmlx,shtml,htx	8bit

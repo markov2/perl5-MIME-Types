@@ -1,9 +1,13 @@
 package MIME::Type;
 
-$VERSION = '0.14';
+$VERSION = '0.15';
 
 use strict;
 use Carp;
+
+use overload '""' => 'type'
+           ,  cmp => sub {$_[0]->simplified cmp $_[1]->simplified}
+           ;
 
 =head1 NAME
 
@@ -14,7 +18,7 @@ use Carp;
  use MIME::Types;
  my $mimetypes = MIME::Types->new;
  my MIME::Type $plaintext = $mimetype->type('text/plain');
- print $plaintext->mainType;    # text
+ print $plaintext->mediaType;   # text
  print $plaintext->subType;     # plain
 
  my @ext = $plaintext->extensions;
@@ -32,9 +36,8 @@ MIME types are used in MIME entities, for instance as part of e-mail
 and HTTP traffic.  Sometimes real knowledge about a mime-type is need.
 Objects of C<MIME::Type> store the information on one such type.
 
-This module is built to conform to the MIME types standard defined in RFC 1341
-and updated by RFC's 1521 and 1522. It follows the collection kept at
-F<http://www.ltsw.se/knbase/internet/mime.htp>
+This module is built to conform to the MIME types of RFC's 2045 and 2231.
+It follows the collection kept at F<http://www.ltsw.se/knbase/internet/mime.htp>
 
 =cut
 
@@ -107,9 +110,9 @@ sub init($)
     $self->{MT_extensions} = $args->{extensions} || [];
 
     $self->{MT_encoding}
-       = $args->{encoding}         ? $args->{encoding}
-       : $self->mainType eq 'text' ? 'quoted-printable'
-       :                             'base64';
+       = $args->{encoding}          ? $args->{encoding}
+       : $self->mediaType eq 'text' ? 'quoted-printable'
+       :                              'base64';
 
     $self->{MT_system}     = $args->{system}
        if defined $args->{system};
@@ -151,20 +154,25 @@ sub simplified(;$)
 {   my $thing = shift;
     return $thing->{MT_simplified} unless @_;
 
-      shift =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!
+      shift =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!i
     ? lc "$1/$2" : undef;
 }
 
 #-------------------------------------------
 
-=item mainType
+=item mediaType
 
-The main type of the simplified mime.
+The media type of the simplified mime.
 For C<'text/plain'> it will return C<'text'>.
+
+For historical reasons, the C<'mainType'> method still can be used
+to retreive the same value.  However, that method is deprecated.
 
 =cut
 
-sub mainType() {shift->{MT_simplified} =~ m!^([\w-]+)/! ? $1 : undef}
+sub mediaType() {shift->{MT_simplified} =~ m!^([\w-]+)/! ? $1 : undef}
+
+sub mainType()  {shift->mediaType} # Backwards compatibility
 
 #-------------------------------------------
 
@@ -176,6 +184,22 @@ For C<'text/plain'> it will return C<'plain'>.
 =cut
 
 sub subType() {shift->{MT_simplified} =~ m!/([\w-]+)$! ? $1 : undef}
+
+#-------------------------------------------
+
+=item isRegistered
+
+Mime-types which are not registered by IANA nor defined in RFCs shall
+start with an C<x->.  This counts for as well the media-type as the
+sub-type.  In case either one of the types starts with C<x-> this
+method will return false.
+
+=cut
+
+sub isRegistered()
+{   local $_ = shift->{MT_type};
+    not (m/^[xX]\-/ || m!/[xX]\-!);
+}
 
 #-------------------------------------------
 
@@ -263,7 +287,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.14.
+This code is beta version 0.15.
 
 Copyright (c) 2001 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify

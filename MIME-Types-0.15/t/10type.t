@@ -8,7 +8,7 @@ use strict;
 
 use lib qw(. t);
 
-BEGIN {plan tests => 22}
+BEGIN {plan tests => 25}
 
 use MIME::Type;
 
@@ -20,6 +20,7 @@ ok($a->simplified('text/plain') eq 'text/plain');
 ok(MIME::Type->simplified('x-xyz/abc') eq 'xyz/abc');
 ok($a->mainType eq 'appl');
 ok($a->subType eq 'zip');
+ok(!$a->isRegistered);
 
 my @ext = $a->extensions;
 ok(@ext==2);
@@ -40,3 +41,7 @@ ok(@ext==0);
 ok($b->encoding eq '8bit');
 ok(not $b->isBinary);
 ok($b->isAscii);
+ok($b->isRegistered);
+
+my $c = MIME::Type->new(type => 'applications/x-zip');
+ok(!$c->isRegistered);
