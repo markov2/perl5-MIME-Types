@@ -73,10 +73,6 @@ use overload '""' => 'type'
 
 =section Initiation
 
-=cut
-
-#-------------------------------------------
-
 =c_method new OPTIONS
 
 Create (I<instantiate>) a new MIME::Type object which manages one

@@ -6,7 +6,14 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler <austin@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
-version 1.006: Thu May  1 18:45:55 CEST 2003
+version 1.07: Mon Jul 28 18:38:59 CEST 2003
+
+	- Translated documentation to newest version of OODoc
+
+	- Moved modules to lib/*, which removes the need for a nested
+	  Makefile.PL.
+
+version 1.06: Thu May  1 18:45:55 CEST 2003
 
 	- [NN Poster] updated the attributes for the PGP types.
 

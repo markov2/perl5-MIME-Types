@@ -1,10 +1,9 @@
 ChangeLog
 MANIFEST
-MIME/Makefile.PL
-MIME/Type.pm
-MIME/Types.pm
 Makefile.PL
 README
+lib/MIME/Type.pm
+lib/MIME/Types.pm
 t/10type.t
 t/11typeol.t
 t/20types.t

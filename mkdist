@@ -87,7 +87,7 @@ fi
 
 ( cd $RAW
   [ -n "$VERBOSE" ] && ls -l $RAWNAME
-  ln -sf $RAWNAME raw-current.tar.gz || exit $?
+  ln -sf $RAWNAME raw-current.tar.bz2 || exit $?
 )
 
 exit 0

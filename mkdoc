@@ -1,30 +1,27 @@
 #!/usr/bin/perl
-# Create the documentation for the Mime::Types module.
+# Create the documentation for the Mime::Types distribution.
 # This script can be called as part of the mkdist procedure, but also
 # on its own.
 
 use warnings;
 use strict;
 
-use lib '../OODoc';  # the next release of OODoc software ;-)
+use lib '../OODoc/lib';  # the next release of OODoc software ;-)
 
 use OODoc;
 
 my $verbose      = $ARGV[0] || 0;
 
 ##### Synchronize these constants with the mkdist script.
-my $distribution = '/tmp/MimeTypes';
+my $workdir      = '/tmp/MimeTypes';
 
 ##### Other constants
-my $module       = 'Mime::Types';
+my $distribution = 'Mime::Types';
 my $name         = 'Mime type definitions';
-my $version      = '1.06';         # Change this for each release!!!
 
 my $pod_format   = 'pod2';         # install Bundle::Text::MagicTemplate first
 #my $pod_format  = 'pod';          # runs out-of-the-box
 my $html_format  = 'html';
-
-print "*** Producing $module version $version\n" if $verbose;
 
 my $web          = 'public_html';
 my $website      = 'http://perl.overmeer.net/mimetypes/';
@@ -38,10 +35,12 @@ my $css          = "$html_root/mimetypes.css";
 #
 
 my $doc  = OODoc->new
- ( module     => $name
- , version    => $version
- , verbose    => $verbose
+ ( distribution  => $name
+ , verbose       => $verbose
  );
+
+my $version      = $doc->version;
+print "*** Producing $distribution version $version\n" if $verbose;
 
 #
 # Reading all the manual pages
@@ -50,7 +49,7 @@ my $doc  = OODoc->new
 #
 
 print "* Processing files\n" if $verbose;
-$doc->processFiles(workdir => $distribution);
+$doc->processFiles(workdir => $workdir);
 
 #
 # Prepare the collected information
@@ -70,12 +69,12 @@ print "* Creating POD\n" if $verbose;
 
 $doc->create
   ( $pod_format
-  , workdir => $distribution
+  , workdir => $workdir
   , append => <<TEXT);
 
 =head1 REFERENCES
 
-See the $module website at L<$website> for more details.
+See the $distribution website at L<$website> for more details.
 
 =head1 COPYRIGHTS
 
@@ -97,7 +96,7 @@ print "* Creating HTML\n" if $verbose;
 
 $doc->create
   ( $html_format
-  , workdir        => "$web/$html_root"
+  , workdir        => "$web$html_root"
 
   , format_options =>
       [ html_root      => $html_root
