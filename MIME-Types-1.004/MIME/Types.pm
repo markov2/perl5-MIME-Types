@@ -1,6 +1,6 @@
 package MIME::Types;
 
-$VERSION = '1.003';
+$VERSION = '1.004';
 
 use strict;
 use MIME::Type;
@@ -332,6 +332,7 @@ it and/or modify it under the same terms as Perl itself.
 # <ftp://ftp.iana.org/in-notes/iana/assignments/media-types/>.
 
 __DATA__
+application/access		mdf
 application/activemessage
 application/andrew-inset	ez
 application/applefile					base64
@@ -349,7 +350,10 @@ application/EDIFACT
 application/EDI-X12
 application/eshop
 application/excel		xls,xlt			base64
+application/font-tdpfr		pfr
+application/futuresplash	spl
 application/ghostview		
+application/hep			hep
 application/http
 application/hyperstudio
 application/iges
@@ -361,6 +365,7 @@ application/index.response
 application/index.vnd
 application/iotp
 application/ipp
+application/lotus-123		wks
 application/mac-binhex40	hqx				8bit
 application/mac-compactpro	cpt
 application/macwriteii
@@ -373,9 +378,10 @@ application/news-message-id
 application/news-transmission
 application/ocsp-request
 application/ocsp-response
-application/octet-stream	bin,dms,lha,lzh,exe,class	base64
+application/octet-stream	bin,dms,lha,lzh,exe,class,ani	base64
 application/oda			oda
 application/pdf			pdf				base64
+application/pagemaker		pm5,pt5,pm
 application/pgp-encrypted
 application/pgp-keys
 application/pgp
@@ -404,6 +410,7 @@ application/sgml
 application/sgml-open-catalog
 application/slate
 application/smil		smi,smil
+application/toolbook		tbk
 application/vemmi
 application/VMSBACKUP		bck			base64
 application/vnd.3M.Post-it-Notes
@@ -518,6 +525,7 @@ application/vnd.motorola.flexsuite.ttc
 application/vnd.motorola.flexsuite.wem
 application/vnd.mozilla.xul+xml
 application/vnd.ms-artgalry
+application/vnd.ms-access	mda,mdb,mde
 application/vnd.ms-asf
 application/vnd.ms-excel	xls
 application/vnd.msign
@@ -590,7 +598,10 @@ application/vnd.yellowriver-custom-menu
 application/whoispp-query
 application/whoispp-response
 application/wita
-application/wordperfect5.1	wp5,wpd
+application/wordperfect		wp
+application/wordperfect5.1	wp5
+application/wordperfect6.1	wp6
+application/wordperfectd	wpd
 application/x-123		wk
 application/x400-bp
 application/x-bcpio		bcpio
@@ -609,6 +620,7 @@ application/x-gunzip
 application/x-gzip		gz				base64
 application/x-hdf		hdf
 application/x-httpd-php		phtml,pht,php			8bit
+application/x-ica		ica
 application/x-javascript	js				8bit
 application/x-koan		skp,skd,skt,skm
 application/x-latex		latex				8bit
@@ -621,10 +633,12 @@ application/x-msdownload	exe				base64
 application/x-netcdf		nc,cdf
 application/x-ns-proxy-autoconfig	pac
 application/x-perl		pl,pm				8bit
+application/quicktimeplayer	qtl
 application/x-rar-compressed	rar				base64
 application/x-shar		shar				8bit
 application/x-shockwave-flash	swf
 application/x-sh		sh				8bit
+application/x-spss		sav,spp,sbs,sps,spo
 application/x-stuffit		sit				base64
 application/x-sv4cpio		sv4cpio				base64
 application/x-sv4crc		sv4crc				base64
@@ -670,6 +684,7 @@ audio/x-realaudio		ra				base64
 audio/x-wav			wav				base64
 chemical/x-pdb			pdb
 chemical/x-xyz			xyz
+drawing/dwf			dwf
 image/bmp			bmp
 image/cgm
 image/g3fax
@@ -782,6 +797,7 @@ video/vnd.fvt
 video/vnd.motorola.video
 video/vnd.motorola.videop
 video/vnd.vivo
+video/x-ms-asf			asf,asx
 video/x-msvideo			avi				base64
 video/x-sgi-movie		movie				base64
 x-conference/x-cooltalk		ice

@@ -3,6 +3,12 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <mimetypes@overmeer.net>
 
+version 1.004: Tue Oct 22 19:22:43 CEST 2002
+
+	- [Dan Puro] sent a reference to a list stored at
+	  http://www.indiana.edu/cgi-bin-local/mimetypes.  Most differences
+	  are added, but some where competing... and I won.
+
 version 1.003: Wed Oct  2 09:42:58 CEST 2002
 
 	- [Darell Fuhriman] added application/x-rar-compressed and
