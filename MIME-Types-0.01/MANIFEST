@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+MIME/Type.pm
+MIME/Types.pm
+README
+t/10type.t
+t/20types.t

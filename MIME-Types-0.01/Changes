@@ -1,0 +1,8 @@
+Revision history for Perl extension MIME::Types.
+
+0.01  Sat Nov  3 22:46:22 2001
+	- Implementation of basic dataset
+
+	- original version; created by h2xs 1.20 with options
+		-XA MIME::Types
+
