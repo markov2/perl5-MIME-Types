@@ -1,6 +1,6 @@
 package MIME::Types;
 
-$VERSION = '1.001';
+$VERSION = '1.002';
 
 use strict;
 use MIME::Type;
@@ -312,12 +312,10 @@ L<MIME::Type>
 
 Original module and data collection by Jeff Okamoto and the Apache team.
 Mark Overmeer (F<mimetypes@overmeer.net>).
-All rights reserved.  This program is free software; you can redistribute
-it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is stable, version 1.001.
+This code is stable, version 1.002.
 
 Copyright (c) 2001-2002 by Jeff Okamoto and Mark Overmeer.
 All rights reserved.  This program is free software; you can redistribute
@@ -641,6 +639,8 @@ application/x-Wingz		wz
 application/x-x509-ca-cert	crt				base64
 application/zip			zip				base64
 audio/32kadpcm
+audio/amr			amr				base64
+audio/amr-wb			awb				base64
 audio/basic			au,snd				base64
 audio/l16
 audio/midi			mid,midi,kar			base64

@@ -3,6 +3,16 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <mimetypes@overmeer.net>
 
+version 1.002: Mon Aug 12 11:40:55 CEST 2002
+
+	- [Jan Kratochvil] added audio/amr and audio/amr-wb to the
+	  set of known datatypes.  Types defined by rfc3267
+
+version 1.001: Tue Jun 18 13:39:56 CEST 2002
+
+	- Brown paper-bag release.  Accidentally, code was installing
+	  itself as MIME::MIME::Types
+
 version 1.00: Tue Jun 18 13:27:16 CEST 2002
 
 	- No real changes for some time now, so released a stable with

@@ -1,6 +1,6 @@
 package MIME::Type;
 
-$VERSION = '1.001';
+$VERSION = '1.002';
 
 use strict;
 use Carp;
@@ -306,12 +306,10 @@ L<MIME::Types>
 =head1 AUTHOR
 
 Mark Overmeer (F<mimetypes@overmeer.net>).
-All rights reserved.  This program is free software; you can redistribute
-it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is stable, version 1.001.
+This code is stable, version 1.002.
 
 Copyright (c) 2001-2002 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
