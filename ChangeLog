@@ -6,6 +6,26 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.15: Thu Mar 31 14:12:54 CEST 2005
+
+	- [Ave Wringeley] contributed MIME::Types methods types() and
+	  extensions()
+
+	- [Kjetil Kjernsmo] Added non-registered but useful OpenOffice/
+	  StarOffice types application/vnd.sun.xml.*
+
+	- [Tatsuhiko Miyagawa] contributed audio/3gpp and video/3gpp
+	  from RFC3839.
+
+version 1.14: Wed Nov 24 18:09:49 CET 2004
+
+	- [Ville Skyttä] provided some minor fixes and two new types
+
+	- [Ave Wringley] contributed video/x-ms-wmv
+
+	- [Ave Wringley] reported a bug in MIME::Types->addType, which
+	  produced a warning about double declaration where it shoudln't
+
 version 1.13: Sat Apr 24 00:15:09 CEST 2004
 
 	- [Ville Skyttä] and [Austing Ziegler] updated the type list to

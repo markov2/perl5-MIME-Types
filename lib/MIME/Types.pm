@@ -185,13 +185,10 @@ C<MIME::Type> which must be experimental: either the main-type or
 the sub-type must start with C<x->.
 
 Please inform the maintainer of this module when registered types
-are missing.
-
-=warning type $type already registered.
-
-You try to register a type, when it is already known.  This means that
-you are duplicating work (with chance on errors) or have knowledge you
-can contribute to this module (please contact the author).
+are missing.  Before version MIME::Types version 1.14, a warning
+was produced when an unknown IANA type was added.  This has been
+removed, because some people need that to get their application
+to work locally... broken applications...
 
 =cut
 
@@ -199,11 +196,7 @@ sub addType(@)
 {   my $self = shift;
 
     foreach my $type (@_)
-    {
-        carp "WARNING: type $type already registered."
-            if $type->isRegistered;
-
-        my $simplified = $type->simplified;
+    {   my $simplified = $type->simplified;
         push @{$list{$simplified}}, $type;
     }
 
@@ -211,6 +204,32 @@ sub addType(@)
     $self;
 }
 
+#-------------------------------------------
+
+=method types
+Returns a list of all defined mime-types
+=cut
+
+sub types
+{   my $self = shift;
+
+    $self->create_type_index unless keys %type_index;
+    return values %type_index;
+}
+                                                                                
+#-------------------------------------------
+
+=method extensions
+Returns a list of all defined extensions.
+=cut
+
+sub extensions
+{    my $self = shift;
+    $self->create_type_index unless keys %type_index;
+
+    return keys %type_index;
+}
+                                                                                
 #-------------------------------------------
 
 =chapter FUNCTIONS
@@ -460,6 +479,7 @@ application/vnd.ericsson.quickcall
 application/vnd.eudora.data
 application/vnd.fdf
 application/vnd.ffsns
+application/vnd.fints
 application/vnd.FloGraphIt
 application/vnd.framemaker
 application/vnd.fsc.weblauch	fsc			7bit
@@ -529,7 +549,7 @@ application/vnd.koan
 application/vnd.liberty-request+xml
 application/vnd.llamagraphics.life-balance.desktop	lbd
 application/vnd.llamagraphics.life-balance.exchange+xml	lbe
-application/vnd.lotus-1-2-3	wks
+application/vnd.lotus-1-2-3	wks,123
 application/vnd.lotus-approach
 application/vnd.lotus-freelance
 application/vnd.lotus-notes
@@ -539,6 +559,7 @@ application/vnd.lotus-wordpro
 application/vnd.mcd		mcd
 application/vnd.mediastation.cdkey
 application/vnd.meridian-slingshot
+application/vnd.mfmp			mfm
 application/vnd.micrografx.flo	flo
 application/vnd.micrografx.igx	igx
 application/vnd.mif		mif
@@ -624,8 +645,20 @@ application/vnd.sss-cod
 application/vnd.sss-dtf
 application/vnd.sss-ntf
 application/vnd.street-stream
+application/vnd.sun.xml.calc		sxc
+application/vnd.sun.xml.calc.template	stc
+application/vnd.sun.xml.draw		sxd
+application/vnd.sun.xml.draw.template	std
+application/vnd.sun.xml.impress		sxi
+application/vnd.sun.xml.impress.template	sti
+application/vnd.sun.xml.math		sxm
+application/vnd.sun.xml.writer		sxw
+application/vnd.sun.xml.writer.global	sxg
+application/vnd.sun.xml.writer.template	stw
+application/vnd.sus-calendar	sus,susp
 application/vnd.svd
 application/vnd.swiftview-ics
+application/vnd.syncml.ds.notification
 application/vnd.triscape.mxs
 application/vnd.trueapp
 application/vnd.truedoc
@@ -676,6 +709,7 @@ application/watcherinfo+xml		wif
 application/whoispp-query
 application/whoispp-response
 application/wita
+application/wordperfect5.1	wp5,wp
 application/x-123		wk
 application/x-access
 application/x-bcpio		bcpio
@@ -718,7 +752,7 @@ application/x-latex		latex				8bit
 application/x-lotus-123
 application/x-mac-compactpro	cpt
 application/x-maker		frm,maker,frame,fm,fb,book,fbdoc
-application/x-mathcad		mcd
+application/x-mathcad	# mcd, but there is also vnd.mcd
 application/x-mif		mif
 application/xml
 application/xml-dtd
@@ -762,13 +796,12 @@ application/x-VMSBACKUP		bck			base64
 application/x-wais-source	src
 application/x-Wingz		wz
 application/x-word							base64
-application/x-wordperfect5.1	wp5,wp
 application/x-wordperfect6.1	wp6
 application/x-x400-bp
 application/x-x509-ca-cert	crt				base64
 application/zip			zip				base64
-applivation/vnd.fints
 audio/32kadpcm
+audio/3gpp			3gpp
 audio/AMR			amr				base64
 audio/AMR-WB			awb				base64
 audio/basic			au,snd				base64
@@ -972,6 +1005,7 @@ text/x-setext				etx
 text/x-sgml				sgml,sgm			8bit
 text/x-vCalendar			vcs				8bit
 text/x-vCard				vcf				8bit
+video/3gpp				3gp,3gpp
 video/BMPEG
 video/BT656
 video/CelB
@@ -1009,6 +1043,7 @@ video/vnd.sealed.swf			sswf,ssw
 video/vnd.vivo				viv,vivo
 video/x-fli				fli				base64
 video/x-ms-asf				asf,asx
+video/x-ms-wmv				wmv
 video/x-msvideo				avi				base64
 video/x-sgi-movie			movie				base64
 x-chemical/x-pdb			pdb

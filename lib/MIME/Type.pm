@@ -51,7 +51,7 @@ is required) will result in the type name, the same as M<type()>
 returns.
 
 =examples use of stringification
- my $mime = Mime::Tyep->new('text/html');
+ my $mime = MIME::Type->new('text/html');
  print "$mime\n";   # explicit stringification
  print $mime;       # implicit stringification
  
