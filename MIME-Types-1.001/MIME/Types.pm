@@ -1,6 +1,6 @@
 package MIME::Types;
 
-$VERSION = '1.00';
+$VERSION = '1.001';
 
 use strict;
 use MIME::Type;
@@ -317,7 +317,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is stable, version 1.00.
+This code is stable, version 1.001.
 
 Copyright (c) 2001-2002 by Jeff Okamoto and Mark Overmeer.
 All rights reserved.  This program is free software; you can redistribute

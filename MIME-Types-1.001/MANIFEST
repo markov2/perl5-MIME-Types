@@ -3,6 +3,7 @@ Makefile.PL
 MANIFEST
 MIME/Type.pm
 MIME/Types.pm
+MIME/Makefile.PL
 README
 t/10type.t
 t/11typeol.t
