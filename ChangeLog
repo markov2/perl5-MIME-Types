@@ -3,8 +3,11 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <mimetypes@overmeer.net>
 
-**** Inform Austin Ziegler <austin@halostatue.ca> at each release, to
+**** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
+
+version 1.13:
+	- [Ville Skyttä] updates of list to IANA registry dated 2004-04-09
 
 version 1.12: Wed Jan 21 10:09:43 CET 2004
 

@@ -47,7 +47,7 @@ ok(defined $p);
 is($p->type, 'image/gif');
 
 my $q = $a->mimeTypeOf('windows.doc');
-is($q->type, 'application/msword');
+is($q->type, 'application/x-msword');
 is($a->mimeTypeOf('my.lzh')->type, 'application/octet-stream');
 
 my $r1 = MIME::Type->new(type => 'text/fake1');

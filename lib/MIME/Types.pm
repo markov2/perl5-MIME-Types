@@ -1,3 +1,4 @@
+
 package MIME::Types;
 
 use strict;
@@ -321,34 +322,30 @@ CROAK
 # F<ftp://ftp.iana.org/in-notes/iana/assignments/media-types/>.
 
 $mime_type_definitions = <<MIMETYPES;
-application/access		mdf
 application/activemessage
-application/andrew-inset	ez
+application/andrew-inset		ez
+application/appledouble					base64
 application/applefile					base64
 application/atomicmail
 application/batch-SMTP
 application/beep+xml
-application/bleeper		bleep			base64
 application/cals-1840
 application/cnrp+xml
 application/commonground
 application/cpl+xml
-application/cu-seeme		csm,cu
 application/cybercash
-application/dca-rft
-application/dec-dx
+application/DCA-RFT
+application/DEC-DX
+application/dicom
+application/dvcs
 application/EDI-Consent
 application/EDIFACT
 application/EDI-X12
 application/eshop
-application/font-tdpfr		pfr
-application/futuresplash	spl
-application/ghostview		
-application/hep			hep
+application/font-tdpfr			pfr
 application/http
-application/hyperstudio		stk
+application/hyperstudio			stk
 application/iges
-application/imagemap		imagemap,imap			8bit
 application/index
 application/index.cmd
 application/index.obj
@@ -357,16 +354,11 @@ application/index.vnd
 application/iotp
 application/ipp
 application/isup
-application/lotus-123		wks
 application/mac-binhex40	hqx				8bit
-application/mac-compactpro	cpt
 application/macwriteii
 application/marc
 application/mathematica
-application/mathcad		mcd				base64
-application/mathematica-old
 application/mpeg4-generic
-application/msword		doc,dot,wrd			base64
 application/news-message-id
 application/news-transmission
 application/ocsp-request	orq
@@ -376,10 +368,8 @@ application/oda			oda
 application/ogg			ogg
 application/parityfec
 application/pdf			pdf				base64
-application/pagemaker		pm5,pt5,pm
 application/pgp-encrypted					7bit
 application/pgp-keys						7bit
-application/pgp
 application/pgp-signature	sig				base64
 application/pidf+xml
 application/pkcs10		p10
@@ -391,7 +381,6 @@ application/pkix-crl		crl
 application/pkix-pkipath	pkipath
 application/postscript		ai,eps,ps			8bit
 application/postscript		ps-z				base64
-application/powerpoint		ppt,pps,pot			base64
 application/prs.alvestrand.titrax-sheet
 application/prs.cww		cw,cww
 application/prs.nprend		rnd,rct
@@ -416,7 +405,6 @@ application/timestamp-reply
 application/toolbook		tbk
 application/tve-trigger
 application/vemmi
-application/VMSBACKUP		bck			base64
 application/vnd.3gpp.pic-bw-large	plb
 application/vnd.3gpp.pic-bw-small	psb
 application/vnd.3gpp.pic-bw-var		pvb
@@ -472,7 +460,6 @@ application/vnd.ericsson.quickcall
 application/vnd.eudora.data
 application/vnd.fdf
 application/vnd.ffsns
-applivation/vnd.fints
 application/vnd.FloGraphIt
 application/vnd.framemaker
 application/vnd.fsc.weblauch	fsc			7bit
@@ -507,7 +494,7 @@ application/vnd.ibm.afplinedata
 application/vnd.ibm.electronic-media	emm
 application/vnd.ibm.MiniPay
 application/vnd.ibm.modcap
-applivation/vnd.ibm.rights-management	irm
+application/vnd.ibm.rights-management	irm
 application/vnd.ibm.secure-container	sc
 application/vnd.informix-visionary
 application/vnd.intercon.formnet
@@ -537,18 +524,19 @@ application/vnd.kde.kspread	ksp
 application/vnd.kde.kword	kwd,kwt
 application/vnd.kenameapp	htke
 application/vnd.kidspiration	kia
+application/vnd.Kinar		kne,knp,sdf
 application/vnd.koan
 application/vnd.liberty-request+xml
 application/vnd.llamagraphics.life-balance.desktop	lbd
 application/vnd.llamagraphics.life-balance.exchange+xml	lbe
-application/vnd.lotus-1-2-3
+application/vnd.lotus-1-2-3	wks
 application/vnd.lotus-approach
 application/vnd.lotus-freelance
 application/vnd.lotus-notes
 application/vnd.lotus-organizer
 application/vnd.lotus-screencam
 application/vnd.lotus-wordpro
-application/vnd.mcd
+application/vnd.mcd		mcd
 application/vnd.mediastation.cdkey
 application/vnd.meridian-slingshot
 application/vnd.micrografx.flo	flo
@@ -556,13 +544,13 @@ application/vnd.micrografx.igx	igx
 application/vnd.mif		mif
 application/vnd.minisoft-hp3000-save
 application/vnd.mitsubishi.misty-guard.trustweb
-application/vnd.mobius.DAF
-application/vnd.mobius.DIS
-application/vnd.mobius.MBK
-application/vnd.mobius.MQV
-application/vnd.mobius.MSL
-application/vnd.mobius.PLC
-application/vnd.mobius.TXF
+application/vnd.Mobius.DAF
+application/vnd.Mobius.DIS
+application/vnd.Mobius.MBK
+application/vnd.Mobius.MQY
+application/vnd.Mobius.MSL
+application/vnd.Mobius.PLC
+application/vnd.Mobius.TXF
 application/vnd.mophun.application	mpn
 application/vnd.mophun.certificate	mpc
 application/vnd.motorola.flexsuite
@@ -574,17 +562,16 @@ application/vnd.motorola.flexsuite.ttc
 application/vnd.motorola.flexsuite.wem
 application/vnd.mozilla.xul+xml	xul
 application/vnd.ms-artgalry	cil
-application/vnd.ms-access	mda,mdb,mde
 application/vnd.ms-asf		asf
 application/vnd.mseq		mseq
 application/vnd.ms-excel	xls,xlt			base64
 application/vnd.msign
 application/vnd.ms-lrm		lrm
-application/vnd.ms-powerpoint	ppt,pps,pot
-application/vnd.ms-project	mpp
-application/vnd.ms-tnef
-application/vnd.ms-works
-application/vnd.ms-wpl		wpl
+application/vnd.ms-powerpoint	ppt,pps,pot		base64
+application/vnd.ms-project	mpp			base64
+application/vnd.ms-tnef					base64
+application/vnd.ms-works				base64
+application/vnd.ms-wpl		wpl			base64
 application/vnd.musician
 application/vnd.music-niff
 application/vnd.nervana		ent,entity,req,request,bkm,kcm
@@ -592,6 +579,8 @@ application/vnd.netfpx
 application/vnd.noblenet-directory
 application/vnd.noblenet-sealer
 application/vnd.noblenet-web
+application/vnd.nokia.radio-preset	rpst
+application/vnd.nokia.radio-presets	rpss
 application/vnd.novadigm.EDM
 application/vnd.novadigm.EDX
 application/vnd.novadigm.EXT
@@ -615,15 +604,16 @@ application/vnd.pwg-multiplexed
 application/vnd.pwg-xmhtml-print+xml
 application/vnd.Quark.QuarkXPress	qxd,qxt,qwd,qwt,qxl,qxb		8bit
 application/vnd.rapid
+application/vnd.renlearn.rlprint
 application/vnd.s3sms
 application/vnd.sealed.doc	sdoc,sdo,s1w
 application/vnd.sealed.eml	seml,sem
+application/vnd.sealedmedia.softseal.html	stml,stm,s1h
+application/vnd.sealedmedia.softseal.pdf	spdf,spd,s1a
 application/vnd.sealed.mht	smht,smh
 application/vnd.sealed.net
 application/vnd.sealed.ppt	sppt,spp,s1p
 application/vnd.sealed.xls	sxls,sxl,s1e
-application/vnd.sealedmedia.softseal.html	stml,stm,s1h
-application/vnd.sealedmedia.softseal.pdf	spdf,spd,s1a
 application/vnd.seemail		see
 application/vnd.shana.informed.formdata
 application/vnd.shana.informed.formtemplate
@@ -640,6 +630,7 @@ application/vnd.triscape.mxs
 application/vnd.trueapp
 application/vnd.truedoc
 application/vnd.ufdl
+application/vnd.uiq.theme
 application/vnd.uplanet.alert
 application/vnd.uplanet.alert-wbxml
 application/vnd.uplanet.bearer-choice
@@ -656,8 +647,8 @@ application/vnd.uplanet.signal
 application/vnd.vcx
 application/vnd.vectorworks
 application/vnd.vidsoft.vidconference	vsc		8bit
-application/vnd.visio			vsd,vst,vsw,vss
 application/vnd.visionary		vis
+application/vnd.visio			vsd,vst,vsw,vss
 application/vnd.vividence.scriptfile
 application/vnd.vsf
 application/vnd.wap.sic			sic
@@ -666,69 +657,94 @@ application/vnd.wap.wbxml		wbxml
 application/vnd.wap.wmlc		wmlc
 application/vnd.wap.wmlscriptc		wmlsc
 application/vnd.webturbo		wtb
+application/vnd.wordperfect		wpd
 application/vnd.wqd			wqd
 application/vnd.wrq-hp3000-labelled
-application/vnd.wv.csp+xml					8bit
-application/vnd.wv.csp+wbxml		wv
-application/vnd.wv.ssp+xml					8bit
 application/vnd.wt.stf
+application/vnd.wv.csp+wbxml		wv
+application/vnd.wv.csp+xml					8bit
+application/vnd.wv.ssp+xml					8bit
 application/vnd.xara
 application/vnd.xfdl
 application/vnd.yamaha.hv-dic		hvd
 application/vnd.yamaha.hv-script	hvs
 application/vnd.yamaha.hv-voice		hvp
 application/vnd.yamaha.smaf-audio	saf
-aplicationv/vnd.yamaha.smaf-phrase	spf
+application/vnd.yamaha.smaf-phrase	spf
 application/vnd.yellowriver-custom-menu
 application/watcherinfo+xml		wif
 application/whoispp-query
 application/whoispp-response
 application/wita
-application/wordperfect		wp
-application/wordperfect5.1	wp5
-application/wordperfect6.1	wp6
-application/wordperfectd	wpd
 application/x-123		wk
-application/x400-bp
+application/x-access
 application/x-bcpio		bcpio
+application/x-bleeper		bleep				base64
 application/x-bzip2		bz2
 application/x-cdlink		vcd
 application/x-chess-pgn		pgn
+application/x-clariscad
 application/x-compress		z,Z				base64
 application/x-cpio		cpio				base64
 application/x-csh		csh				8bit
+application/x-cu-seeme		csm,cu
 application/x-debian-package	deb
 application/x-director		dcr,dir,dxr
+application/x-drafting
 application/x-dvi		dvi				base64
+application/x-dxf
+application/x-excel
+application/x-fractals
 application/x-futuresplash	spl
+application/x-ghostview		
 application/x-gtar		gtar,tgz,tbz2,tbz		base64
 application/x-gunzip
 application/x-gzip		gz				base64
 application/x-hdf		hdf
+application/x-hep		hep
+application/x-html+ruby		rhtml				8bit
 application/xhtml+xml		xhtml				8bit
 application/x-httpd-php		phtml,pht,php			8bit
 application/x-ica		ica
+application/x-ideas
+application/x-imagemap		imagemap,imap			8bit
+application/x-java-archive	jar
 application/x-java-jnlp-file	jnlp
 application/x-javascript	js				8bit
+application/x-java-serialized-object	ser
+application/x-java-vm		class
 application/x-koan		skp,skd,skt,skm
 application/x-latex		latex				8bit
+application/x-lotus-123
+application/x-mac-compactpro	cpt
 application/x-maker		frm,maker,frame,fm,fb,book,fbdoc
+application/x-mathcad		mcd
 application/x-mif		mif
 application/xml
 application/xml-dtd
 application/xml-external-parsed-entity
-application/x-msdos-program	com,bat				8bit
-application/x-msdos-program	exe				base64
-application/x-msdownload	exe				base64
+application/x-msaccess			mda,mdb,mde,mdf		base64
+application/x-msdos-program	cmd,bat				8bit
+application/x-msdos-program	com,exe				base64
+application/x-msdownload	   				base64
+application/x-msword		doc,dot,wrd			base64
 application/x-netcdf		nc,cdf
 application/x-ns-proxy-autoconfig	pac
+application/x-pagemaker		pm5,pt5,pm
 application/x-perl		pl,pm				8bit
-application/quicktimeplayer	qtl
+application/x-pgp
+application/x-python		py				8bit
+application/x-quicktimeplayer	qtl
 application/x-rar-compressed	rar				base64
+application/x-remote_printing
+application/x-ruby		rb,rbw				8bit
+application/x-set
 application/x-shar		shar				8bit
 application/x-shockwave-flash	swf
 application/x-sh		sh				8bit
-application/x-spss		sav,sbs,sps,spo
+application/x-SLA
+application/x-solids
+application/x-spss		sav,sbs,sps,spo,spp
 application/x-stuffit		sit				base64
 application/x-sv4cpio		sv4cpio				base64
 application/x-sv4crc		sv4crc				base64
@@ -741,10 +757,17 @@ application/x-troff-me		me
 application/x-troff-ms		ms
 application/x-troff		t,tr,roff			8bit
 application/x-ustar		ustar				base64
+application/x-vda
+application/x-VMSBACKUP		bck			base64
 application/x-wais-source	src
 application/x-Wingz		wz
+application/x-word							base64
+application/x-wordperfect5.1	wp5,wp
+application/x-wordperfect6.1	wp6
+application/x-x400-bp
 application/x-x509-ca-cert	crt				base64
 application/zip			zip				base64
+applivation/vnd.fints
 audio/32kadpcm
 audio/AMR			amr				base64
 audio/AMR-WB			awb				base64
@@ -753,11 +776,11 @@ audio/CN
 audio/DAT12
 audio/dsr-es201108
 audio/DVI4
-audio/EVRC			evc
 audio/EVRC0
+audio/EVRC			evc
 audio/EVRC-QCP
-audio/G.722.1
 audio/G722
+audio/G.722.1
 audio/G723
 audio/G726-16
 audio/G726-24
@@ -769,15 +792,15 @@ audio/G729D
 audio/G729E
 audio/GSM
 audio/GSM-EFR
-audio/L8
 audio/L16			l16
 audio/L20
 audio/L24
+audio/L8
 audio/LPC
-audio/midi			mid,midi,kar			base64
 audio/MP4A-LATM
 audio/MPA
 audio/mpa-robust
+audio/mpeg4-generic
 audio/mpeg			mpga,mp2,mp3			base64
 audio/parityfec
 audio/PCMA
@@ -785,30 +808,32 @@ audio/PCMU
 audio/prs.sid			sid,psid
 audio/QCELP			qcp
 audio/RED
-audio/SMV			smv
 audio/SMV0
 audio/SMV-QCP
+audio/SMV			smv
 audio/telephone-event
 audio/tone
 audio/VDVI
 audio/vnd.3gpp.iufp
+audio/vnd.audiokoz		koz
 audio/vnd.cisco.nse
 audio/vnd.cns.anp1
 audio/vnd.cns.inf1
 audio/vnd.digital-winds		eol			7bit
 audio/vnd.everad.plj		plj
 audio/vnd.lucent.voice		lvp
-audio/vnd.nokia.mobile-xmf	xmf
+audio/vnd.nokia.mobile-xmf	mxmf
 audio/vnd.nortel.vbk		vbk
 audio/vnd.nuera.ecelp4800	ecelp4800
 audio/vnd.nuera.ecelp7470	ecelp7470
 audio/vnd.nuera.ecelp9600	ecelp9600
 audio/vnd.octel.sbc
-audio/vnd.qcelp
+audio/vnd.qcelp	
 audio/vnd.rhetorex.32kadpcm
 audio/vnd.sealedmedia.softseal.mpeg	smp3,smp,s1m
 audio/vnd.vmx.cvsd
 audio/x-aiff			aif,aifc,aiff			base64
+audio/x-midi			mid,midi,kar			base64
 audio/x-pn-realaudio-plugin	rpm
 audio/x-pn-realaudio		rm,ram				base64
 audio/x-realaudio		ra				base64
@@ -816,22 +841,25 @@ audio/x-wav			wav				base64
 chemical/x-pdb			pdb
 chemical/x-xyz			xyz
 drawing/dwf			dwf
-image/bmp			bmp
 image/cgm
 image/g3fax
 image/gif			gif				base64
 image/ief			ief				base64
+image/jp2			jp2,jpg2
 image/jpeg			jpeg,jpg,jpe			base64
+image/jpm			jpm,jpgm
+image/jpx			jpf,jpx
 image/naplps
 image/png			png				base64
 image/prs.btif
 image/prs.pti
 image/t38
-image/tiff			tiff,tif			base64
+image/targa			tga
 image/tiff-fx
+image/tiff			tiff,tif			base64
 image/vnd.cns.inf2
-image/vnd.djvu			djvu,djv
 image/vnd.dgn			dgn
+image/vnd.djvu			djvu,djv
 image/vnd.dwg			dwg
 image/vnd.dxf
 image/vnd.fastbidsheet
@@ -844,12 +872,13 @@ image/vnd.microsoft.icon		ico
 image/vnd.mix
 image/vnd.ms-modi			mdi
 image/vnd.net-fpx
-image/vnd.sealed.png			spng,spn,s1n
 image/vnd.sealedmedia.softseal.gif	sgif,sgi,s1g
 image/vnd.sealedmedia.softseal.jpg	sjpg,sjp,s1j
+image/vnd.sealed.png			spng,spn,s1n
 image/vnd.svf
 image/vnd.wap.wbmp			wbmp
 image/vnd.xiff
+image/x-bmp			bmp
 image/x-cmu-raster			ras
 image/x-portable-anymap			pnm				base64
 image/x-portable-bitmap			pbm				base64
@@ -868,8 +897,8 @@ message/news								8bit
 message/partial								8bit
 message/rfc822								8bit
 message/s-http
-message/sipfrag
 message/sip
+message/sipfrag
 model/iges				igs,iges
 model/mesh				msh,mesh,silo
 model/vnd.dwf
@@ -895,9 +924,15 @@ multipart/related
 multipart/report
 multipart/signed
 multipart/voice-message
+multipart/x-gzip
+multipart/x-mixed-replace
+multipart/x-tar
+multipart/x-ustar
+multipart/x-www-form-urlencoded
+multipart/x-zip
 text/calendar
-text/css				css				8bit
 text/comma-separated-values		csv				8bit
+text/css				css				8bit
 text/directory
 text/enriched
 text/html				html,htm,htmlx,shtml,htx	8bit
@@ -907,7 +942,7 @@ text/prs.fallenstein.rst		rst
 text/prs.lines.tag
 text/rfc822-headers
 text/richtext				rtx				8bit
-text/rtf				rtf
+text/rtf				rtf				8bit
 text/sgml				sgml,sgm
 text/t140
 text/tab-separated-values		tsv
@@ -931,8 +966,8 @@ text/vnd.wap.si				si
 text/vnd.wap.sl				sl
 text/vnd.wap.wmlscript			wmls
 text/vnd.wap.wml			wml
-text/xml				xml,dtd				8bit
 text/xml-external-parsed-entity
+text/xml				xml,dtd				8bit
 text/x-setext				etx
 text/x-sgml				sgml,sgm			8bit
 text/x-vCalendar			vcs				8bit
@@ -942,19 +977,19 @@ video/BT656
 video/CelB
 video/dl				dl				base64
 video/DV
-video/fli				fli				base64
 video/gl				gl				base64
 video/H261
 video/H263
 video/H263-1998
 video/H263-2000
 video/JPEG
+video/mj2				mj2,mjp2
 video/MP1S
 video/MP2P
 video/MP2T
 video/MP4V-ES
-video/mpeg				mp2,mpe,mpeg,mpg		base64
 video/mpeg4-generic
+video/mpeg				mp2,mpe,mpeg,mpg		base64
 video/MPV
 video/nv
 video/parityfec
@@ -967,15 +1002,19 @@ video/vnd.motorola.videop
 video/vnd.mpegurl			mxu,m4u				8bit
 video/vnd.nokia.interleaved-multimedia	nim
 video/vnd.objectvideo			mp4
+video/vnd.sealedmedia.softseal.mov	smov,smo,s1q
 video/vnd.sealed.mpeg1			s11
 video/vnd.sealed.mpeg4			smpg,s14
-video/vnd.sealed.sswf			sswf,ssw
-video/vnd.sealedmedia.softseal.mov	smov,smo,s1q
+video/vnd.sealed.swf			sswf,ssw
 video/vnd.vivo				viv,vivo
+video/x-fli				fli				base64
 video/x-ms-asf				asf,asx
 video/x-msvideo				avi				base64
 video/x-sgi-movie			movie				base64
+x-chemical/x-pdb			pdb
+x-chemical/x-xyz			xyz
 x-conference/x-cooltalk			ice
+x-drawing/dwf				dwf
 x-world/x-vrml				wrl,vrml
 
 # Exceptions
