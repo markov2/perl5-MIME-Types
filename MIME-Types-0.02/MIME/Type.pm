@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 NAME
 
@@ -44,7 +44,8 @@ Create a new C<MIME::Type> object which manages one mime type.
  type                      <obligatory>
  simplified                <derived from type>
  extensions                undef
- encoding                  'UNKNOWN'
+ encoding                  <depends on type>
+ system                    undef
 
 =over 4
 
@@ -65,12 +66,16 @@ C<x-> thingies removed and are translated to lower-case.
 
 An array of extensions which are using this mime.
 
-=item * encoding =E<gt> 'UNKNOWN'|'BINARY'|'ASCII'
+=item * encoding =E<gt> '7bit'|'8bit'|'base64'|'quoted-printable'
 
-Which kind of data.  In case of C<'ASCII'>, bytes with a code below \040 and
-above \126 are sparse: text data.  C<'BINARY'> data usually has a non-printable
-content.  For 'UNKNOWN', it is not (yet) known.  Please contribute if you
-know more about these formats.
+How must this data be encoded to be transported safely.  The default
+depends on the type: mimes with as main type C<text/> will default
+to C<quoted-printable> and all other to C<base64>.
+
+=item * system =E<gt> REGEX
+
+Regular expression which defines for which systems this rule is valid.  The
+REGEX is matched on C<$^O>.
 
 =back
 
@@ -88,7 +93,14 @@ sub init($)
        || ref($self)->simplified($args->{type});
 
     $self->{MT_extensions} = $args->{extensions} || [];
-    $self->{MT_encoding}   = $args->{encoding}   || 'UNKNOWN';
+
+    $self->{MT_encoding}
+       = defined $args->{encoding} ? $args->{encoding}
+       : $self->mainType eq 'text' ? 'quoted-printable'
+       :                             'base64';
+
+    $self->{MT_system}     = $args->{system}
+       if defined $args->{system};
 
     $self;
 }
@@ -127,7 +139,8 @@ sub simplified(;$)
 {   my $thing = shift;
     return $thing->{MT_simplified} unless @_;
 
-    shift =~ m!^\s*(?:x\-)?([\w.-]+)/(?:x\-)?([\w.-]+)\s*$! ? lc "$1/$2" : undef;
+      shift =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!
+    ? lc "$1/$2" : undef;
 }
 
 #-------------------------------------------
@@ -167,8 +180,8 @@ sub extensions() { @{shift->{MT_extensions}} }
 
 =item encoding
 
-Returns C<'UNKNOWN'>, C<'ASCII'>, or C<'BINARY'>, for the format in which
-the data is encoded.
+Returns the type of encoding which is required to transport data of this
+type safely.
 
 =cut
 
@@ -176,39 +189,35 @@ sub encoding() {shift->{MT_encoding}}
 
 #-------------------------------------------
 
-=item isBinary
+=item system
 
-Returns C<undef> when the encoding is C<'UNKNOWN'> and C<0> when the encoding
-is C<'ASCII'>.  Both are representations of false.  Only for the C<'BINARY'>
-encoding true will be returned.
+Returns the regular expression which can be used to determine whether this
+type is active on the system where you are working on.
 
 =cut
 
-sub isBinary()
-{   for(shift->{MT_encoding}) 
-    {   return $_ eq 'UNKNOWN' ? undef
-             : $_ eq 'BINARY'  ? 1
-             :                   0;
-    }
-}
+sub system() {shift->{MT_system}}
+
+#-------------------------------------------
+
+=item isBinary
+
+Returns true when the encoding is base64.
+
+=cut
+
+sub isBinary() { shift->{MT_encoding} eq 'base64' }
 
 #-------------------------------------------
 
 =item isAscii
 
-Returns C<undef> when the encoding is C<'UNKNOWN'> and C<0> when the encoding
-is C<'BINARY'>.  Both are representations of false.  Only for the C<'ASCII'>
-encoding true will be returned.
+Returns false when the encoding is base64, and true otherwise.  All encodings
+except base64 are text encodings.
 
 =cut
 
-sub isAscii()
-{   for(shift->{MT_encoding}) 
-    {   return $_ eq 'UNKNOWN' ? undef
-             : $_ eq 'ASCII'   ? 1
-             :                   0;
-    }
-}
+sub isAscii() { shift->{MT_encoding} ne 'base64' }
 
 #-------------------------------------------
 
@@ -226,7 +235,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is alpha version 0.01.
+This code is alpha version 0.02.
 
 Copyright (c) 2001 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
