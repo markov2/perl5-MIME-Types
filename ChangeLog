@@ -6,8 +6,12 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
-version 1.13:
-	- [Ville Skyttä] updates of list to IANA registry dated 2004-04-09
+version 1.13: Sat Apr 24 00:15:09 CEST 2004
+
+	- [Ville Skyttä] and [Austing Ziegler] updated the type list to
+	  IANA registry dated 2004-04-09.  Many changes to clean-up the
+	  list, trying to find a good balance between IANA's rules and
+	  common practice.
 
 version 1.12: Wed Jan 21 10:09:43 CET 2004
 
