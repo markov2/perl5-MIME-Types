@@ -1,9 +1,9 @@
 package MIME::Type;
 
-$VERSION = '1.004';
+$VERSION = '1.005';
 
 use strict;
-use Carp;
+use Carp 'confess';
 
 use overload '""' => 'type'
            ,  cmp => 'equals'
@@ -17,7 +17,7 @@ use overload '""' => 'type'
 
  use MIME::Types;
  my $mimetypes = MIME::Types->new;
- my MIME::Type $plaintext = $mimetype->type('text/plain');
+ my MIME::Type $plaintext = $mimetypes->type('text/plain');
  print $plaintext->mediaType;   # text
  print $plaintext->subType;     # plain
 
@@ -39,7 +39,9 @@ and HTTP traffic.  Sometimes real knowledge about a mime-type is need.
 Objects of C<MIME::Type> store the information on one such type.
 
 This module is built to conform to the MIME types of RFC's 2045 and 2231.
-It follows the collection kept at F<http://www.ltsw.se/knbase/internet/mime.htp>
+It follows the official IANA registry at
+F<http://www.iana.org/assignments/media-types/>
+and the collection kept at F<http://www.ltsw.se/knbase/internet/mime.htp>
 
 =cut
 
@@ -309,7 +311,7 @@ Mark Overmeer (F<mimetypes@overmeer.net>).
 
 =head1 VERSION
 
-This code is stable, version 1.003.
+This code is stable, version 1.005.
 
 Copyright (c) 2001-2002 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify

@@ -8,7 +8,7 @@ use strict;
 
 use lib qw(. t);
 
-BEGIN {plan tests => 19}
+BEGIN {plan tests => 22}
 
 use MIME::Types;
 
@@ -20,6 +20,13 @@ ok(@t==1);
 my $t = $t[0];
 ok(ref $t eq 'MIME::Type');
 ok($t->type eq 'multipart/mixed');
+
+# No extensions, but a known, explicit encoding.
+@t = $a->type('message/rfc822');
+ok(@t==1);
+$t = $t[0];
+ok(!$t->extensions);
+ok($t->encoding eq '8bit');
 
 @t = $a->type('TEXT/x-RTF');
 ok(@t==1);
