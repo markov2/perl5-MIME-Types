@@ -1,0 +1,69 @@
+
+<html>
+<head>
+  <title><!--{project}--> <!--{version}--></title>
+  <!--{meta}-->
+</head>
+<body>
+
+<center>
+<table width="80%">
+<tr><td>
+    <center><h1><!--{project}--></h1></center>
+   
+    <p>The OODoc module is designed to create manual pages independent from the
+    source of the information and the type of output.  The documentation may
+    be extracted from the source code with a parser (like the
+    <a href="OODoc::Parser::Markov/">Markov parser</a>,
+    which extends the syntax of POD with logical markup) and the output may
+    be plain POD or HTML.</p>
+    
+    <p>OODoc can be extended with new input parsers and output
+    formatters in an Object Oriented way.  OODoc supports features to
+    improve the documentation of Object Oriented modules.</p>
+    
+    <dl>
+    <dt><!--{a manuals}-->all manuals</a></dt>
+    <dd>A list of all manuals included in OODoc.</dd>
+    
+    <dt><!--{a methods}-->all methods</a></dt>
+    <dd>An overview of all methods, arranged alphabetically</dd>
+    
+    <dt><!--{a diagnostics}-->all diagnostics</a></dt>
+    <dd>A list of all diagnostics which can be produced by this module.  Often
+        useful to determine which method is complaining about a mistake.</dd>
+    
+    <dt><!--{a details}-->all details</a></dt>
+    <dd>Many manual pages contain a DETAILS chapter which explains all
+        kinds of facts about the general background, implementation
+        specifics, and examples of complex use of the items.
+         Looking through the full
+        list of details may help to find a solution.
+    </dl>
+    
+    <h2>Example</h2>
+
+    <p>This website is a demonstration of the output of the
+    M<OODoc::Format::Html> formatter, which uses templates to describe
+    the pages.  The whole set-up is included in the module as example.
+    Other (simpler) examples will be included in the future.</p>
+
+    <h2>Warning</h2>
+
+    <p>The module is still quite young and therefore due for rapid
+    change.  The common structure will stand, but the capabilities
+    will grow fast.  This may mean that you want to adapt to each
+    next release of the module, which will cost you some time for
+    each release.  I will do my best to be backwards compatible.</p>
+
+    <hr noshade="noshade" />
+    <a href="mailto:oodoc@overmeer.net">Mark Overmeer</a>.
+    Documentation of OODoc version <!--{version}-->,
+    produced <!--{date}-->.
+
+</td></tr>
+</table>
+</center>
+
+</body>
+</html>

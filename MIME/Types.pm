@@ -1,51 +1,49 @@
 package MIME::Types;
 
-$VERSION = '1.005';
-
 use strict;
 use MIME::Type ();
+use Carp;
 
-=head1 NAME
+=chapter NAME
 
- MIME::Types - Definition of MIME types
+MIME::Types - Definition of MIME types
 
-=head1 SYNOPSIS
+=chapter SYNOPSIS
 
  use MIME::Types;
  my $mimetypes = MIME::Types->new;
  my MIME::Type $plaintext = $mimetypes->type('text/plain');
  my MIME::Type $imagegif  = $mimetypes->mimeTypeOf('gif');
 
-=head1 DESCRIPTION
+=chapter DESCRIPTION
 
-MIME types are used in MIME entities, for instance as part of e-mail
-and HTTP traffic.  Sometimes real knowledge about a mime-type is need.
-This module will supply it.
+MIME types are used in MIME compliant lines, for instance as part
+of e-mail and HTTP traffic, to indicate the type of content which
+is transmitted.  Sometimes real knowledge about a mime-type is need.
 
-=cut
-
-#-------------------------------------------
-
-=head1 METHODS
-
-=over 4
+This module maintains a set of M<MIME::Type> objects, which
+each describe one known mime type.  There are many types defined
+by RFCs and vendors, so the list is long but not complete.  Please
+don't hestitate to ask to add additional information.
 
 =cut
 
 #-------------------------------------------
 
-=item new OPTIONS
+=chapter METHODS
+
+=section Instantiation
+
+=c_method new OPTIONS
 
 Create a new C<MIME::Types> object which manages the data.  In the current
 implementation, it does not matter whether you create this object often
 within your program, but in the future this may change.
 
- OPTIONS                   DEFAULT
- only_complete             0
-
 =over 4
 
-=item * only_complete =E<gt> BOOLEAN
+=option  only_complete BOOLEAN
+=default only_complete <false>
 
 Only include complete MIME type definitions: requires at least one known
 extension and an explicit type of encoding.  This will reduce the number of
@@ -54,8 +52,6 @@ entries --and with that the amount of memory consumed-- considerably.
 In your program you have to decide: the first time that you call
 the creator (C<new>) determines whether you get the full or the partial
 information.
-
-=back
 
 =cut
 
@@ -129,7 +125,9 @@ sub create_type_index()
 
 #-------------------------------------------
 
-=item type STRING
+=section Knowledge
+
+=method type STRING
 
 Return the C<MIME::Type> which describes the type related to STRING.  One
 type may be described more than once.  Different extensions is use for
@@ -147,13 +145,13 @@ sub type($)
 
 #-------------------------------------------
 
-=item mimeTypeOf FILENAME
+=method mimeTypeOf FILENAME
 
 Returns the C<MIME::Type> object which belongs to the FILENAME (or simply
 its filename extension) or C<undef> if the file type is unknown.  The extension
 is used, and considered case-insensitive.
 
-Examples:
+=examples use of mimeTypeOf()
 
  my MIME::Types $types = MIME::Types->new;
  my MIME::Type  $mime = $types->mimeTypeOf('gif');
@@ -172,7 +170,7 @@ sub mimeTypeOf($)
 
 #-------------------------------------------
 
-=item addType TYPE, ...
+=method addType TYPE, ...
 
 Add one or more TYPEs to the set of known types.  Each TYPE is a
 C<MIME::Type> which must be experimental: either the main-type or
@@ -181,16 +179,21 @@ the sub-type must start with C<x->.
 Please inform the maintainer of this module when registered types
 are missing.
 
+=warning type $type already registered.
+
+You try to register a type, when it is already known.  This means that
+you are duplicating work (with chance on errors) or have knowledge you
+can contribute to this module (please contact the author).
+
 =cut
 
 sub addType(@)
 {   my $self = shift;
+
     foreach my $type (@_)
     {
-        if($type->isRegistered)
-        {   use Carp;
-            carp "Please report the registered type $type to the module author."
-        }
+        carp "WARNING: type $type already registered."
+            if $type->isRegistered;
 
         my $simplified = $type->simplified;
         push @{$list{$simplified}}, $type;
@@ -202,15 +205,11 @@ sub addType(@)
 
 #-------------------------------------------
 
-=back
+=chapter FUNCTIONS
 
-=head1 EXPORT
-
-The next methods are provided for backward compatibility with MIME::Types
+The next functions are provided for backward compatibility with MIME::Types
 versions 0.06 and below.  This code originates from Jeff Okamoto
-<F<okamoto@corp.hp.com>> and others.
-
-=over 4
+F<okamoto@corp.hp.com> and others.
 
 =cut
 
@@ -223,12 +222,12 @@ use vars qw/@ISA @EXPORT_OK/;
 
 #-------------------------------------------
 
-=item by_suffix FILENAME|SUFFIX
+=function by_suffix FILENAME|SUFFIX
 
 Like C<mimeTypeOf>, but does not return an C<MIME::Type> object. If the file
 +type is unknown, both the returned media type and encoding are empty strings.
 
-Example:
+=examples use of function by_suffix()
 
  use MIME::Types 'by_suffix';
  my ($mediatype, $encoding) = by_suffix 'image.gif';
@@ -251,7 +250,7 @@ sub by_suffix($)
 
 #-------------------------------------------
 
-=item by_mediatype TYPE
+=function by_mediatype TYPE
 
 This function takes a media type and returns a list or anonymous array of
 anonymous three-element arrays whose values are the file name suffix used to
@@ -290,7 +289,7 @@ sub by_mediatype($)
 
 #-------------------------------------------
 
-=item import_mime_types
+=function import_mime_types
 
 This method has been removed: mime-types are only useful if understood
 by many parties.  Therefore, the IANA assigns names which can be used.
@@ -308,29 +307,6 @@ import_mime_types is not supported anymore: if you have types to add
 please send them to the author.
 CROAK
 }
-
-#-------------------------------------------
-
-=back
-
-=head1 SEE ALSO
-
-L<MIME::Type>
-
-=head1 AUTHOR
-
-Original module and data collection by Jeff Okamoto and the Apache team.
-Mark Overmeer (F<mimetypes@overmeer.net>).
-
-=head1 VERSION
-
-This code is stable, version 1.005.
-
-Copyright (c) 2001-2002 by Jeff Okamoto and Mark Overmeer.
-All rights reserved.  This program is free software; you can redistribute
-it and/or modify it under the same terms as Perl itself.
-
-=cut
 
 1;
 
@@ -390,15 +366,15 @@ application/news-message-id
 application/news-transmission
 application/ocsp-request
 application/ocsp-response
-application/octet-stream	bin,dms,lha,lzh,exe,class,ani	base64
+application/octet-stream	bin,dms,lha,lzh,exe,class,ani,pgp	base64
 application/oda			oda
 application/parityfec
 application/pdf			pdf				base64
 application/pagemaker		pm5,pt5,pm
-application/pgp-encrypted
-application/pgp-keys
+application/pgp-encrypted					7bit
+application/pgp-keys						7bit
 application/pgp
-application/pgp-signature	pgp				8bit
+application/pgp-signature	sig				base64
 application/pkcs10
 application/pkcs7-mime
 application/pkcs7-signature

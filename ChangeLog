@@ -6,6 +6,12 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler <austin@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.006: Thu May  1 18:45:55 CEST 2003
+
+	- [NN Poster] updated the attributes for the PGP types.
+
+	- Converted documentation to be generated with OODoc.
+
 version 1.005: Tue Dec 24 13:01:00 CET 2002
 
 	- [Guangzu Wang] pointed to typos in the Synopsis of both packages:

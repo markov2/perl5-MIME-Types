@@ -55,7 +55,7 @@ my $warn;
 {   $SIG{__WARN__} = sub {$warn = join '',@_};
     $a->addType($r1);
 }
-ok($warn =~ m/report/);
+ok($warn =~ m/registered/);
 
 undef $warn;
 my $r2 = MIME::Type->new(type => 'text/x-fake2');

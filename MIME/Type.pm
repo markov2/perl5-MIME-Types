@@ -1,19 +1,13 @@
 package MIME::Type;
 
-$VERSION = '1.005';
-
 use strict;
-use Carp 'confess';
+use Carp 'croak';
 
-use overload '""' => 'type'
-           ,  cmp => 'equals'
-           ;
+=chapter NAME
 
-=head1 NAME
+MIME::Type - Definition of one MIME type
 
- MIME::Type - Definition of one MIME type
-
-=head1 SYNOPSIS
+=chapter SYNOPSIS
 
  use MIME::Types;
  my $mimetypes = MIME::Types->new;
@@ -32,7 +26,7 @@ use overload '""' => 'type'
 
  print MIME::Type->simplified('x-appl/x-zip') #  'appl/zip'
 
-=head1 DESCRIPTION
+=chapter DESCRIPTION
 
 MIME types are used in MIME entities, for instance as part of e-mail
 and HTTP traffic.  Sometimes real knowledge about a mime-type is need.
@@ -47,56 +41,83 @@ and the collection kept at F<http://www.ltsw.se/knbase/internet/mime.htp>
 
 #-------------------------------------------
 
-=head1 METHODS
+=chapter OVERLOADED
 
-=over 4
+=overload stringification
+
+The stringification (use of the object in a place where a string
+is required) will result in the type name, the same as M<type()>
+returns.
+
+=examples use of stringification
+ my $mime = Mime::Tyep->new('text/html');
+ print "$mime\n";   # explicit stringification
+ print $mime;       # implicit stringification
+ 
+=overload string comparison
+
+When a MIME::Type object is compared to either a string or an other
+MIME::TYpe, the M<equals()> method is called.  Comparison is smart,
+which means that it extends common string comparison with some
+features which are defined in the related RFCs.
+
+=cut
+
+use overload '""' => 'type'
+           ,  cmp => 'equals'
+           ;
+
+#-------------------------------------------
+
+=chapter METHODS
+
+=section Initiation
 
 =cut
 
 #-------------------------------------------
 
-=item new OPTIONS
+=c_method new OPTIONS
 
-Create a new C<MIME::Type> object which manages one mime type.
+Create (I<instantiate>) a new MIME::Type object which manages one
+mime type.
 
- OPTION                    DEFAULT
- type                      <obligatory>
- simplified                <derived from type>
- extensions                undef
- encoding                  <depends on type>
- system                    undef
-
-=over 4
-
-=item * type =E<gt> STRING
+=requires type STRING
 
 The type which is defined here.  It consists of a I<type> and a I<sub-type>,
 both case-insensitive.  This module will return lower-case, but accept
 upper-case.
 
-=item * simplified =E<gt> STRING
+=option  simplified STRING
+=default simplified <derived from type>
 
 The mime types main- and sub-label can both start with C<x->, to indicate
 that is a non-registered name.  Of course, after registration this flag
 can disappear which adds to the confusion.  The simplified string has the
 C<x-> thingies removed and are translated to lower-case.
 
-=item * extensions =E<gt> REF-ARRAY
+=option  extensions REF-ARRAY
+=default extensions []
 
 An array of extensions which are using this mime.
 
-=item * encoding =E<gt> '7bit'|'8bit'|'base64'|'quoted-printable'
+=option  encoding '7bit'|'8bit'|'base64'|'quoted-printable'
+=default encoding <depends on type>
 
 How must this data be encoded to be transported safely.  The default
 depends on the type: mimes with as main type C<text/> will default
 to C<quoted-printable> and all other to C<base64>.
 
-=item * system =E<gt> REGEX
+=option  system REGEX
+=default system C<undef>
 
 Regular expression which defines for which systems this rule is valid.  The
 REGEX is matched on C<$^O>.
 
-=back
+=error Type parameter is obligatory.
+
+When a M<MIME::Type> object is created, the type itself must be
+specified with the C<type> option flag.
 
 =cut
 
@@ -106,7 +127,7 @@ sub init($)
 {   my ($self, $args) = @_;
 
     $self->{MT_type}       = $args->{type}
-       or confess "Type is obligatory.";
+       or croak "ERROR: Type parameter is obligatory.";
 
     $self->{MT_simplified} = $args->{simplified}
        || ref($self)->simplified($args->{type});
@@ -126,8 +147,9 @@ sub init($)
 
 #-------------------------------------------
 
-=item type
+=section Attributes
 
+=method type
 Returns the long type of this object, for instance C<'text/plain'>
 
 =cut
@@ -136,17 +158,15 @@ sub type() {shift->{MT_type}}
 
 #-------------------------------------------
 
-=item simplified [STRING]
+=ci_method simplified [STRING]
 
-(Instance method or Class method)
 Returns the simplified mime type for this object or the specified STRING.
 Mime type names can get officially registered.  Until then, they have to
 carry an C<x-> preamble to indicate that.  Of course, after recognition,
 the C<x-> can disappear.  In many cases, we prefer the simplified version
 of the type.
 
-Examples:
-
+=examples results of simplified()
  my $mime = MIME::Type->new(type => 'x-appl/x-zip');
  print $mime->simplified;                     # 'appl/zip'
  print $mime->simplified('text/plain');       # 'text/plain'
@@ -167,8 +187,39 @@ sub simplified(;$)
 
 #-------------------------------------------
 
-=item mediaType
+=method extensions
+Returns a list of extensions which are known to be used for this
+mime type.
 
+=cut
+
+sub extensions() { @{shift->{MT_extensions}} }
+
+#-------------------------------------------
+
+=method encoding
+Returns the type of encoding which is required to transport data of this
+type safely.
+
+=cut
+
+sub encoding() {shift->{MT_encoding}}
+
+#-------------------------------------------
+
+=method system
+Returns the regular expression which can be used to determine whether this
+type is active on the system where you are working on.
+
+=cut
+
+sub system() {shift->{MT_system}}
+
+#-------------------------------------------
+
+=section Knowledge
+
+=method mediaType
 The media type of the simplified mime.
 For C<'text/plain'> it will return C<'text'>.
 
@@ -183,8 +234,7 @@ sub mainType()  {shift->mediaType} # Backwards compatibility
 
 #-------------------------------------------
 
-=item subType
-
+=method subType
 The sub type of the simplified mime.
 For C<'text/plain'> it will return C<'plain'>.
 
@@ -194,8 +244,7 @@ sub subType() {shift->{MT_simplified} =~ m!/([\w-]+)$! ? $1 : undef}
 
 #-------------------------------------------
 
-=item isRegistered
-
+=method isRegistered
 Mime-types which are not registered by IANA nor defined in RFCs shall
 start with an C<x->.  This counts for as well the media-type as the
 sub-type.  In case either one of the types starts with C<x-> this
@@ -208,43 +257,10 @@ sub isRegistered()
     not (m/^[xX]\-/ || m!/[xX]\-!);
 }
 
-#-------------------------------------------
-
-=item extensions
-
-Returns a list of extensions which are known to be used for this
-mime type.
-
-=cut
-
-sub extensions() { @{shift->{MT_extensions}} }
 
 #-------------------------------------------
 
-=item encoding
-
-Returns the type of encoding which is required to transport data of this
-type safely.
-
-=cut
-
-sub encoding() {shift->{MT_encoding}}
-
-#-------------------------------------------
-
-=item system
-
-Returns the regular expression which can be used to determine whether this
-type is active on the system where you are working on.
-
-=cut
-
-sub system() {shift->{MT_system}}
-
-#-------------------------------------------
-
-=item isBinary
-
+=method isBinary
 Returns true when the encoding is base64.
 
 =cut
@@ -253,8 +269,7 @@ sub isBinary() { shift->{MT_encoding} eq 'base64' }
 
 #-------------------------------------------
 
-=item isAscii
-
+=method isAscii
 Returns false when the encoding is base64, and true otherwise.  All encodings
 except base64 are text encodings.
 
@@ -264,8 +279,7 @@ sub isAscii() { shift->{MT_encoding} ne 'base64' }
 
 #-------------------------------------------
 
-=item isSignature
-
+=method isSignature
 Returns true when the type is in the list of known signatures.
 
 =cut
@@ -280,8 +294,7 @@ sub isSignature() { $sigs{shift->{MT_simplified}} }
 
 #-------------------------------------------
 
-=item equals STRING|MIME
-
+=method equals STRING|MIME
 Compare this mime-type object with a STRING or other object.  In case of
 a STRING, simplification will take place.
 
@@ -296,27 +309,5 @@ sub equals($)
 
     $self->simplified cmp $type;
 }
-
-#-------------------------------------------
-
-=back
-
-=head1 SEE ALSO
-
-L<MIME::Types>
-
-=head1 AUTHOR
-
-Mark Overmeer (F<mimetypes@overmeer.net>).
-
-=head1 VERSION
-
-This code is stable, version 1.005.
-
-Copyright (c) 2001-2002 Mark Overmeer. All rights reserved.
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 1;

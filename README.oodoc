@@ -1,0 +1,33 @@
+
+README with the example
+=======================
+
+This archive contains the files which are used to produce the OODoc
+set of documentation using the OODoc module.  The module is not small,
+and some nasty tricks are happening in the production script ('mkdist')
+which may go way too far for your application.  However, it may help
+you to get started.
+
+WARNING 1: This set of files will change for each new release of OODoc.
+           Hopefully it will improve (get simpler) all the time.
+
+WARNING 2: The scripts are made for my personal environment, and not
+           written to be portable to other platforms than my own
+           SuSE and Debian systems.  Conversion will not be too hard
+           when you know what you are doing.
+
+WARNING 3: The solution with HTML manuals using frames produces a
+           good result, however requires a CGI script to be installed.
+           This, of course, has various implications....
+
+Files included in this example:
+
+  README.oodoc        # this file
+  mkdoc               # run this to get all the pages to be produced,
+                      #   but do not forget to modify the variables
+                      #   to your own settings first.
+  mkdist              # calls mkdoc to produce the pages, and at the
+                      #   same time creates everything else needed for
+                      #   publishing a module to CPAN.
+  html/manual/        # templates used to produce each manual page
+  html/other/         # templates used for all other html pages

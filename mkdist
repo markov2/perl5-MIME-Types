@@ -1,0 +1,93 @@
+#!/bin/bash
+# Create the OODoc module.
+# This script can be used as base for your own implementation, as long
+# as you treat it smartly.  It will call mkdoc to produce documentation
+# using the OODoc module.
+
+# This scripts produces a module (sources) as can be transfered to CPAN,
+# and an archive (raw) for the files where the manuals are created from:
+# the raw input file.  The latter requires a MANIFEST.extra file which
+# contain the additional filenames.
+
+VERBOSE=$1
+
+#### Synchronize these variables with those defined in mkdoc
+DIST=/tmp/MimeTypes    # where the module's distribution is being built
+
+#### Other constants
+SOURCES=public_html/mimetypes/source
+RAW=public_html/mimetypes/raw
+MANIFESTS="MANIFEST MANIFEST.extra"
+DIST_OODOC=../OODoc/examples/mimetypes.tar.gz
+
+[ -d $DIST ] || mkdir $DIST || exit $?
+
+#
+# Produce oodoc example
+#
+
+[ -n "$VERBOSE" ] && echo "* Packaging MimeTypes setup as example for OODoc";
+tar -czf $DIST_OODOC README.oodoc MANIFEST.extra mkdist mkdoc html || exit $?
+
+#
+# Produce the manual pages using OODoc
+#
+
+./mkdoc $VERBOSE || exit $?
+
+#
+# Create a distribution
+#
+
+[ -n "$VERBOSE" ] && echo "* Run make to see if everything works"
+
+( cd $DIST              || exit $?
+
+  perl Makefile.PL      || exit $?
+  make >/dev/null       || exit $?
+  make test             || exit $?
+  make dist >/dev/null  || exit $?
+)
+
+#
+# Publish distribution on the private website
+#
+
+DISTNAME=$(cd $DIST; ls -rt *.tar.gz | tail -1)
+[ -n "$VERBOSE" ] && echo "* Publishing $DISTNAME"
+
+[ -d $SOURCES ] || mkdir $SOURCES || exit $?
+
+if ! cp $DIST/$DISTNAME $SOURCES/
+then ERROR=$?
+     echo "Could not copy $DISTNAME from $DIST to $SOURCES: $ERROR" >&2
+     exit $ERROR
+fi
+
+( cd $SOURCES
+  [ -n "$VERBOSE" ] && ls -l $DISTNAME
+  ln -sf $DISTNAME source-current.tar.gz || exit $?
+)
+
+#
+# Publish raw module data (including the raw manual information) to
+# the website
+#
+
+[ -d $RAW ] || mkdir $RAW || exit $?
+
+RAWNAME=$(echo "$DISTNAME" | sed 's/\.tar\.gz/-raw.tar.bz2/')
+[ -n "$VERBOSE" ] && echo "* Publishing $RAWNAME"
+
+if ! tar -cjf $RAW/$RAWNAME $(cat $MANIFESTS)
+then ERROR=$?
+     echo "Could not create $RAWNAME in $RAW: $ERROR" >&2
+     exit $ERROR
+fi
+
+( cd $RAW
+  [ -n "$VERBOSE" ] && ls -l $RAWNAME
+  ln -sf $RAWNAME raw-current.tar.gz || exit $?
+)
+
+exit 0

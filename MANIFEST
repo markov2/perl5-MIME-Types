@@ -1,9 +1,9 @@
 ChangeLog
-Makefile.PL
 MANIFEST
+MIME/Makefile.PL
 MIME/Type.pm
 MIME/Types.pm
-MIME/Makefile.PL
+Makefile.PL
 README
 t/10type.t
 t/11typeol.t
