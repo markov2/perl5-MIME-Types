@@ -6,6 +6,12 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler <austin@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.08:
+
+	- [Tuomas Salo] removed warning on "undef".
+
+	- .txt extension preferred over .asc for plain text
+
 version 1.07: Mon Jul 28 18:38:59 CEST 2003
 
 	- Translated documentation to newest version of OODoc

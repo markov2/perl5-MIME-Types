@@ -1,6 +1,7 @@
 package MIME::Type;
 
 use strict;
+
 use Carp 'croak';
 
 =chapter NAME

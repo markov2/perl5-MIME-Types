@@ -2,11 +2,9 @@
 README with the example
 =======================
 
-This archive contains the files which are used to produce the OODoc
-set of documentation using the OODoc module.  The module is not small,
-and some nasty tricks are happening in the production script ('mkdist')
-which may go way too far for your application.  However, it may help
-you to get started.
+This archive contains the files which are used to produce the MimeTypes
+set of documentation using the OODoc module.  This module is quite
+small, so the set-up is simple.
 
 WARNING 1: This set of files will change for each new release of OODoc.
            Hopefully it will improve (get simpler) all the time.

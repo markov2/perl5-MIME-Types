@@ -1,5 +1,5 @@
 #!/bin/bash
-# Create the OODoc module.
+# Create the MIME::Types module.
 # This script can be used as base for your own implementation, as long
 # as you treat it smartly.  It will call mkdoc to produce documentation
 # using the OODoc module.
