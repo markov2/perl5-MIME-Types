@@ -3,6 +3,19 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <mimetypes@overmeer.net>
 
+version 1.003: Wed Oct  2 09:42:58 CEST 2002
+
+	- [Darell Fuhriman] added application/x-rar-compressed and
+	  application/x-msdownload
+
+	- [Vladimir V. Kolpakov] set $/ = "\n" on parsing data from
+	  inside file, which was written on UNIX and used in Windows.
+
+	- [Dan Puro] added application/wordperfect5.1 extension wpd.
+
+	- [Petri Riihikallio] added .xlt for Excel and .pps/.pot
+	  for PowerPoint.
+
 version 1.002: Mon Aug 12 11:40:55 CEST 2002
 
 	- [Jan Kratochvil] added audio/amr and audio/amr-wb to the

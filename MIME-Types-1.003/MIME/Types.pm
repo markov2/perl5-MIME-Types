@@ -1,6 +1,6 @@
 package MIME::Types;
 
-$VERSION = '1.002';
+$VERSION = '1.003';
 
 use strict;
 use MIME::Type;
@@ -67,6 +67,8 @@ sub init($)
 
     unless(keys %list)
     {   local $_;
+        local $/ = "\n";
+
         while(<MIME::Types::DATA>)
         {   s/\#.*//;
             next if m/^$/;
@@ -315,7 +317,7 @@ Mark Overmeer (F<mimetypes@overmeer.net>).
 
 =head1 VERSION
 
-This code is stable, version 1.002.
+This code is stable, version 1.003.
 
 Copyright (c) 2001-2002 by Jeff Okamoto and Mark Overmeer.
 All rights reserved.  This program is free software; you can redistribute
@@ -332,7 +334,7 @@ it and/or modify it under the same terms as Perl itself.
 __DATA__
 application/activemessage
 application/andrew-inset	ez
-application/applefile
+application/applefile					base64
 application/atomicmail
 application/batch-SMTP
 application/bleeper		bleep			base64
@@ -346,7 +348,7 @@ application/EDI-Consent
 application/EDIFACT
 application/EDI-X12
 application/eshop
-application/excel		xls			base64
+application/excel		xls,xlt			base64
 application/ghostview		
 application/http
 application/hyperstudio
@@ -386,7 +388,7 @@ application/pkixcmp
 application/pkix-crl
 application/postscript		ai,eps,ps			8bit
 application/postscript		ps-z				base64
-application/powerpoint		ppt				base64
+application/powerpoint		ppt,pps,pot				base64
 application/prs.alvestrand.titrax-sheet
 application/prs.cww
 application/prs.nprend
@@ -588,8 +590,7 @@ application/vnd.yellowriver-custom-menu
 application/whoispp-query
 application/whoispp-response
 application/wita
-application/wordperfect5.1
-application/wordperfect5.1	wp5
+application/wordperfect5.1	wp5,wpd
 application/x-123		wk
 application/x400-bp
 application/x-bcpio		bcpio
@@ -616,9 +617,11 @@ application/x-mif		mif
 application/xml
 application/x-msdos-program	com,bat				8bit
 application/x-msdos-program	exe				base64
+application/x-msdownload	exe				base64
 application/x-netcdf		nc,cdf
 application/x-ns-proxy-autoconfig	pac
 application/x-perl		pl,pm				8bit
+application/x-rar-compressed	rar				base64
 application/x-shar		shar				8bit
 application/x-shockwave-flash	swf
 application/x-sh		sh				8bit

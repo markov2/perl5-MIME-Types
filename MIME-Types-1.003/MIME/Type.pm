@@ -1,6 +1,6 @@
 package MIME::Type;
 
-$VERSION = '1.002';
+$VERSION = '1.003';
 
 use strict;
 use Carp;
@@ -309,7 +309,7 @@ Mark Overmeer (F<mimetypes@overmeer.net>).
 
 =head1 VERSION
 
-This code is stable, version 1.002.
+This code is stable, version 1.003.
 
 Copyright (c) 2001-2002 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
