@@ -1,6 +1,6 @@
 package MIME::Type;
 
-$VERSION = '0.15';
+$VERSION = '0.16';
 
 use strict;
 use Carp;
@@ -154,8 +154,11 @@ sub simplified(;$)
 {   my $thing = shift;
     return $thing->{MT_simplified} unless @_;
 
-      shift =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!i
-    ? lc "$1/$2" : undef;
+    my $mime  = shift;
+
+      $mime =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!i ? lc "$1/$2"
+    : $mime =~ m!text! ? "text/plain"         # some silly mailers...
+    : undef;
 }
 
 #-------------------------------------------
@@ -287,7 +290,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.15.
+This code is beta version 0.16.
 
 Copyright (c) 2001 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify

@@ -1,6 +1,6 @@
 package MIME::Types;
 
-$VERSION = '0.15';
+$VERSION = '0.16';
 
 use strict;
 use MIME::Type;
@@ -132,7 +132,7 @@ is returned.
 =cut
 
 sub type($)
-{  my $mime  = MIME::Type->simplified($_[1]);
+{  my $mime  = MIME::Type->simplified($_[1]) or return;
    return () unless exists $list{$mime};
    wantarray ? @{$list{$mime}} : $list{$mime}[0];
 }
@@ -317,7 +317,7 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.15.
+This code is beta version 0.16.
 
 Copyright (c) 2001 by Jeff Okamoto and Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify

@@ -3,7 +3,14 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <mimetypes@overmeer.net>
 
+0.16 Tue Feb 19 12:08:51 CET 2002
+
+	- MIME::Type->simplified('text') will return 'text/plain'
+
+	- MIME::Types->type($mime) will return undef for illegal $mime
+
 0.15 Wed Jan 23 21:22:26 CET 2002
+
 	- [Dirk Lutsebaeck] contributed a few mime-types.  I am open
 	  to receive more improvements.
 
