@@ -1,6 +1,6 @@
 package MIME::Types;
 
-$VERSION = '0.16';
+$VERSION = '1.00';
 
 use strict;
 use MIME::Type;
@@ -14,7 +14,7 @@ use MIME::Type;
  use MIME::Types;
  my $mimetypes = MIME::Types->new;
  my MIME::Type $plaintext = $mimetype->type('text/plain');
- my MIME::Type $imagegif  = $mimetype->extension('gif');
+ my MIME::Type $imagegif  = $mimetype->mimeTypeOf('gif');
 
 =head1 DESCRIPTION
 
@@ -317,11 +317,11 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.16.
+This code is stable, version 1.00.
 
-Copyright (c) 2001 by Jeff Okamoto and Mark Overmeer. All rights reserved.
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+Copyright (c) 2001-2002 by Jeff Okamoto and Mark Overmeer.
+All rights reserved.  This program is free software; you can redistribute
+it and/or modify it under the same terms as Perl itself.
 
 =cut
 

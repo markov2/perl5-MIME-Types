@@ -3,13 +3,23 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <mimetypes@overmeer.net>
 
-0.16 Tue Feb 19 12:08:51 CET 2002
+version 1.00: Tue Jun 18 13:27:16 CEST 2002
+
+	- No real changes for some time now, so released a stable with
+	  version of 1.00
+
+	- Doc typo:  MIME::Types->extension must be MIME::Types->mimeTypeOf
+
+	- Overloaded comparison of $mimetype with string now works.  Before,
+	  only two objects could be compared.
+
+version 0.16: Tue Feb 19 12:08:51 CET 2002
 
 	- MIME::Type->simplified('text') will return 'text/plain'
 
 	- MIME::Types->type($mime) will return undef for illegal $mime
 
-0.15 Wed Jan 23 21:22:26 CET 2002
+version 0.15: Wed Jan 23 21:22:26 CET 2002
 
 	- [Dirk Lutsebaeck] contributed a few mime-types.  I am open
 	  to receive more improvements.
@@ -26,19 +36,19 @@ Mark Overmeer <mimetypes@overmeer.net>
 	- Added overloading stringify and comparison to MIME::Type objects.
 	  some tests in t/11typeol.t
 
-0.14  Sat Dec  1 13:56:51 CET 2001
+version 0.14:  Sat Dec  1 13:56:51 CET 2001
         - Did a bad job (it's hard to support backwards compat if you run
           5.6)  Thanks to [Tatsuhiko Miyagawa]
 
-0.13  Sat Dec  1 01:53:20 CET 2001
+version 0.13:  Sat Dec  1 01:53:20 CET 2001
 	- [Slaven Radic] back-port to 5.005
 
-0.12  Wed Nov 28 09:39:44 CET 2001
+version 0.12:  Wed Nov 28 09:39:44 CET 2001
 	Mark Overmeer took the namespace over from Jeff Okamoto
 	- In scalar context MIME::Types::type will return only the
 	  first type that fits.
 
-0.10  Sat Nov  3 22:46:22 2001
+version 0.10:  Sat Nov  3 22:46:22 2001
 	Mark Overmeer
 	- Total redesign of the interface, object oriented with two
 	  classes: the MIME::Types and the MIME::Type.
@@ -48,25 +58,25 @@ Mark Overmeer <mimetypes@overmeer.net>
 	- New test files.
 	- Modernized test.pl into t/30export.t
 
-0.06  Fri Jun 22 15:18:28 PDT 2001
+version 0.06:  Fri Jun 22 15:18:28 PDT 2001
 	- Repackage.
 
-0.05  Fri Jun 15 15:10:08 PDT 2001
+version 0.05:  Fri Jun 15 15:10:08 PDT 2001
 	- Added changes to import_mime_types by Antonios Christofides
 	  (A.Christofides@hydro.ntua.gr)
 
-0.04  Thu Apr 19 15:37:23 PDT 2001
+version 0.04:  Thu Apr 19 15:37:23 PDT 2001
 	- Added new function import_mime_types by Mike Cramer
 	  (cramer@webkist.com) to read an Apache-style mime.types file.
 
-0.03  Fri Feb 23 10:32:44 2001
+version 0.03:  Fri Feb 23 10:32:44 2001
 	- Many changes by David Wheeler (david@wheeler.net) including:
 	- substituting some regexp's with faster string calls
 	- simplifying the mapping table startup code
 	- allowing the returning of array references instead of lists
 
-0.02  Sat Nov  6 00:00:00 1999
+version 0.02:  Sat Nov  6 00:00:00 1999
 	- Fix a few bad suffix mappings and add a bit of robustness
 
-0.01  Tue Oct  5 14:00:18 1999
+version 0.01:  Tue Oct  5 14:00:18 1999
 	- original version; created by h2xs 1.18

@@ -1,12 +1,12 @@
 package MIME::Type;
 
-$VERSION = '0.16';
+$VERSION = '1.00';
 
 use strict;
 use Carp;
 
 use overload '""' => 'type'
-           ,  cmp => sub {$_[0]->simplified cmp $_[1]->simplified}
+           ,  cmp => 'equals'
            ;
 
 =head1 NAME
@@ -27,6 +27,8 @@ use overload '""' => 'type'
  print $plaintext->encoding     # 8bit
  if($plaintext->isBinary)       # false
  if($plaintext->isAscii)        # true
+ if($plaintext->equals('text/plain') {...}
+ if($plaintext eq 'text/plain') # same
 
  print MIME::Type->simplified('x-appl/x-zip') #  'appl/zip'
 
@@ -276,6 +278,25 @@ sub isSignature() { $sigs{shift->{MT_simplified}} }
 
 #-------------------------------------------
 
+=item equals STRING|MIME
+
+Compare this mime-type object with a STRING or other object.  In case of
+a STRING, simplification will take place.
+
+=cut
+
+sub equals($)
+{   my ($self, $other) = @_;
+
+    my $type = ref $other
+      ? $other->simplified
+      : (ref $self)->simplified($other);
+
+    $self->simplified cmp $type;
+}
+
+#-------------------------------------------
+
 =back
 
 =head1 SEE ALSO
@@ -290,9 +311,9 @@ it and/or modify it under the same terms as Perl itself.
 
 =head1 VERSION
 
-This code is beta version 0.16.
+This code is stable, version 1.00.
 
-Copyright (c) 2001 Mark Overmeer. All rights reserved.
+Copyright (c) 2001-2002 Mark Overmeer. All rights reserved.
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 

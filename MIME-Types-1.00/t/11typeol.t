@@ -8,7 +8,7 @@ use strict;
 
 use lib qw(. t);
 
-BEGIN {plan tests => 17}
+BEGIN {plan tests => 21}
 
 use MIME::Type;
 
@@ -37,3 +37,8 @@ ok("$b" eq 'appl/x-zip');
 ok("$c" eq 'x-appl/zip');
 ok("$d" eq 'appl/zip');
 ok("$e" eq 'text/plain');
+
+ok($a eq 'appl/zip');
+ok($b eq 'APPL/ZIP');
+ok($c eq 'x-appl/x-zip');
+ok($e eq 'text/plain');
