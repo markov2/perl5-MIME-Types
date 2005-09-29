@@ -18,13 +18,13 @@ my $c = MIME::Type->new(type => 'x-appl/zip');
 my $d = MIME::Type->new(type => 'appl/zip');
 my $e = MIME::Type->new(type => 'text/plain');
 
-is($a, $b);
-is($a, $c);
-is($a, $d);
-is($b, $c);
-is($b, $d);
-is($c, $d);
-isnt($a, $e);
+ok($a eq $b);
+ok($a eq $c);
+ok($a eq $d);
+ok($b eq $c);
+ok($b eq $d);
+ok($c eq $d);
+ok($a ne $e);
 
 ok(!$a->isRegistered);
 ok(!$b->isRegistered);
@@ -38,7 +38,7 @@ is("$c", 'x-appl/zip');
 is("$d", 'appl/zip');
 is("$e", 'text/plain');
 
-is($a, 'appl/zip');
-is($b, 'APPL/ZIP');
-is($c, 'x-appl/x-zip');
-is($e, 'text/plain');
+ok($a eq 'appl/zip');
+ok($b eq 'APPL/ZIP');
+ok($c eq 'x-appl/x-zip');
+ok($e eq 'text/plain');

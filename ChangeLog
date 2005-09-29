@@ -6,6 +6,16 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.16: Thu Sep 29 17:42:24 CEST 2005
+
+	- [Jan Kratochvil]  application/smil is 8bit
+
+	- [Jan Kratochvil]  application/x-javascript becomes
+	  application/javascript.  New is application/ecmascript
+
+	- Adapted to new behavior on stringification introduced by
+	  Test::Builder v0.31, reported by [Jurgen Pletinckx]
+
 version 1.15: Thu Mar 31 14:12:54 CEST 2005
 
 	- [Ave Wringeley] contributed MIME::Types methods types() and
