@@ -86,7 +86,7 @@ fi
 RAWNAME=$(echo "$DISTNAME" | sed 's/\.tar\.gz/-raw.tar.bz2/')
 [ -n "$VERBOSE" ] && echo "* Publishing $RAWNAME"
 
-if ! tar -cjf $RAW/$RAWNAME $(cat $MANIFESTS)
+if ! tar -cjf $RAW/$RAWNAME $(cat $MANIFESTS | sed 's/   .*//')
 then ERROR=$?
      echo "Could not create $RAWNAME in $RAW: $ERROR" >&2
      exit $ERROR

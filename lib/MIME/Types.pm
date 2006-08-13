@@ -42,8 +42,6 @@ Create a new C<MIME::Types> object which manages the data.  In the current
 implementation, it does not matter whether you create this object often
 within your program, but in the future this may change.
 
-=over 4
-
 =option  only_complete BOOLEAN
 =default only_complete <false>
 
@@ -406,6 +404,7 @@ application/prs.cww		cw,cww
 application/prs.nprend		rnd,rct
 application/prs.plucker
 application/qsig
+application/rdf+xml		rdf				8bit
 application/reginfo+xml
 application/remote-printing
 application/riscos
@@ -546,6 +545,8 @@ application/vnd.kde.kword	kwd,kwt
 application/vnd.kenameapp	htke
 application/vnd.kidspiration	kia
 application/vnd.Kinar		kne,knp,sdf
+application/vnd.google-earth.kml+xml			kml	8bit
+application/vnd.google-earth.kmz			kmz	8bit
 application/vnd.koan
 application/vnd.liberty-request+xml
 application/vnd.llamagraphics.life-balance.desktop	lbd

@@ -6,6 +6,17 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.17: Sun Aug 13 10:32:37 CEST 2006
+
+	- [Hailin Hu] application/rdf+xml
+
+	- reprocessed manual-pages because FUNCTIONS chapers was lost
+	  (bug in OODoc) [Schwern]
+
+	- use 'version' file for version
+
+	- added kml and kmz types by Google-Earth
+
 version 1.16: Thu Sep 29 17:42:24 CEST 2005
 
 	- [Jan Kratochvil]  application/smil is 8bit
