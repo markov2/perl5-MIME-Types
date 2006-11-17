@@ -6,6 +6,15 @@ Mark Overmeer <mimetypes@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.18: Fri Nov 17 21:20:20 CET 2006
+
+	- [David Nesting] application/atom+xml and image/svg+xml
+
+	- [Islue Hu] audio/3gpp2 and video/3gpp2
+
+	- [Stephen Steneken] application/octet-stream += dmg, so, dll
+	  and videa/x-flv.
+
 version 1.17: Sun Aug 13 10:32:37 CEST 2006
 
 	- [Hailin Hu] application/rdf+xml

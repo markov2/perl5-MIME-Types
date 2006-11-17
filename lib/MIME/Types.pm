@@ -85,7 +85,7 @@ sub init($)
 
             next if $args->{only_complete} && ! $extensions;
             my $extent = $extensions ? [ split /\,/, $extensions ] : undef;
-                    
+
             my $simplified = MIME::Type->simplified($type);
             push @{$list{$simplified}}, MIME::Type->new
               ( type       => $type
@@ -214,7 +214,7 @@ sub types
     $self->create_type_index unless keys %type_index;
     return values %type_index;
 }
-                                                                                
+
 #-------------------------------------------
 
 =method extensions
@@ -227,7 +227,7 @@ sub extensions
 
     return keys %type_index;
 }
-                                                                                
+
 #-------------------------------------------
 
 =chapter FUNCTIONS
@@ -337,12 +337,13 @@ CROAK
 # Internet media type registry is at
 # http://www.iana.org/assignments/media-types/
 
-$mime_type_definitions = <<MIMETYPES;
+$mime_type_definitions = <<__MIMETYPES__;
 application/activemessage
 application/andrew-inset		ez
 application/appledouble					base64
 application/applefile					base64
 application/atomicmail
+application/atom+xml			atom		8bit
 application/batch-SMTP
 application/beep+xml
 application/cals-1840
@@ -381,7 +382,7 @@ application/news-message-id
 application/news-transmission
 application/ocsp-request	orq
 application/ocsp-response	ors
-application/octet-stream	bin,dms,lha,lzh,exe,class,ani,pgp	base64
+application/octet-stream bin,dms,lha,lzh,exe,class,ani,pgp,so,dll,dmg	base64
 application/oda			oda
 application/ogg			ogg
 application/parityfec
@@ -503,7 +504,7 @@ application/vnd.groove-tool-template
 application/vnd.groove-vcard
 application/vnd.hbci		hbci,hbc,kom,upa,pkd,bpd
 application/vnd.hhe.lesson-player	les
-application/vnd.hp-HPGL		plt,hpgl	
+application/vnd.hp-HPGL		plt,hpgl
 application/vnd.hp-hpid
 application/vnd.hp-hps
 application/vnd.hp-PCL
@@ -732,7 +733,7 @@ application/x-dxf
 application/x-excel
 application/x-fractals
 application/x-futuresplash	spl
-application/x-ghostview		
+application/x-ghostview
 application/x-gtar		gtar,tgz,tbz2,tbz		base64
 application/x-gunzip
 application/x-gzip		gz				base64
@@ -802,7 +803,8 @@ application/x-x400-bp
 application/x-x509-ca-cert	crt				base64
 application/zip			zip				base64
 audio/32kadpcm
-audio/3gpp			3gpp
+audio/3gpp
+audio/3gpp2
 audio/AMR			amr				base64
 audio/AMR-WB			awb				base64
 audio/basic			au,snd				base64
@@ -862,7 +864,7 @@ audio/vnd.nuera.ecelp4800	ecelp4800
 audio/vnd.nuera.ecelp7470	ecelp7470
 audio/vnd.nuera.ecelp9600	ecelp9600
 audio/vnd.octel.sbc
-audio/vnd.qcelp	
+audio/vnd.qcelp
 audio/vnd.rhetorex.32kadpcm
 audio/vnd.sealedmedia.softseal.mpeg	smp3,smp,s1m
 audio/vnd.vmx.cvsd
@@ -887,6 +889,7 @@ image/naplps
 image/png			png				base64
 image/prs.btif
 image/prs.pti
+image/svg+xml			svg				8bit
 image/t38
 image/targa			tga
 image/tiff-fx
@@ -1006,7 +1009,8 @@ text/x-setext				etx
 text/x-sgml				sgml,sgm			8bit
 text/x-vCalendar			vcs				8bit
 text/x-vCard				vcf				8bit
-video/3gpp				3gp,3gpp
+video/3gpp				3gp,3gpp			base64
+video/3gpp2				3g2,3gpp2			base64
 video/BMPEG
 video/BT656
 video/CelB
@@ -1043,6 +1047,7 @@ video/vnd.sealed.mpeg4			smpg,s14
 video/vnd.sealed.swf			sswf,ssw
 video/vnd.vivo				viv,vivo
 video/x-fli				fli				base64
+video/x-flv				flv				base64
 video/x-ms-asf				asf,asx
 video/x-ms-wmv				wmv
 video/x-msvideo				avi				base64
@@ -1058,6 +1063,6 @@ x-world/x-vrml				wrl,vrml
 vms:text/plain				doc				8bit
 mac:application/x-macbase64		bin
 
-MIMETYPES
+__MIMETYPES__
 
 1;
