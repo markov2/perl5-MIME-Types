@@ -1,10 +1,16 @@
 Revision history for Perl extension MIME::Types.
 
 Unless explicitly stated differently are all changes produced by
-Mark Overmeer <mimetypes@overmeer.net>
+Mark Overmeer <perl@overmeer.net>
 
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
+
+version 1.19: Sun Mar 25 17:09:38 CEST 2007
+
+	- converted to use OODoc 0.99
+
+	- removed mkdist, mkdoc, README.oodoc, version
 
 version 1.18: Fri Nov 17 21:20:20 CET 2006
 
