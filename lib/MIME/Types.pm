@@ -756,8 +756,8 @@ application/x-mac-compactpro	cpt
 application/x-maker		frm,maker,frame,fm,fb,book,fbdoc
 application/x-mathcad	# mcd, but there is also vnd.mcd
 application/x-mif		mif
-application/xml
-application/xml-dtd
+application/xml			xml xsl				8bit
+application/xml-dtd		dtd				8bit
 application/xml-external-parsed-entity
 application/x-msaccess			mda,mdb,mde,mdf		base64
 application/x-msdos-program	cmd,bat				8bit
@@ -778,6 +778,7 @@ application/x-set
 application/x-shar		shar				8bit
 application/x-shockwave-flash	swf
 application/x-sh		sh				8bit
+application/xslt+xml		xslt				8bit
 application/x-SLA
 application/x-solids
 application/x-spss		sav,sbs,sps,spo,spp
@@ -1004,7 +1005,7 @@ text/vnd.wap.sl				sl
 text/vnd.wap.wmlscript			wmls
 text/vnd.wap.wml			wml
 text/xml-external-parsed-entity
-text/xml				xml,dtd				8bit
+text/xml
 text/x-setext				etx
 text/x-sgml				sgml,sgm			8bit
 text/x-vCalendar			vcs				8bit

@@ -6,6 +6,17 @@ Mark Overmeer <perl@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.20: Fri Jun  8 16:21:33 CEST 2007
+
+	- added application/xslt+xml (.xslt) [David Dierauer]
+
+	- moved extension .xml from text/xml (deprecated) to
+	  application/xml, and added .xsl to it [David Dierauer]
+
+	- Moved .dtd from text/xml to application/xml-dtd
+
+	- added t/pod.t
+
 version 1.19: Sun Mar 25 17:09:38 CEST 2007
 
 	- converted to use OODoc 0.99
