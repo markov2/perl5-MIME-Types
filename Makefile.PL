@@ -4,13 +4,14 @@ require 5.005;
 
 WriteMakefile
   ( NAME      => 'MIME::Types'
-  , VERSION   => '1.20'
+  , VERSION   => '1.21'
   , PREREQ_PM =>
     { Test::More => 0.47
     , Test::Pod  => 1.00
     }
   , AUTHOR    => 'Mark Overmeer'
   , ABSTRACT  => 'Definition of MIME types'
+  , LICENSE   => 'perl'
   );
 
 ### used by oodist during production of distribution

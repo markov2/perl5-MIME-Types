@@ -6,6 +6,12 @@ Mark Overmeer <perl@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.21: Mon Sep 10 21:18:08 CEST 2007
+
+	- patch tests to work on VMS [Peter (Stig) Edwards]
+
+	- patch for image/pjpeg bug IE6 [Nicolas Mendosa]
+
 version 1.20: Fri Jun  8 16:21:33 CEST 2007
 
 	- added application/xslt+xml (.xslt) [David Dierauer]
