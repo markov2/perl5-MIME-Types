@@ -20,17 +20,17 @@ MIME::Types - Definition of MIME types
 =chapter DESCRIPTION
 
 MIME types are used in MIME compliant lines, for instance as part
-of e-mail and HTTP traffic, to indicate the type of content which
-is transmitted.  Sometimes real knowledge about a mime-type is need.
+of e-mail and HTTP traffic, to indicate the type of content which is
+transmitted.  Sometimes real knowledge about a mime-type is need.
 
 This module maintains a set of M<MIME::Type> objects, which
 each describe one known mime type.  There are many types defined
 by RFCs and vendors, so the list is long but not complete.  Please
 don't hestitate to ask to add additional information.
 
-=cut
-
-#-------------------------------------------
+If you wish to get access to the C<mime.types> files, which are
+available on various places in UNIX and Linux systems, then have a
+look at M<File::TypeInfo>.
 
 =chapter METHODS
 
@@ -969,7 +969,8 @@ multipart/x-ustar
 multipart/x-www-form-urlencoded
 multipart/x-zip
 text/calendar
-text/comma-separated-values		csv				8bit
+text/csv				csv				8bit
+text/comma-separated-values						8bit
 text/css				css				8bit
 text/directory
 text/enriched
