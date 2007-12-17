@@ -6,6 +6,11 @@ Mark Overmeer <perl@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.23: Mon Dec 17 16:12:52 CET 2007
+
+	- /xml file attributes were separated by blanks, not commas.
+	  [Alex Kapranoff]
+
 version 1.22: Wed Nov 14 17:20:22 CET 2007
 
 	- use RFC4180 text/csv, not text/comma-separated-values
