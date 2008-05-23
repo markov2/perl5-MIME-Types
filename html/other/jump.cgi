@@ -35,7 +35,7 @@ chomp $page;
 
 # Keep same index on the right, if possible
 
-my $show = "relations.html";
+my $show = "sorted.html";
 if(my $refer = $ENV{HTTP_REFERER})
 {   $show = "$1.html"
         if $refer =~ m/(doclist|sorted|grouped|relations)\.html/;

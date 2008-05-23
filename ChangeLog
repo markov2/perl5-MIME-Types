@@ -6,6 +6,16 @@ Mark Overmeer <perl@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.24: Fri May 23 09:43:28 CEST 2008
+
+	- message/rfc822 relates to .eml [Jonas Liljegren]
+
+	- application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+	  is an .xlsx [Jonas Liljegren]
+
+	- added zillion of application/vnd.oasis.opendocument.* and
+	  application/vnd.stardevision.* names [Michiel Leenaars]
+
 version 1.23: Mon Dec 17 16:12:52 CET 2007
 
 	- /xml file attributes were separated by blanks, not commas.

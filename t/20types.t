@@ -22,7 +22,7 @@ isa_ok($t, 'MIME::Type');
 is($t->type, 'multipart/mixed');
 
 # No extensions, but a known, explicit encoding.
-@t = $a->type('message/rfc822');
+@t = $a->type('message/external-body');
 cmp_ok(scalar @t, '==', 1);
 $t = $t[0];
 ok(not $t->extensions);
