@@ -6,6 +6,14 @@ Mark Overmeer <perl@overmeer.net>
 **** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
 **** update his Ruby port of the module.
 
+version 1.25: Sat Nov 29 15:00:20 CET 2008
+
+	- added application/jsoni
+	  rt.cpan.org #36812 [Christopher H. Laco]
+
+	- added text/x-component
+	  rt.cpan.org#41293 [Stephen Steneker]
+
 version 1.24: Fri May 23 09:43:28 CEST 2008
 
 	- message/rfc822 relates to .eml [Jonas Liljegren]
@@ -57,8 +65,8 @@ version 1.18: Fri Nov 17 21:20:20 CET 2006
 
 	- [Islue Hu] audio/3gpp2 and video/3gpp2
 
-	- [Stephen Steneken] application/octet-stream += dmg, so, dll
-	  and videa/x-flv.
+	- [Stephen Steneker] application/octet-stream += dmg, so, dll
+	  and video/x-flv.
 
 version 1.17: Sun Aug 13 10:32:37 CEST 2006
 

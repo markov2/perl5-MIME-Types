@@ -372,6 +372,7 @@ application/index.vnd
 application/iotp
 application/ipp
 application/isup
+application/json		json				8bit
 application/javascript		js				8bit
 application/mac-binhex40	hqx				8bit
 application/macwriteii
@@ -1029,6 +1030,7 @@ text/vnd.wap.wmlscript			wmls
 text/vnd.wap.wml			wml
 text/xml-external-parsed-entity
 text/xml
+text/x-component			htc				8bit
 text/x-setext				etx
 text/x-sgml				sgml,sgm			8bit
 text/x-vCalendar			vcs				8bit
