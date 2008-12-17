@@ -589,14 +589,21 @@ application/vnd.mozilla.xul+xml	xul
 application/vnd.ms-artgalry	cil
 application/vnd.ms-asf		asf
 application/vnd.mseq		mseq
+application/vnd.ms-excel.sheet.binary.macroEnabled.12 xlsb
+application/vnd.ms-excel.sheet.macroEnabled.12 xlsm
 application/vnd.ms-excel	xls,xlt			base64
 application/vnd.msign
 application/vnd.ms-lrm		lrm
 application/vnd.ms-powerpoint	ppt,pps,pot		base64
+application/vnd.ms-powerpoint.presentation.macroEnabled.12 pptm
+application/vnd.ms-powerpoint.slideshow.macroEnabled.12 ppsm
 application/vnd.ms-project	mpp			base64
 application/vnd.ms-tnef					base64
+application/vnd.ms-word.document.macroEnabled.12 docm
+application/vnd.ms-word.template.macroEnabled.12 dotm
 application/vnd.ms-works				base64
 application/vnd.ms-wpl		wpl			base64
+application/vnd.ms-xpsdocument	xps			8bit
 application/vnd.musician
 application/vnd.music-niff
 application/vnd.nervana		ent,entity,req,request,bkm,kcm
@@ -625,6 +632,10 @@ application/vnd.oasis.opendocument.database		odb
 application/vnd.oasis.opendocument.image		odi
 application/vnd.obn
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet xlsx quoted-printable
+application/vnd.openxmlformats-officedocument.wordprocessingml.template dotx
+application/vnd.openxmlformats-officedocument.presentationml.slideshow ppsx
+application/vnd.openxmlformats-officedocument.presentationml.presentation pptx
+application/vnd.openxmlformats-officedocument.wordprocessingml.document docx
 application/vnd.osa.netdeploy
 application/vnd.palm		prc,pdb,pqa,oprc
 application/vnd.paos.xml

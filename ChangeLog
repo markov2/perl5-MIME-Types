@@ -3,8 +3,9 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <perl@overmeer.net>
 
-**** Inform Austin Ziegler < mime-types@halostatue.ca> at each release, to
-**** update his Ruby port of the module.
+version 1.26: Wed Dec 17 09:01:27 CET 2008
+
+	- added many ooxml types [Joe Spooner]
 
 version 1.25: Sat Nov 29 15:00:20 CET 2008
 
