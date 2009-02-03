@@ -9,7 +9,7 @@ use strict;
 
 use lib qw(. t);
 
-BEGIN {plan tests => 36}
+BEGIN {plan tests => 40}
 
 use MIME::Types;
 
@@ -29,12 +29,18 @@ is($cte, "base64");
 is($mt, "");
 is($cte, "");
 
-my @c = MIME::Types::by_mediatype("oGG");
-cmp_ok(scalar @c, '==', 1);
+#pkcs7-mime          p7m,p7c
+
+my @c = MIME::Types::by_mediatype("pkcs7-mime");
+cmp_ok(scalar @c, '==', 2);
 cmp_ok(scalar @{$c[0]}, '>', 2);
-is($c[0]->[0], "ogg");
-is($c[0]->[1], "application/ogg");
+is($c[0]->[0], "p7m");
+is($c[0]->[1], "application/pkcs7-mime");
 is($c[0]->[2], "base64");
+cmp_ok(scalar @{$c[1]}, '>', 2);
+is($c[1]->[0], "p7c");
+is($c[1]->[1], "application/pkcs7-mime");
+is($c[1]->[2], "base64");
 
 @c = MIME::Types::by_mediatype("Application/pDF");
 cmp_ok(scalar @c, '<', 2);
@@ -65,10 +71,10 @@ $aref = MIME::Types::by_suffix("flurfl");
 is($aref->[0], "");
 is($aref->[1], "");
 
-$aref = MIME::Types::by_mediatype("ogg");
+$aref = MIME::Types::by_mediatype(qr/\bzip/);
 cmp_ok(scalar @$aref, '==', 1);
-is($aref->[0]->[0], "ogg");
-is($aref->[0]->[1], "application/ogg");
+is($aref->[0]->[0], "zip");
+is($aref->[0]->[1], "application/zip");
 is($aref->[0]->[2], "base64");
 
 $aref = MIME::Types::by_mediatype("Application/pDF");
