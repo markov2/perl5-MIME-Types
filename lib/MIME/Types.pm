@@ -291,6 +291,8 @@ sub by_mediatype($)
 {   my $type = shift;
     my @found;
 
+    %list or init {};
+
     if(index($type, '/') >= 0)
     {   my $simplified = MIME::Type->simplified($type);
         my $mime = $list{$simplified};

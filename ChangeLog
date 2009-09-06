@@ -3,6 +3,11 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <perl@overmeer.net>
 
+version 1.28: Mon Sep  7 00:12:53 CEST 2009
+
+	- fix initiation when using by_mediatype().
+	  rt.cpan.org#49111 [GENEHACK]
+
 version 1.27: Tue Feb  3 12:23:08 CET 2009
 
 	- fix application/ogg to .ogx.  Add other oggs [John Drago]
