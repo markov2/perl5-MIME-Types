@@ -3,6 +3,14 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <perl@overmeer.net>
 
+version 1.29: Tue Mar 16 23:28:00 CET 2010
+
+	- added a zillions of new types from debian's /etc/mime.types.
+	  implemented by [Roman V. Nikolaev]
+
+	- changed table format, hopefully to speed-up load times per
+	  type, slightly compensating for the increased list.
+
 version 1.28: Mon Sep  7 00:12:53 CEST 2009
 
 	- fix initiation when using by_mediatype().

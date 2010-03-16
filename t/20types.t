@@ -54,7 +54,7 @@ if($^O eq 'VMS')
 else
 {   is($q->type, 'application/x-msword');
 }
-is($a->mimeTypeOf('my.lzh')->type, 'application/octet-stream');
+is($a->mimeTypeOf('my.lzh')->type, 'application/x-lzh');
 
 my $warn;
 my $r2 = MIME::Type->new(type => 'text/x-fake2');
