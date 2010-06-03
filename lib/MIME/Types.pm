@@ -329,6 +329,7 @@ CROAK
 #-------------------------------------------
 # Internet media type registry is at
 # http://www.iana.org/assignments/media-types/
+# Another list can be found at: http://ftyps.com
 
 __DATA__
 application/activemessage
@@ -657,7 +658,7 @@ application/vnd.obn
 application/vnd.openxmlformats-officedocument.presentationml.presentation;pptx
 application/vnd.openxmlformats-officedocument.presentationml.slideshow;ppsx
 application/vnd.openxmlformats-officedocument.presentationml.template;potx
-application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;xlsx;quoted-printable
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;xlsx;binary
 application/vnd.openxmlformats-officedocument.spreadsheetml.template;xltx
 application/vnd.openxmlformats-officedocument.wordprocessingml.document;docx
 application/vnd.openxmlformats-officedocument.wordprocessingml.template;dotx
@@ -969,6 +970,7 @@ audio/MPA
 audio/mpa-robust
 audio/mpeg;mpga,mp2,mp3,mpega,m4a;base64
 audio/mpeg4-generic
+audio/mp4;f4a,f4b
 audio/mpegurl;m3u
 audio/ogg;ogg,oga,spx
 audio/parityfec
@@ -1278,10 +1280,11 @@ video/mj2;mj2,mjp2
 video/MP1S
 video/MP2P
 video/MP2T
-video/mp4;mp4
+video/mp4;mp4,f4v,f4p
 video/mp4v-es
 video/mpeg;mp2,mpe,mpeg,mpg;base64
 video/mpeg4-generic
+video/mp4;
 video/MPV
 video/nv
 video/ogg;ogv

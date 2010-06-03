@@ -3,6 +3,12 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <perl@overmeer.net>
 
+version 1.30: Thu Jun  3 12:00:37 CEST 2010
+	- typo.  rt.cpan.org#55655 [Salvatore.Bonaccorso]
+	- xlsx must be encoded binary [Ben Prew]
+	- added f4v, f4p, f4a, f4b extensions for mpeg4
+	  rt.cpan.org#55168 [Oskari Ojala]
+
 version 1.29: Tue Mar 16 23:28:00 CET 2010
 
 	- added a zillions of new types from debian's /etc/mime.types.

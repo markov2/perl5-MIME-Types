@@ -57,7 +57,7 @@ returns.
  
 =overload string comparison
 
-When a MIME::Type object is compared to either a string or an other
+When a MIME::Type object is compared to either a string or another
 MIME::TYpe, the M<equals()> method is called.  Comparison is smart,
 which means that it extends common string comparison with some
 features which are defined in the related RFCs.
