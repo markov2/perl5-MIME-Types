@@ -3,6 +3,10 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer <perl@overmeer.net>
 
+version 1.31:
+	- moved POD test to xt directory, reducing the number of
+	  dependencies. [Alexis Sukrieh]
+
 version 1.30: Thu Jun  3 12:00:37 CEST 2010
 	- typo.  rt.cpan.org#55655 [Salvatore.Bonaccorso]
 	- xlsx must be encoded binary [Ben Prew]

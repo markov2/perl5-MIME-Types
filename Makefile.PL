@@ -4,10 +4,9 @@ require 5.005;
 
 WriteMakefile
   ( NAME      => 'MIME::Types'
-  , VERSION   => '1.30'
+  , VERSION   => '1.31'
   , PREREQ_PM =>
     { Test::More => 0.47
-    , Test::Pod  => 1.00
     }
   , AUTHOR    => 'Mark Overmeer'
   , ABSTRACT  => 'Definition of MIME types'
