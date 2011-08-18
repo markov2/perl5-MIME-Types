@@ -226,7 +226,6 @@ to retreive the same value.  However, that method is deprecated.
 =cut
 
 sub mediaType() {shift->{MT_simplified} =~ m!^([\w-]+)/! ? $1 : undef}
-
 sub mainType()  {shift->mediaType} # Backwards compatibility
 
 #-------------------------------------------

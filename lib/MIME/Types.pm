@@ -32,6 +32,30 @@ If you wish to get access to the C<mime.types> files, which are
 available on various places in UNIX and Linux systems, then have a
 look at M<File::TypeInfo>.
 
+=section MIME::Types and mod_perl
+
+This module uses a DATA handle to read all the types at first
+instantiation, which doesn't play nicely with mod_perl and fork.
+
+When you use this module with mod_perl, add this to C<startup.pl>
+
+   use MIME::Types;
+   BEGIN { MIME::Types->new() }
+
+Now, the type definitions will get parsed before the processes are spawned.
+
+=section MIME::Types and daemons (fork)
+
+If your program uses fork (usually for a daemon), then the situation
+is a bit like with mod_perl before: you want to have the type table
+initialized before you start forking. So, first call
+
+   my $mt = MIME::Types->new;
+
+Later, each time you create this object (you may, of course, also reuse
+the object you create here) you will get access to the same global table
+of types.
+
 =chapter METHODS
 
 =section Instantiation
@@ -65,6 +89,7 @@ sub init($)
     {   local $_;
         local $/  = "\n";
 
+        my $rewind = tell DATA;
         while(<DATA>)
         {   chomp;
             next if !length $_ or substr($_, 0, 1) eq '#';
@@ -83,7 +108,7 @@ sub init($)
               , system     => $os
               );
         }
-        close DATA;
+        seek DATA, $rewind, 0;  # for forked/mod_perl when badly implemented
     }
 
     $self;

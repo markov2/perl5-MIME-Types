@@ -1,9 +1,16 @@
 Revision history for Perl extension MIME::Types.
 
 Unless explicitly stated differently are all changes produced by
-Mark Overmeer <perl@overmeer.net>
+Mark Overmeer.
 
-version 1.31:
+version 1.32: Thu Aug 18 23:30:25 CEST 2011
+	- explain how to use MIME::Types in mod_perl, after complains
+	  from [Steve Simms], [Nicolas Mendoza], [Yves Orton] and
+	  [Hans Dieter Pearcey]
+	- when you do not read the documentation about mod_perl/fork,
+	  then it will work as ever but still inefficient.
+
+version 1.31: Tue Sep 21 15:38:58 CEST 2010
 	- moved POD test to xt directory, reducing the number of
 	  dependencies. [Alexis Sukrieh]
 
