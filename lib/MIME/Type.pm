@@ -153,10 +153,7 @@ Returns the long type of this object, for instance C<'text/plain'>
 
 sub type() {shift->{MT_type}}
 
-#-------------------------------------------
-
 =ci_method simplified [STRING]
-
 Returns the simplified mime type for this object or the specified STRING.
 Mime type names can get officially registered.  Until then, they have to
 carry an C<x-> preamble to indicate that.  Of course, after recognition,
@@ -182,27 +179,19 @@ sub simplified(;$)
     : undef;
 }
 
-#-------------------------------------------
-
 =method extensions
 Returns a list of extensions which are known to be used for this
 mime type.
-
 =cut
 
 sub extensions() { @{shift->{MT_extensions}} }
 
-#-------------------------------------------
-
 =method encoding
 Returns the type of encoding which is required to transport data of this
 type safely.
-
 =cut
 
 sub encoding() {shift->{MT_encoding}}
-
-#-------------------------------------------
 
 =method system
 Returns the regular expression which can be used to determine whether this
@@ -225,27 +214,21 @@ to retreive the same value.  However, that method is deprecated.
 
 =cut
 
-sub mediaType() {shift->{MT_simplified} =~ m!^([\w-]+)/! ? $1 : undef}
+sub mediaType() {shift->{MT_simplified} =~ m!^([\w.-]+)/! ? $1 : undef}
 sub mainType()  {shift->mediaType} # Backwards compatibility
-
-#-------------------------------------------
 
 =method subType
 The sub type of the simplified mime.
 For C<'text/plain'> it will return C<'plain'>.
-
 =cut
 
-sub subType() {shift->{MT_simplified} =~ m!/([\w-]+)$! ? $1 : undef}
-
-#-------------------------------------------
+sub subType() {shift->{MT_simplified} =~ m!/([\w.-]+)$! ? $1 : undef}
 
 =method isRegistered
 Mime-types which are not registered by IANA nor defined in RFCs shall
 start with an C<x->.  This counts for as well the media-type as the
 sub-type.  In case either one of the types starts with C<x-> this
 method will return false.
-
 =cut
 
 sub isRegistered()
@@ -253,31 +236,21 @@ sub isRegistered()
     not (m/^[xX]\-/ || m!/[xX]\-!);
 }
 
-
-#-------------------------------------------
-
 =method isBinary
 Returns true when the encoding is base64.
-
 =cut
 
 sub isBinary() { shift->{MT_encoding} eq 'base64' }
 
-#-------------------------------------------
-
 =method isAscii
 Returns false when the encoding is base64, and true otherwise.  All encodings
 except base64 are text encodings.
-
 =cut
 
 sub isAscii() { shift->{MT_encoding} ne 'base64' }
 
-#-------------------------------------------
-
 =method isSignature
 Returns true when the type is in the list of known signatures.
-
 =cut
 
 # simplified names only!
@@ -288,12 +261,9 @@ my %sigs = map { ($_ => 1) }
 
 sub isSignature() { $sigs{shift->{MT_simplified}} }
 
-#-------------------------------------------
-
 =method equals STRING|MIME
 Compare this mime-type object with a STRING or other object.  In case of
 a STRING, simplification will take place.
-
 =cut
 
 sub equals($)
