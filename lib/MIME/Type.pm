@@ -222,7 +222,7 @@ The sub type of the simplified mime.
 For C<'text/plain'> it will return C<'plain'>.
 =cut
 
-sub subType() {shift->{MT_simplified} =~ m!/([\w.-]+)$! ? $1 : undef}
+sub subType() {shift->{MT_simplified} =~ m!/([\w+.-]+)$! ? $1 : undef}
 
 =method isRegistered
 Mime-types which are not registered by IANA nor defined in RFCs shall

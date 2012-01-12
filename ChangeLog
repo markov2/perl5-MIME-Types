@@ -3,6 +3,10 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer.
 
+version 1.34: Thu Jan 12 11:16:07 CET 2012
+	- subType() did not handle subType's with '+' in them.
+	  [Roman V. Nikolaev]
+
 version 1.33: Thu Jan 12 08:46:05 CET 2012
 	- all openxmlformats are binary [Beverly Wang]
 	- mediaType() and subType() did not handle subType's with dots
