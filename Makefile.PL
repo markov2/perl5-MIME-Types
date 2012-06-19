@@ -4,7 +4,7 @@ require 5.005;
 
 WriteMakefile
   ( NAME      => 'MIME::Types'
-  , VERSION   => '1.34'
+  , VERSION   => '1.35'
   , PREREQ_PM =>
     { Test::More => 0.47
     }

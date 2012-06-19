@@ -1028,6 +1028,7 @@ audio/vnd.qcelp
 audio/vnd.rhetorex.32kadpcm
 audio/vnd.sealedmedia.softseal.mpeg;smp3,smp,s1m
 audio/vnd.vmx.cvsd
+audio/webm;;base64
 audio/x-aiff;aif,aifc,aiff;base64
 audio/x-gsm;gsm
 audio/x-midi;mid,midi,kar;base64
@@ -1329,6 +1330,7 @@ video/vnd.sealed.mpeg4;smpg,s14
 video/vnd.sealed.swf;sswf,ssw
 video/vnd.sealedmedia.softseal.mov;smov,smo,s1q
 video/vnd.vivo;viv,vivo
+video/webm;webm;base64
 video/x-fli;fli;base64
 video/x-flv;flv;base64
 video/x-la-asf;lsf,lsx
