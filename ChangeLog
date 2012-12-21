@@ -3,6 +3,10 @@ Revision history for Perl extension MIME::Types.
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer.
 
+version 1.37: Fri Dec 21 11:33:53 CET 2012
+	- remove text/x-perl, where we also have an application/x-perl
+	  rt.cpan.org#82100 [Kent Fredric]
+
 version 1.36: Wed Oct 31 20:34:42 CET 2012
 	- xlsx and friends had encoding 'binary' (since version 1.30),
 	  but should have been 'base64'

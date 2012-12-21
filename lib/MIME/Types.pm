@@ -1272,7 +1272,6 @@ text/x-makefile
 text/x-moc;moc
 text/x-pascal;p,pas
 text/x-pcs-gcd;gcd
-text/x-perl;pl,pm
 text/x-python;py
 text/x-scala;scala
 text/x-server-parsed-html
