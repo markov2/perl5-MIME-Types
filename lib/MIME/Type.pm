@@ -6,7 +6,7 @@ use Carp 'croak';
 
 =chapter NAME
 
-MIME::Type - Definition of one MIME type
+MIME::Type - description of one MIME type
 
 =chapter SYNOPSIS
 
@@ -32,12 +32,6 @@ MIME::Type - Definition of one MIME type
 MIME types are used in MIME entities, for instance as part of e-mail
 and HTTP traffic.  Sometimes real knowledge about a mime-type is need.
 Objects of C<MIME::Type> store the information on one such type.
-
-This module is built to conform to the MIME types of RFC's 2045 and 2231.
-It follows the official IANA registry at
-F<http://www.iana.org/assignments/media-types/>
-and the collection kept at F<http://www.ltsw.se/knbase/internet/mime.htp>
-
 =cut
 
 #-------------------------------------------
@@ -64,9 +58,7 @@ features which are defined in the related RFCs.
 
 =cut
 
-use overload '""' => 'type'
-           ,  cmp => 'equals'
-           ;
+use overload '""' => 'type', cmp => 'equals';
 
 #-------------------------------------------
 
@@ -123,11 +115,11 @@ sub new(@) { (bless {}, shift)->init( {@_} ) }
 sub init($)
 {   my ($self, $args) = @_;
 
-    $self->{MT_type}       = $args->{type}
+    my $type = $self->{MT_type}       = $args->{type}
        or croak "ERROR: Type parameter is obligatory.";
 
     $self->{MT_simplified} = $args->{simplified}
-       || ref($self)->simplified($args->{type});
+       || $self->simplified($type);
 
     $self->{MT_extensions} = $args->{extensions} || [];
 
@@ -175,7 +167,7 @@ sub simplified(;$)
     my $mime  = shift;
 
       $mime =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!i ? lc "$1/$2"
-    : $mime =~ m!text! ? "text/plain"         # some silly mailers...
+    : $mime eq 'text' ? 'text/plain'          # some silly mailers...
     : undef;
 }
 
@@ -231,30 +223,43 @@ sub-type.  In case either one of the types starts with C<x-> this
 method will return false.
 =cut
 
-sub isRegistered()
-{   local $_ = shift->{MT_type};
-    not (m/^[xX]\-/ || m!/[xX]\-!);
-}
+sub isRegistered() { lc shift->{MT_type} !~ m{^x\-|/x\-} }
+
+=method isVendor
+[2.00] Return C<true> when the type is defined by a vendor; the subtype
+starts with C<vnd.>
+
+=method isPersonal
+[2.00] Return C<true> when the type is defined by a person for
+private use; the subtype starts with C<prs.>
+
+=method isExperimental
+[2.00] Return C<true> when the type is defined for experimental
+use; the subtype starts with C<x.>
+=cut
+
+# http://tools.ietf.org/html/rfc4288#section-3
+sub isVendor()       {shift->{MT_simplified} =~ m!/vnd\.!}
+sub isPersonal()     {shift->{MT_simplified} =~ m!/prs\.!}
+sub isExperimental() {shift->{MT_simplified} =~ m!/x\.!  }
 
 =method isBinary
 Returns true when the encoding is base64.
-=cut
-
-sub isBinary() { shift->{MT_encoding} eq 'base64' }
 
 =method isAscii
 Returns false when the encoding is base64, and true otherwise.  All encodings
 except base64 are text encodings.
 =cut
 
-sub isAscii() { shift->{MT_encoding} ne 'base64' }
+sub isBinary() { shift->{MT_encoding} eq 'base64' }
+sub isAscii()  { shift->{MT_encoding} ne 'base64' }
 
 =method isSignature
 Returns true when the type is in the list of known signatures.
 =cut
 
 # simplified names only!
-my %sigs = map { ($_ => 1) }
+my %sigs = map +($_ => 1),
   qw(application/pgp-keys application/pgp application/pgp-signature
      application/pkcs10 application/pkcs7-mime application/pkcs7-signature
      text/vCard);

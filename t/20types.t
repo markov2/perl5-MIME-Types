@@ -6,31 +6,25 @@
 use Test::More;
 use strict;
 
-use lib qw(. t);
+use lib qw(lib t);
 
-BEGIN {plan tests => 21}
+BEGIN {plan tests => 30}
 
 use MIME::Types;
 
 my $a = MIME::Types->new;
 ok(defined $a);
 
-my @t = $a->type('multipart/mixed');
-cmp_ok(scalar @t, '==', 1);
-my $t = $t[0];
+my $t = $a->type('multipart/mixed');
 isa_ok($t, 'MIME::Type');
 is($t->type, 'multipart/mixed');
 
 # No extensions, but a known, explicit encoding.
-@t = $a->type('message/external-body');
-cmp_ok(scalar @t, '==', 1);
-$t = $t[0];
+$t = $a->type('message/external-body');
 ok(not $t->extensions);
 is($t->encoding, '8bit');
 
-@t = $a->type('TEXT/x-RTF');
-cmp_ok(scalar @t, '==', 1);
-$t = $t[0];
+$t = $a->type('TEXT/x-RTF');
 is($t->type, 'text/rtf');
 
 my $m = $a->mimeTypeOf('gif');
@@ -52,7 +46,7 @@ if($^O eq 'VMS')
     is($q->type, 'text/plain');
 }
 else
-{   is($q->type, 'application/x-msword');
+{   is($q->type, 'application/msword');
 }
 is($a->mimeTypeOf('my.lzh')->type, 'application/x-lzh');
 
@@ -76,3 +70,22 @@ my $r4 = MIME::Type->new(type => 'x-appl/fake4');
     $a->addType($r4);
 }
 ok(not defined $warn);
+
+my $r5a = MIME::Type->new(type => 'some/vnd.vendor');
+my $r5b = MIME::Type->new(type => 'some/prs.personal');
+my $r5c = MIME::Type->new(type => 'some/x.experimental');
+
+ok(!$r4 ->isVendor, 'is vendor');
+ok( $r5a->isVendor);
+ok(!$r5b->isVendor);
+ok(!$r5c->isVendor);
+
+ok(!$r4 ->isPersonal, 'is personal');
+ok(!$r5a->isPersonal);
+ok( $r5b->isPersonal);
+ok(!$r5c->isPersonal);
+
+ok(!$r4 ->isExperimental, 'is experimental');
+ok(!$r5a->isExperimental);
+ok(!$r5b->isExperimental);
+ok( $r5c->isExperimental);

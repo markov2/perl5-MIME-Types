@@ -2,8 +2,11 @@ ChangeLog
 MANIFEST
 Makefile.PL
 README
+bin/collect-types
+bin/update-iana
 lib/MIME/Type.pm
 lib/MIME/Types.pm
+lib/MIME/types.db
 t/10type.t
 t/11typeol.t
 t/20types.t

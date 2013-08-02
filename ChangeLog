@@ -1,7 +1,28 @@
-Revision history for Perl extension MIME::Types.
+======= version history for MIME::Types
 
 Unless explicitly stated differently are all changes produced by
 Mark Overmeer.
+
+TODO:
+ . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
+
+version 2.00: Fri Aug  2 17:44:53 CEST 2013
+	Changes:
+	- the mime information is now collected from various sources, amongst
+	  them IANA.  Therefore, some types may use different x-'s
+	  #types up from 995 to 2096
+	- a separate table is built for the extension-to-type mapping.
+	  #exts  up from 734 to 1425
+	- the memory foot-print and start-up speed should have improved
+	  considerably.
+
+	Improvements:
+	- added bin/collect_types
+	- 3 typos. rt.cpan.org#86847 [D Steinbrunner]
+	- add ::Type::isVendor(), ::isExperimental(), ::isPersonal on request
+	  by rt.cpan.org#87062 [Lars Dɪᴇᴄᴋᴏᴡ 迪拉斯]
+	- cleaned-up Exporter syntax of (very) old interface.
+	- added ::Types::listTypes()
 
 version 1.38: Fri Jan 11 09:58:08 CET 2013
 	- add application/vnd.ms-excel.template.macroEnabled.12 and five
@@ -171,7 +192,7 @@ version 1.15: Thu Mar 31 14:12:54 CEST 2005
 
 version 1.14: Wed Nov 24 18:09:49 CET 2004
 
-	- [Ville Skytt�] provided some minor fixes and two new types
+	- [Ville Skyttä] provided some minor fixes and two new types
 
 	- [Ave Wringley] contributed video/x-ms-wmv
 
@@ -180,14 +201,14 @@ version 1.14: Wed Nov 24 18:09:49 CET 2004
 
 version 1.13: Sat Apr 24 00:15:09 CEST 2004
 
-	- [Ville Skytt�] and [Austing Ziegler] updated the type list to
+	- [Ville Skyttä] and [Austing Ziegler] updated the type list to
 	  IANA registry dated 2004-04-09.  Many changes to clean-up the
 	  list, trying to find a good balance between IANA's rules and
 	  common practice.
 
 version 1.12: Wed Jan 21 10:09:43 CET 2004
 
-	- [Ville Skytt�] requested removal of application/excel, because
+	- [Ville Skyttä] requested removal of application/excel, because
 	  it is not IANA registered.  Applied.
 
 	- Documented that alternative types for a certain extension will
@@ -198,7 +219,7 @@ version 1.12: Wed Jan 21 10:09:43 CET 2004
 
 version 1.11: Tue Jan 13 10:36:41 CET 2004
 
-	- [Ville Skytt�] contributed a large set of new mime-types, and
+	- [Ville Skyttä] contributed a large set of new mime-types, and
 	  applied some fixes. New IANA names are now all included.
 
 version 1.10: Wed Dec 17 12:47:00 CET 2003
@@ -238,10 +259,10 @@ version 1.005: Tue Dec 24 13:01:00 CET 2002
 	- [Guangzu Wang] pointed to typos in the Synopsis of both packages:
 	  $mimetype   -->  $mimetypes
 
-	- [Ville Skytt�] some doc patches and many tweaks and additions
+	- [Ville Skyttä] some doc patches and many tweaks and additions
 	  to the type list.
 
-	- [Ville Skytt�] fixed bug, where the third column was taken as
+	- [Ville Skyttä] fixed bug, where the third column was taken as
 	  second if that one was empty.
 
 version 1.004: Tue Oct 22 19:22:43 CEST 2002

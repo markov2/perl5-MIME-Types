@@ -71,8 +71,10 @@ $aref = MIME::Types::by_suffix("flurfl");
 is($aref->[0], "");
 is($aref->[1], "");
 
-$aref = MIME::Types::by_mediatype(qr/\bzip/);
+$aref = MIME::Types::by_mediatype(qr!/zip!);
 cmp_ok(scalar @$aref, '==', 1);
+#use Data::Dumper;
+#warn Dumper $aref;
 is($aref->[0]->[0], "zip");
 is($aref->[0]->[1], "application/zip");
 is($aref->[0]->[2], "base64");
