@@ -126,6 +126,9 @@ sub _read_db($)
     close DB;
 }
 
+# Catalyst-Plugin-Static-Simple uses it :(
+sub create_type_index {}
+
 #-------------------------------------------
 
 =section Knowledge

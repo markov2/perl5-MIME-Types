@@ -6,6 +6,11 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.01: Sat Aug  3 01:07:27 CEST 2013
+	Improvements:
+	- add dummy ::Types::create_type_index() because
+	  Catalyst-Plugin-Static-Simple calls it :(
+
 version 2.00: Fri Aug  2 17:44:53 CEST 2013
 	Changes:
 	- the mime information is now collected from various sources, amongst
