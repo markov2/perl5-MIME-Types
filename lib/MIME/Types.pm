@@ -20,13 +20,18 @@ MIME::Types - Definition of MIME types
 
 =chapter DESCRIPTION
 
-MIME types are used in MIME compliant lines, for instance as part
-of e-mail and HTTP traffic, to indicate the type of content which is
-transmitted.  Sometimes real knowledge about a mime-type is need.
+MIME types are used in many applications (for instance as part of e-mail
+and HTTP traffic) to indicate the type of content which is transmitted.
+
+Sometimes detailed knowledge about a mime-type is need, however this
+module only knows about the file-name extensions which relate to some
+filetype.  It can also be used to produce the right format: types
+which are not registered at IANA need to use 'x-' prefixes.
 
 This object administers a huge list of known mime-types, combined
 from various sources.  For instance, it contains B<all IANA> types
-and the knowledge of Apache.
+and the knowledge of Apache.  Probably the most complete table on
+the net!
 
 =section MIME::Types and daemons (fork)
 

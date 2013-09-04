@@ -202,7 +202,7 @@ The media type of the simplified mime.
 For C<'text/plain'> it will return C<'text'>.
 
 For historical reasons, the C<'mainType'> method still can be used
-to retreive the same value.  However, that method is deprecated.
+to retrieve the same value.  However, that method is deprecated.
 
 =cut
 
