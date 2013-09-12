@@ -6,6 +6,11 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.04: Thu Sep 12 15:46:28 CEST 2013
+	Fixes:
+	- one more localize $_ in ::Types::_read_db()
+	  rt.cpan.org#87856 [Gerda Shank]
+
 version 2.03: Wed Sep  4 17:12:27 CEST 2013
 	Improvements:
 	- typo in docs, rt.cpan.org#88394 [Gregor Herrmann, Debian]

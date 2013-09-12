@@ -121,7 +121,8 @@ sub _read_db($)
             }
         }
         else
-        {   while(<DB>)
+        {   local $_;
+            while(<DB>)
             {   last if m/^$/;
                 next if $skip_section;
                 chomp;
