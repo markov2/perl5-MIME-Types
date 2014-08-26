@@ -244,15 +244,19 @@ sub isPersonal()     {shift->{MT_simplified} =~ m!/prs\.!}
 sub isExperimental() {shift->{MT_simplified} =~ m!/x\.!  }
 
 =method isBinary
-Returns true when the encoding is base64.
+Returns true when the type is not known to be text.  See M<isText()>.
 
 =method isAscii
-Returns false when the encoding is base64, and true otherwise.  All encodings
-except base64 are text encodings.
+Old name for M<isText()>.
+
+=method isText
+[2.05] All types which may have the charset attribute, are text.  However,
+there is currently no record of attributes in this module... so we guess.
 =cut
 
 sub isBinary() { shift->{MT_encoding} eq 'base64' }
-sub isAscii()  { shift->{MT_encoding} ne 'base64' }
+sub isText()   { shift->{MT_encoding} ne 'base64' }
+*isAscii = \&isText;
 
 =method isSignature
 Returns true when the type is in the list of known signatures.

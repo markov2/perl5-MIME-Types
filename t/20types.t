@@ -8,7 +8,7 @@ use strict;
 
 use lib qw(lib t);
 
-BEGIN {plan tests => 30}
+BEGIN {plan tests => 36}
 
 use MIME::Types;
 
@@ -89,3 +89,13 @@ ok(!$r4 ->isExperimental, 'is experimental');
 ok(!$r5a->isExperimental);
 ok(!$r5b->isExperimental);
 ok( $r5c->isExperimental);
+
+my $r6 = $a->type('application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+ok($r6, 'type document');
+ok($r6->isBinary);
+ok(!$r6->isText);
+
+my $r7 = $a->type('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+ok($r7, 'type sheet');
+ok($r7->isBinary);
+ok(!$r7->isText);

@@ -4,6 +4,8 @@ use strict;
 
 use HTML::Parser ();
 use File::Glob   qw/bsd_glob/;
+use XML::LibXML::Simple;
+
 use Data::Dumper qw/Dumper/;
 $Data::Dumper::Indent = 1;
 
@@ -12,6 +14,8 @@ my $my_own      = 'sources/my-own';
 my $apache      = 'sources/from-apache';
 my $sitepoint   = 'sources/from-sitepoint';
 my $stdicon     = 'sources/from-stdicon';
+my $broofa      = 'sources/from-broofa';
+my $freedesktop = 'sources/from-freedesktop';
 
 my $history     = 'history';
 my $distributed = 'lib/MIME/types.db';
@@ -27,6 +31,9 @@ sub my_own();
 sub apache();
 sub sitepoint();
 sub stdicon();
+sub broofa();
+sub freedesktop();
+
 sub simplify();
 sub write_tables();
 sub write_distributed();
@@ -52,6 +59,8 @@ my_own();
 apache();
 sitepoint();
 stdicon();
+broofa();
+freedesktop();
 #warn Dumper \%mimes;
 
 # Build the tables
@@ -148,6 +157,8 @@ sub my_own()
 sub apache()
 {   print "* processing apache\n";
 
+    my $found = 0;
+
     open APACHE, '<', $apache or die $!;
     while(<APACHE>)
     {   chomp;
@@ -155,10 +166,11 @@ sub apache()
         my ($type, $ext) = split /\s+/;
         my @ext  = $ext ? (split / /, $ext) : ();
         my $info = add_type $type, 'apache', \@ext;
+        $found++;
     }
     close APACHE;
 
-    print "  . added ".(keys(%mimes) - $last_count)." types\n";
+    print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
     $last_count = keys %mimes;
     print "  . now $last_count types\n";
 }
@@ -173,6 +185,8 @@ sub apache()
 sub sitepoint()
 {   print "* processing sitepoint\n";
 
+    my $found = 0;
+
     open SITEP, '<', $sitepoint or die $!;
     while(<SITEP>)
     {   chomp;
@@ -181,10 +195,11 @@ sub sitepoint()
 
         $ext =~ s/^\.//;
         my $info = add_type $type, 'sitepoint', [$ext];
+        $found++;
     }
     close SITEP;
 
-    print "  . added ".(keys(%mimes) - $last_count)." types\n";
+    print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
     $last_count = keys %mimes;
     print "  . now $last_count types\n";
 }
@@ -196,6 +211,8 @@ sub sitepoint()
 sub stdicon()
 {   print "* processing stdicon\n";
 
+    my $found = 0;
+
     open STDICON, '<', $stdicon or die $!;
     while(<STDICON>)
     {   chomp;
@@ -203,11 +220,67 @@ sub stdicon()
         my ($ext, $type, $comment) = split /\s+/;
 
         $ext =~ s/^\.//;
-        my $info = add_type $type, 'stdicon', [$ext];
+        add_type $type, 'stdicon', [$ext];
+        $found++;
     }
     close STDICON;
 
-    print "  . added ".(keys(%mimes) - $last_count)." types\n";
+    print "  . added ".(keys(%mimes) - $last_count)." types from $found\n";
+    $last_count = keys %mimes;
+    print "  . now $last_count types\n";
+}
+
+
+#
+### from github broofa
+#
+
+sub broofa()
+{   print "* processing broofa\n";
+
+    open BROOFA, '<', $broofa or die $!;
+    while(<BROOFA>)
+    {   last if /^\#\s+\=\=/;
+    }
+
+    my $found = 0;
+    while(<BROOFA>)
+    {   chomp;
+        s/^#\s+//;     # also take types without extension
+        my ($type, $ext) = split /\t+/, $_, 2;
+        my @ext  = $ext ? split(' ', $ext) : ();
+        my $info = add_type $type, 'broofa', \@ext;
+        $found++;
+    }
+    close BROOFA;
+
+    print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
+    $last_count = keys %mimes;
+    print "  . now $last_count types\n";
+}
+
+#
+### from github freedesktop
+#
+
+sub freedesktop()
+{   print "* processing freedesktop\n";
+
+    my $c = XML::LibXML::Simple->new->XMLin($freedesktop);
+    my $mimes = $c->{'mime-type'} || [];
+    foreach my $record (@$mimes)
+    {   my $type = $record->{type} or die;
+        my $glob = $record->{glob} || [];
+        $glob    = [$glob] if ref $glob eq 'HASH';   # when only one pattern
+        my @patt = map +($_->{pattern} =~ /^.*\.(.*)/ ? $1 : ()), @$glob;
+
+        # remove regex patterns
+        my @ext  = grep !/[^a-zA-Z0-9+\-]/, @patt;
+        my $info = add_type $type, 'freedesktop', \@ext;
+    }
+
+    print "  . added ".(keys(%mimes) - $last_count)." new types from "
+      . @$mimes . "\n";
     $last_count = keys %mimes;
     print "  . now $last_count types\n";
 }

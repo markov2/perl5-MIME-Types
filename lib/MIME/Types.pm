@@ -17,6 +17,7 @@ MIME::Types - Definition of MIME types
  my $mimetypes = MIME::Types->new(...);      # MIME::Types object
  my $type = $mimetypes->type('text/plain');  # MIME::Type  object
  my $type = $mimetypes->mimeTypeOf('gif');
+ my $type = $mimetypes->mimeTypeOf('picture.jpg');
 
 =chapter DESCRIPTION
 
@@ -191,7 +192,7 @@ preference)
  my $types = MIME::Types->new;
  my $mime = $types->mimeTypeOf('gif');
 
- my $mime = $types->mimeTypeOf('jpg');
+ my $mime = $types->mimeTypeOf('picture.jpg');
  print $mime->isBinary;
 
 =cut

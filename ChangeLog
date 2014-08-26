@@ -6,6 +6,15 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.05:
+	Improvements:
+	- rename ::Type::isAscii() into ::Type::isText()
+	- add source table broofa
+	  rt.cpan.org#98308 [Lars Dɪᴇᴄᴋᴏᴡ]
+	- add source table freedesktop
+	  rt.cpan.org#98309 [Lars Dɪᴇᴄᴋᴏᴡ]
+	- update iana types
+
 version 2.04: Thu Sep 12 15:46:28 CEST 2013
 	Fixes:
 	- one more localize $_ in ::Types::_read_db()
