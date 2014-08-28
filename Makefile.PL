@@ -2,7 +2,7 @@ use ExtUtils::MakeMaker;
 
 require 5.008_008;
 
-my $version  = '2.05';   # scanned by bin/collect_types !
+my $version  = '2.06';   # scanned by bin/collect_types !
 
 WriteMakefile
   ( NAME      => 'MIME::Types'

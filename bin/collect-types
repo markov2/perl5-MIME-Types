@@ -238,17 +238,14 @@ sub stdicon()
 sub broofa()
 {   print "* processing broofa\n";
 
+    my $found = 0;
+
     open BROOFA, '<', $broofa or die $!;
     while(<BROOFA>)
-    {   last if /^\#\s+\=\=/;
-    }
+    {   next if /^\#|^\s*$/;
+        chomp;
 
-    my $found = 0;
-    while(<BROOFA>)
-    {   chomp;
-        s/^#\s+//;     # also take types without extension
-        my ($type, $ext) = split /\t+/, $_, 2;
-        my @ext  = $ext ? split(' ', $ext) : ();
+        my ($type, @ext) = split;
         my $info = add_type $type, 'broofa', \@ext;
         $found++;
     }
@@ -272,7 +269,7 @@ sub freedesktop()
     {   my $type = $record->{type} or die;
         my $glob = $record->{glob} || [];
         $glob    = [$glob] if ref $glob eq 'HASH';   # when only one pattern
-        my @patt = map +($_->{pattern} =~ /^.*\.(.*)/ ? $1 : ()), @$glob;
+        my @patt = map +($_->{pattern} =~ /^\*\.(.*)/ ? $1 : ()), @$glob;
 
         # remove regex patterns
         my @ext  = grep !/[^a-zA-Z0-9+\-]/, @patt;

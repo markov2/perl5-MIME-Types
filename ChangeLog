@@ -6,7 +6,16 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
-version 2.05:
+version 2.06: Thu Aug 28 16:28:43 CEST 2014
+
+	Improvements:
+	- needed other file from broofa :(
+	  rt.cpan.org#98308 [Lars Dɪᴇᴄᴋᴏᴡ]
+	- fix scan of freedesktop definitions
+	  rt.cpan.org #98385 [Russell Jenkins]
+
+version 2.05: Wed Aug 27 09:43:03 CEST 2014
+
 	Improvements:
 	- rename ::Type::isAscii() into ::Type::isText()
 	- add source table broofa
