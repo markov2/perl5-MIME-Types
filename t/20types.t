@@ -1,17 +1,16 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 #
 # Test reporting warnings, errors and family.
 #
 
-use Test::More;
 use strict;
+use warnings;
 
 use lib qw(lib t);
 
-BEGIN {plan tests => 36}
+use Test::More tests => 36;
 
 use MIME::Types;
-
 my $a = MIME::Types->new;
 ok(defined $a);
 

@@ -1,19 +1,19 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 #
 # Test reporting warnings, errors and family.
 #
 
-use Test::More;
 use strict;
+use warnings;
 
-use lib qw(. t);
-
-BEGIN {plan tests => 25}
+use Test::More tests => 25;
+use lib qw(lib t);
 
 use MIME::Type;
 
 my $a = MIME::Type->new(type => 'x-appl/x-zip', extensions => [ 'zip', 'zp' ]);
 ok(defined $a);
+
 is($a->type, 'x-appl/x-zip');
 is($a->simplified, 'appl/zip');
 is($a->simplified('text/plain'), 'text/plain');

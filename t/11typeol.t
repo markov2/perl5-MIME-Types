@@ -1,14 +1,14 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 #
 # Test overloading on MIME::Type objects.
 #
 
-use Test::More;
 use strict;
+use warnings;
 
-use lib qw(. t);
+use lib qw(lib t);
 
-BEGIN {plan tests => 21}
+use Test::More tests => 21;
 
 use MIME::Type;
 

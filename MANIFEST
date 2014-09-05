@@ -7,8 +7,12 @@ bin/update-iana
 lib/MIME/Type.pm
 lib/MIME/Types.pm
 lib/MIME/types.db
+lib/MojoX/MIME/Types.pm
 t/10type.t
 t/11typeol.t
 t/20types.t
+t/21accept.t
+t/22accbest.t
 t/30export.t
+t/40mojo.t
 xt/99pod.t

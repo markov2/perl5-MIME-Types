@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 #
 # Test exported interface.
 # Tests originally by Jeff Okamato

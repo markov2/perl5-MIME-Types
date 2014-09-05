@@ -39,7 +39,6 @@ Objects of C<MIME::Type> store the information on one such type.
 =chapter OVERLOADED
 
 =overload stringification
-
 The stringification (use of the object in a place where a string
 is required) will result in the type name, the same as M<type()>
 returns.
@@ -50,7 +49,6 @@ returns.
  print $mime;       # implicit stringification
  
 =overload string comparison
-
 When a MIME::Type object is compared to either a string or another
 MIME::TYpe, the M<equals()> method is called.  Comparison is smart,
 which means that it extends common string comparison with some
@@ -58,7 +56,9 @@ features which are defined in the related RFCs.
 
 =cut
 
-use overload '""' => 'type', cmp => 'equals';
+use overload
+    '""' => 'type'
+  , cmp  => 'cmp';
 
 #-------------------------------------------
 
@@ -155,7 +155,8 @@ of the type.
 =examples results of simplified()
  my $mime = MIME::Type->new(type => 'x-appl/x-zip');
  print $mime->simplified;                     # 'appl/zip'
- print $mime->simplified('text/plain');       # 'text/plain'
+
+ print $mime->simplified('text/PLAIN');       # 'text/plain'
  print MIME::Type->simplified('x-xyz/x-abc'); # 'xyz/abc'
 
 =cut
@@ -275,7 +276,7 @@ Compare this mime-type object with a STRING or other object.  In case of
 a STRING, simplification will take place.
 =cut
 
-sub equals($)
+sub cmp($)
 {   my ($self, $other) = @_;
 
     my $type = ref $other
@@ -284,5 +285,6 @@ sub equals($)
 
     $self->simplified cmp $type;
 }
+sub equals($) { $_[0]->cmp($_[1])==0 }
 
 1;

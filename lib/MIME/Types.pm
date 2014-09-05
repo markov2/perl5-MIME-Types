@@ -6,6 +6,7 @@ use strict;
 use MIME::Type     ();
 use File::Spec     ();
 use File::Basename qw(dirname);
+use List::Util     qw(first);
 
 =chapter NAME
 
@@ -14,15 +15,17 @@ MIME::Types - Definition of MIME types
 =chapter SYNOPSIS
 
  use MIME::Types;
- my $mimetypes = MIME::Types->new(...);      # MIME::Types object
- my $type = $mimetypes->type('text/plain');  # MIME::Type  object
- my $type = $mimetypes->mimeTypeOf('gif');
- my $type = $mimetypes->mimeTypeOf('picture.jpg');
+ my $mt    = MIME::Types->new(...);    # MIME::Types object
+ my $type  = $mt->type('text/plain');  # MIME::Type  object
+ my $type  = $mt->mimeTypeOf('gif');
+ my $type  = $mt->mimeTypeOf('picture.jpg');
+ my @types = $mt->httpAccept('text/html, application/json;q=0.1')
 
 =chapter DESCRIPTION
 
 MIME types are used in many applications (for instance as part of e-mail
 and HTTP traffic) to indicate the type of content which is transmitted.
+or expected.  See RFC2045 at F<https://www.ietf.org/rfc/rfc2045.txt>
 
 Sometimes detailed knowledge about a mime-type is need, however this
 module only knows about the file-name extensions which relate to some
@@ -57,7 +60,6 @@ within your program, but in the future this may change.
 
 =option  only_complete BOOLEAN
 =default only_complete <false>
-
 Only include complete MIME type definitions: requires at least one known
 extension.  This will reduce the number of entries --and with that the
 amount of memory consumed-- considerably.
@@ -143,7 +145,6 @@ sub create_type_index {}
 =section Knowledge
 
 =method type STRING
-
 Returns the C<MIME::Type> which describes the type related to STRING.
 [2.00] Only one type will be returned.
 
@@ -271,9 +272,113 @@ Returns a list of all defined extensions.
 =cut
 
 sub extensions { keys %{$typedb{EXTENSIONS}} }
+sub _MojoExtTable() {$typedb{EXTENSIONS}}
+
+#-------------
+=section HTTP support
+
+=method httpAccept $header
+[2.07] Decompose a typical HTTP-Accept header, and sort it based on the
+included priority information.  Returned is a sorted list of type names,
+where the highest priority type is first.  The list may contain '*/*'
+(accept any) or a '*' as subtype.
+
+Ill-formated typenames are ignored.  On equal qualities, the order is
+kept.  See RFC2616 section 14.1
+
+=example
+  my @types = $types->httpAccept('text/html, application/json;q=9');
+
+=cut
+
+sub httpAccept($)
+{   my $self   = shift;
+    my @listed;
+
+    foreach (split /\,\s*/, shift)
+    {
+        m!^   ([a-zA-Z0-9-]+ | \*) / ( [a-zA-Z0-9+-]+ | \* )
+          \s* (?: \;\s*q\=\s* ([0-9]+(?:\.[0-9]*)?) \s* )?
+              (\;.* | )
+          $ !x or next;
+
+        my $mime = "$1/$2$4";
+        my $q    = $3 // ($1 eq '*' ? -2 : $2 eq '*' ? -1 : 1);
+        push @listed, [ $mime, $q-@listed*0.001 ];
+    }
+    map $_->[0], sort {$b->[1] <=> $a->[1]} @listed;
+}
+
+=method httpAcceptBest $accept|\@types, @have
+[2.07] The C<$accept> string is processed via M<httpAccept()> to order the
+types on preference.  You may also provide a list of ordered C<@types>
+which may have been the result of that method, called earlier.
+
+As second parameter, you pass a LIST of types you C<@have> to offer.
+Those need to be M<MIME::Type> objects. The preferred type will get
+selected.  When none of these are accepted by the client, this will
+return C<undef>.  It should result in a 406 server response.
+
+=examples
+   my $accept = $req->header('Accept');
+   my @have   = map $mt->type($_), qw[text/plain text/html];
+   my @ext    = $mt->httpAcceptBest($accept, @have);
+=cut
+
+sub httpAcceptBest($@)
+{   my $self   = shift;
+    my @accept = ref $_[0] eq 'ARRAY' ? @{(shift)} : $self->httpAccept(shift);
+    my $match;
+
+    foreach my $acc (@accept)
+    {   $acc   =~ s/\s*\;.*//;    # remove attributes
+        my $m = $acc !~ s#/\*$## ? first { $_->equals($acc) } @_
+              : $acc eq '*'      ? $_[0]     # $acc eq */*
+              :                    first { $_->mediaType eq $acc } @_;
+        return $m if defined $m;
+    }
+
+    ();
+}
+
+=method httpAcceptSelect $accept|\@types, @filenames|\@filenames
+[2.07] Like M<httpAcceptBest()>, but now we do not return a pair with mime-type
+and filename, not just the type.  If $accept is C<undef>, the first
+filename is returned.
+
+=examples
+   use HTTP::Status ':constants';
+   use File::Glob   'bsd_glob';    # understands blanks in filename
+
+   my @filenames   = bsd_glob "$imagedir/$fnbase.*;
+   my $accept      = $req->header('Accept');
+   my ($fn, $mime) = $mt->httpAcceptSelect($accept, @filenames);
+   my $code        = defined $mime ? HTTP_NOT_ACCEPTABLE : HTTP_OK;
+=cut
+
+sub httpAcceptSelect($@)
+{   my ($self, $accept) = (shift, shift);
+    my $fns  = !@_ ? return () : ref $_[0] eq 'ARRAY' ? shift : [@_];
+
+    unless(defined $accept)
+    {   my $fn = $fns->[0];
+        return ($fn, $self->mimeTypeOf($fn));
+    }
+
+    # create mapping  type -> filename
+    my (%have, @have);
+    foreach my $fn (@$fns)
+    {   my $type = $self->mimeTypeOf($fn) or next;
+        $have{$type->simplified} = $fn;
+        push @have, $type;
+    }
+
+    my $type = $self->httpAcceptBest($accept, @have);
+    defined $type ? ($have{$type}, $type) : ();
+}
 
 #-------------------------------------------
-# OLD INTERGFACE (version 0.06 and lower)
+# OLD INTERFACE (version 0.06 and lower)
 
 =chapter FUNCTIONS
 

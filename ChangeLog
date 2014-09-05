@@ -6,6 +6,28 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.08: Fri Sep  5 15:29:52 CEST 2014
+
+	Fixes:
+	- fix test t/40mojo.t which mojo is not installed
+	  rt.cpan.org#98639 [Chris]
+
+	Improvements:
+	- remove dependency on Scalar::Util
+	- documentation fixes
+
+version 2.07: Fri Sep  5 12:08:06 CEST 2014
+
+	Fixes:
+	- MIME::Type::equals() did cmp not eq
+
+	Improvements:
+	- new httpAccept() wth tests in t/21accept.t
+	- new httpAcceptBest() and httpAcceptSelect() with tests
+	  in t/22accbest.t
+	- add MojoX::MIME::Types with tests in t/40mojo.t
+	- now depends on List::Util and Scalar::Util
+
 version 2.06: Thu Aug 28 16:28:43 CEST 2014
 
 	Improvements:
