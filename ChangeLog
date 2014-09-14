@@ -6,6 +6,13 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.09: Sun Sep 14 18:12:08 CEST 2014
+
+	Improvements:
+	- documentation use consistent parameter casing
+	- do not use '//' to support 5.8.*
+	  rt.cpan.org#98664 [Paul]
+
 version 2.08: Fri Sep  5 15:29:52 CEST 2014
 
 	Fixes:

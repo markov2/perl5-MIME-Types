@@ -52,7 +52,7 @@ of types.
 
 =section Constructors
 
-=c_method new OPTIONS
+=c_method new %options
 
 Create a new C<MIME::Types> object which manages the data.  In the current
 implementation, it does not matter whether you create this object often
@@ -78,6 +78,7 @@ Only load the types which are currently known by IANA.
 
 =option  db_file FILENAME
 =default db_file <installed source>
+
 =cut
 
 my %typedb;
@@ -141,10 +142,9 @@ sub _read_db($)
 sub create_type_index {}
 
 #-------------------------------------------
-
 =section Knowledge
 
-=method type STRING
+=method type $string
 Returns the C<MIME::Type> which describes the type related to STRING.
 [2.00] Only one type will be returned.
 
@@ -178,7 +178,7 @@ sub type($)
       );
 }
 
-=method mimeTypeOf FILENAME
+=method mimeTypeOf $filename
 
 Returns the C<MIME::Type> object which belongs to the FILENAME (or simply
 its filename extension) or C<undef> if the file type is unknown.  The extension
@@ -205,7 +205,7 @@ sub mimeTypeOf($)
     $self->type($type);
 }
 
-=method addType TYPE, ...
+=method addType $type, ...
 
 Add one or more TYPEs to the set of known types.  Each TYPE is a
 C<MIME::Type> which must be experimental: either the main-type or
@@ -266,7 +266,6 @@ sub listTypes()
     @types;
 }
 
-
 =method extensions
 Returns a list of all defined extensions.
 =cut
@@ -303,7 +302,7 @@ sub httpAccept($)
           $ !x or next;
 
         my $mime = "$1/$2$4";
-        my $q    = $3 // ($1 eq '*' ? -2 : $2 eq '*' ? -1 : 1);
+        my $q    = $3 || ($1 eq '*' ? -2 : $2 eq '*' ? -1 : 1);
         push @listed, [ $mime, $q-@listed*0.001 ];
     }
     map $_->[0], sort {$b->[1] <=> $a->[1]} @listed;

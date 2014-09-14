@@ -66,20 +66,17 @@ use overload
 
 =section Initiation
 
-=c_method new OPTIONS
-
+=c_method new %options
 Create (I<instantiate>) a new MIME::Type object which manages one
 mime type.
 
 =requires type STRING
-
 The type which is defined here.  It consists of a I<type> and a I<sub-type>,
 both case-insensitive.  This module will return lower-case, but accept
 upper-case.
 
 =option  simplified STRING
 =default simplified <derived from type>
-
 The mime types main- and sub-label can both start with C<x->, to indicate
 that is a non-registered name.  Of course, after registration this flag
 can disappear which adds to the confusion.  The simplified string has the
@@ -87,7 +84,6 @@ C<x-> thingies removed and are translated to lower-case.
 
 =option  extensions REF-ARRAY
 =default extensions []
-
 An array of extensions which are using this mime.
 
 =option  encoding '7bit'|'8bit'|'base64'|'quoted-printable'
@@ -99,12 +95,10 @@ to C<quoted-printable> and all other to C<base64>.
 
 =option  system REGEX
 =default system C<undef>
-
 Regular expression which defines for which systems this rule is valid.  The
 REGEX is matched on C<$^O>.
 
 =error Type parameter is obligatory.
-
 When a M<MIME::Type> object is created, the type itself must be
 specified with the C<type> option flag.
 
@@ -115,13 +109,13 @@ sub new(@) { (bless {}, shift)->init( {@_} ) }
 sub init($)
 {   my ($self, $args) = @_;
 
-    my $type = $self->{MT_type}       = $args->{type}
+    my $type = $self->{MT_type} = $args->{type}
        or croak "ERROR: Type parameter is obligatory.";
 
-    $self->{MT_simplified} = $args->{simplified}
+    $self->{MT_simplified}      = $args->{simplified}
        || $self->simplified($type);
 
-    $self->{MT_extensions} = $args->{extensions} || [];
+    $self->{MT_extensions}      = $args->{extensions} || [];
 
     $self->{MT_encoding}
        = $args->{encoding}          ? $args->{encoding}
@@ -135,7 +129,6 @@ sub init($)
 }
 
 #-------------------------------------------
-
 =section Attributes
 
 =method type
@@ -145,7 +138,7 @@ Returns the long type of this object, for instance C<'text/plain'>
 
 sub type() {shift->{MT_type}}
 
-=ci_method simplified [STRING]
+=ci_method simplified [$string]
 Returns the simplified mime type for this object or the specified STRING.
 Mime type names can get officially registered.  Until then, they have to
 carry an C<x-> preamble to indicate that.  Of course, after recognition,
@@ -175,16 +168,10 @@ sub simplified(;$)
 =method extensions
 Returns a list of extensions which are known to be used for this
 mime type.
-=cut
-
-sub extensions() { @{shift->{MT_extensions}} }
 
 =method encoding
 Returns the type of encoding which is required to transport data of this
 type safely.
-=cut
-
-sub encoding() {shift->{MT_encoding}}
 
 =method system
 Returns the regular expression which can be used to determine whether this
@@ -192,7 +179,9 @@ type is active on the system where you are working on.
 
 =cut
 
-sub system() {shift->{MT_system}}
+sub extensions() { @{shift->{MT_extensions}} }
+sub encoding()   {shift->{MT_encoding}}
+sub system()     {shift->{MT_system}}
 
 #-------------------------------------------
 
@@ -271,7 +260,7 @@ my %sigs = map +($_ => 1),
 
 sub isSignature() { $sigs{shift->{MT_simplified}} }
 
-=method equals STRING|MIME
+=method equals $string|$mime
 Compare this mime-type object with a STRING or other object.  In case of
 a STRING, simplification will take place.
 =cut
