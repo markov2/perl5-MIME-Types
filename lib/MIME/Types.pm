@@ -78,7 +78,13 @@ Only load the types which are currently known by IANA.
 
 =option  db_file FILENAME
 =default db_file <installed source>
+The location of the database which contains the type information.  Only the
+first instantiation of this object will have this parameter obeyed.
 
+[2.10] This parameter can be globally overruled via the C<PERL_MIME_TYPE_DB>
+environment variable, which may be needed in case of PAR or other tricky
+installations.  For PAR, you probably set this environment variable to
+"inc/lib/MIME/types.db"
 =cut
 
 my %typedb;
@@ -96,7 +102,8 @@ sub _read_db($)
     my $only_complete   = $args->{only_complete};
     my $only_iana       = $args->{only_iana};
 
-    my $db              = $args->{db_file}
+    my $db              = $ENV{PERL_MIME_TYPE_DB}
+      || $args->{db_file}
       || File::Spec->catfile(dirname(__FILE__), 'types.db');
 
     local *DB;
@@ -286,7 +293,7 @@ Ill-formated typenames are ignored.  On equal qualities, the order is
 kept.  See RFC2616 section 14.1
 
 =example
-  my @types = $types->httpAccept('text/html, application/json;q=9');
+  my @types = $types->httpAccept('text/html, application/json;q=0.9');
 
 =cut
 
@@ -302,8 +309,15 @@ sub httpAccept($)
           $ !x or next;
 
         my $mime = "$1/$2$4";
-        my $q    = $3 || ($1 eq '*' ? -2 : $2 eq '*' ? -1 : 1);
-        push @listed, [ $mime, $q-@listed*0.001 ];
+        my $q    = $3 // 1;   # q, default=1
+
+        # most complex first
+        $q += $4 ? +0.01 : $1 eq '*' ? -0.02 : $2 eq '*' ? -0.01 : 0;
+
+        # keep order
+        $q -= @listed*0.0001;
+
+        push @listed, [ $mime => $q ];
     }
     map $_->[0], sort {$b->[1] <=> $a->[1]} @listed;
 }

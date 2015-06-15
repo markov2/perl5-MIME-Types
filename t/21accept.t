@@ -31,6 +31,6 @@ is($t2[2], 'text/noot');
 
 my @t3 = $a->httpAccept('*/*, text/*,text/aap, text/noot;q=3, text/mies;q=0.1');
 cmp_ok(scalar @t3, '==', 5, 'quality');
-is(join('#',@t3), 'text/noot#text/aap#text/mies#text/*#*/*');
+is(join('#',@t3), 'text/noot#text/aap#text/*#*/*#text/mies');
 
 

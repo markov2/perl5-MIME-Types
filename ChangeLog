@@ -6,6 +6,15 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.10: Mon Jun 15 17:32:22 CEST 2015
+
+	Fixes:
+	- accept field 'q' weights [Theo van Hoesel]
+
+	Improvements:
+	- introduce PERL_MIME_TYPE_DB
+	  rt.cpan.org#104945 [Philip Gwyn]
+
 version 2.09: Sun Sep 14 18:12:08 CEST 2014
 
 	Improvements:
