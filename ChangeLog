@@ -6,6 +6,12 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.11: Tue Jun 16 17:16:20 CEST 2015
+
+	Improvements:
+	- strict Perl 5.8
+	  rt.cpan.org #105267 [Miyagawa], cpantesters
+
 version 2.10: Mon Jun 15 17:32:22 CEST 2015
 
 	Fixes:

@@ -309,7 +309,7 @@ sub httpAccept($)
           $ !x or next;
 
         my $mime = "$1/$2$4";
-        my $q    = $3 // 1;   # q, default=1
+        my $q    = defined $3 ? $3 : 1;   # q, default=1
 
         # most complex first
         $q += $4 ? +0.01 : $1 eq '*' ? -0.02 : $2 eq '*' ? -0.01 : 0;
