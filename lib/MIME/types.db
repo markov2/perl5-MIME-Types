@@ -1,8 +1,9 @@
-1733:EXTENSIONS
+1756:EXTENSIONS
 #;application/x-mathcad
 %;application/x-trash
 123;application/vnd.lotus-1-2-3
 323;text/x-h323
+32x;application/x-genesis-rom
 3dm;x-world/x-3dmf
 3dmf;x-world/x-3dmf
 3dml;text/vnd.in3d.3dml
@@ -43,6 +44,7 @@ afl;video/x-animaflex
 afm;application/x-font-type1
 afp;application/vnd.ibm.modcap
 ag;image/x-applix-graphics
+agb;application/x-gba-rom
 ahead;application/vnd.ahead.space
 ai;application/postscript
 aif;audio/x-aiff
@@ -182,6 +184,7 @@ cef;x-chemical/x-cxf
 cer;application/pkix-cert
 cert;application/x-x509-ca-cert
 cfs;application/x-cfs-compressed
+cgb;application/x-gameboy-rom
 cgm;image/cgm
 cha;application/x-chat
 chat;application/x-chat
@@ -208,6 +211,7 @@ cmp;application/vnd.yellowriver-custom-menu
 cmx;image/x-cmx
 cob;text/x-cobol
 cod;application/vnd.rim.cod
+coffee;application/vnd.coffeescript
 com;application/x-msdos-program
 conf;text/plain
 cpa;x-chemical/x-compass
@@ -232,6 +236,7 @@ csp;application/vnd.commonspace
 css;text/css
 cst;application/x-director
 csv;text/csv
+csvs;text/x-csv-schema
 ctab;x-chemical/x-cactvs-binary
 ctx;x-chemical/x-ctx
 cu;application/x-cu-seeme
@@ -440,6 +445,7 @@ gamin;x-chemical/x-gamess-input
 gau;x-chemical/x-gaussian-input
 gb;application/x-gameboy-rom
 gba;application/x-gba-rom
+gbc;application/x-gameboy-rom
 gbr;application/rpki-ghostbusters
 gca;application/x-gca-compressed
 gcd;text/x-pcs-gcd
@@ -487,6 +493,7 @@ gramps;application/x-gramps-xml
 gre;application/vnd.geometry-explorer
 grv;application/vnd.groove-injector
 grxml;application/srgs+xml
+gs;text/x-genie
 gsd;audio/x-gsm
 gsf;application/x-font
 gsm;audio/x-gsm
@@ -635,9 +642,12 @@ jpm;image/jpm
 jpr;application/x-jbuilder-project
 jps;image/x-jps
 jpx;image/jpx
+jrd;application/x-jrd+json
 js;application/javascript
 jsm;application/javascript
+json-patch;application/json-patch+json
 json;application/json
+jsonld;application/ld+json
 jsonml;application/x-jsonml+json
 jut;image/x-jutvision
 k25;image/x-kodak-k25
@@ -654,7 +664,7 @@ kfo;application/vnd.kde.kformula
 kia;application/vnd.kidspiration
 kil;application/x-killustrator
 kin;x-chemical/x-kinemage
-kino;application/smil
+kino;application/smil+xml
 kml;application/vnd.google-earth.kml+xml
 kmz;application/vnd.google-earth.kmz
 kne;application/vnd.kinar
@@ -776,6 +786,7 @@ mde;application/x-msaccess
 mdf;application/x-msaccess
 mdi;image/vnd.ms-modi
 mdp;application/dash+xml
+mdx;application/x-genesis-rom
 me;application/x-troff-me
 med;audio/x-mod
 mesh;model/mesh
@@ -902,6 +913,7 @@ ncx;application/x-dtbncx+xml
 nds;application/x-nintendo-ds-rom
 nef;image/x-nikon-nef
 nes;application/x-nes-rom
+nez;application/x-nes-rom
 nfo;text/x-nfo
 ngdat;application/vnd.nokia.n-gage.data
 nif;image/x-niff
@@ -978,6 +990,7 @@ otp;application/vnd.oasis.opendocument.presentation-template
 ots;application/vnd.oasis.opendocument.spreadsheet-template
 ott;application/vnd.oasis.opendocument.text-template
 owl;application/rdf+xml
+owx;application/x-owl+xml
 oxps;application/oxps
 oxt;application/vnd.openofficeorg.extension
 oza;application/x-oz-application
@@ -1124,6 +1137,9 @@ qfx;application/vnd.intu.qfx
 qgs;application/x-qgis
 qif;image/x-quicktime
 qml;text/x-qml
+qmlproject;text/x-qml
+qmltypes;text/x-qml
+qp;application/x-qpress
 qps;application/vnd.publishare-delta-tree
 qt;video/quicktime
 qtc;video/x-qtc
@@ -1265,6 +1281,8 @@ sfc;application/vnd.nintendo.snes.rom
 sfd-hdstx;application/vnd.hydrostatix.sof-data
 sfs;application/vnd.spotfire.sfs
 sfv;text/x-sfv
+sg;application/x-sms-rom
+sgb;application/x-gameboy-rom
 sgf;application/x-go-sgf
 sgi;image/vnd.sealedmedia.softseal.gif
 sgif;image/vnd.sealedmedia.softseal.gif
@@ -1316,7 +1334,7 @@ smh;application/vnd.sealed.mht
 smht;application/vnd.sealed.mht
 smi;application/smil
 smil;application/smil
-sml;application/smil
+sml;application/smil+xml
 smo;video/vnd.sealedmedia.softseal.mov
 smov;video/vnd.sealedmedia.softseal.mov
 smp3;audio/vnd.sealedmedia.softseal.mpeg
@@ -1485,7 +1503,9 @@ uls;text/x-iuls
 ult;audio/x-mod
 ulx;application/x-glulx
 umj;application/vnd.umajin
+unf;application/x-nes-rom
 uni;text/uri-list
+unif;application/x-nes-rom
 unis;text/uri-list
 unityweb;application/vnd.unity
 unv;application/x-i-deas
@@ -1511,6 +1531,7 @@ uvu;video/vnd.uvvu.mp4
 uvv;video/vnd.dece.video
 uvx;application/vnd.dece.unspecified
 uvz;application/vnd.dece.zip
+v64;application/x-n64-rom
 v;text/x-verilog
 val;x-chemical/x-ncbi-asn1-binary
 vala;text/x-vala
@@ -1720,6 +1741,7 @@ yang;application/yang
 yin;application/yin+xml
 yml;application/x-yaml
 z1;application/x-zmachine
+z64;application/x-n64-rom
 z;application/x-compress
 zabw;application/x-abiword
 zaz;application/vnd.zzazz.deck+xml
@@ -1731,6 +1753,7 @@ zmt;x-chemical/x-mopac-input
 zoo;application/x-zoo
 zsav;application/x-spss-sav
 zsh;text/x-script.zsh
+zz;application/zlib
 ~;application/x-trash
 
 76:application::
@@ -1811,7 +1834,7 @@ x-xzpdf;;
 x-zerosize;;
 x-zip-compressed-fb2;;
 
-462:application::E
+465:application::E
 x-123;wk,wk1;
 x-7z-compressed;7z;
 x-abiword;abw,zabw;
@@ -1934,12 +1957,12 @@ x-freelance;pre;
 x-freeloader;frl;
 x-freemind;mm;
 x-futuresplash;spl;
-x-gameboy-rom;gb;
+x-gameboy-rom;gb,gbc,cgb,sgb;
 x-gamecube-rom;iso;
-x-gba-rom;gba;
+x-gba-rom;gba,agb;
 x-gca-compressed;gca;
 x-gedcom;ged,gedcom;
-x-genesis-rom;gen;
+x-genesis-rom;gen,smd,32x,mdx;
 x-gettext-translation;gmo,mo;
 x-glade;glade;
 x-glulx;ulx;
@@ -2008,6 +2031,7 @@ x-java;class;
 x-javascript;js;
 x-jbuilder-project;jpr,jpx;
 x-jmol;jmz;
+x-jrd+json;jrd;
 x-jsonml+json;jsonml;
 x-karbon;karbon;
 x-kchart;chrt;
@@ -2097,12 +2121,12 @@ x-msword-template;dot;
 x-msword;doc,dot,wrd;base64
 x-mswrite;wri;
 x-msx-rom;msx;
-x-n64-rom;n64;
+x-n64-rom;n64,z64,v64;
 x-navi-animation;ani;
 x-navidoc;nvd;
 x-navimap;map;
 x-navistyle;stl;
-x-nes-rom;nes;
+x-nes-rom;nes,nez,unf,unif;
 x-netcdf;nc,cdf;
 x-netmc;mcp;
 x-netshow-channel;nsc;
@@ -2120,6 +2144,7 @@ x-omcdatamaker;omcd;
 x-omcregerator;omcr;
 x-omdoc+xml;omdoc;
 x-onenote;onetoc,onepkg,onetmp,onetoc2;
+x-owl+xml;owx;
 x-oz-application;oza;
 x-pagemaker;pm5,pt5,pm,pm4,p65,pm6,pmd;
 x-pak;pak;
@@ -2155,6 +2180,7 @@ x-python-bytecode;pyc,pyo;
 x-python-code;pyc,pyo;
 x-python;py;8bit
 x-qgis;qgs,shp,shx;
+x-qpress;qp;
 x-qpro;wb1;
 x-qtiplot;qti;
 x-quattropro;wb1,wb2,wb3;
@@ -2191,7 +2217,7 @@ x-silverlight;scr;
 x-sit;sit;
 x-sla;stl;
 x-smaf;mmf,smaf;
-x-sms-rom;sms,gg;
+x-sms-rom;sms,gg,sg;
 x-solids;sol;
 x-sounder;sdr;
 x-source-rpm;spm;
@@ -2275,7 +2301,7 @@ x-zip-compressed;zip;
 x-zmachine;z1;
 x-zoo;zoo;
 
-563:application:I:
+560:application:I:
 1d-interleaved-parityfec;;
 3gpp-ims+xml;;
 activemessage;;
@@ -2334,10 +2360,8 @@ iotp;;
 ipp;;
 isup;;
 its+xml;;
-json-patch+json;;
 kpml-request+xml;;
 kpml-response+xml;;
-ld+json;;
 link-format;;
 lostsync+xml;;
 macwriteii;;
@@ -2838,9 +2862,8 @@ xcon-conference-info+xml;;
 xcon-conference-info-diff+xml;;
 xhtml-voice+xml;;
 xmpp+xml;;
-zlib;;
 
-516:application:I:E
+520:application:I:E
 andrew-inset;ez;
 atom+xml;atom;8bit
 atomcat+xml;atomcat;
@@ -2867,7 +2890,9 @@ iges;iges,igs;
 inkml+xml;ink;
 ipfix;ipfix;
 javascript;js,jsm;8bit
+json-patch+json;json-patch;
 json;json,map;8bit
+ld+json;jsonld;
 lost+xml;lostxml;
 mac-binhex40;hqx;8bit
 mads+xml;mads;
@@ -2929,8 +2954,8 @@ set-registration-initiation;setreg;
 sgml-open-catalog;soc;
 shf+xml;shf;
 sieve;siv;
-smil+xml;smi,smil;
-smil;smi,smil,sml,kino;8bit
+smil+xml;smi,smil,sml,kino;
+smil;smi,smil;8bit
 sparql-query;rq;
 sparql-results+xml;srx;
 sql;sql;
@@ -2985,6 +3010,7 @@ vnd.cloanto.rp9;rp9;
 vnd.clonk.c4group;c4g,c4d,c4f,c4p,c4u;
 vnd.cluetrust.cartomobile-config-pkg;c11amz;
 vnd.cluetrust.cartomobile-config;c11amc;
+vnd.coffeescript;coffee;
 vnd.commonspace;csp;
 vnd.contact.cmsg;cdbcmsg;
 vnd.corel-draw;cdr;
@@ -3357,6 +3383,7 @@ xv+xml;mxml,xhvml,xvm,xvml;
 yang;yang;
 yin+xml;yin;
 zip;zip;base64
+zlib;zz;
 
 15:audio::
 x-eac3;;
@@ -3576,7 +3603,7 @@ vnd.rip;rip;
 vnd.rn-realaudio;ra,rax;
 vnd.sealedmedia.softseal.mpeg;smp3,smp,s1m;
 
-9:image::
+10:image::
 x-bzeps;;
 x-compressed-xcf;;
 x-dcraw;;
@@ -3585,6 +3612,7 @@ x-dpx;;
 x-example;;
 x-fpx;;
 x-gzeps;;
+x-tiff-multipage;;
 x-xcursor;;
 
 84:image::E
@@ -3685,7 +3713,7 @@ vnd.mix;;
 vnd.radiance;;
 vnd.svf;;
 
-39:image:I:E
+40:image:I:E
 cgm;cgm;
 fits;fits;
 g3fax;g3;
@@ -3725,6 +3753,7 @@ vnd.sealedmedia.softseal.gif;sgif,sgi,s1g;
 vnd.sealedmedia.softseal.jpg;sjpg,sjp,s1j;
 vnd.wap.wbmp;wbmp;
 vnd.xiff;xif;
+vnd.zbrush.pcx;pcx;
 
 2:message::
 x-example;;
@@ -3808,7 +3837,7 @@ report;;
 signed;;
 voice-message;;
 
-13:text::
+15:text::
 x-authors;;
 x-changelog;;
 x-comma-separated-values;;8bit
@@ -3819,11 +3848,13 @@ x-english;;
 x-example;;
 x-htmlh;;
 x-install;;
+x-meson;;
 x-readme;;
+x-scons;;
 x-uri;;
 x-xmcd;;
 
-122:text::E
+125:text::E
 x-adasrc;adb,ads;
 x-asm;s,asm;
 x-asp;asp;
@@ -3841,6 +3872,7 @@ x-component;htc;8bit
 x-csh;csh;
 x-csharp;cs;
 x-csrc;c;
+x-csv-schema;csvs;
 x-dcl;dcl;
 x-diff;diff,patch;
 x-dsl;dsl;
@@ -3850,6 +3882,7 @@ x-emacs-lisp;el;
 x-erlang;erl;
 x-event-stream;event-stream;
 x-fortran;f,f77,f90,for,f95;
+x-genie;gs;
 x-gettext-translation-template;pot;
 x-gettext-translation;po;
 x-go;go;
@@ -3894,9 +3927,10 @@ x-pascal;p,pas;
 x-patch;diff,patch;
 x-pcs-gcd;gcd;
 x-python;py,pyx,wsgi;
-x-qml;qml;
+x-qml;qml,qmltypes,qmlproject;
 x-reject;rej;
 x-rpm-spec;spec;
+x-rust;rs;
 x-scala;scala;
 x-scheme;scm,ss;
 x-scriplet;wsc;

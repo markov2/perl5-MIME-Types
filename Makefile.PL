@@ -1,8 +1,8 @@
 use ExtUtils::MakeMaker;
 
-require 5.008_008;
+require 5.006;
 
-my $version  = '2.11';   # scanned by bin/collect_types !
+my $version  = '2.12';   # scanned by bin/collect_types !
 
 WriteMakefile
   ( NAME      => 'MIME::Types'

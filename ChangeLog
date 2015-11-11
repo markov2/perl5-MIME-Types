@@ -6,6 +6,12 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.12: Wed 11 Nov 12:24:55 CET 2015
+
+	Improvements:
+	- downgrade prereq perl to 5.6 [Peter Rabbitson]
+	- update IANA
+
 version 2.11: Tue Jun 16 17:16:20 CEST 2015
 
 	Improvements:
