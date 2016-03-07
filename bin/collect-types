@@ -163,8 +163,8 @@ sub apache()
     while(<APACHE>)
     {   chomp;
         next if /^#|^\s*$/;
-        my ($type, $ext) = split /\s+/;
-        my @ext  = $ext ? (split / /, $ext) : ();
+        my ($type, $ext) = split ' ', $_, 2;
+        my @ext  = $ext ? (split ' ', $ext) : ();
         my $info = add_type $type, 'apache', \@ext;
         $found++;
     }

@@ -1,4 +1,4 @@
-1756:EXTENSIONS
+1791:EXTENSIONS
 #;application/x-mathcad
 %;application/x-trash
 123;application/vnd.lotus-1-2-3
@@ -119,6 +119,7 @@ blb;application/x-blorb
 bleep;application/x-bleeper
 blend;application/x-blender
 blender;application/x-blender
+blorb;application/x-blorb
 bm;image/x-bmp
 bmi;application/vnd.bmi
 bmp;image/x-bmp
@@ -153,11 +154,12 @@ cap;application/x-cap
 car;application/vnd.curl.car
 cascii;x-chemical/x-cactvs-binary
 cat;application/vnd.ms-pki.seccat
-cb7;application/x-cb7
+cb7;application/x-cbr
+cba;application/x-cbr
 cbin;x-chemical/x-cactvs-binary
 cbl;text/x-cobol
 cbr;application/x-cbr
-cbt;application/x-cbt
+cbt;application/x-cbr
 cbz;application/x-cbz
 cc;text/x-c++src
 ccad;application/x-clariscad
@@ -339,11 +341,12 @@ el;text/x-script.elisp
 elc;application/x-bytecode.elisp
 emb;x-chemical/x-embl-dl-nucleotide
 embl;x-chemical/x-embl-dl-nucleotide
-emf;image/x-emf
+emf;application/x-msmetafile
 eml;message/rfc822
 emm;application/vnd.ibm.electronic-media
 emma;application/emma+xml
 emp;application/vnd.emusic-emusic_package
+emz;application/x-msmetafile
 ent;application/vnd.nervana
 entity;application/vnd.nervana
 env;application/x-envoy
@@ -433,6 +436,7 @@ funk;audio/x-make
 fvt;video/vnd.fvt
 fxm;video/x-javafx
 fxp;application/vnd.adobe.fxp
+fxpl;application/vnd.adobe.fxp
 fzs;application/vnd.fuzzysheet
 g2w;application/vnd.geoplan
 g3;image/g3fax
@@ -589,6 +593,7 @@ inf;application/x-inf
 info;application/x-info
 ini;text/plain
 ink;application/inkml+xml
+inkml;application/inkml+xml
 inp;x-chemical/x-gamess-input
 ins;application/x-internet-signup
 install;application/x-install-instructions
@@ -764,7 +769,7 @@ maker;application/x-maker
 man;application/x-troff-man
 manifest;text/x-cache-manifest
 map;application/x-navimap
-mar;text/plain
+mar;application/octet-stream
 markdown;text/x-markdown
 mathml;application/mathml+xml
 mb;application/mathematica
@@ -809,10 +814,11 @@ mj2;video/mj2
 mjf;audio/x-vnd.audioexplosion.mjuicemediafile
 mjp2;video/mj2
 mjpg;video/x-motion-jpeg
-mk3d;video/x-matroska-3d
+mk3d;video/x-matroska
 mk;text/x-makefile
 mka;audio/x-matroska
 mkd;text/x-markdown
+mks;video/x-matroska
 mkv;video/x-matroska
 ml;text/x-ocaml
 mli;text/x-ocaml
@@ -842,6 +848,7 @@ mopcrt;x-chemical/x-mopac-input
 mov;video/quicktime
 movie;video/x-sgi-movie
 mp+;audio/x-musepack
+mp21;application/mp21
 mp2;audio/mpeg
 mp2a;audio/mpeg
 mp3;audio/mpeg
@@ -863,7 +870,7 @@ mpls;video/mp2t
 mpm;application/vnd.blueice.multipass
 mpn;application/vnd.mophun.application
 mpp;application/vnd.ms-project
-mpt;application/x-project
+mpt;application/vnd.ms-project
 mpv;video/x-matroska
 mpx;application/x-project
 mpy;application/vnd.ibm.minipay
@@ -919,6 +926,7 @@ ngdat;application/vnd.nokia.n-gage.data
 nif;image/x-niff
 niff;image/x-niff
 nim;video/vnd.nokia.interleaved-multimedia
+nitf;application/vnd.nitf
 nix;application/x-mix-transfer
 nlu;application/vnd.neurolanguage.nlu
 nml;application/vnd.enliven
@@ -1188,7 +1196,7 @@ rlc;image/vnd.fujixerox.edmics-rlc
 rld;application/resource-lists-diff+xml
 rle;image/x-rle
 rm;audio/x-pn-realaudio
-rmi;audio/x-mid
+rmi;audio/x-midi
 rmj;application/vnd.rn-realmedia
 rmm;audio/x-pn-realaudio
 rmp;audio/x-pn-realaudio-plugin
@@ -1444,6 +1452,7 @@ tcl;application/x-tcl
 tcsh;text/x-script.tcsh
 teacher;application/vnd.smart.teacher
 tei;application/tei+xml
+teicorpus;application/tei+xml
 tex;application/x-tex
 texi;application/x-texinfo
 texinfo;application/x-texinfo
@@ -1520,7 +1529,9 @@ utz;application/vnd.uiq.theme
 uu;text/x-uuencode
 uue;text/x-uuencode
 uva;audio/vnd.dece.audio
+uvd;application/vnd.dece.data
 uvf;application/vnd.dece.data
+uvg;image/vnd.dece.graphic
 uvh;video/vnd.dece.hd
 uvi;image/vnd.dece.graphic
 uvm;video/vnd.dece.mobile
@@ -1529,6 +1540,20 @@ uvs;video/vnd.dece.sd
 uvt;application/vnd.dece.ttml+xml
 uvu;video/vnd.uvvu.mp4
 uvv;video/vnd.dece.video
+uvva;audio/vnd.dece.audio
+uvvd;application/vnd.dece.data
+uvvf;application/vnd.dece.data
+uvvg;image/vnd.dece.graphic
+uvvh;video/vnd.dece.hd
+uvvi;image/vnd.dece.graphic
+uvvm;video/vnd.dece.mobile
+uvvp;video/vnd.dece.pd
+uvvs;video/vnd.dece.sd
+uvvt;application/vnd.dece.ttml+xml
+uvvu;video/vnd.uvvu.mp4
+uvvv;video/vnd.dece.video
+uvvx;application/vnd.dece.unspecified
+uvvz;application/vnd.dece.zip
 uvx;application/vnd.dece.unspecified
 uvz;application/vnd.dece.zip
 v64;application/x-n64-rom
@@ -1560,7 +1585,7 @@ vob;video/x-ms-vob
 voc;audio/x-voc
 vor;application/vnd.stardivision.writer
 vos;video/x-vosaic
-vox;audio/x-voxware
+vox;application/x-authorware-bin
 vqe;audio/x-twinvq-plugin
 vqf;audio/x-twinvq
 vql;audio/x-twinvq-plugin
@@ -1653,7 +1678,10 @@ x-png;image/png
 x32;application/x-authorware-bin
 x3d;model/x3d+xml
 x3db;model/x-x3d+binary
+x3dbz;model/x-x3d+binary
 x3dv;model/x-x3d+vrml
+x3dvz;model/x-x3d+vrml
+x3dz;model/x3d+xml
 x3f;image/x-sigma-x3f
 x_b;model/vnd.parasolid.transmit.binary
 x_t;model/vnd.parasolid.transmit.text
@@ -1687,13 +1715,13 @@ xl;application/x-excel
 xla;application/vnd.ms-excel
 xlam;application/vnd.ms-excel.addin.macroenabled.12
 xlb;application/vnd.ms-excel
-xlc;application/x-excel
+xlc;application/vnd.ms-excel
 xld;application/x-excel
 xlf;application/x-xliff+xml
 xliff;application/x-xliff
 xlk;application/x-excel
 xll;application/x-excel
-xlm;application/x-excel
+xlm;application/vnd.ms-excel
 xlr;application/vnd.ms-works
 xls;application/vnd.ms-excel
 xlsb;application/vnd.ms-excel.sheet.binary.macroenabled.12
@@ -1703,7 +1731,7 @@ xlt;application/vnd.ms-excel
 xltm;application/vnd.ms-excel.template.macroenabled.12
 xltx;application/vnd.openxmlformats-officedocument.spreadsheetml.template
 xlv;application/x-excel
-xlw;application/x-excel
+xlw;application/vnd.ms-excel
 xm;audio/x-xm
 xmf;audio/x-xmf
 xmi;text/x-xmi
@@ -1741,7 +1769,14 @@ yang;application/yang
 yin;application/yin+xml
 yml;application/x-yaml
 z1;application/x-zmachine
+z2;application/x-zmachine
+z3;application/x-zmachine
+z4;application/x-zmachine
+z5;application/x-zmachine
 z64;application/x-n64-rom
+z6;application/x-zmachine
+z7;application/x-zmachine
+z8;application/x-zmachine
 z;application/x-compress
 zabw;application/x-abiword
 zaz;application/vnd.zzazz.deck+xml
@@ -1854,7 +1889,7 @@ x-archive;a,ar;
 x-arj;arj;
 x-asp;asp;
 x-atomserv+xml;atomsrv;
-x-authorware-bin;aab,u32,vox,x32;
+x-authorware-bin;aab,x32,u32,vox;
 x-authorware-map;aam;
 x-authorware-seg;aas;
 x-awk;awk;
@@ -1868,7 +1903,7 @@ x-binhex;hqx;
 x-bittorrent;torrent;
 x-bleeper;bleep;base64
 x-blender;blender,blend,BLEND;
-x-blorb;blb;
+x-blorb;blb,blorb;
 x-book;boo,book;
 x-bsh;bsh,sh,shar;
 x-bytecode.elisp;elc;
@@ -1879,7 +1914,7 @@ x-bzip;bz,bz2;
 x-cab;cab;
 x-cap;cap,pcap;
 x-cb7;cb7;
-x-cbr;cbr;
+x-cbr;cbr,cba,cbt,cbz,cb7;
 x-cbt;cbt;
 x-cbz;cbz;
 x-ccmx;ccmx;
@@ -1916,7 +1951,7 @@ x-desktop;desktop,kdelnk;
 x-dgc-compressed;dgc;
 x-dia-diagram;dia;
 x-dia-shape;shape;
-x-director;dcr,dir,dxr,cct,cst,cxt,fgd,swa,w3d;
+x-director;dcr,dir,dxr,cst,cct,cxt,w3d,fgd,swa;
 x-dms;dms;
 x-docbook+xml;dbk,docbook;
 x-doom;wad;
@@ -1947,7 +1982,7 @@ x-font-snf;snf;
 x-font-speedo;spd;
 x-font-ttf;ttf,ttc;
 x-font-ttx;ttx;
-x-font-type1;pfa,afm,pfb,pfm,gsf;
+x-font-type1;pfa,pfb,pfm,afm,gsf;
 x-font-woff;woff;
 x-font;pfa,pfb,gsf,pcf,pcf.z;
 x-fractals;fif;
@@ -2063,7 +2098,7 @@ x-lrzip;lrz;
 x-lua-bytecode;luac;
 x-lyx;lyx;
 x-lz4;lz4;
-x-lzh-compressed;lzh;
+x-lzh-compressed;lzh,lha;
 x-lzh;lzh;
 x-lzip;lz;
 x-lzma-compressed-tar;tlz;
@@ -2106,11 +2141,11 @@ x-msbinder;obd;
 x-mscardfile;crd;
 x-msclip;clp;
 x-msdos-program;com,exe,bat,dll;base64
-x-msdownload;exe,bat,com,dll,msi;base64
+x-msdownload;exe,dll,com,bat,msi;base64
 x-msexcel;xla,xls,xlw;
 x-msi;msi;
 x-msmediaview;mvb,m13,m14;
-x-msmetafile;wmf;
+x-msmetafile;wmf,wmz,emf,emz;
 x-msmoney;mny;
 x-mspowerpoint;pot,pps,ppt,ppz;
 x-mspublisher;pub;
@@ -2143,7 +2178,7 @@ x-omc;omc;
 x-omcdatamaker;omcd;
 x-omcregerator;omcr;
 x-omdoc+xml;omdoc;
-x-onenote;onetoc,onepkg,onetmp,onetoc2;
+x-onenote;onetoc,onetoc2,onetmp,onepkg;
 x-owl+xml;owx;
 x-oz-application;oza;
 x-pagemaker;pm5,pt5,pm,pm4,p65,pm6,pmd;
@@ -2298,7 +2333,7 @@ x-xz-compressed-tar;txz;
 x-xz;xz;
 x-yaml;yaml,yml;
 x-zip-compressed;zip;
-x-zmachine;z1;
+x-zmachine;z1,z2,z3,z4,z5,z6,z7,z8;
 x-zoo;zoo;
 
 560:application:I:
@@ -2887,7 +2922,7 @@ font-woff;woff;
 gzip;gz;
 hyperstudio;stk;
 iges;iges,igs;
-inkml+xml;ink;
+inkml+xml;ink,inkml;
 ipfix;ipfix;
 javascript;js,jsm;8bit
 json-patch+json;json-patch;
@@ -2905,13 +2940,13 @@ mediaservercontrol+xml;mscml;
 metalink4+xml;meta4;
 mets+xml;mets;
 mods+xml;mods;
-mp21;m21;
+mp21;m21,mp21;
 mp4;mp4s,m4p;
 msword;doc,dot,w6w,wiz,word;
 mxf;mxf;
 ocsp-request;orq;
 ocsp-response;ors;
-octet-stream;dump,lhx,saveme,bpk,deploy,dist,distz,lrf,buffer;base64
+octet-stream;lrf,mar,dist,distz,bpk,dump,deploy,lhx,saveme,buffer;base64
 oda;oda;
 ogg;ogx;
 oxps;oxps,xps;
@@ -2963,7 +2998,7 @@ srgs+xml;grxml;
 srgs;gram;
 sru+xml;sru;
 ssml+xml;ssml;
-tei+xml;tei;
+tei+xml;tei,teicorpus;
 thraud+xml;tfi;
 timestamped-data;tsd;
 vnd.3gpp.pic-bw-large;plb;
@@ -2979,7 +3014,7 @@ vnd.acucorp;atc,acutc;7bit
 vnd.adobe.air-application-installer-package+zip;air;
 vnd.adobe.flash.movie;swf,spl;
 vnd.adobe.formscentral.fcdt;fcdt;
-vnd.adobe.fxp;fxp;
+vnd.adobe.fxp;fxp,fxpl;
 vnd.adobe.xdp+xml;xdp;
 vnd.adobe.xfdf;xfdf;
 vnd.ahead.space;ahead;
@@ -3029,10 +3064,10 @@ vnd.curl;curl;
 vnd.dart;dart;
 vnd.data-vision.rdz;rdz;
 vnd.debian.binary-package;deb,udeb;
-vnd.dece.data;uvf;
-vnd.dece.ttml+xml;uvt;
-vnd.dece.unspecified;uvx;
-vnd.dece.zip;uvz;
+vnd.dece.data;uvf,uvvf,uvd,uvvd;
+vnd.dece.ttml+xml;uvt,uvvt;
+vnd.dece.unspecified;uvx,uvvx;
+vnd.dece.zip;uvz,uvvz;
 vnd.denovo.fcselayout-link;fe_launch;
 vnd.dna;dna;
 vnd.dolby.mlp;mlp;
@@ -3058,7 +3093,7 @@ vnd.fdsn.mseed;mseed;
 vnd.fdsn.seed;seed,dataless;
 vnd.flographit;gph;
 vnd.fluxtime.clip;ftc;
-vnd.framemaker;fm,book,frame,maker;
+vnd.framemaker;fm,frame,maker,book;
 vnd.frogans.fnc;fnc;
 vnd.frogans.ltf;ltf;
 vnd.fsc.weblauch;fsc;7bit
@@ -3104,7 +3139,7 @@ vnd.hydrostatix.sof-data;sfd-hdstx;
 vnd.hzn-3d-crossword;x3d;
 vnd.ibm.electronic-media;emm;
 vnd.ibm.minipay;mpy;
-vnd.ibm.modcap;afp,list3820,listafp;
+vnd.ibm.modcap;afp,listafp,list3820;
 vnd.ibm.rights-management;irm;
 vnd.ibm.secure-container;sc;
 vnd.iccprofile;icc,icm;
@@ -3137,7 +3172,7 @@ vnd.kenameaapp;htke;
 vnd.kenameapp;htke;
 vnd.kidspiration;kia;
 vnd.kinar;kne,knp;
-vnd.koan;skp,skd,skm,skt;
+vnd.koan;skp,skd,skt,skm;
 vnd.kodak-descriptor;sse;
 vnd.las.las+xml;lasxml;
 vnd.llamagraphics.life-balance.desktop;lbd;
@@ -3176,7 +3211,7 @@ vnd.ms-excel.addin.macroenabled.12;xlam;
 vnd.ms-excel.sheet.binary.macroenabled.12;xlsb;
 vnd.ms-excel.sheet.macroenabled.12;xlsm;
 vnd.ms-excel.template.macroenabled.12;xltm;
-vnd.ms-excel;xls,xlt,xlb,xla,xlc,xll,xlm,xlw,xld;base64
+vnd.ms-excel;xls,xlt,xlb,xla,xlm,xlc,xlw,xll,xld;base64
 vnd.ms-fontobject;eot;
 vnd.ms-htmlhelp;chm;
 vnd.ms-ims;ims;
@@ -3197,7 +3232,7 @@ vnd.ms-publisher;pub;
 vnd.ms-tnef;tnef,tnf;base64
 vnd.ms-word.document.macroenabled.12;docm;
 vnd.ms-word.template.macroenabled.12;dotm;
-vnd.ms-works;wps,wcm,wdb,wks,xlr;base64
+vnd.ms-works;wps,wks,wcm,wdb,xlr;base64
 vnd.ms-wpl;wpl;base64
 vnd.ms-xpsdocument;xps;8bit
 vnd.mseq;mseq;
@@ -3207,7 +3242,7 @@ vnd.mynfc;taglet;
 vnd.nervana;ent,entity,req,request,bkm,kcm;
 vnd.neurolanguage.nlu;nlu;
 vnd.nintendo.snes.rom;sfc,smc;
-vnd.nitf;ntf;
+vnd.nitf;ntf,nitf;
 vnd.noblenet-directory;nnd;
 vnd.noblenet-sealer;nns;
 vnd.noblenet-web;nnw;
@@ -3379,7 +3414,7 @@ xml-external-parsed-entity;ent;
 xml;xml,xsl,xsd,xpdl,xbl,rng;8bit
 xop+xml;xop;
 xslt+xml;xslt,xsl;8bit
-xv+xml;mxml,xhvml,xvm,xvml;
+xv+xml;mxml,xhvml,xvml,xvm;
 yang;yang;
 yin+xml;yin;
 zip;zip;base64
@@ -3579,13 +3614,13 @@ basic;au,snd;base64
 evrc;evc;
 l16;l16;
 mp4;f4a,f4b,mp4a,m4a;
-mpeg;mpga,mp2,mp3,mpega,m4a,m2a,mpa,mpg,m3a,mp2a;base64
+mpeg;mpga,mp2,mp3,mpega,m4a,mp2a,m2a,m3a,mpa,mpg;base64
 ogg;ogg,oga,spx,opus;
 prs.sid;sid,psid;
 qcelp;qcp;
 smv;smv;
 vnd.audiokoz;koz;
-vnd.dece.audio;uva;
+vnd.dece.audio;uva,uvva;
 vnd.digital-winds;eol;7bit
 vnd.dra;dra;
 vnd.dts.hd;dtshd;
@@ -3637,7 +3672,7 @@ x-exr;exr;
 x-fax-g3;g3;
 x-fif;fif;
 x-florian;flo,turbot;
-x-freehand;fh,fh4,fh5,fh7,fhc;
+x-freehand;fh,fhc,fh4,fh5,fh7;
 x-fuji-raf;raf;
 x-icns;icns;
 x-icon;ico;
@@ -3730,7 +3765,7 @@ prs.btif;btif;
 svg+xml;svg,svgz;8bit
 tiff;tiff,tif;base64
 vnd.adobe.photoshop;psd;
-vnd.dece.graphic;uvi;
+vnd.dece.graphic;uvi,uvvi,uvg,uvvg;
 vnd.dgn;dgn;
 vnd.djvu;djvu,djv;
 vnd.dvb.subtitle;sub;
@@ -3781,15 +3816,15 @@ vnd.si.simp;;
 vnd.wfa.wsc;;
 
 1:message:I:E
-rfc822;eml,mht,mhtml,mime,nws;8bit
+rfc822;eml,mime,mht,mhtml,nws;8bit
 
 1:model::
 x-example;;
 
 3:model::E
 x-pov;pov;
-x-x3d+binary;x3db;
-x-x3d+vrml;x3dv;
+x-x3d+binary;x3db,x3dbz;
+x-x3d+vrml;x3dv,x3dvz;
 
 4:model:I:
 vnd.flatland.3dml;;
@@ -3809,7 +3844,7 @@ vnd.parasolid.transmit.binary;x_b,xmt_bin;
 vnd.parasolid.transmit.text;x_t,xmt_txt;quoted-printable
 vnd.vtu;vtu;
 vrml;wrl,vrml,wrz,vrm;
-x3d+xml;x3d;
+x3d+xml;x3d,x3dz;
 
 4:multipart::
 x-example;;
@@ -3863,7 +3898,7 @@ x-bibtex;bib;
 x-boo;boo;
 x-c++hdr;h++,hpp,hxx,hh,hp;
 x-c++src;c++,cpp,cxx,cc,C;
-x-c;c,cc,cpp,cxx,dic,h,hh;
+x-c;c,cc,cxx,cpp,h,hh,dic;
 x-cache-manifest;manifest,appcache;
 x-chdr;h;
 x-cmake;cmake;
@@ -3881,7 +3916,7 @@ x-eiffel;e,eif;
 x-emacs-lisp;el;
 x-erlang;erl;
 x-event-stream;event-stream;
-x-fortran;f,f77,f90,for,f95;
+x-fortran;f,for,f77,f90,f95;
 x-genie;gs;
 x-gettext-translation-template;pot;
 x-gettext-translation;po;
@@ -4021,16 +4056,16 @@ ecmascript;js;
 html;html,htm,htmlx,shtml,htx,acgi,htmls;8bit
 javascript;js;
 n3;n3;
-plain;txt,brf,conf,def,g,idc,list,lst,mar,sdml,in,ini;8bit
+plain;txt,brf,conf,def,list,in,g,idc,lst,sdml,ini;8bit
 prs.fallenstein.rst;rst;
 prs.lines.tag;dsc;
 richtext;rtx,rt,rtf;8bit
 rtf;rtf;8bit
 sgml;sgml,sgm;
 tab-separated-values;tsv;
-troff;t,man,me,ms,roff,tr;
+troff;t,tr,roff,man,me,ms;
 turtle;ttl;
-uri-list;uri,uni,unis,uris,urls;
+uri-list;uri,uris,urls,uni,unis;
 vcard;vcard,vcf,vct,gcrd;
 vnd.abc;abc;
 vnd.curl.dcurl;dcurl;
@@ -4080,7 +4115,7 @@ x-jpm;jpm,jpgm;
 x-la-asf;lsf,lsx;
 x-m4v;m4v;
 x-matroska-3d;mk3d;
-x-matroska;mpv,mkv;
+x-matroska;mpv,mkv,mk3d,mks;
 x-mng;mng;
 x-motion-jpeg;mjpg;
 x-mpeg;mp2,mp3;
@@ -4166,11 +4201,11 @@ mp4;mp4,f4v,f4p,mp4v,mpg4,m4v,lrv;
 mpeg;mp2,mpe,mpeg,mpg,m1v,m2v,mp3,mpa,vob;base64
 ogg;ogv,ogg;
 quicktime;qt,mov,moov,qtvr;base64
-vnd.dece.hd;uvh;
-vnd.dece.mobile;uvm;
-vnd.dece.pd;uvp;
-vnd.dece.sd;uvs;
-vnd.dece.video;uvv;
+vnd.dece.hd;uvh,uvvh;
+vnd.dece.mobile;uvm,uvvm;
+vnd.dece.pd;uvp,uvvp;
+vnd.dece.sd;uvs,uvvs;
+vnd.dece.video;uvv,uvvv;
 vnd.dvb.file;dvb;
 vnd.fvt;fvt;
 vnd.mpegurl;mxu,m4u,m1u;8bit
@@ -4182,7 +4217,7 @@ vnd.sealed.mpeg1;s11;
 vnd.sealed.mpeg4;smpg,s14;
 vnd.sealed.swf;sswf,ssw;
 vnd.sealedmedia.softseal.mov;smov,smo,s1q;
-vnd.uvvu.mp4;uvu;
+vnd.uvvu.mp4;uvu,uvvu;
 vnd.vivo;viv,vivo;
 
 54:x-chemical::E

@@ -6,6 +6,12 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.13: Mon  7 Mar 15:48:28 CET 2016
+
+	Fixes:
+	- not all information was extracted from the Apache tables.
+	  [Thomas Eckardt]
+
 version 2.12: Wed 11 Nov 12:24:55 CET 2015
 
 	Improvements:
