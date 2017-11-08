@@ -120,7 +120,7 @@ or M<MIME::Types::httpAcceptSelect()>.
 sub detect($$;$)
 {   my ($self, $accept, $prio) = @_;
     my $mt  = $self->mimeTypes;
-    my @ext = map $mt->type($_)->extensions,
+    my @ext = map $_->extensions, grep defined, map $mt->type($_),
         grep !/\*/, $mt->httpAccept($accept);
     \@ext;
 }
