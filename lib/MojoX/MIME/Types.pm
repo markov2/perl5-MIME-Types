@@ -1,3 +1,7 @@
+# This code is part of distribution MIME::Types.  Meta-POD processed with
+# OODoc into POD and HTML manual-pages.  See README.md
+# Copyright Mark Overmeer.  Licensed under the same terms as Perl itself.
+
 package MojoX::MIME::Types;
 use Mojo::Base -base;
 

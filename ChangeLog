@@ -6,6 +6,11 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.15: Fri 19 Jan 17:23:56 CET 2018
+
+	Improvements:
+	- moved to GIT and GitHUB.
+
 version 2.14: Wed  8 Nov 17:45:22 CET 2017
 
 	Fixes:
@@ -440,6 +445,8 @@ version 0.12:  Wed Nov 28 09:39:44 CET 2001
 	Mark Overmeer took the namespace over from Jeff Okamoto
 	- In scalar context MIME::Types::type will return only the
 	  first type that fits.
+
+version 0.11:
 
 version 0.10:  Sat Nov  3 22:46:22 2001
 	Mark Overmeer
