@@ -2,13 +2,13 @@
 use warnings;
 use strict;
 
-use HTML::Parser      ();
-use File::Glob        qw/bsd_glob/;
-use File::Basename    qw/basename dirname/;
-use File::Slurp::Tiny qw/read_file/;
-use XML::LibXML::Simple;
+use HTML::Parser        ();
+use File::Glob          qw/bsd_glob/;
+use File::Basename      qw/basename dirname/;
+use File::Slurp::Tiny   qw/read_file/;
+use XML::LibXML::Simple qw/XMLin/;
 
-use Data::Dumper      qw/Dumper/;
+use Data::Dumper        qw/Dumper/;
 $Data::Dumper::Indent = 1;
 
 my $iana_root   = 'sources/iana-media-types';
@@ -42,6 +42,9 @@ sub write_distributed();
 sub keep_sources($);
 sub scan_dist_version();
 sub add_type($$$);
+
+-d $iana_root
+    or die "First run bin/update_iana\n";
 
 my $dist_version = scan_dist_version;
 print "*** producing for release $dist_version\n";
@@ -102,8 +105,11 @@ my %broken_iana_ext =
  , 'video/vnd.nokia.mp4vr'  => '.mp4'
  );
 
-sub iana()
-{   print "* processing iana types\n";
+sub iana_templates()
+{   print "* processing iana template files\n";
+
+    # Find the template files from disk: some may have disappeared from
+    # the XML index.
 
     foreach my $fn (bsd_glob "$iana_root/*/*")
     {   -f $fn && $fn !~ /\.html$/ or next;
@@ -113,37 +119,65 @@ sub iana()
         my $type  = "$major/$minor";
 
         my @exts;
-		my $exts  = $broken_iana_ext{$type};
+        my $exts  = $broken_iana_ext{$type};
 
         $exts = $1
-		    if ! defined $exts
+            if ! defined $exts
             && read_file($fn) =~ /file extension.*?\:[ \t]*(.*)/i;
 
         if($exts)
         {   
-#warn "$fn\n$exts\n";
-			if(@exts = $exts =~ m/\.([a-zA-Z0-9_+-]+)/g)
+            if(@exts = $exts =~ m/\.([a-zA-Z0-9_+-]+)/g)
             {   # clear indication with leading dots;
             }
             else
             {   $exts =~ s/\([^)]*\)//g;
-                $exts =~ s/\b(?:n\/a|not applicable|not available|none defined|none|undef|undefined|unknown|do not apply|not designed yet| and )\b/ /gi;
+                $exts =~ s/\b
+                        (?: n\/a
+                          | not[ ]applicable
+                          | not[ ]available
+                          | none[ ]defined
+                          | none
+                          | undef
+                          | undefined
+                          | unknown
+                          | do[ ]not[ ]apply
+                          | not[ ]designed[ ]yet
+                          | [ ]and[ ]
+                          )\b/ /gix;
                 @exts = $exts =~ m/([a-zA-Z0-9_+-]+)/g;
-				@exts = grep $_ ne '-', @exts;
-				@exts = () if @exts > 5;   # sometimes a sentence
-			}
+            	@exts = grep $_ ne '-', @exts;
+            	@exts = () if @exts > 5;   # sometimes a sentence
+            }
         }
 
         my $info  = add_type $type, 'iana', \@exts;
-#warn "$type => @exts\n\n";
     }
 
-    # Description file missing
-    add_type 'text/plain', 'iana', [];
-
-#warn Dumper \%mimes;
     $last_count = keys %mimes;
     print "  . found $last_count registered types\n";
+}
+
+# Not all offical types have a description file, so we need the XML index
+# as well.  However, that does not contain filename extensions.
+
+sub iana_xml()
+{   print "* processing iana xml file\n";
+
+    my $doc = XMLin "$iana_root/media-types.xml", KeyAttr => [];
+    my $registry = $doc->{registry} or die;
+
+    foreach my $group (@$registry)
+    {   my $major   = $group->{id};
+        foreach my $record ( @{$group->{record} || []} )
+        {   my $minor = $record->{name};
+            add_type "$major/$minor", 'iana', [];
+        }
+    }
+
+    print "  . added ".(keys(%mimes) - $last_count)." types\n";
+    $last_count = keys %mimes;
+    print "  . now $last_count types\n";
 }
 
 #
@@ -328,12 +362,16 @@ sub simplify()
         # De-duplicate extensions (case-insensitive)
         my @types   = grep !$seen{lc $_}++, @{$exts{$ext}};
 
+        # Special overrules for common defaults
+        @types  = 'text/plain' if $ext eq 'txt';
+        @types  = 'text/html'  if $ext eq 'html';
+
         # The more generic types at the back
         my @last    = grep $back{lc $_}, @types;
         $exts{$ext} = [ (grep !$back{lc $_}, @types), @last ];
     }
 
-	### Simplify MIME types
+    ### Simplify MIME types
  
     foreach my $type (keys %mimes)
     {   my $info = $mimes{$type};
@@ -342,7 +380,8 @@ sub simplify()
         my %seen_ext;
         my @ext = grep !$seen_ext{lc $_}++, @{$info->{ext} || []};
 
-        # Insert extensions for base-types from the ext-list
+        # Insert extensions for base-types from the ext-list, because better
+        # to use a specific type than a generic type.
         if($iana_basetypes{$type})
         {   @ext = grep $type eq $exts{$_}[0], @ext;
         }
@@ -350,6 +389,7 @@ sub simplify()
         $info->{ext} = \@ext;
     }
 
+	#warn Dumper \%mimes, \%exts;
     print "  . found ".(keys %exts)." extensions\n";
 }
 
@@ -448,7 +488,8 @@ sub scan_dist_version()
 
 ### MAIN
 
-iana();
+iana_templates();
+iana_xml();
 my_own();
 apache();
 sitepoint();

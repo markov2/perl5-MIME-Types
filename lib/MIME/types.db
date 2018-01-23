@@ -500,9 +500,9 @@ elc;application/x-bytecode.elisp
 emb;x-chemical/x-embl-dl-nucleotide
 embl;x-chemical/x-embl-dl-nucleotide
 emf;image/emf
-eml;message/x-rfc822
+eml;message/rfc822
 emm;application/vnd.ibm.electronic-media
-emma;application/x-emma+xml
+emma;application/emma+xml
 emotionml;application/emotionml+xml
 emp;application/vnd.emusic-emusic_package
 emz;application/x-msmetafile
@@ -535,7 +535,7 @@ event-stream;text/x-event-stream
 evw;audio/evrcwb
 evy;application/x-envoy
 exe;application/vnd.microsoft.portable-executable
-exi;application/x-exi
+exi;application/exi
 exr;image/aces
 ext;application/vnd.novadigm.ext
 ez2;application/vnd.ezpix-album
@@ -634,7 +634,7 @@ gg;application/x-sms-rom
 ggb;application/vnd.geogebra.file
 ggt;application/vnd.geogebra.tool
 ghf;application/vnd.groove-help
-gif;image/x-gif
+gif;image/gif
 gim;application/vnd.groove-identity-message
 gjc;x-chemical/x-gaussian-input
 gjf;x-chemical/x-gaussian-input
@@ -717,7 +717,7 @@ hta;application/x-hta
 htc;text/x-component
 htke;application/vnd.kenameaapp
 htm;text/html
-html;application/vnd.dtg.local-html
+html;text/html
 htmls;text/html
 htmlx;text/html
 htt;text/x-webviewhtml
@@ -743,8 +743,8 @@ ics;text/calendar
 icz;text/calendar
 idc;text/plain
 idl;text/x-idl
-ief;image/x-ief
-iefs;image/x-ief
+ief;image/ief
+iefs;image/ief
 ifb;text/calendar
 iff;image/x-ilbm
 ifm;application/vnd.shana.informed.formdata
@@ -811,8 +811,8 @@ java;text/x-java
 jceks;application/x-java-jce-keystore
 jcm;application/x-java-commerce
 jdx;x-chemical/x-jcamp-dx
-jfif-tbnl;image/x-jpeg
-jfif;image/x-jpeg
+jfif-tbnl;image/jpeg
+jfif;image/jpeg
 jisp;application/vnd.jisp
 jks;application/x-java-keystore
 jls;image/jls
@@ -822,11 +822,11 @@ jng;image/x-jng
 jnlp;application/x-java-jnlp-file
 joda;application/vnd.joost.joda-archive
 jp2;image/jp2
-jpe;image/x-jpeg
-jpeg;image/x-jpeg
+jpe;image/jpeg
+jpeg;image/jpeg
 jpf;image/jpx
 jpg2;image/jp2
-jpg;image/x-jpeg
+jpg;image/jpeg
 jpgm;image/jpm
 jpgv;video/jpeg
 jpm;image/jpm
@@ -851,7 +851,7 @@ kdelnk;application/x-desktop
 kexi;application/x-kexiproject-sqlite2
 kexic;application/x-kexi-connectiondata
 kexis;application/x-kexiproject-shortcut
-key;application/x-pgp-keys
+key;application/pgp-keys
 kfo;application/vnd.kde.kformula
 kia;application/vnd.kidspiration
 kil;application/x-killustrator
@@ -873,7 +873,7 @@ ks;application/x-java-keystore
 ksh;application/x-ksh
 ksp;application/vnd.kde.kspread
 ktr;application/vnd.kahootz
-ktx;image/x-ktx
+ktx;image/ktx
 ktz;application/vnd.kahootz
 kud;application/x-kugar
 kwd;application/vnd.kde.kword
@@ -936,12 +936,12 @@ m13;application/x-msmediaview
 m14;application/x-msmediaview
 m15;audio/x-mod
 m1u;video/vnd.mpegurl
-m1v;video/x-mpeg
+m1v;video/mpeg
 m21;application/mp21
 m2a;audio/mpeg
 m2t;video/mp2t
 m2ts;video/mp2t
-m2v;video/x-mpeg
+m2v;video/mpeg
 m3a;audio/mpeg
 m3g;application/x-m3g
 m3u8;application/vnd.apple.mpegurl
@@ -965,7 +965,7 @@ manifest;text/cache-manifest
 map;application/x-navimap
 mar;application/octet-stream
 markdown;text/markdown
-mathml;application/x-mathml+xml
+mathml;application/mathml+xml
 mb;application/mathematica
 mbd;application/x-mbedlet
 mbk;application/vnd.mobius.mbk
@@ -989,7 +989,7 @@ mdp;application/dash+xml
 mdx;application/x-genesis-rom
 me;application/x-troff-me
 med;audio/x-mod
-mesh;model/x-mesh
+mesh;model/mesh
 meta4;application/metalink4+xml
 metalink;application/x-metalink+xml
 mets;application/mets+xml
@@ -998,13 +998,13 @@ mfm;application/vnd.mfmp
 mft;application/rpki-manifest
 mgp;application/vnd.osgeo.mapguide.package
 mgz;application/vnd.proteus.magazine
-mht;message/x-rfc822
-mhtml;message/x-rfc822
+mht;message/rfc822
+mhtml;message/rfc822
 mid;audio/sp-midi
 midi;audio/x-midi
 mie;application/x-mie
 mif;application/vnd.mif
-mime;message/x-rfc822
+mime;message/rfc822
 minipsf;audio/x-minipsf
 miz;text/mizar
 mj2;video/mj2
@@ -1061,12 +1061,12 @@ mpa;audio/mpeg
 mpc;application/vnd.mophun.certificate
 mpd;application/dash+xml
 mpdd;application/dashdelta
-mpe;video/x-mpeg
-mpeg;video/x-mpeg
+mpe;video/mpeg
+mpeg;video/mpeg
 mpega;audio/mpeg
 mpf;application/media-policy-dataset+xml
 mpg4;application/mp4
-mpg;video/x-mpeg
+mpg;video/mpeg
 mpga;audio/mpeg
 mpkg;application/vnd.apple.installer+xml
 mpl;video/mp2t
@@ -1091,7 +1091,7 @@ msd;application/vnd.fdsn.mseed
 mseed;application/vnd.fdsn.mseed
 mseq;application/vnd.mseq
 msf;application/vnd.epson.msf
-msh;model/x-mesh
+msh;model/mesh
 msi;application/x-msi
 msl;application/vnd.mobius.msl
 msm;model/vnd.gs-gdl
@@ -1156,7 +1156,7 @@ nt;application/n-triples
 ntf;application/vnd.nitf
 nvd;application/x-navidoc
 nwc;application/x-nwc
-nws;message/x-rfc822
+nws;message/rfc822
 nzb;application/x-nzb
 o;application/x-object
 oa2;application/vnd.fujitsu.oasys2
@@ -1297,7 +1297,7 @@ pkg;application/vnd.apple.installer+xml
 pki;application/pkixcmp
 pkipath;application/pkix-pkipath
 pko;application/vnd.ms-pki.pko
-pkr;application/x-pgp-keys
+pkr;application/pgp-keys
 pl;application/x-perl
 pla;audio/x-iriver-pla
 plb;application/vnd.3gpp.pic-bw-large
@@ -1460,16 +1460,16 @@ rp;image/vnd.rn-realpix
 rpm;application/x-redhat-package-manager
 rpss;application/vnd.nokia.radio-presets
 rpst;application/vnd.nokia.radio-preset
-rq;application/x-sparql-query
+rq;application/sparql-query
 rs;application/rls-services+xml
 rsd;application/x-rsd+xml
 rsheet;application/urc-ressheet+xml
 rsm;model/vnd.gs-gdl
 rss;application/x-rss+xml
 rst;text/prs.fallenstein.rst
-rt;text/x-richtext
+rt;text/richtext
 rtf;application/rtf
-rtx;text/x-richtext
+rtx;text/richtext
 rusd;application/route-usd+xml
 rv;video/vnd.rn-realvideo
 rvx;video/vnd.rn-realvideo
@@ -1568,7 +1568,7 @@ sieve;application/sieve
 sig;application/pgp-signature
 sik;application/x-trash
 sil;audio/x-silk
-silo;model/x-mesh
+silo;model/mesh
 sis;application/vnd.symbian.install
 sisx;x-epoc/x-sisx-app
 sit;application/x-stuffit
@@ -1581,7 +1581,7 @@ sk;image/x-skencil
 skd;application/x-koan
 skm;application/x-koan
 skp;application/x-koan
-skr;application/x-pgp-keys
+skr;application/pgp-keys
 skt;application/x-koan
 sl;text/vnd.wap.sl
 sla;application/vnd.scribus
@@ -1642,7 +1642,7 @@ src;application/x-wais-source
 srf;image/x-sony-srf
 srt;application/x-subrip
 sru;application/sru+xml
-srx;application/x-sparql-results+xml
+srx;application/sparql-results+xml
 ss;text/x-scheme
 ssa;text/x-ssa
 ssdl;application/x-ssdl+xml
@@ -1680,8 +1680,8 @@ sv;text/x-svsrc
 svc;application/vnd.dvb_service
 svd;application/vnd.svd
 svf;image/vnd.dwg
-svg;image/x-svg+xml
-svgz;image/x-svg+xml
+svg;image/svg+xml
+svgz;image/svg+xml
 svh;text/x-svhdr
 svr;application/x-world
 sw;x-chemical/x-swissprot
@@ -1783,7 +1783,7 @@ twd;application/vnd.simtech-mindmapper
 twds;application/vnd.simtech-mindmapper
 txd;application/vnd.genomatix.tuxedo
 txf;application/vnd.mobius.txf
-txt;text/prs.fallenstein.rst
+txt;text/plain
 txz;application/x-xz-compressed-tar
 tzo;application/x-tzo
 u32;application/x-authorware-bin
@@ -1887,7 +1887,7 @@ vqe;audio/x-twinvq-plugin
 vqf;audio/x-twinvq
 vql;audio/x-twinvq-plugin
 vrm;x-world/x-vrml
-vrml;model/x-vrml
+vrml;model/vrml
 vrt;x-world/x-vrt
 vsc;application/vnd.vidsoft.vidconference
 vsd;application/vnd.visio
@@ -1963,8 +1963,8 @@ wq1;application/x-lotus
 wqd;application/vnd.wqd
 wrd;application/x-msword
 wri;application/x-mswrite
-wrl;model/x-vrml
-wrz;model/x-vrml
+wrl;model/vrml
+wrz;model/vrml
 wsc;text/x-scriptlet
 wsdl;application/wsdl+xml
 wsgi;text/x-python
@@ -2075,7 +2075,7 @@ xsd;application/xml
 xsf;application/prs.xsf+xml
 xsl;application/xml
 xslfo;text/x-xslfo
-xslt;application/x-xslt+xml
+xslt;application/xslt+xml
 xsm;application/vnd.syncml+xml
 xspf;application/x-xspf+xml
 xsr;video/x-amt-showrun
@@ -2118,7 +2118,7 @@ zsh;text/x-script.zsh
 zz;application/zlib
 ~;application/x-trash
 
-65:application::
+61:application::
 x-access;;
 x-amf;;
 x-appledouble;;base64
@@ -2147,7 +2147,6 @@ x-gzpdf;;
 x-gzpostscript;;
 x-ideas;;
 x-iff;;
-x-index.obj;;
 x-ipod-firmware;;
 x-java-applet;;
 x-java-bean;;
@@ -2156,15 +2155,12 @@ x-kspread-crypt;;
 x-ksysv-package;;
 x-kword-crypt;;
 x-lotus-123;;
-x-mathml-content+xml;;
-x-mathml-presentation+xml;;
 x-matroska;;
 x-mozilla-bookmarks;;
 x-ms-tnef;;
 x-nautilus-link;;
 x-news-message-id;;
 x-ole-storage;;
-x-parityfec;;
 x-pef-executable;;
 x-profile;;
 x-raw-disk-image-xz-compressed;;
@@ -2185,7 +2181,7 @@ x-xzpdf;;
 x-zerosize;;
 x-zip-compressed-fb2;;
 
-465:application::E
+458:application::E
 x-123;wk,wk1;
 x-7z-compressed;7z;
 x-abiword;abw,zabw;
@@ -2280,12 +2276,10 @@ x-dxf;dxf;
 x-e-theme;etheme;
 x-egon;egon;
 x-elc;elc;
-x-emma+xml;emma;
 x-envoy;evy,env;
 x-esrehber;es;
 x-eva;eva;
 x-excel;xl,xla,xlb,xlc,xld,xlk,xll,xlm,xls,xlt,xlv,xlw;
-x-exi;exi;
 x-fictionbook+xml;fb2;
 x-fluid;fl;
 x-font-afm;afm;
@@ -2430,7 +2424,6 @@ x-magicpoint;mgp;
 x-maker;frm,maker,frame,fm,fb,book,fbdoc;
 x-markaby;mab;
 x-mathcad;#,mcd;mcd,
-x-mathml+xml;mathml,mml;
 x-mbedlet;mbd;
 x-mcad;mcd;
 x-meme;mm;
@@ -2501,7 +2494,6 @@ x-partial-download;wkdownload,crdownload,part;
 x-pc-engine-rom;pce;
 x-pcl;pcl;
 x-perl;pl,pm,al,perl,pod,t;8bit
-x-pgp-keys;key,skr,pkr,asc,pgp,gpg;7bit
 x-pgp;pgp;
 x-php;php,php3,php4,php5,phps;
 x-pics-rules;prf;
@@ -2569,8 +2561,6 @@ x-sms-rom;sms,gg,sg;
 x-solids;sol;
 x-sounder;sdr;
 x-source-rpm;spm;
-x-sparql-query;rq;
-x-sparql-results+xml;srx;
 x-sprite;spr,sprite;
 x-spss-por;por;
 x-spss-sav;sav,zsav;
@@ -2643,7 +2633,6 @@ x-xliff+xml;xlf;
 x-xliff;xlf,xliff;
 x-xpinstall;xpi;
 x-xproc+xml;xpl;
-x-xslt+xml;xslt,xsl;8bit
 x-xspf+xml;xspf;
 x-xz-compressed-tar;txz;
 x-xz;xz;
@@ -2652,7 +2641,7 @@ x-zip-compressed;zip;
 x-zmachine;z1,z2,z3,z4,z5,z6,z7,z8;
 x-zoo;zoo;
 
-446:application:I:
+462:application:I:
 1d-interleaved-parityfec;;
 3gpdash-qoe-report+xml;;
 3gpp-ims+xml;;
@@ -2694,11 +2683,14 @@ eshop;;
 example;;
 fastinfoset;;
 fastsoap;;
+font-sfnt - deprecated in favor of font/sfnt;;
 font-sfnt;;
+font-woff - deprecated in favor of font/woff;;
 framework-attributes+xml;;
 geo+json-seq;;
 geoxacml+xml;;
 h224;;
+hash(0x19b7528);;
 http;;
 ibe-key-request+xml;;
 ibe-pkg-reply+xml;;
@@ -2706,6 +2698,7 @@ ibe-pp-data;;
 im-iscomposing+xml;;
 index-obj;;
 index.cmd;;
+index.obj;;
 index.response;;
 index.vnd;;
 index;;
@@ -2722,6 +2715,8 @@ kpml-request+xml;;
 kpml-response+xml;;
 macwriteii;;
 mathematica-old;;
+mathml-content+xml;;
+mathml-presentation+xml;;
 mbms-associated-procedure-description+xml;;
 mbms-deregister+xml;;
 mbms-envelope+xml;;
@@ -2743,6 +2738,7 @@ mosskey-request;;
 mpeg4-generic;;
 msc-ivr+xml;;
 msc-mixer+xml;;
+mud+json (temporary - registered 2016-11-17, extension registered 2017-10-02, expires 2018-11-17);;
 mud+json;;
 nasdata;;
 news-checkgroups;;
@@ -2750,6 +2746,7 @@ news-groupinfo;;
 news-transmission;;
 nlsml+xml;;
 nss;;
+parityfec;;
 passport;;
 pidf+xml;;
 poc-settings+xml;;
@@ -2781,6 +2778,7 @@ sgml;;
 simple-message-summary;;
 simplesymbolcontainer;;
 slate;;
+smil - obsoleted in favor of application/smil+xml;;
 smpte336m;;
 soap+fastinfoset;;
 soap+xml;;
@@ -2820,6 +2818,7 @@ vnd.ah-barcode;;
 vnd.apache.thrift.binary;;
 vnd.apache.thrift.compact;;
 vnd.apache.thrift.json;;
+vnd.arastra.swi - obsoleted in favor of application/vnd.aristanetworks.swi;;
 vnd.artsquare;;
 vnd.bbf.usp.msg+json;;
 vnd.bbf.usp.msg;;
@@ -2868,6 +2867,8 @@ vnd.ecowin.fileupdate;;
 vnd.ecowin.series;;
 vnd.ecowin.seriesrequest;;
 vnd.ecowin.seriesupdate;;
+vnd.efi.img;;
+vnd.efi.iso;;
 vnd.emclient.accessrequest+xml;;
 vnd.enphase.envoy;;
 vnd.etsi.aoc+xml;;
@@ -2896,11 +2897,14 @@ vnd.fujixerox.art-ex;;
 vnd.fujixerox.art4;;
 vnd.fujixerox.hbpl;;
 vnd.fut-misnet;;
+vnd.geocube+xml - obsoleted by request;;
 vnd.globalplatform.card-content-mgt-response;;
 vnd.globalplatform.card-content-mgt;;
+vnd.gmx - deprecated;;
 vnd.gridmp;;
 vnd.httphone;;
 vnd.ibm.afplinedata;;
+vnd.informix-visionary - obsoleted in favor of application/vnd.visionary;;
 vnd.innopath.wamp.notification;;
 vnd.intertrust.digibox;;
 vnd.intertrust.nncp;;
@@ -2957,6 +2961,7 @@ vnd.nokia.isds-radio-presets;;
 vnd.nokia.landmark+wbxml;;
 vnd.nokia.landmark+xml;;
 vnd.nokia.landmarkcollection+xml;;
+vnd.nokia.n-gage.symbian.install - obsolete; no replacement given;;
 vnd.nokia.ncd;;
 vnd.nokia.pcd+wbxml;;
 vnd.nokia.pcd+xml;;
@@ -3100,7 +3105,7 @@ yang-data+xml;;
 yang-patch+json;;
 yang-patch+xml;;
 
-901:application:I:E
+908:application:I:E
 a2l;a2l;
 aml;aml;
 andrew-inset;ez;
@@ -3161,9 +3166,11 @@ emergencycalldata.providerinfo+xml;xml;
 emergencycalldata.serviceinfo+xml;xml;
 emergencycalldata.subscriberinfo+xml;xml;
 emergencycalldata.veds+xml;xml;
+emma+xml;emma;
 emotionml+xml;emotionml;
 epp+xml;xml;
 epub+zip;epub;
+exi;exi;
 fdt+xml;fdt;
 fits;fits;
 font-tdpfr;PFR;
@@ -3194,6 +3201,7 @@ mads+xml;mads;
 marc;mrc;
 marcxml+xml;mrcx;
 mathematica;nb,ma,mb,nbp;
+mathml+xml;mathml,mml;
 mbox;mbox;
 media-policy-dataset+xml;mpf,xml;
 mediaservercontrol+xml;mscml;
@@ -3226,6 +3234,7 @@ patch-ops-error+xml;xer;
 pdf;pdf;base64
 pdx;pdx;
 pgp-encrypted;pgp,gpg,asc;7bit
+pgp-keys;key,skr,pkr,asc,pgp,gpg;7bit
 pgp-signature;asc,sig,pgp,gpg;base64
 pidf-diff+xml;xml;
 pkcs10;p10;
@@ -3277,6 +3286,8 @@ sieve;siv,sieve;
 simple-filter+xml;cl,xml;
 smil+xml;smi,smil,sml,kino;
 smil;smil,smi,sml;8bit
+sparql-query;rq;
+sparql-results+xml;srx;
 sql;sql;
 srgs+xml;grxml;
 srgs;gram;
@@ -3997,20 +4008,19 @@ xml-external-parsed-entity;xml,ent;
 xml-patch+xml;xml;
 xml;xml,xsl,xsd,xpdl,xbl,rng;8bit
 xop+xml;XOP;
+xslt+xml;xslt,xsl;8bit
 xv+xml;mxml,xhvml,xvml,xvm;
 yang;yang;
 yin+xml;yin;
 zip;zip;base64
 zlib;zz;
 
-5:audio::
+3:audio::
 x-g.722.1;;
-x-g7291;;
 x-isac;;
-x-parityfec;;
 x-riff;;
 
-67:audio::E
+66:audio::E
 x-aac;aac;
 x-adpcm;adp,snd;
 x-aifc;aifc,aiffc;
@@ -4053,7 +4063,6 @@ x-pn-realaudio;rm,ram,ra,rmm,rmp;base64
 x-psf;psf;
 x-psflib;psflib;
 x-psid;sid;
-x-qcelp;qcp;
 x-realaudio;ra;base64
 x-s3m;s3m;
 x-scpls;pls;
@@ -4079,7 +4088,7 @@ x-xi;xi;
 x-xm;xm;
 x-xmf;xmf;
 
-98:audio:I:
+101:audio:I:
 1d-interleaved-parityfec;;
 3gpp2;;
 amr-wb+;;
@@ -4118,6 +4127,7 @@ g726-24;;
 g726-32;;
 g726-40;;
 g728;;
+g7291;;
 g729;;
 g729d;;
 g729e;;
@@ -4138,6 +4148,7 @@ mpa-robust;;
 mpa;;
 mpeg4-generic;;
 opus;;
+parityfec;;
 pcma-wb;;
 pcma;;
 pcmu-wb;;
@@ -4174,12 +4185,13 @@ vnd.dolby.pl2x;;
 vnd.dolby.pl2z;;
 vnd.dolby.pulse.1;;
 vnd.octel.sbc;;
+vnd.qcelp - deprecated in favor of audio/qcelp;;
 vnd.rhetorex.32kadpcm;;
 vnd.vmx.cvsd;;
 vorbis-config;;
 vorbis;;
 
-49:audio:I:E
+50:audio:I:E
 32kadpcm;726;
 3gpp;3gp,3gpp;
 ac3;ac3;
@@ -4203,6 +4215,7 @@ mp4;mp4,mpg4,f4a,f4b,m4a,mp4a;
 mpeg;mp1,mp2,mp3,mpga,mpega,m4a,mp2a,m2a,m3a,mpa,mpg;base64
 ogg;oga,ogg,spx,opus;
 prs.sid;sid,psid;
+qcelp;qcp;
 smv-qcp;qcp;
 smv;smv;
 sp-midi;mid;
@@ -4243,18 +4256,20 @@ ttf;ttf;
 woff2;woff2;
 woff;woff;
 
-9:image::
+11:image::
 x-bzeps;;
 x-compressed-xcf;;
 x-dcraw;;
 x-dib;;
 x-dpx;;
+x-emf - deprecated in favor of image/emf;;
 x-fpx;;
 x-gzeps;;
 x-tiff-multipage;;
+x-wmf - deprecated in favor of image/wmf;;
 x-xcursor;;
 
-89:image::E
+84:image::E
 x-3ds;3ds;
 x-adobe-dng;dng;
 x-applix-graphics;ag;
@@ -4278,20 +4293,16 @@ x-fif;fif;
 x-florian;flo,turbot;
 x-freehand;fh,fhc,fh4,fh5,fh7;
 x-fuji-raf;raf;
-x-gif;gif;base64
 x-icns;icns;
 x-icon;ico;
-x-ief;ief,iefs;base64
 x-ilbm;iff,ilbm,lbm;
 x-jg;art;
 x-jng;jng;
-x-jpeg;jpeg,jpg,jpe,jfif,jfif-tbnl;base64
 x-jps;jps;
 x-jutvision;jut;
 x-kodak-dcr;dcr;
 x-kodak-k25;k25;
 x-kodak-kdc;kdc;
-x-ktx;ktx;
 x-lwo;lwo,lwob;
 x-lws;lws;
 x-macpaint;pntg;
@@ -4327,7 +4338,6 @@ x-sony-sr2;sr2;
 x-sony-srf;srf;
 x-sun-raster;sun;
 x-svg+xml-compressed;svgz;
-x-svg+xml;svg,svgz;8bit
 x-targa;tga;
 x-tga;tga,icb,tpic,vda,vst;
 x-tiff;tif,tiff;
@@ -4353,7 +4363,7 @@ vnd.cns.inf2;;
 vnd.mix;;
 vnd.svf;;
 
-55:image:I:E
+60:image:I:E
 aces;exr;
 bmp;bmp,dib,bm;
 cgm;cgm;
@@ -4361,14 +4371,19 @@ dicom-rle;drle;
 emf;emf;
 fits;fits;
 g3fax;g3;
+gif;gif;base64
+ief;ief,iefs;base64
 jls;jls;
 jp2;jp2,jpg2,jpx,jpf;base64
+jpeg;jpeg,jpg,jpe,jfif,jfif-tbnl;base64
 jpm;jpm,jpgm;
 jpx;jpf,jpx;
+ktx;ktx;
 naplps;nap,naplps;
 png;png,x-png;base64
 prs.btif;btif,btf;
 prs.pti;pti;
+svg+xml;svg,svgz;8bit
 t38;T38;
 tiff-fx;TFX;
 tiff;TIF,tiff;base64
@@ -4410,40 +4425,38 @@ vnd.xiff;xif;
 vnd.zbrush.pcx;pcx;
 wmf;wmf;
 
-3:message::
-x-external-body;;8bit
+1:message::
 x-gnu-rmail;;
-x-partial;;8bit
 
-1:message::E
-x-rfc822;eml,mime,mht,mhtml,nws;8bit
-
-12:message:I:
+16:message:I:
 cpim;;
 delivery-status;;
 example;;
+external-body;;8bit
 feedback-report;;
 global-headers;;
 http;;
+news - obsoleted by rfc5537;;
 news;;8bit
+partial;;8bit
 s-http;;
 sip;;
 sipfrag;;
 tracking-status;;
+vnd.si.simp - obsoleted by request;;
 vnd.si.simp;;
 
-6:message:I:E
+7:message:I:E
 disposition-notification;disposition-notification;
 global-delivery-status;u8dsn;
 global-disposition-notification;u8mdn;
 global;u8msg;
 imdn+xml;cl,xml;
+rfc822;eml,mime,mht,mhtml,nws;8bit
 vnd.wfa.wsc;WSC;
 
-5:model::E
-x-mesh;msh,mesh,silo;
+3:model::E
 x-pov;pov;
-x-vrml;wrl,vrml,wrz,vrm;
 x-x3d+binary;x3db,x3dbz;
 x-x3d+vrml;x3dv,x3dvz;
 
@@ -4452,11 +4465,12 @@ example;;
 vnd.gs.gdl;;
 vnd.rosette.annotated-data-model;;
 
-23:model:I:E
+25:model:I:E
 3mf;3mf;
 gltf+json;gltf;
 gltf-binary;glb;
 iges;igs,iges;
+mesh;msh,mesh,silo;
 vnd-dwf;dwf;
 vnd.collada+xml;dae;
 vnd.dwf;dwf;
@@ -4473,16 +4487,13 @@ vnd.parasolid.transmit.binary;X_B,xmt_bin;
 vnd.parasolid.transmit.text;X_T,xmt_txt;quoted-printable
 vnd.valve.source.compiled-map;bsp;
 vnd.vtu;vtu;
+vrml;wrl,vrml,wrz,vrm;
 x3d+fastinfoset;x3db;
 x3d+xml;x3d,x3dz;
 x3d-vrml;x3dv;
 
-7:multipart::
-x-alternative;;8bit
-x-digest;;8bit
+3:multipart::
 x-mixed-replace;;
-x-mixed;;8bit
-x-parallel;;8bit
 x-tar;;
 x-www-form-urlencoded;;
 
@@ -4491,14 +4502,18 @@ x-gzip;gzip;
 x-ustar;ustar;
 x-zip;zip;
 
-10:multipart:I:
+14:multipart:I:
+alternative;;8bit
 appledouble;;8bit
 byteranges;;
+digest;;8bit
 encrypted;;
 example;;
 form-data;;
 header-set;;
+mixed;;8bit
 multilingual;;
+parallel;;8bit
 related;;
 report;;
 signed;;
@@ -4507,7 +4522,7 @@ signed;;
 vnd.bint.med-plus;bmed;
 voice-message;VPM;
 
-16:text::
+14:text::
 x-authors;;
 x-changelog;;
 x-comma-separated-values;;8bit
@@ -4515,17 +4530,15 @@ x-copying;;
 x-credits;;
 x-crontab;;
 x-english;;
-x-enriched;;
 x-htmlh;;
 x-install;;
 x-meson;;
-x-parityfec;;
 x-readme;;
 x-scons;;
 x-uri;;
 x-xmcd;;
 
-124:text::E
+123:text::E
 x-adasrc;adb,ads;
 x-asm;s,asm;
 x-asp;asp;
@@ -4598,7 +4611,6 @@ x-pcs-gcd;gcd;
 x-python;py,pyx,wsgi;
 x-qml;qml,qmltypes,qmlproject;
 x-reject;rej;
-x-richtext;rtx,rt,rtf;8bit
 x-rpm-spec;spec;
 x-rust;rs;
 x-scala;scala;
@@ -4651,14 +4663,19 @@ x-webviewhtml;htt;
 x-xmi;xmi;
 x-xslfo;fo,xslfo;
 
-23:text:I:
+29:text:I:
 1d-interleaved-parityfec;;
+directory - deprecated by rfc6350;;
 directory;;
+ecmascript - obsoleted in favor of application/ecmascript;;
 encaprtp;;
+enriched;;
 example;;
 fwdred;;
 grammar-ref-list;;
+javascript - obsoleted in favor of application/javascript;;
 parameters;;
+parityfec;;
 provenance-notation;;
 raptorfec;;
 red;;
@@ -4675,8 +4692,9 @@ vnd.flatland.3dml;;
 vnd.latex-z;;
 vnd.motorola.reflex;;
 vnd.radisys.msml-basic-layout;;
+vnd.si.uricatalogue - obsoleted by request;;
 
-55:text:I:E
+56:text:I:E
 cache-manifest;appcache,manifest;
 calendar;ics,icz,ifb,vcs;
 css;css;8bit
@@ -4690,10 +4708,11 @@ jcr-cnd;cnd;
 markdown;md,markdown,mkd;
 mizar;miz;
 n3;n3;
-plain;brf,conf,def,list,in,g,idc,lst,sdml,ini;8bit
+plain;txt,brf,conf,def,list,in,g,idc,lst,sdml,ini;8bit
 prs.fallenstein.rst;txt,rst;
 prs.lines.tag;tag,dsc;
 prs.prop.logic;txt;
+richtext;rtx,rt,rtf;8bit
 rtf;rtf;8bit
 sgml;sgml,sgm;
 tab-separated-values;tsv;
@@ -4733,11 +4752,9 @@ vnd.wap.wmlscript;wmls;
 xml-external-parsed-entity;xml,ent;
 xml;xml;
 
-5:video::
+3:video::
 x-anim;;
 x-isivideo;;
-x-parityfec;;
-x-raw;;
 x-wavelet;;
 
 43:video::E
@@ -4763,7 +4780,7 @@ x-matroska-3d;mk3d;
 x-matroska;mpv,mkv,mk3d,mks;
 x-mng;mng;
 x-motion-jpeg;mjpg;
-x-mpeg;mp2,mpe,mpeg,mpg,m1v,m2v,mp3,mpa,vob;base64
+x-mpeg;mp2,mp3;
 x-mpeq2a;mp2;
 x-ms-asf-plugin;asx;
 x-ms-asf;asf,asx;
@@ -4785,7 +4802,7 @@ x-vivo;viv,vivo;
 x-vosaic;vos;
 x-webm;webm;base64
 
-46:video:I:
+48:video:I:
 1d-interleaved-parityfec;;
 3gpp-tt;;
 bmpeg;;
@@ -4805,8 +4822,10 @@ mp4v-es;;
 mpeg4-generic;;
 mpv;;
 nv;;
+parityfec;;
 pointer;;
 raptorfec;;
+raw;;
 rtp-enc-aescm128;;
 rtploopback;;
 rtx;;
@@ -4833,7 +4852,7 @@ vnd.mts;;
 vnd.nokia.videovoip;;
 vp8;;
 
-41:video:I:E
+42:video:I:E
 3gpp2;3g2,3gpp2,3gp2;base64
 3gpp;3gp,3gpp,3ga;base64
 dv;dif,dv;
@@ -4846,6 +4865,7 @@ jpm;jpm,jpgm;
 mj2;mj2,mjp2;
 mp2t;ts,m2t,m2ts,mts,cpi,clpi,mpl,mpls,bdm,bdmv;
 mp4;mp4,mpg4,f4v,f4p,mp4v,m4v,lrv;
+mpeg;mp2,mpe,mpeg,mpg,m1v,m2v,mp3,mpa,vob;base64
 ogg;ogv,ogg;
 quicktime;qt,mov,moov,qtvr;base64
 vnd-mpegurl;mxu,m4u;
