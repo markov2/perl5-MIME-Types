@@ -2,11 +2,13 @@
 use warnings;
 use strict;
 
-use HTML::Parser ();
-use File::Glob   qw/bsd_glob/;
+use HTML::Parser      ();
+use File::Glob        qw/bsd_glob/;
+use File::Basename    qw/basename dirname/;
+use File::Slurp::Tiny qw/read_file/;
 use XML::LibXML::Simple;
 
-use Data::Dumper qw/Dumper/;
+use Data::Dumper      qw/Dumper/;
 $Data::Dumper::Indent = 1;
 
 my $iana_root   = 'sources/iana-media-types';
@@ -54,22 +56,6 @@ my $save_source  = "$current/sources";
 # Collect the info, the order is important!
 my (%mimes, %exts);
 my $last_count   = 0;
-iana();
-my_own();
-apache();
-sitepoint();
-stdicon();
-broofa();
-freedesktop();
-#warn Dumper \%mimes;
-
-# Build the tables
-simplify();
-write_tables();
-write_distributed();
-keep_sources($save_source);
-
-exit 0;
 
 #
 ### IANA
@@ -80,38 +66,82 @@ exit 0;
 # added to my-own list.
 #
 
+# the file format of IANA got standardized too late
+my %broken_iana_ext =
+ ( 'application/cellml+xml' => '.cellml'
+ , 'application/fdt+xml'    => '.fdt'
+ , 'application/inkml+xml'  => '.inkml+xml'
+ , 'application/mp21'       => '.mp21 .m21'
+ , 'application/mp4'        => '.mpg4 .mp4'
+ , 'application/mpeg4-iod'  => '.mpg4 .mp4'
+ , 'application/mpeg4-iod-xmt' => '.mpg4 .mp4'
+ , 'application/prs.alvestrand.titrax-sheet' => ''
+ , 'application/session-info'  => ''
+ , 'application/smil+xml'   => ''
+ , 'application/vnd.apple.installer+xml' => '.dist .distz .pkg .mpkg'
+ , 'application/vnd.commerce-battelle' => '.ica .icf .icd .icc .ic1'
+ , 'application/vnd.nervana' => '.ent .entity .req .request .bkm .kcm'
+ , 'application/xhtml+xml'  => '.xhtml .xht'
+ , 'audio/3gpp'             => '.3gp .3gpp'
+ , 'audio/EVS'              => '.3gp .3gpp'
+ , 'audio/mp4'              => '.mp4 .mpg4'
+ , 'audio/t38'              => ''
+ , 'image/jp2'              => '.jp2 .jpg2'
+ , 'image/jpm'              => '.jpm .jpgm'
+ , 'image/jpx'              => '.jpf'
+ , 'model/vnd.gs-gdl'       => '.gdl .gsm .win .dor .lmp .rsm .msm .ism'
+ , 'multipart/vnd.bint.med-plus' => '.bmed'
+ , 'text/calendar'          => '.ics'
+ , 'text/dns'               => '.soa .zone'
+ , 'text/html'              => '.html .htm'
+ , 'text/vnd.fmi.flexstor'  => '.flx'
+ , 'video/3gpp'             => '.3gp .3gpp'
+ , 'video/jpm'              => '.jpm .jpgm'
+ , 'video/mj2'              => '.mj2 .mjp2'
+ , 'video/mp4'              => '.mp4 .mpg4'
+ , 'video/vnd.nokia.mp4vr'  => '.mp4'
+ );
+
 sub iana()
 {   print "* processing iana types\n";
 
-    foreach my $fn (bsd_glob "$iana_root/*/index.html")
-    {   print "  . parsing file $fn\n";
-        my ($major) = $fn =~ m!/([^/]+)/index.html$!;
+    foreach my $fn (bsd_glob "$iana_root/*/*")
+    {   -f $fn && $fn !~ /\.html$/ or next;
 
-        open IANA, '<', $fn or die "$fn: $!";
-        my @page    = <IANA>;
-        close IANA;
+        my $minor = basename $fn;
+        my $major = basename dirname $fn;
+        my $type  = "$major/$minor";
 
-        my $types_in_page = 0;
-        while(@page)
-        {   $page[0] =~ m!^\<tr! or next;
-            $page[1] =~ m!^\<td\>\&nbsp;! or next;
-            $page[2] =~ m!^\<td\>(?:\<a[^>]*\>)?([^<]+)! or next;
-            my $minor = $1;
-            $page[3] =~ m!^\<td\>! or next;
-            splice @page, 0, 3;
+        my @exts;
+		my $exts  = $broken_iana_ext{$type};
 
-            $minor =~ s/\s+.*//;  # deprecation, etc
-            my $type = "$major/$minor";
-            my $info = add_type $type, 'iana', [];
-            $types_in_page++;
+        $exts = $1
+		    if ! defined $exts
+            && read_file($fn) =~ /file extension.*?\:[ \t]*(.*)/i;
+
+        if($exts)
+        {   
+#warn "$fn\n$exts\n";
+			if(@exts = $exts =~ m/\.([a-zA-Z0-9_+-]+)/g)
+            {   # clear indication with leading dots;
+            }
+            else
+            {   $exts =~ s/\([^)]*\)//g;
+                $exts =~ s/\b(?:n\/a|not applicable|not available|none defined|none|undef|undefined|unknown|do not apply|not designed yet| and )\b/ /gi;
+                @exts = $exts =~ m/([a-zA-Z0-9_+-]+)/g;
+				@exts = grep $_ ne '-', @exts;
+				@exts = () if @exts > 5;   # sometimes a sentence
+			}
         }
-        continue
-        {   shift @page;
-        }
 
-        print "    found $types_in_page types for $major\n";
+        my $info  = add_type $type, 'iana', \@exts;
+#warn "$type => @exts\n\n";
     }
 
+    # Description file missing
+    add_type 'text/plain', 'iana', [];
+
+#warn Dumper \%mimes;
     $last_count = keys %mimes;
     print "  . found $last_count registered types\n";
 }
@@ -289,23 +319,30 @@ sub freedesktop()
 sub simplify()
 {   print "* simplifying\n";
 
-    # order extensions
+    ### Simplify Extensions
+
     my %back = map +($_ => 1), @iana_basetypes;
     foreach my $ext (keys %exts)
     {   my %seen;
-        my @types   = grep !$seen{$_}++, @{$exts{$ext}};
 
-        my @last    = grep $back{$_}, @types;
-        $exts{$ext} = [ (grep !$back{$_}, @types), @last ];
+        # De-duplicate extensions (case-insensitive)
+        my @types   = grep !$seen{lc $_}++, @{$exts{$ext}};
+
+        # The more generic types at the back
+        my @last    = grep $back{lc $_}, @types;
+        $exts{$ext} = [ (grep !$back{lc $_}, @types), @last ];
     }
 
+	### Simplify MIME types
+ 
     foreach my $type (keys %mimes)
     {   my $info = $mimes{$type};
 
-        # remove double extensions
+        # Remove double extensions (case-insensitive)
         my %seen_ext;
-        my @ext = grep !$seen_ext{$_}++, @{$info->{ext} || []};
+        my @ext = grep !$seen_ext{lc $_}++, @{$info->{ext} || []};
 
+        # Insert extensions for base-types from the ext-list
         if($iana_basetypes{$type})
         {   @ext = grep $type eq $exts{$_}[0], @ext;
         }
@@ -408,4 +445,21 @@ sub scan_dist_version()
     }
     die "version not found";
 }
+
+### MAIN
+
+iana();
+my_own();
+apache();
+sitepoint();
+stdicon();
+broofa();
+freedesktop();
+#warn Dumper \%mimes;
+
+# Build the tables
+simplify();
+write_tables();
+write_distributed();
+keep_sources($save_source);
 
