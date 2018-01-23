@@ -1,2 +1,11 @@
 MANIFEST.extra
 html/
+bin/collect-types
+bin/update-iana
+sources/from-apache
+sources/from-broofa
+sources/from-freedesktop
+sources/from-sitepoint
+sources/from-stdicon
+sources/my-own
+# sources/iana-media-types not included

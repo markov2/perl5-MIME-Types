@@ -4,9 +4,16 @@ Unless explicitly stated differently are all changes produced by
 Mark Overmeer.
 
 TODO:
- . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
+	. Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
 version 2.16:
+
+	Fixes:
+	- collecting of IANA info has stalled: logic rewritten
+	  Discovered by [Julien Lüthi]
+
+	Improvements:
+	- move scripts and source files into MANIFEST.extra
 
 version 2.15: Fri 19 Jan 17:23:56 CET 2018
 
