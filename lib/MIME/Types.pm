@@ -486,10 +486,3 @@ CROAK
 }
 
 1;
-__END__
-# Exceptions
-vms:text/plain;doc;8bit
-mac:application/x-macbase64;;bin
-
-# IE6 bug
-image/pjpeg;;base64
