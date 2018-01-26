@@ -13,9 +13,9 @@ WriteMakefile
     , File::Basename => 0
     , List::Util     => 0
     }
-  , AUTHOR    => 'Mark Overmeer'
+  , AUTHOR    => 'Mark Overmeer <markov@cpan.org>'
   , ABSTRACT  => 'Definition of MIME types'
-  , LICENSE   => 'perl'
+  , LICENSE   => 'perl_5'
 
   , META_MERGE =>
       { 'meta-spec' => { version => 2 }
