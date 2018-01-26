@@ -171,6 +171,9 @@ sub iana_xml()
     {   my $major   = $group->{id};
         foreach my $record ( @{$group->{record} || []} )
         {   my $minor = $record->{name};
+            next if ref $minor eq 'HASH';   # name contains xml
+            next if $minor =~ /OBSOLETE/;
+
             add_type "$major/$minor", 'iana', [];
         }
     }

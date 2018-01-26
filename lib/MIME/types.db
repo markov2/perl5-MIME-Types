@@ -2641,7 +2641,7 @@ x-zip-compressed;zip;
 x-zmachine;z1,z2,z3,z4,z5,z6,z7,z8;
 x-zoo;zoo;
 
-462:application:I:
+456:application:I:
 1d-interleaved-parityfec;;
 3gpdash-qoe-report+xml;;
 3gpp-ims+xml;;
@@ -2690,7 +2690,6 @@ framework-attributes+xml;;
 geo+json-seq;;
 geoxacml+xml;;
 h224;;
-hash(0x19b7528);;
 http;;
 ibe-key-request+xml;;
 ibe-pkg-reply+xml;;
@@ -2778,7 +2777,6 @@ sgml;;
 simple-message-summary;;
 simplesymbolcontainer;;
 slate;;
-smil - obsoleted in favor of application/smil+xml;;
 smpte336m;;
 soap+fastinfoset;;
 soap+xml;;
@@ -2818,7 +2816,6 @@ vnd.ah-barcode;;
 vnd.apache.thrift.binary;;
 vnd.apache.thrift.compact;;
 vnd.apache.thrift.json;;
-vnd.arastra.swi - obsoleted in favor of application/vnd.aristanetworks.swi;;
 vnd.artsquare;;
 vnd.bbf.usp.msg+json;;
 vnd.bbf.usp.msg;;
@@ -2897,14 +2894,12 @@ vnd.fujixerox.art-ex;;
 vnd.fujixerox.art4;;
 vnd.fujixerox.hbpl;;
 vnd.fut-misnet;;
-vnd.geocube+xml - obsoleted by request;;
 vnd.globalplatform.card-content-mgt-response;;
 vnd.globalplatform.card-content-mgt;;
 vnd.gmx - deprecated;;
 vnd.gridmp;;
 vnd.httphone;;
 vnd.ibm.afplinedata;;
-vnd.informix-visionary - obsoleted in favor of application/vnd.visionary;;
 vnd.innopath.wamp.notification;;
 vnd.intertrust.digibox;;
 vnd.intertrust.nncp;;
@@ -2961,7 +2956,6 @@ vnd.nokia.isds-radio-presets;;
 vnd.nokia.landmark+wbxml;;
 vnd.nokia.landmark+xml;;
 vnd.nokia.landmarkcollection+xml;;
-vnd.nokia.n-gage.symbian.install - obsolete; no replacement given;;
 vnd.nokia.ncd;;
 vnd.nokia.pcd+wbxml;;
 vnd.nokia.pcd+xml;;
@@ -4428,7 +4422,7 @@ wmf;wmf;
 1:message::
 x-gnu-rmail;;
 
-16:message:I:
+14:message:I:
 cpim;;
 delivery-status;;
 example;;
@@ -4436,14 +4430,12 @@ external-body;;8bit
 feedback-report;;
 global-headers;;
 http;;
-news - obsoleted by rfc5537;;
 news;;8bit
 partial;;8bit
 s-http;;
 sip;;
 sipfrag;;
 tracking-status;;
-vnd.si.simp - obsoleted by request;;
 vnd.si.simp;;
 
 7:message:I:E
@@ -4663,17 +4655,15 @@ x-webviewhtml;htt;
 x-xmi;xmi;
 x-xslfo;fo,xslfo;
 
-29:text:I:
+26:text:I:
 1d-interleaved-parityfec;;
 directory - deprecated by rfc6350;;
 directory;;
-ecmascript - obsoleted in favor of application/ecmascript;;
 encaprtp;;
 enriched;;
 example;;
 fwdred;;
 grammar-ref-list;;
-javascript - obsoleted in favor of application/javascript;;
 parameters;;
 parityfec;;
 provenance-notation;;
@@ -4692,7 +4682,6 @@ vnd.flatland.3dml;;
 vnd.latex-z;;
 vnd.motorola.reflex;;
 vnd.radisys.msml-basic-layout;;
-vnd.si.uricatalogue - obsoleted by request;;
 
 56:text:I:E
 cache-manifest;appcache,manifest;
