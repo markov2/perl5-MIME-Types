@@ -7,6 +7,7 @@ use File::Glob          qw/bsd_glob/;
 use File::Basename      qw/basename dirname/;
 use File::Slurp::Tiny   qw/read_file/;
 use XML::LibXML::Simple qw/XMLin/;
+use List::Util          qw/first/;
 
 use Data::Dumper        qw/Dumper/;
 $Data::Dumper::Indent = 1;
@@ -353,6 +354,11 @@ sub freedesktop()
 ### Simplify
 #
 
+my %simply_overrule = (
+    txt  => 'text/plain',
+    html => 'text/html',
+);
+
 sub simplify()
 {   print "* simplifying\n";
 
@@ -362,16 +368,31 @@ sub simplify()
     foreach my $ext (keys %exts)
     {   my %seen;
 
+        # It is hard to figure-out which type has preference for a certain
+        # filename extension.
+        if($simply_overrule{$ext})
+        {   # some situations cannot be resolved with login ;-)
+            $exts{$ext} = [ split ' ', $simply_overrule{$ext} ];
+            next;
+        }
+
         # De-duplicate extensions (case-insensitive)
         my @types   = grep !$seen{lc $_}++, @{$exts{$ext}};
 
-        # Special overrules for common defaults
-        @types  = 'text/plain' if $ext eq 'txt';
-        @types  = 'text/html'  if $ext eq 'html';
+        #  2. we try an official type which has the same minor.
 
-        # The more generic types at the back
+        my $first = first { m!/${ext}$! && ! m/^(x-)/ } @types;
+        @types = grep { $_ ne $first } @types if defined $first;
+
+        #  3. take the more specific over the less specific
         my @last    = grep $back{lc $_}, @types;
-        $exts{$ext} = [ (grep !$back{lc $_}, @types), @last ];
+
+        #  4. compose
+        $exts{$ext} =
+          [ ($first || ())
+          , (grep !$back{lc $_}, @types)
+          , @last
+          ];
     }
 
     ### Simplify MIME types
@@ -392,7 +413,7 @@ sub simplify()
         $info->{ext} = \@ext;
     }
 
-	#warn Dumper \%mimes, \%exts;
+    #warn Dumper \%mimes, \%exts;
     print "  . found ".(keys %exts)." extensions\n";
 }
 

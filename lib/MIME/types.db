@@ -837,7 +837,7 @@ jrd;application/jrd+json
 js;application/javascript
 jsm;application/javascript
 json-patch;application/json-patch+json
-json;application/coap-group+json
+json;application/json
 jsonld;application/vnd.ims.lis.v2.result+json
 jsonml;application/x-jsonml+json
 jtd;text/vnd.esmertec.theme-descriptor
@@ -1213,7 +1213,7 @@ osf;application/vnd.yamaha.openscoreformat
 osfpvg;application/vnd.yamaha.openscoreformat.osfpvg+xml
 osm;application/vnd.openstreetmap.data+xml
 otc;application/vnd.oasis.opendocument.chart-template
-otf;application/vnd.oasis.opendocument.formula-template
+otf;font/otf
 otg;application/vnd.oasis.opendocument.graphics-template
 oth;application/vnd.oasis.opendocument.text-web
 oti;application/vnd.oasis.opendocument.image-template
@@ -1315,7 +1315,7 @@ pm6;application/x-pagemaker
 pm;application/x-pagemaker
 pmd;application/x-pagemaker
 pml;application/vnd.ctc-posml
-png;image/vnd.mozilla.apng
+png;image/png
 pnm;image/x-portable-anymap
 pntg;image/x-macpaint
 po;text/x-gettext-translation
@@ -2048,7 +2048,7 @@ xlw;application/vnd.ms-excel
 xm;audio/x-xm
 xmf;audio/x-xmf
 xmi;text/x-xmi
-xml;application/cea-2018+xml
+xml;application/xml
 xmls;application/dskpp+xml
 xmt_bin;model/vnd.parasolid.transmit-binary
 xmt_txt;model/vnd.parasolid.transmit-text
@@ -2106,7 +2106,7 @@ z;application/x-compress
 zabw;application/x-abiword
 zaz;application/vnd.zzazz.deck+xml
 zfc;application/vnd.filmit.zfc
-zip;application/vnd.easykaraoke.cdgdownload
+zip;application/zip
 zir;application/vnd.zul
 zirz;application/vnd.zul
 zmm;application/vnd.handheld-entertainment+xml
