@@ -151,6 +151,7 @@ sub type($;$)
 }
 
 =method file_type $filename
+Return the mime type for a filename.
 Added and marked EXPERIMENTAL in Mojo 7.94.
 =cut
 
@@ -158,6 +159,24 @@ sub file_type($) {
 	my ($self, $fn) = @_;
 	my $mt = $self->mimeTypes or return undef;
 	$mt->mimeTypeOf($fn);
+}
+
+=method content_type $controller, \%options
+Set a content type on the controller when not yet set.
+The C<%options> contains C<ext> or C<file> specify an file extension or file
+name which is used to derive the content type.
+Added and marked EXPERIMENTAL in Mojo 7.94.
+=cut
+
+sub content_type($;$) {
+	my ($self, $c, $opts) = @_;
+	my $headers = $c->res->headers;
+	return undef if $headers->content_type;
+
+	my $fn = $opts->{file} || $opts->{ext};
+
+	my $mt = $self->mimeTypes or return undef;
+	$headers->content_type($mt->mimeTypeOf($fn) || $mt->mimeTypeOf('txt'));
 }
 
 #---------------
