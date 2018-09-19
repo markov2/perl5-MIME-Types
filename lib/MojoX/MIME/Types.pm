@@ -81,7 +81,7 @@ Returns the internal mime types object.
 
 sub mimeTypes() { shift->{MMT_mt} }
 
-=method types [\%table]
+=method mapping [\%table]
 In M<Mojolicious::Types>, this attribute exposes the internal
 administration of types, offering to change it with using a clean
 abstract interface.  That interface mistake bites now we have more
@@ -91,7 +91,7 @@ B<Avoid this method!>  The returned HASH is expensive to construct,
 changes passed via C<%table> are ignored: M<MIME::Types> is very complete!
 =cut
 
-sub types(;$)
+sub mapping(;$)
 {   my $self = shift;
     return $self->{MMT_ext} if $self->{MMT_ext};
 
@@ -100,6 +100,8 @@ sub types(;$)
     while(my ($ext, $type) = each %$t) { $exttable{$ext} = [$type] }
     $self->{MMT_ext} = \%exttable;
 }
+
+*types = \&mapping;  # renamed in release 6.0
 
 #----------
 =section Actions

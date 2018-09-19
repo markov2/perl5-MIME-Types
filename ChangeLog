@@ -8,6 +8,9 @@ TODO:
 
 version 2.18:
 
+	Changes:
+	- Mojo 6.0 changed types() into mapping()
+
 version 2.17: Fri Jan 26 23:42:01 CET 2018
 
 	Fixes:
