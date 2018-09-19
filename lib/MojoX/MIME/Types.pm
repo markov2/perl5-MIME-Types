@@ -150,6 +150,16 @@ sub type($;$)
     $self;
 }
 
+=method file_type $filename
+Added and marked EXPERIMENTAL in Mojo 7.94.
+=cut
+
+sub file_type($) {
+	my ($self, $fn) = @_;
+	my $mt = $self->mimeTypes or return undef;
+	$mt->mimeTypeOf($fn);
+}
+
 #---------------
 =chapter DETAILS
 
