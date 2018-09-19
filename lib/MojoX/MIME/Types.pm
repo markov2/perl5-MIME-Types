@@ -3,7 +3,7 @@
 # Copyright Mark Overmeer.  Licensed under the same terms as Perl itself.
 
 package MojoX::MIME::Types;
-use Mojo::Base -base;
+use Mojo::Base 'Mojolicious::Types';
 
 use MIME::Types   ();
 
@@ -99,6 +99,15 @@ sub types(;$)
     my $t = MIME::Types->_MojoExtTable;
     while(my ($ext, $type) = each %$t) { $exttable{$ext} = [$type] }
     $self->{MMT_ext} = \%exttable;
+}
+
+=method mapping [\%table]
+Alias for C<$obj-E<gt>types>
+=cut
+
+sub mapping(;$)
+{
+    goto &types;
 }
 
 #----------
