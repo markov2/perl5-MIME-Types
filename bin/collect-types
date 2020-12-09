@@ -126,6 +126,9 @@ sub iana_templates()
             if ! defined $exts
             && read_file($fn) =~ /file extension.*?\:[ \t]*(.*)/i;
 
+        $exts = ''    # rarely refers to RFCs
+            if $exts && $exts =~ /^\s*See /;
+
         if($exts)
         {   
             if(@exts = $exts =~ m/\.([a-zA-Z0-9_+-]+)/g)
