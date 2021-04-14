@@ -1,5 +1,5 @@
-# From http://svn.apache.org/viewvc/httpd/httpd/branches/2.4.x/docs/conf/mime.types
-# Revision  1810122, 2017-09-29
+# From https://svn.apache.org/viewvc/httpd/httpd/trunk/docs/conf/mime.types
+# Revision  1884511, 2020-12-16
 application/1d-interleaved-parityfec
 application/3gpdash-qoe-report+xml
 application/3gpp-ims+xml
@@ -1426,7 +1426,7 @@ audio/mpa-robust
 audio/mpeg					mpga mp2 mp2a mp3 m2a m3a
 audio/mpeg4-generic
 audio/musepack
-audio/ogg					oga ogg spx
+audio/ogg					oga ogg spx opus
 audio/opus
 audio/parityfec
 audio/pcma
