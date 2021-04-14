@@ -9,11 +9,12 @@ TODO:
 version 2.19:
 
 	Improvements:
-	- update with the newest data
+	- update with the newest data from IANA and Apache httpd
 
 	Changes:
 	- mp4 preference is video/mp4 [issue #5, Даша Федорова]
 	- yt preference is video/vnd.youtube.yt [issue #6, Даша Федорова]
+	- 3gp and 3gpp preference is video/3gpp [issue #7, Даша Федорова]
 
 version 2.18: Wed  9 Dec 10:29:46 CET 2020
 
