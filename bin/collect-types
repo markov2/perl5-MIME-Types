@@ -34,8 +34,8 @@ my %preferred_mt = (
     mp4      => 'video/mp4',
 
     # https://tools.ietf.org/html/rfc3839#section-3.2
-    3gpp     => 'video/3gpp',
-    3gp      => 'video/3gpp',
+    '3gpp'   => 'video/3gpp',
+    '3gp'    => 'video/3gpp',
 
     # Obsoleted in
     # https://www.iana.org/assignments/media-types/application/vnd.youtube.yt
