@@ -30,7 +30,12 @@ my @iana_basetypes = qw{
 my %iana_basetypes = map +($_ => 1), @iana_basetypes;
 
 my %preferred_mt = (
-    mp4      => 'video/mp4',   # https://tools.ietf.org/html/rfc4337#section-2
+    # https://tools.ietf.org/html/rfc4337#section-2
+    mp4      => 'video/mp4',
+
+    # Obsoleted in
+    # https://www.iana.org/assignments/media-types/application/vnd.youtube.yt
+    yt       => 'video/vnd.youtube.yt',
 );
 
 sub iana();

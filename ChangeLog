@@ -13,6 +13,7 @@ version 2.19:
 
 	Changes:
 	- mp4 preference is video/mp4 [issue #5, Даша Федорова]
+	- yt preference is video/vnd.youtube.yt [issue #6, Даша Федорова]
 
 version 2.18: Wed  9 Dec 10:29:46 CET 2020
 
