@@ -24,10 +24,14 @@ my $history     = 'history';
 my $distributed = 'lib/MIME/types.db';
 
 my @iana_basetypes = qw{
-  text/plain
-  application/octet-stream
+    text/plain
+    application/octet-stream
 };
 my %iana_basetypes = map +($_ => 1), @iana_basetypes;
+
+my %preferred_mt = (
+    mp4      => 'video/mp4',   # https://tools.ietf.org/html/rfc4337#section-2
+);
 
 sub iana();
 sub my_own();
@@ -460,7 +464,8 @@ sub write_distributed()
     }
     foreach my $ext (sort keys %exts)
     {   my $types  = $exts{$ext};
-        push @{$sets{EXTENSIONS}}, join(';', $ext, $types->[0]);
+        my $pref_mt = $preferred_mt{$ext} || $types->[0];
+        push @{$sets{EXTENSIONS}}, join(';', $ext, $pref_mt); 
     }
 
     print "* write $distributed\n";
