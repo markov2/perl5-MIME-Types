@@ -103,6 +103,10 @@ my %broken_iana_ext =
  , 'audio/EVS'              => '.3gp .3gpp'
  , 'audio/mp4'              => '.mp4 .mpg4'
  , 'audio/t38'              => ''
+ , 'image/heic'             => '.heic .hif'
+ , 'image/heif'             => '.heif .hif'
+ , 'image/heic-sequence'    => '.heics .hif'
+ , 'image/heif-sequence'    => '.heifs .hif'
  , 'image/jp2'              => '.jp2 .jpg2'
  , 'image/jpm'              => '.jpm .jpgm'
  , 'image/jpx'              => '.jpf'
@@ -150,7 +154,7 @@ sub iana_templates()
             else
             {   $exts =~ s/\([^)]*\)//g;
                 $exts =~ s/\b
-                        (?: n\/a
+                        (?: n\/a | na
                           | not[ ]applicable
                           | not[ ]available
                           | none[ ]defined
@@ -160,7 +164,8 @@ sub iana_templates()
                           | unknown
                           | do[ ]not[ ]apply
                           | not[ ]designed[ ]yet
-                          | [ ]and[ ]
+                          | and
+                          | or
                           )\b/ /gix;
                 @exts = $exts =~ m/([a-zA-Z0-9_+-]+)/g;
             	@exts = grep $_ ne '-', @exts;

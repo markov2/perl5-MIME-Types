@@ -8,6 +8,10 @@ TODO:
 
 version 2.20:
 
+	Changes:
+	- heif/heic/heifs/heics/hif fix [issue #9, Даша Федорова]
+	- no 'and' and 'or' extensions [issue #9, Даша Федорова]
+
 version 2.19: Fri 16 Apr 11:47:10 CEST 2021
 
 	Improvements:
