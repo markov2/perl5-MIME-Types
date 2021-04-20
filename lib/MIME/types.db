@@ -1,4 +1,4 @@
-2209:EXTENSIONS
+2211:EXTENSIONS
 #;application/x-mathcad
 %;application/x-trash
 123;application/vnd.lotus-1-2-3
@@ -236,7 +236,7 @@ bed;application/vnd.realvnc.bed
 bh2;application/vnd.fujitsu.oasysprs
 bib;text/x-bibtex
 bik;video/vnd.radgamettools.bink
-bin;application/gltf-buffer
+bin;applicatoin/octet-stream
 bk2;video/vnd.radgamettools.bink
 bkm;application/vnd.nervana
 blb;application/x-blorb
@@ -660,6 +660,8 @@ gjf;x-chemical/x-gaussian-input
 gl;video/x-gl
 glade;application/x-glade
 glb;model/gltf-binary
+glbin;application/gltf-buffer
+glbuf;application/gltf-buffer
 gltf;model/gltf+json
 gml;application/gml+xml
 gmo;application/x-gettext-translation
@@ -3345,7 +3347,7 @@ font-tdpfr;PFR;
 font-woff;woff;
 geo+json;json,geojson;
 geopackage+sqlite3;gpkg;
-gltf-buffer;bin;
+gltf-buffer;glbin,glbuf;
 gml+xml;xml,gml;
 gzip;gz;
 held+xml;heldxml;

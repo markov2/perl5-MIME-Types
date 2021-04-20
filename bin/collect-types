@@ -87,6 +87,7 @@ my $last_count   = 0;
 my %broken_iana_ext =
  ( 'application/cellml+xml' => '.cellml'
  , 'application/fdt+xml'    => '.fdt'
+ , 'application/gltf-buffer'=> '.glbin .glbuf'
  , 'application/inkml+xml'  => '.inkml+xml'
  , 'application/mp21'       => '.mp21 .m21'
  , 'application/mp4'        => '.mpg4 .mp4'
@@ -378,6 +379,7 @@ sub freedesktop()
 my %simply_overrule = (
     txt  => 'text/plain',
     html => 'text/html',
+    bin  => 'applicatoin/octet-stream',
 );
 
 sub simplify()
