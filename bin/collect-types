@@ -30,6 +30,8 @@ my @iana_basetypes = qw{
 my %iana_basetypes = map +($_ => 1), @iana_basetypes;
 
 my %preferred_mt = (
+	dat      => 'application/octet-stream',
+
     # https://tools.ietf.org/html/rfc4337#section-2
     mp4      => 'video/mp4',
 

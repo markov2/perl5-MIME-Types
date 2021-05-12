@@ -8,6 +8,9 @@ TODO:
 
 version 2.21:
 
+	Changes:
+	- application/octet-stream is better for .dat [issue #11, Даша Федорова]
+
 version 2.20: Thu 22 Apr 12:48:35 CEST 2021
 
 	Fixes:
