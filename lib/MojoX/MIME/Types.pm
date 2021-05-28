@@ -229,7 +229,7 @@ There are a few major difference with Mojolicious::Types:
 =over 4
 =item *
 the tables maintained by M<MIME::Types> are complete.  So: there shouldn't
-be a need to add your own types, not via M<types()>, not via M<type()>.
+be a need to add your own types, not via C<types()>, not via C<type()>.
 All attempts to add types are ignored; better remove them from your code.
 
 =item *
