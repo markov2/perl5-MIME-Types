@@ -10,6 +10,8 @@ version 2.21:
 
 	Changes:
 	- application/octet-stream is better for .dat [issue #11, Даша Федорова]
+	- add video/webm which Google forgot to register [issue #12, Brent Laabs]
+	- add image/webp which Google registered too late [issue #12, Brent Laabs]
 
 version 2.20: Thu 22 Apr 12:48:35 CEST 2021
 

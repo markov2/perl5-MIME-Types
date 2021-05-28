@@ -42,6 +42,13 @@ my %preferred_mt = (
     # Obsoleted in
     # https://www.iana.org/assignments/media-types/application/vnd.youtube.yt
     yt       => 'video/vnd.youtube.yt',
+
+    # Google "forgot" to register this one
+    webm     => 'video/webm',
+
+    # Google was far too late registering this one at IANA
+    #XXX remove when IANA is publishing it
+    webp     => 'image/webp',
 );
 
 sub iana();
