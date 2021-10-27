@@ -43,8 +43,9 @@ my %preferred_mt = (
     # https://www.iana.org/assignments/media-types/application/vnd.youtube.yt
     yt       => 'video/vnd.youtube.yt',
 
-    # Google "forgot" to register this one
+    # Google "forgot" to register these
     webm     => 'video/webm',
+    weba     => 'audio/webm',
 
     # Google was far too late registering this one at IANA
     #XXX remove when IANA is publishing it
@@ -487,8 +488,9 @@ sub write_distributed()
         my $enc    = $info->{enc} || '';
         push @{$sets{"$major:$isIANA:$hasExt"}}, "$minor;$ext;$enc";
     }
+
     foreach my $ext (sort keys %exts)
-    {   my $types  = $exts{$ext};
+    {   my $types   = $exts{$ext};
         my $pref_mt = $preferred_mt{$ext} || $types->[0];
         push @{$sets{EXTENSIONS}}, join(';', $ext, $pref_mt); 
     }

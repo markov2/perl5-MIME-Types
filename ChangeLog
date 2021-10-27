@@ -7,6 +7,8 @@ TODO:
 	. Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
 version 2.22:
+	- webm keeps on producting unexpected results [issue #11, Даша Федорова]
+	- iana updates
 
 version 2.21: Fri 28 May 12:01:00 CEST 2021
 
