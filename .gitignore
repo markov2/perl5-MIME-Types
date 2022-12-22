@@ -1,0 +1,10 @@
+MYMETA.json
+MYMETA.yml
+Makefile
+Makefile.old
+blib/
+docs/
+history/
+pm_to_blib
+sources/iana-media-types/
+try/
