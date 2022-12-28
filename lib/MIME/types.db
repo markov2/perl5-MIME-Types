@@ -1833,7 +1833,7 @@ tamp;application/vnd.onepagertamp
 tamx;application/vnd.onepagertamx
 tao;application/vnd.tao.intent-module-archive
 tap;image/vnd.tencent.tap
-tar;application/vnd.gentoo.gpkg
+tar;application/x-tar
 tat;application/vnd.onepagertat
 tatp;application/vnd.onepagertatp
 tatx;application/vnd.onepagertatx
@@ -1841,7 +1841,7 @@ tau;application/tamp-apex-update
 taz;application/x-gtar
 tb2;application/x-bzip-compressed-tar
 tbk;application/x-toolbook
-tbz2;application/vnd.gentoo.xpak
+tbz2;application/x-gtar
 tbz;application/x-gtar
 tcap;application/vnd.3gpp2.tcap
 tcl;application/x-tcl
