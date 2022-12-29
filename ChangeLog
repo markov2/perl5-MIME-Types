@@ -6,7 +6,7 @@ Mark Overmeer.
 TODO:
 	. Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
-version 2.25:
+version 2.25: Thu 29 Dec 10:27:24 CET 2022
 
 	Improvements:
 	- support multi-level extensions.  Flagged by [Michał Górny]
