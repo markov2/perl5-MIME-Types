@@ -123,7 +123,6 @@ sub _read_db($)
         my $skip_section = $major eq 'EXTENSIONS' ? $skip_extensions
           : (($only_iana && !$is_iana) || ($only_complete && !$has_ext));
 
-#warn "Skipping section $header\n" if $skip_section;
         (my $section = $major) =~ s/^x-//;
         if($major eq 'EXTENSIONS')
         {   local $_;
@@ -209,10 +208,18 @@ preference)
 =cut
 
 sub mimeTypeOf($)
-{   my ($self, $name) = @_;
-    (my $ext = lc $name) =~ s/.*\.//;
-    my $type = $typedb{EXTENSIONS}{$ext} or return;
-    $self->type($type);
+{   my $self = shift;
+    my $ext  = lc(shift);
+
+    # Extensions may contains multiple dots (rare)
+    while(length $ext)
+    {   if(my $type = $typedb{EXTENSIONS}{$ext})
+        {   return $self->type($type);
+        }
+        $ext =~ s/.*?\.//;
+    }
+
+    undef;
 }
 
 =method addType $type, ...

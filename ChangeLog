@@ -8,6 +8,9 @@ TODO:
 
 version 2.25:
 
+	Improvements:
+	- support multi-level extensions.  Flagged by [Michał Górny]
+
 version 2.24: Wed 28 Dec 13:06:23 CET 2022
 
 	Fixes:

@@ -41,6 +41,10 @@ my $o2 = $a->mimeTypeOf('im_not_really_a.tar');
 ok(defined $o2);
 is($o2->type, 'application/x-tar');
 
+my $o3 = $a->mimeTypeOf('double-ext.gpkg.tar');
+ok(defined $o3);
+is($o3->type, 'application/vnd.gentoo.gpkg');
+
 my $p = $a->mimeTypeOf('my_image.gif');
 ok(defined $p);
 is($p->type, 'image/gif');

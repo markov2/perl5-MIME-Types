@@ -1,4 +1,4 @@
-2253:EXTENSIONS
+2262:EXTENSIONS
 #;application/x-mathcad
 %;application/x-trash
 123;application/vnd.lotus-1-2-3
@@ -407,6 +407,7 @@ cue;application/x-cue
 cur;image/x-win-bitmap
 curl;application/vnd.curl
 cw;application/prs.cww
+cwl.json;application/cwl+json
 cwl;application/cwl
 cww;application/prs.cww
 cxf;x-chemical/x-cxf
@@ -693,6 +694,7 @@ go;text/x-go
 gp;application/x-gnuplot
 gpg;application/pgp-encrypted
 gph;application/vnd.flographit
+gpkg.tar;application/vnd.gentoo.gpkg
 gpkg;application/geopackage+sqlite3
 gplt;application/x-gnuplot
 gpt;x-chemical/x-mopac-graph
@@ -1413,6 +1415,7 @@ potx;application/vnd.openxmlformats-officedocument.presentationml.template
 pov;model/x-pov
 ppa;application/vnd.ms-powerpoint
 ppam;application/vnd.ms-powerpoint.addin.macroenabled.12
+ppd.gz;application/vnd.cups-ppd
 ppd;application/vnd.cups-ppd
 ppkg;application/vnd.xmpie.ppkg
 ppm;image/x-portable-pixmap
@@ -1589,6 +1592,7 @@ saf;application/vnd.yamaha.smaf-audio
 sam;application/x-amipro
 sami;application/x-sami
 sarif-external-properties;application/sarif-external-properties+json
+sarif.json;application/sarif+json
 sarif;application/sarif+json
 sav;application/x-spss
 saveme;application/octet-stream
@@ -1597,6 +1601,7 @@ sbml;application/sbml+xml
 sbs;application/x-spss
 sc;application/vnd.ibm.secure-container
 scala;text/x-scala
+scd.gz;application/vnd.scribus
 scd;application/vnd.scribus
 sce;application/vnd.etsi.asic-e+zip
 scim;application/scim+json
@@ -1694,6 +1699,7 @@ skp;application/x-koan
 skr;application/pgp-keys
 skt;application/x-koan
 sl;text/vnd.wap.sl
+sla.gz;application/vnd.scribus
 sla;application/vnd.scribus
 slaz;application/vnd.scribus
 slc;application/vnd.wap.slc
@@ -1732,6 +1738,7 @@ sos;text/vnd.sosi
 spc;x-chemical/x-galactic-spc
 spd;application/vnd.sealedmedia.softseal.pdf
 spdf;application/vnd.sealedmedia.softseal.pdf
+spdx.json;application/spdx+json
 spdx;text/spdx
 spec;text/x-rpm-spec
 spf;application/vnd.yamaha.smaf-phrase
@@ -1820,7 +1827,7 @@ sxls;application/vnd.sealed.xls
 sxm;application/vnd.sun.xml.math
 sxw;application/vnd.sun.xml.writer
 sy2;application/vnd.sybyl.mol2
-syft;application/vnd.syft+json
+syft.json;application/vnd.syft+json
 sylk;text/x-spreadsheet
 t2t;text/x-txt2tags
 t3;application/x-t3vm-image
@@ -1841,7 +1848,7 @@ tau;application/tamp-apex-update
 taz;application/x-gtar
 tb2;application/x-bzip-compressed-tar
 tbk;application/x-toolbook
-tbz2;application/x-gtar
+tbz2;application/vnd.gentoo.xpak
 tbz;application/x-gtar
 tcap;application/vnd.3gpp2.tcap
 tcl;application/x-tcl
@@ -1870,7 +1877,9 @@ tk;text/x-tcl
 tlclient;application/vnd.cendio.thinlinc.clientconf
 tlrz;application/x-lrzip-compressed-tar
 tlz;application/x-lzma-compressed-tar
-tm;application/tm+json
+tm.json;application/tm+json
+tm.jsonld;application/tm+json
+tm;text/x-texmacs
 tmo;application/vnd.tmobile-livetv
 tnef;application/vnd.ms-tnef
 tnf;application/vnd.ms-tnef
@@ -3392,7 +3401,7 @@ cose;cbor;
 cpl+xml;cpl,xml;
 csrattrs;csrattrs;
 csvm+json;json;
-cwl+json;cwl,json;
+cwl+json;cwl.json;
 cwl;cwl;
 dash+xml;mpd,mdp;
 dash-patch+xml;mpp;
@@ -3536,7 +3545,7 @@ rpki-ghostbusters;gbr;
 rpki-manifest;mft;
 rpki-roa;roa;
 rtf;rtf,rtx;8bit
-sarif+json;sarif,json;
+sarif+json;sarif,sarif.json;
 sarif-external-properties+json;sarif-external-properties;
 sbml+xml;sbml;
 scim+json;scim,scm;
@@ -3565,7 +3574,7 @@ smil+xml;smi,smil,sml,kino;
 smil;smil,smi,sml;8bit
 sparql-query;rq;
 sparql-results+xml;srx;
-spdx+json;spdx,json;
+spdx+json;spdx.json;
 sql;sql;
 srgs+xml;grxml;
 srgs;gram;
@@ -3591,7 +3600,7 @@ thraud+xml;tfi;
 timestamped-data;tsd;
 tlsrpt+gzip;gz;
 tlsrpt+json;json;
-tm+json;jsontm,tm,json,jsonld;
+tm+json;jsontm,tm.json,tm.jsonld;
 trig;trig;
 ttml+xml;ttml;
 urc-grpsheet+xml;gsheet;
@@ -3712,7 +3721,7 @@ vnd.crypto-shade-file;ssv,ssvc;
 vnd.cryptomator.encrypted;c9r,c9s;
 vnd.cryptomator.vault;cryptomator;
 vnd.ctc-posml;pml;
-vnd.cups-ppd;ppd,gz;
+vnd.cups-ppd;ppd,ppd.gz;
 vnd.curl.car;car;
 vnd.curl.pcurl;pcurl;
 vnd.curl;curl;
@@ -3814,7 +3823,7 @@ vnd.gentics.grd+json;grd;
 vnd.gentoo.catmetadata+xml;xml;
 vnd.gentoo.ebuild;ebuild;
 vnd.gentoo.eclass;eclass;
-vnd.gentoo.gpkg;gpkg,tar;
+vnd.gentoo.gpkg;gpkg.tar;
 vnd.gentoo.pkgmetadata+xml;xml;
 vnd.gentoo.xpak;tbz2,xpak;
 vnd.geo+json;json,geojson;
@@ -4189,7 +4198,7 @@ vnd.route66.link66+xml;link66;
 vnd.rs-274x;gbr;
 vnd.sailingtracker.track;st;
 vnd.sar;SAR;
-vnd.scribus;scd,gz,sla,slaz;
+vnd.scribus;scd,scd.gz,sla,sla.gz,slaz;
 vnd.sealed.3df;s3df;
 vnd.sealed.csf;scsf;
 vnd.sealed.doc;sdoc,sdo,s1w;
@@ -4251,7 +4260,7 @@ vnd.sus-calendar;sus,susp;
 vnd.svd;svd;
 vnd.sybyl.mol2;ml2,mol2,sy2;
 vnd.sycle+xml;scl;
-vnd.syft+json;syft,json;
+vnd.syft+json;syft.json;
 vnd.symbian.install;sis,sisx;
 vnd.syncml+xml;XSM;
 vnd.syncml.dm+wbxml;BDM;

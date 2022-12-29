@@ -39,9 +39,8 @@ my %preferred_mt = (
     '3gpp'   => 'video/3gpp',
     '3gp'    => 'video/3gpp',
 
-    # There is now vnd.gentoo which officially takes 'tar' and 'tbz2';
+    # There is now vnd.gentoo which officially takes 'tbz2';
     tbz2     => 'application/x-gtar',
-    tar      => 'application/x-tar',
 
     # Obsoleted in
     # https://www.iana.org/assignments/media-types/application/vnd.youtube.yt
@@ -163,13 +162,14 @@ sub iana_templates()
 
         if($exts)
         {   
-            if(@exts = $exts =~ m/\.([a-zA-Z0-9_+-]+)/g)
+            if(@exts = $exts =~ m/\.([a-zA-Z0-9._+-]+)/g)
             {   # clear indication with leading dots;
             }
             else
             {   $exts =~ s/\([^)]*\)//g;
                 $exts =~ s/\b
-                        (?: n\/a | na
+                        (?: n\/a
+                          | na
                           | not[ ]applicable
                           | not[ ]available
                           | none[ ]defined
