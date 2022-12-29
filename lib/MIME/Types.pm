@@ -212,11 +212,11 @@ sub mimeTypeOf($)
     my $ext  = lc(shift);
 
     # Extensions may contains multiple dots (rare)
-    while(length $ext)
+    while(1)
     {   if(my $type = $typedb{EXTENSIONS}{$ext})
         {   return $self->type($type);
         }
-        $ext =~ s/.*?\.//;
+        $ext =~ s/.*?\.// or last;
     }
 
     undef;
