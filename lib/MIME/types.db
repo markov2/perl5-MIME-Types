@@ -1,4 +1,4 @@
-2262:EXTENSIONS
+2263:EXTENSIONS
 #;application/x-mathcad
 %;application/x-trash
 123;application/vnd.lotus-1-2-3
@@ -346,6 +346,7 @@ cjs;application/node
 cl;application/simple-filter+xml
 cla;application/vnd.claymore
 class;application/vnd.dvb.dvbj
+cld;model/vnd.cld
 clkk;application/vnd.crick.clicker.keyboard
 clkp;application/vnd.crick.clicker.palette
 clkt;application/vnd.crick.clicker.template
@@ -1848,7 +1849,7 @@ tau;application/tamp-apex-update
 taz;application/x-gtar
 tb2;application/x-bzip-compressed-tar
 tbk;application/x-toolbook
-tbz2;application/vnd.gentoo.xpak
+tbz2;application/x-gtar
 tbz;application/x-gtar
 tcap;application/vnd.3gpp2.tcap
 tcl;application/x-tcl
@@ -4845,7 +4846,7 @@ example;;
 vnd.gs.gdl;;
 vnd.rosette.annotated-data-model;;
 
-35:model:I:E
+36:model:I:E
 3mf;3mf;
 gltf+json;gltf;
 gltf-binary;glb;
@@ -4860,6 +4861,7 @@ step-xml+zip;stpxz;
 step;p21,stp,step,stpnc,210;
 stl;stl;
 u3d;u3d;
+vnd.cld;cld;
 vnd.collada+xml;dae;
 vnd.dwf;dwf;
 vnd.flatland.3dml;3dml,3dm;
