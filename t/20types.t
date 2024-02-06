@@ -67,7 +67,7 @@ is($a->mimeTypeOf('my.lzh')->type, 'application/x-lzh');
 is($a->mimeTypeOf('webm')->type,   'video/x-webm');
 is($a->mimeTypeOf('b.webm')->type, 'video/x-webm');
 is($a->mimeTypeOf('b.weba')->type, 'audio/x-webm');
-is($a->mimeTypeOf('b.webp')->type, 'image/x-webp');
+is($a->mimeTypeOf('b.webp')->type, 'image/webp');
 
 my $warn;
 my $r2 = MIME::Type->new(type => 'text/x-fake2');
