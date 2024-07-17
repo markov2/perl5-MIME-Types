@@ -113,6 +113,7 @@ sub _read_db($)
     open DB, '<:encoding(utf8)', $db
        or die "cannot open type database in $db: $!\n";
 
+	local $/ = "\n";
     while(1)
     {   my $header = <DB>;
         defined $header or last;

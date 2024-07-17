@@ -1,4 +1,4 @@
-2293:EXTENSIONS
+2297:EXTENSIONS
 #;application/x-mathcad
 %;application/x-trash
 0fs;application/vnd.erofs
@@ -420,6 +420,7 @@ cur;image/x-win-bitmap
 curl;application/vnd.curl
 cw;application/prs.cww
 cwl.json;application/cwl+json
+cwl.yaml;application/cwl+yaml
 cwl;application/cwl
 cww;application/prs.cww
 cxf;x-chemical/x-cxf
@@ -618,7 +619,7 @@ fig;application/x-xfig
 fits;application/fits
 fl;application/x-fluid
 fla;application/vnd.dtg.local.flash
-flac;audio/x-flac
+flac;audio/flac
 flb;application/vnd.ficlab.flb+zip
 flc;video/x-flic
 fli;video/x-fli
@@ -921,6 +922,7 @@ jsontm;application/tm+json
 jt;model/jt
 jtd;text/vnd.esmertec.theme-descriptor
 jut;image/x-jutvision
+jxl;image/jxl
 jxr;image/jxr
 jxra;image/jxra
 jxrs;image/jxrs
@@ -1101,6 +1103,7 @@ mhas;audio/mhas
 mht;message/rfc822
 mhtml;message/rfc822
 mid;audio/sp-midi
+midi2;audio/midi-clip
 midi;audio/x-midi
 mie;application/x-mie
 mif;application/vnd.mif
@@ -1356,6 +1359,7 @@ package;application/vnd.autopackage
 pages;application/vnd.apple.pages
 pak;application/x-pak
 par2;application/x-par2
+parquet;application/vnd.apache.parquet
 part;application/x-pro_eng
 pas;text/x-pascal
 pat;image/x-coreldrawpattern
@@ -2819,7 +2823,7 @@ x-zip-compressed;zip;
 x-zmachine;z1,z2,z3,z4,z5,z6,z7,z8;
 x-zoo;zoo;
 
-603:application:I:
+611:application:I:
 1d-interleaved-parityfec;;
 3gpdash-qoe-report+xml;;
 3gpp-ims+xml;;
@@ -2827,6 +2831,7 @@ x-zoo;zoo;
 3gpphalforms+json;;
 ace+cbor;;
 ace+json;;
+ace-groupcomm+cbor;;
 activemessage;;
 activity+json;;
 aif+cbor;;
@@ -2904,6 +2909,10 @@ framework-attributes+xml;;
 geo+json-seq;;
 geoxacml+json;;
 geoxacml+xml;;
+gnap-binding-jws;;
+gnap-binding-jwsd;;
+gnap-binding-rotation-jws;;
+gnap-binding-rotation-jwsd;;
 h224;;
 hl7v2+xml;;
 http;;
@@ -3043,6 +3052,8 @@ vnd.3gpp-prose-pc3ch+xml;;
 vnd.3gpp-prose-pc8+xml;;
 vnd.3gpp-v2x-local-service-information;;
 vnd.3gpp.5gnas;;
+vnd.3gpp.5gsa2x-local-service-information;;
+vnd.3gpp.5gsa2x;;
 vnd.3gpp.access-transfer-events+xml;;
 vnd.3gpp.bsf+xml;;
 vnd.3gpp.crs+xml;;
@@ -3085,6 +3096,7 @@ vnd.3gpp.mcvideo-user-profile+xml;;
 vnd.3gpp.mid-call+xml;;
 vnd.3gpp.ngap;;
 vnd.3gpp.pfcp;;
+vnd.3gpp.pinapp-info+xml;;
 vnd.3gpp.s1ap;;
 vnd.3gpp.seal-group-doc+xml;;
 vnd.3gpp.seal-info+xml;;
@@ -3424,7 +3436,7 @@ yang-data+xml;;
 yang-patch+json;;
 yang-patch+xml;;
 
-1043:application:I:E
+1046:application:I:E
 a2l;a2l;
 aml;aml;
 andrew-inset;ez;
@@ -3472,6 +3484,7 @@ cpl+xml;cpl,xml;
 csrattrs;csrattrs;
 csvm+json;json;
 cwl+json;cwl.json;
+cwl+yaml;cwl.yaml;
 cwl;cwl;
 dash+xml;mpd,mdp;
 dash-patch+xml;mpp;
@@ -3723,6 +3736,7 @@ vnd.anser-web-funds-transfer-initiation;fti;
 vnd.antix.game-component;atx;
 vnd.apache.arrow.file;arrow;
 vnd.apache.arrow.stream;arrows;
+vnd.apache.parquet;parquet;
 vnd.api+json;json;
 vnd.aplextor.warrp+json;json;
 vnd.apothekende.reservation+json;json;
@@ -3753,6 +3767,7 @@ vnd.bmi;BMI;
 vnd.businessobjects;rep;
 vnd.byu.uapi+json;json;
 vnd.bzip3;bz3;
+vnd.c3voc.schedule+xml;xml;
 vnd.capasystems-pg+json;json;
 vnd.cendio.thinlinc.clientconf;tlclient;
 vnd.chemdraw+xml;cdxml;
@@ -4650,7 +4665,7 @@ vnd.vmx.cvsd;;
 vorbis-config;;
 vorbis;;
 
-55:audio:I:E
+57:audio:I:E
 32kadpcm;726;
 3gpp;3gp,3gpp;
 aac;adts,aac,loas,ass;
@@ -4668,10 +4683,12 @@ evrcb;evb;
 evrcnw;enw;
 evrcwb;evw;
 evs;3gp,3gpp;
+flac;flac;
 ilbc;lbc;
 l16;WAV,L16;
 matroska;mka;
 mhas;mhas;
+midi-clip;midi2;
 mobile-xmf;mxmf;
 mp4;mp4,mpg4,f4a,f4b,m4a,mp4a;
 mpeg;mp1,mp2,mp3,mpga,mpega,m4a,mp2a,m2a,m3a,mpa,mpg;base64
@@ -4824,7 +4841,7 @@ vnd.cns.inf2;;
 vnd.mix;;
 vnd.svf;;
 
-79:image:I:E
+80:image:I:E
 aces;exr;
 apng;apng;
 avci;avci;
@@ -4853,6 +4870,7 @@ jph;jph;
 jphc;jhc;
 jpm;jpm,jpgm;
 jpx;jpf,jpx;
+jxl;jxl;
 jxr;jxr;
 jxra;jxra;
 jxrs;jxrs;
