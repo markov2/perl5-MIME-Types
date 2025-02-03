@@ -1,4 +1,4 @@
-2297:EXTENSIONS
+2322:EXTENSIONS
 #;application/x-mathcad
 %;application/x-trash
 0fs;application/vnd.erofs
@@ -384,6 +384,7 @@ coswid;application/swid+cbor
 cpa;x-chemical/x-compass
 cpi;video/mp2t
 cpio;application/x-cpio
+cpj;application/vnd.xarin.cpj
 cpkg;application/vnd.xmpie.cpkg
 cpl;application/cpl+xml
 cpp;text/x-c++src
@@ -432,7 +433,7 @@ daf;application/vnd.mobius.daf
 dar;application/x-dar
 dart;application/vnd.dart
 dat;application/octet-stream
-dataless;application/vnd.fdsn.mseed
+dataless;application/vnd.fdsn.seed
 davmount;application/davmount+xml
 dbf;application/vnd.dbf
 dbk;application/x-docbook+xml
@@ -440,6 +441,7 @@ dc;application/x-dc-rom
 dcd;application/dcd
 dcl;text/x-dcl
 dcm;application/dicom
+dcmp;application/vnd.dcmp+xml
 dcr;application/x-director
 dcurl;text/vnd.curl.dcurl
 dd2;application/vnd.oma.dd2+xml
@@ -502,6 +504,7 @@ drw;application/x-drafting
 dsc;text/prs.lines.tag
 dsl;text/x-dsl
 dsm;application/vnd.desmume.movie
+dspx;application/vnd.openvpi.dspx+json
 dssc;application/dssc+der
 dtb;application/x-dtbook+xml
 dtd;application/xml-dtd
@@ -684,6 +687,7 @@ gf;application/x-tex-gf
 gff3;text/gff3
 gg;application/x-sms-rom
 ggb;application/vnd.geogebra.file
+ggp;application/vnd.geogebra.pinboard
 ggs;application/vnd.geogebra.slides
 ggt;application/vnd.geogebra.tool
 ghf;application/vnd.groove-help
@@ -768,8 +772,10 @@ hgl;text/vnd.hgl
 hh;text/x-c++hdr
 hif;image/avif
 hin;x-chemical/x-hin
+hjif;haptics/hjif
 hlb;text/x-script
 hlp;application/x-winhlp
+hmpg;haptics/hmpg
 hp;text/x-c++hdr
 hpg;application/vnd.hp-hpgl
 hpgl;application/vnd.hp-hpgl
@@ -874,11 +880,14 @@ its;application/its+xml
 iv;application/x-inventor
 ivp;application/vnd.immervision-ivp
 ivr;x-i-world/x-i-vrml
+ivs;haptics/ivs
 ivu;application/vnd.immervision-ivu
 ivy;application/x-livescreen
 j2c;image/j2c
 j2k;image/j2c
 jad;text/vnd.sun.j2me.app-descriptor
+jaii;image/jaii
+jais;image/jais
 jam;application/vnd.jam
 jar;application/java-archive
 jav;text/x-java-source
@@ -933,9 +942,11 @@ jxss;image/jxss
 k25;image/x-kodak-k25
 kar;audio/x-midi
 karbon;application/vnd.kde.karbon
+kcl;text/vnd.zoo.kcl
 kcm;application/vnd.nervana
 kdc;image/x-kodak-kdc
 kdelnk;application/x-desktop
+kdl;application/vnd.kdl
 kexi;application/x-kexiproject-sqlite2
 kexic;application/x-kexi-connectiondata
 kexis;application/x-kexiproject-shortcut
@@ -946,6 +957,8 @@ kil;application/x-killustrator
 kin;x-chemical/x-kinemage
 kino;application/smil+xml
 kml;application/vnd.google-earth.kml+xml
+kmp;application/vnd.keyman.kmp+zip
+kmx;application/vnd.keyman.kmx
 kmz;application/vnd.google-earth.kmz
 kne;application/vnd.kinar
 knp;application/vnd.kinar
@@ -1063,6 +1076,7 @@ map;application/x-navimap
 mar;application/octet-stream
 markdown;text/markdown
 mathml;application/mathml+xml
+mayf;application/prs.mayfile
 mb;application/mathematica
 mbd;application/x-mbedlet
 mbk;application/vnd.mobius.mbk
@@ -1194,7 +1208,7 @@ mrw;image/x-minolta-mrw
 ms;application/x-troff-ms
 msa;application/vnd.msa-disk-image
 mscml;application/mediaservercontrol+xml
-msd;application/vnd.fdsn.mseed
+mseed3;application/vnd.fdsn.mseed
 mseed;application/vnd.fdsn.mseed
 mseq;application/vnd.mseq
 msf;application/vnd.epson.msf
@@ -1661,7 +1675,7 @@ sds;application/vnd.stardivision.chart
 sdw;application/vnd.stardivision.writer
 sea;application/x-sea
 see;application/vnd.seemail
-seed;application/vnd.fdsn.mseed
+seed;application/vnd.fdsn.seed
 sem;application/vnd.sealed.eml
 sema;application/vnd.sema
 semd;application/vnd.semd
@@ -1725,6 +1739,8 @@ sjpg;image/vnd.sealedmedia.softseal.jpg
 sk1;image/x-skencil
 sk;image/x-skencil
 skd;application/x-koan
+sketch;application/vnd.sketchometry
+sketcho;application/vnd.sketchometry
 skm;application/x-koan
 skp;application/x-koan
 skr;application/pgp-keys
@@ -1865,6 +1881,7 @@ t3;application/x-t3vm-image
 t;application/x-troff
 tag;text/prs.lines.tag
 taglet;application/vnd.mynfc
+tak;application/rpki-signed-tal
 talk;text/x-speech
 tam;application/vnd.onepager
 tamp;application/vnd.onepagertamp
@@ -1915,6 +1932,7 @@ tmo;application/vnd.tmobile-livetv
 tnef;application/vnd.ms-tnef
 tnf;application/vnd.ms-tnef
 toc;application/x-cdrdao-toc
+toml;application/toml
 torrent;application/x-bittorrent
 tpic;image/x-tga
 tpl;application/vnd.groove-tool-template
@@ -1954,6 +1972,7 @@ u3d;model/u3d
 u8dsn;message/global-delivery-status
 u8mdn;message/global-disposition-notification
 u8msg;message/global
+uccs;application/uccs+cbor
 udeb;application/vnd.debian.binary-package
 ufd;application/vnd.ufdl
 ufdl;application/vnd.ufdl
@@ -1961,6 +1980,7 @@ ufraw;application/x-ufraw
 ui;application/x-designer
 uil;text/x-uil
 uis;application/urc-uisocketdesc+xml
+ujcs;application/ujcs+json
 uls;text/x-iuls
 ult;audio/x-mod
 ulx;application/x-glulx
@@ -2021,6 +2041,7 @@ val;x-chemical/x-ncbi-asn1-binary
 vala;text/x-vala
 vapi;text/x-vala
 vbk;audio/vnd.nortel.vbk
+vc;application/vc
 vcard;text/vcard
 vcd;application/x-cdlink
 vcf.bz2;application/prs.vcfbzip2
@@ -2043,6 +2064,7 @@ viaframe;application/vnd.tml
 vis;application/vnd.informix-visionary
 viv;video/vnd.vivo
 vivo;video/vnd.vivo
+vjj;application/voucher-jws+json
 vlc;audio/x-mpegurl
 vmd;x-chemical/x-vmd
 vmf;application/x-vocaltec-media-file
@@ -2053,6 +2075,7 @@ voc;audio/x-voc
 vor;application/vnd.stardivision.writer
 vos;video/x-vosaic
 vox;application/x-authorware-bin
+vp;application/vp
 vqe;audio/x-twinvq-plugin
 vqf;audio/x-twinvq
 vql;audio/x-twinvq-plugin
@@ -2062,6 +2085,7 @@ vrt;x-world/x-vrt
 vsc;application/vnd.vidsoft.vidconference
 vsd;application/vnd.visio
 vsf;application/vividence.scriptfile
+vsp4;application/vnd.vocalshaper.vsp4
 vss;application/vnd.visio
 vst;application/vnd.visio
 vsw;application/vnd.visio
@@ -2271,6 +2295,7 @@ yin;application/yin+xml
 yme;application/vnd.yaoweme
 yml;application/vnd.oai.workflows+yaml
 yt;video/vnd.youtube.yt
+yuv;video/vnd.planar
 z1;application/x-zmachine
 z2;application/x-zmachine
 z3;application/x-zmachine
@@ -2823,7 +2848,7 @@ x-zip-compressed;zip;
 x-zmachine;z1,z2,z3,z4,z5,z6,z7,z8;
 x-zoo;zoo;
 
-611:application:I:
+650:application:I:
 1d-interleaved-parityfec;;
 3gpdash-qoe-report+xml;;
 3gpp-ims+xml;;
@@ -2832,6 +2857,7 @@ x-zoo;zoo;
 ace+cbor;;
 ace+json;;
 ace-groupcomm+cbor;;
+ace-trl+cbor;;
 activemessage;;
 activity+json;;
 aif+cbor;;
@@ -2855,12 +2881,18 @@ alto-tipsparams+json;;
 alto-updatestreamcontrol+json;;
 alto-updatestreamparams+json;;
 applefile;;base64
+application/jwk-set+jwt;;
+application/resolve-response+jwt;;
+application/trust-chain+json;;
+application/trust-mark+jwt;;
+application/trust-mark-delegation+jwt;;
 at+jwt;;
 atomicmail;;
 atsc-dynamic-event-message;;
 atsc-rdt+json;;
 batch-smtp;;
 beep+xml;;
+bufr;;
 calendar+json;;
 call-completion;;
 cals-1840;;
@@ -2868,8 +2900,10 @@ captive+json;;
 cbor-seq;;
 cda+xml;;
 cdni;;
+ce+cbor;;
 cfw;;
 cid-edhoc+cbor-seq;;
+city+json-seq;;
 cnrp+xml;;
 coap-payload;;
 concise-problem-details+cbor;;
@@ -2885,6 +2919,12 @@ dns-message;;
 dns;;
 dots+cbor;;
 dpop+jwt;;
+eat+cwt;;
+eat+jwt;;
+eat-bun+cbor;;
+eat-bun+json;;
+eat-ucs+cbor;;
+eat-ucs+json;;
 edhoc+cbor-seq;;
 edi-consent;;
 edi-x12;;
@@ -2894,6 +2934,7 @@ elm+xml;;
 emergencycalldata.cap+xml;;
 emergencycalldata.ecall.msd;;
 encaprtp;;
+entity-statement+jwt;;
 eshop;;
 example;;
 expect-ct-report+json;;
@@ -2907,12 +2948,14 @@ font-sfnt;;
 font-woff - deprecated in favor of font/woff;;
 framework-attributes+xml;;
 geo+json-seq;;
+geopose+json;;
 geoxacml+json;;
 geoxacml+xml;;
 gnap-binding-jws;;
 gnap-binding-jwsd;;
 gnap-binding-rotation-jws;;
 gnap-binding-rotation-jwsd;;
+grib;;
 h224;;
 hl7v2+xml;;
 http;;
@@ -2936,6 +2979,7 @@ json-seq;;
 jsonpath;;
 jwk+json;;
 jwk-set+json;;
+jwk-set+jwt;;
 jwt;;
 kpml-request+xml;;
 kpml-response+xml;;
@@ -2992,6 +3036,7 @@ private-token-request;;
 private-token-response;;
 problem+json;;
 problem+xml;;
+provided-claims+jwt;;
 prs.alvestrand.titrax-sheet;;
 prs.cyn;;
 prs.implied-document+xml;;
@@ -3007,6 +3052,7 @@ raptorfec;;
 rdap+json;;
 remote-printing;;
 reputon+json;;
+resolve-response+jwt;;
 riscos;;
 rlmi+xml;;
 rpki-publication;;
@@ -3032,17 +3078,26 @@ smpte336m;;
 soap+fastinfoset;;
 soap+xml;;
 spirits-event+xml;;
+sslkeylogfile;;
+st2110-41;;
+stratum;;
 taxii+json;;
 tetra_isi;;
 timestamp-query;;
 timestamp-reply;;
 tnauthlist;;
+toc+cbor;;
 token-introspection+jwt;;
 trickle-ice-sdpfrag;;
+trust-chain+json;;
+trust-mark+jwt;;
+trust-mark-delegation+jwt;;
 tve-trigger;;
 tzif-leap;;
 tzif;;
 ulpfec;;
+vc+cose;;
+vc+jwt;;
 vcard+json;;
 vemmi;;
 vnd.3gpp-prose+xml;;
@@ -3054,6 +3109,8 @@ vnd.3gpp-v2x-local-service-information;;
 vnd.3gpp.5gnas;;
 vnd.3gpp.5gsa2x-local-service-information;;
 vnd.3gpp.5gsa2x;;
+vnd.3gpp.5gsv2x-local-service-information;;
+vnd.3gpp.5gsv2x;;
 vnd.3gpp.access-transfer-events+xml;;
 vnd.3gpp.bsf+xml;;
 vnd.3gpp.crs+xml;;
@@ -3216,6 +3273,7 @@ vnd.fujixerox.hbpl;;
 vnd.fut-misnet;;
 vnd.futoin+cbor;;
 vnd.futoin+json;;
+vnd.ga4gh.passport+jwt;;
 vnd.gentoo.manifest;;
 vnd.globalplatform.card-content-mgt-response;;
 vnd.globalplatform.card-content-mgt;;
@@ -3273,6 +3331,7 @@ vnd.ms-wmdrm.lic-chlg-req;;
 vnd.ms-wmdrm.lic-resp;;
 vnd.ms-wmdrm.meter-chlg-req;;
 vnd.ms-wmdrm.meter-resp;;
+vnd.msgpack;;
 vnd.msign;;
 vnd.music-niff;;
 vnd.ncd.control;;
@@ -3397,6 +3456,7 @@ vnd.syncml.ds.notification;;
 vnd.tri.onesource;;
 vnd.truedoc;;
 vnd.tve-trigger;;
+vnd.uic.osdm+json;;
 vnd.uplanet.alert-wbxml;;
 vnd.uplanet.alert;;
 vnd.uplanet.bearer-choice-wbxml;;
@@ -3410,6 +3470,8 @@ vnd.uplanet.list;;
 vnd.uplanet.listcmd-wbxml;;
 vnd.uplanet.listcmd;;
 vnd.uplanet.signal;;
+vnd.veraison.tsm-report+cbor;;
+vnd.veraison.tsm-report+json;;
 vnd.verimatrix.vcas;;
 vnd.wfa.dpp;;
 vnd.windows.devicepairing;;
@@ -3423,6 +3485,8 @@ vnd.xmi+xml;;
 vnd.yamaha.remote-setup;;
 vnd.yamaha.through-ngn;;
 vnd.yamaha.tunnel-udpencap;;
+vp+cose;;
+vp+jwt;;
 vq-rtcpxr;;
 whoispp-query;;
 whoispp-response;;
@@ -3436,7 +3500,7 @@ yang-data+xml;;
 yang-patch+json;;
 yang-patch+xml;;
 
-1046:application:I:E
+1064:application:I:E
 a2l;a2l;
 aml;aml;
 andrew-inset;ez;
@@ -3610,6 +3674,7 @@ postscript;ps-z,ps,ai,eps,epsi,epsf,eps2,eps3;base64
 provenance+xml;provx;
 prs.cww;cw,cww;
 prs.hpub+zip;HPUB;
+prs.mayfile;mayf;
 prs.nprend;rnd,rct;
 prs.rdf-xml-crypt;rdf-crypt;
 prs.vcfbzip2;vcf.bz2,vcfbzip2;
@@ -3629,6 +3694,7 @@ rpki-checklist;sig;
 rpki-ghostbusters;gbr;
 rpki-manifest;mft;
 rpki-roa;roa;
+rpki-signed-tal;tak;
 rtf;rtf,rtx;8bit
 sarif+json;sarif,sarif.json;
 sarif-external-properties+json;sarif-external-properties;
@@ -3686,12 +3752,16 @@ timestamped-data;tsd;
 tlsrpt+gzip;gz;
 tlsrpt+json;json;
 tm+json;jsontm,tm.json,tm.jsonld;
+toml;toml;
 trig;trig;
 ttml+xml;ttml;
+uccs+cbor;uccs;
+ujcs+json;ujcs;
 urc-grpsheet+xml;gsheet;
 urc-ressheet+xml;rsheet;
 urc-targetdesc+xml;td;
 urc-uisocketdesc+xml;uis;
+vc;vc;
 vcard+xml;xml;
 vividence.scriptfile;vsf,vtd,vd;
 vnd.1000minds.decision-model+xml;1km;
@@ -3826,6 +3896,7 @@ vnd.datalog;dl;
 vnd.datapackage+json;json;
 vnd.dataresource+json;json;
 vnd.dbf;dbf;
+vnd.dcmp+xml;dcmp;
 vnd.debian.binary-package;deb,udeb;
 vnd.dece.data;uvf,uvvf,uvd,uvvd;
 vnd.dece.ttml+xml;uvt,uvvt;
@@ -3882,8 +3953,9 @@ vnd.ezpix-package;ez3;
 vnd.familysearch.gedcom+zip;gdz;
 vnd.fastcopy-disk-image;dim;
 vnd.fdf;fdf;
-vnd.fdsn.mseed;msd,mseed,seed,dataless;
+vnd.fdsn.mseed;mseed,mseed3;
 vnd.fdsn.seed;seed,dataless;
+vnd.fdsn.stationxml+xml;xml;
 vnd.ficlab.flb+zip;flb;
 vnd.filmit.zfc;zfc;
 vnd.fints;hbci,hbc,kom,upa,pkd,bpd;
@@ -3921,6 +3993,7 @@ vnd.gentoo.xpak;tbz2,xpak;
 vnd.geo+json;json,geojson;
 vnd.geocube+xml;g3;
 vnd.geogebra.file;ggb;
+vnd.geogebra.pinboard;ggp;
 vnd.geogebra.slides;ggs;
 vnd.geogebra.tool;ggt;
 vnd.geometry-explorer;gex,gre;
@@ -4023,8 +4096,11 @@ vnd.kde.kontour;KON;
 vnd.kde.kpresenter;KPR,KPT;
 vnd.kde.kspread;KSP;
 vnd.kde.kword;KWT,KWD;
+vnd.kdl;kdl;
 vnd.kenameaapp;htke;
 vnd.kenameapp;htke;
+vnd.keyman.kmp+zip;kmp;
+vnd.keyman.kmx;kmx;
 vnd.kidspiration;kia;
 vnd.kinar;kne,knp,sdf;
 vnd.koan;skp,skd,skt,skm;
@@ -4185,6 +4261,7 @@ vnd.openeye.oeb;oeb;
 vnd.openofficeorg.extension;oxt;
 vnd.openstreetmap.data+xml;osm;
 vnd.opentimestamps.ots;ots;
+vnd.openvpi.dspx+json;dspx;
 vnd.openxmlformats-officedocument.custom-properties+xml;xml;
 vnd.openxmlformats-officedocument.customxmlproperties+xml;xml;
 vnd.openxmlformats-officedocument.drawing+xml;xml;
@@ -4334,6 +4411,7 @@ vnd.shx;shx;
 vnd.sigrok.session;sr;
 vnd.simtech-mindmapper;twd,twds;
 vnd.siren+json;json;
+vnd.sketchometry;sketcho,sketch;
 vnd.smaf;mmf;
 vnd.smart.notebook;notebook;
 vnd.smart.teacher;teacher;
@@ -4407,6 +4485,7 @@ vnd.vidsoft.vidconference;vsc;8bit
 vnd.visio;vsd,vst,vsw,vss;
 vnd.visionary;vis;
 vnd.vividence.scriptfile;vsc;
+vnd.vocalshaper.vsp4;vsp4;
 vnd.vsf;vsf;
 vnd.wap.sic;sic,wbxml;
 vnd.wap.slc;slc,wbxml;
@@ -4428,6 +4507,7 @@ vnd.wt.stf;stf;
 vnd.wv.csp+wbxml;wv;
 vnd.xacml+json;json;
 vnd.xara;XAR,web;
+vnd.xarin.cpj;cpj;
 vnd.xecrets-encrypted;axx;
 vnd.xfdl;xfdl,xfd,frm;
 vnd.xmpie.cpkg;cpkg;
@@ -4449,6 +4529,8 @@ vnd.zul;zir,zirz;
 vnd.zzazz.deck+xml;zaz;
 voicexml+xml;vxml;
 voucher-cms+json;vcj;
+voucher-jws+json;vjj;
+vp;vp;
 wasm;wasm;
 watcherinfo+xml;wif,xml;
 webpush-options+json;json;
@@ -4737,6 +4819,11 @@ ttf;ttf;
 woff2;woff2;
 woff;woff;
 
+3:haptics:I:E
+hjif;hjif;
+hmpg;hmpg;
+ivs;ivs;
+
 10:image::
 x-bzeps;;
 x-compressed-xcf;;
@@ -4841,7 +4928,7 @@ vnd.cns.inf2;;
 vnd.mix;;
 vnd.svf;;
 
-80:image:I:E
+82:image:I:E
 aces;exr;
 apng;apng;
 avci;avci;
@@ -4863,9 +4950,11 @@ hej2k;hej2;
 hsj2;hsj2;
 ief;ief,iefs;base64
 j2c;j2c,j2k;
+jaii;jaii;
+jais;jais;
 jls;jls;
 jp2;jp2,jpg2,jpx,jpf;base64
-jpeg;jpeg,jpg,jpe,jfif,jfif-tbnl;base64
+jpeg;jpg,jpeg,jpe,jfif,jfif-tbnl;base64
 jph;jph;
 jphc;jhc;
 jpm;jpm,jpgm;
@@ -5208,7 +5297,7 @@ vnd.latex-z;;
 vnd.motorola.reflex;;
 vnd.radisys.msml-basic-layout;;
 
-70:text:I:E
+72:text:I:E
 cache-manifest;appcache,manifest;
 calendar;ics,icz,ifb,vcs;
 cql;CQL;
@@ -5271,10 +5360,12 @@ vnd.si.uricatalogue;uric;
 vnd.sosi;sos;
 vnd.sun.j2me.app-descriptor;jad;8bit
 vnd.trolltech.linguist;ts;
+vnd.vcf;vcf;
 vnd.wap.si;si,xml;
 vnd.wap.sl;sl,xml;
 vnd.wap.wml;wml,xml;
 vnd.wap.wmlscript;wmls;
+vnd.zoo.kcl;kcl;
 vtt;vtt;
 wgsl;wgsl;
 xml-external-parsed-entity;xml,ent;
@@ -5386,7 +5477,7 @@ vnd.nokia.videovoip;;
 vp8;;
 vp9;;
 
-41:video:I:E
+42:video:I:E
 3gpp2;3g2,3gpp2,3gp2;base64
 3gpp;3gp,3gpp,3ga;base64
 dv;dif,dv;
@@ -5418,6 +5509,7 @@ vnd.ms-playready.media.pyv;pyv;
 vnd.nokia.interleaved-multimedia;nim;
 vnd.nokia.mp4vr;mp4;
 vnd.objectvideo;mp4;
+vnd.planar;yuv;
 vnd.radgamettools.bink;bik,bk2;
 vnd.radgamettools.smacker;smk;
 vnd.rn-realvideo;rv,rvx;
