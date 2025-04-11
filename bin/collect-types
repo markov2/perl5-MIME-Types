@@ -30,7 +30,7 @@ my @iana_basetypes = qw{
 my %iana_basetypes = map +($_ => 1), @iana_basetypes;
 
 my %preferred_mt = (
-	dat      => 'application/octet-stream',
+    dat      => 'application/octet-stream',
 
     # https://tools.ietf.org/html/rfc4337#section-2
     mp4      => 'video/mp4',
@@ -183,8 +183,8 @@ sub iana_templates()
                           | or
                           )\b/ /gix;
                 @exts = $exts =~ m/([a-zA-Z0-9_+-]+)/g;
-            	@exts = grep $_ ne '-', @exts;
-            	@exts = () if @exts > 5;   # sometimes a sentence
+                @exts = grep $_ ne '-', @exts;
+                @exts = () if @exts > 5;   # sometimes a sentence
             }
         }
 
@@ -243,7 +243,7 @@ sub my_own()
     open OWN, '<', $my_own or die $!;
     while(<OWN>)
     {   chomp;
-		s/\s+\#.*//;
+        s/\s+\#.*//;
         next if /^#|^\s*$/;
         my ($type, $ext, $enc) = split /\;/;
         my @ext  = $ext ? (split /\,/, $ext) : ();
@@ -399,8 +399,8 @@ my %simply_overrule = (
     txt  => 'text/plain',
     html => 'text/html',
     bin  => 'application/octet-stream',
-	es   => 'text/ecmascript',  # RFC9239
-	mjs  => 'text/ecmascript',  # RFC9239
+    es   => 'text/ecmascript',  # RFC9239
+    mjs  => 'text/ecmascript',  # RFC9239
 );
 
 sub simplify()
