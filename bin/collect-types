@@ -208,8 +208,12 @@ sub iana_xml()
     {   my $major   = $group->{id};
         foreach my $record ( @{$group->{record} || []} )
         {   my $minor = $record->{name};
+
             next if ref $minor eq 'HASH';   # name contains xml
-            next if $minor =~ /OBSOLETE/;
+
+            # Maybe we should leave them in, for backwards
+            # compatibility?
+            next if $minor =~ /OBSOLETE|DEPRECATED/;
 
             add_type "$major/$minor", 'iana', [];
         }
@@ -239,6 +243,7 @@ sub my_own()
     open OWN, '<', $my_own or die $!;
     while(<OWN>)
     {   chomp;
+		s/\s+\#.*//;
         next if /^#|^\s*$/;
         my ($type, $ext, $enc) = split /\;/;
         my @ext  = $ext ? (split /\,/, $ext) : ();
@@ -393,7 +398,9 @@ sub freedesktop()
 my %simply_overrule = (
     txt  => 'text/plain',
     html => 'text/html',
-    bin  => 'applicatoin/octet-stream',
+    bin  => 'application/octet-stream',
+	es   => 'text/ecmascript',  # RFC9239
+	mjs  => 'text/ecmascript',  # RFC9239
 );
 
 sub simplify()

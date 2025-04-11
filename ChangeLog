@@ -8,6 +8,12 @@ TODO:
 
 version 2.28:
 
+	Fixes:
+	- some 'deprecated' texts made it to types.db.
+
+	Improvements:
+	- text/ecmascript RFC9239
+
 version 2.27: Fri  7 Feb 11:08:22 CET 2025
 
 	Changes:
