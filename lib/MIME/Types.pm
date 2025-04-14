@@ -26,9 +26,14 @@ MIME::Types - Definition of MIME types
 
 =chapter DESCRIPTION
 
-MIME types are used in many applications (for instance as part of e-mail
+"MIME Type" is the old name for "Media Type".  This module dates from
+1999, and name changes are painful, so we stuck with the original name.
+
+Media types are used in many applications (for instance as part of e-mail
 and HTTP traffic) to indicate the type of content which is transmitted.
-or expected.  See RFC2045 at F<https://www.ietf.org/rfc/rfc2045.txt>
+or expected.  Read RFC6838 at F<https://www.rfc-editor.org/rfc/rfc6838>
+(registrations) and RFC9694 at F<https://www.rfc-editor.org/rfc/rfc9694>
+(top-levels) for the specification.
 
 Sometimes detailed knowledge about a mime-type is need, however this
 module only knows about the file-name extensions which relate to some
