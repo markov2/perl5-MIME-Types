@@ -1,0 +1,71 @@
+# This file maps mime types to their default characterset.  As per RFC6657,
+# the default differs per mime type :-(
+# Last update: 2025-04-14
+
+# This file is manually maintained, because the IANA registration template is often
+# not used correctly.
+#  _FRAMED = wrapped data, which might contain binary octets  RFC6838 section 4.8
+#  _REQUIRED
+
+# text/1d-interleaved-parityfec;_FRAMED # RTP only
+text/cache-manifest;UTF-8			# Only valid value
+text/calendar;UTF-8					# Only utf-8 or US-ASCII.  US-ASCII is deprecated.
+text/cql;US-ASCII
+text/cql-expression;US-ASCII
+text/cql-identifier;US-ASCII
+text/css;US-ASCII					# Only extensions of US-ASCII are permitted
+text/csv;UTF-8						# Use of charset advised
+text/csv-schema;UTF-8				# Only acceptable value
+text/directory;US-ASCII
+text/dns;US-ASCII					# Non-ASCII encoded in \DDD encoding
+text/ecmascript;UTF-8				# RFC9239 Section 4.1
+# text/encaprtp;_FRAMED				# RTP only.  Probably can only contain ASCII
+text/enriched;US-ASCII				# RFC1563 says: same as text/plain
+text/fhirpath;US ASCII
+# text/flexfec;_FRAMED				# RTP only
+text/fwdred;_UNCLEAR
+text/gff3;UTF-8						# required with default
+text/grammar-ref-list;US-ASCII		# contains encoded urls only
+text/hl7v2;US-ASCII
+text/html;_FRAMED					# overrules the charset found in the HTML data
+text/javascript;UTF-8				# RFC9239 Section 4.1
+text/jcr-cnd;UTF-8					# Only accepted value
+text/markdown;_REQUIRED
+#text/mizar							# Excluded: too messy spec
+text/n3;US-ASCII					# UTF-8 is only acceptable value
+text/parameters;UTF-8
+# text/parityfec;_FRAMES			# RTP only.
+text/plain;US-ASCII					# RFC6657 section 4
+text/provenance-notation;UTF-8		# UTF-8 is only acceptable value
+text/prs.fallenstein.rst;UTF-8		# Still in use?
+text/prs.lines.tag;US-ASCII			# Unspecified
+text/prs.prop.logic;US-ASCII
+text/prs.texi;US-ASCII				# Unspecified
+# text/raptorfec;_FRAMED			# RTP only.
+# text/red;_FRAMED					# RTP only.
+text/rfc822-headers;US-ASCII
+#text/richtext						# No spec
+text/rtf;US-ASCII
+# text/rtp-enc-aescm128;_FRAMED		# RTP only.
+# text/rtploopback;_FRAMED			# RTP only.
+# text/rtx;_FRAMED					# RTP only.
+text/sgml;US-ASCII
+text/shaclc;UTF-8					# UTF-8 is only acceptable value
+text/shax;UTF-8						# UTF-8 is only acceptable value
+text/spdx;_FRAMED					# charset parameter not used: encoded in payload as well
+text/strings;UTF-8					# UTF-8 is only acceptable value
+# text/t140;US-ASCII				# RTP only.
+text/tab-separated-values;_REQUIRED	# charset required
+text/troff;US-ASCII
+text/turtle;US-ASCII				# UTF-8 is only acceptable value
+# video/ulpfec;_FRAMED				# Mistake in IANA administraction, RTP only
+text/uri-list;US-ASCII				# Discussions ongoing about charset
+text/vcard;US-ASCII					# UTF-8 is only acceptable value
+
+#### All vendor specific text types are not listed here.  For now, I assume they require
+#### the charset spec.
+
+text/vtt;UTF-8						# UTF-8 is only acceptable value
+text/wgsl;UTF-8						# UTF-8 is only acceptable value
+text/xml;_FRAMED					# Specified in the XML, it's a mess
+text/xml-external-parsed-entity;_FRAMED

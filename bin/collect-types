@@ -19,6 +19,7 @@ my $sitepoint   = 'sources/from-sitepoint';
 my $stdicon     = 'sources/from-stdicon';
 my $broofa      = 'sources/from-broofa';
 my $freedesktop = 'sources/from-freedesktop';
+my $charsets    = 'sources/charset-defaults';
 
 my $history     = 'history';
 my $distributed = 'lib/MIME/types.db';
@@ -62,6 +63,7 @@ sub sitepoint();
 sub stdicon();
 sub broofa();
 sub freedesktop();
+sub charset_defaults();
 
 sub simplify();
 sub write_tables();
@@ -392,6 +394,26 @@ sub freedesktop()
 }
 
 #
+### From charsets
+#
+
+my %charsets;
+sub charset_defaults()
+{   print "* processing charset defaults\n";
+
+    open CHARSETS, '<:encoding(utf-8)', $charsets or die $!;
+    while(<CHARSETS>)
+    {   s/[ \t]+\#.*//;
+		next if /^\#|^\s*$/;
+        chomp;
+		my ($type, $default) = split /\;/, $_, 2;
+		$charsets{$type} = $default;
+	}
+	print '  . now '. (keys %charsets) . " defaults\n";
+}
+
+
+#
 ### Simplify
 #
 
@@ -497,7 +519,8 @@ sub write_distributed()
         my $hasExt = @ext ? 'E' : '';
         my $ext    = join ',', @ext;
         my $enc    = $info->{enc} || '';
-        push @{$sets{"$major:$isIANA:$hasExt"}}, "$minor;$ext;$enc";
+		my $char   = $charsets{$type} || '';
+        push @{$sets{"$major:$isIANA:$hasExt"}}, "$minor;$ext;$enc;$char";
     }
 
     foreach my $ext (sort keys %exts)
@@ -566,6 +589,7 @@ sitepoint();
 stdicon();
 broofa();
 freedesktop();
+charset_defaults();
 #warn Dumper \%mimes;
 
 # Build the tables

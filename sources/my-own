@@ -862,6 +862,7 @@ text/csv;csv;8bit
 text/directory
 text/english
 text/enriched
+text/ecmascript;es,mjs;base64   # RFC9239
 text/h323;323
 text/html;html,htm,htmlx,shtml,htx;8bit
 text/iuls;uls

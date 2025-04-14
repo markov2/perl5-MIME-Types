@@ -102,6 +102,10 @@ to C<quoted-printable> and all other to C<base64>.
 Regular expression which defines for which systems this rule is valid.  The
 REGEX is matched on C<$^O>.
 
+=option  charset $charset
+=default charset C<undef>
+Specify the default charset for this type.
+
 =error Type parameter is obligatory.
 When a M<MIME::Type> object is created, the type itself must be
 specified with the C<type> option flag.
@@ -116,19 +120,18 @@ sub init($)
     my $type = $self->{MT_type} = $args->{type}
        or croak "ERROR: Type parameter is obligatory.";
 
-    $self->{MT_simplified}      = $args->{simplified}
+    $self->{MT_simplified} = $args->{simplified}
        || $self->simplified($type);
 
-    $self->{MT_extensions}      = $args->{extensions} || [];
+    $self->{MT_extensions} = $args->{extensions} || [];
 
     $self->{MT_encoding}
        = $args->{encoding}          ? $args->{encoding}
        : $self->mediaType eq 'text' ? 'quoted-printable'
        :                              'base64';
 
-    $self->{MT_system}     = $args->{system}
-       if defined $args->{system};
-
+    $self->{MT_system}     = $args->{system}  if defined $args->{system};
+	$self->{MT_charset}    = $args->{charset} if defined $args->{charset};
     $self;
 }
 
@@ -183,9 +186,20 @@ type is active on the system where you are working on.
 
 =cut
 
-sub extensions() { @{shift->{MT_extensions}} }
-sub encoding()   {shift->{MT_encoding}}
-sub system()     {shift->{MT_system}}
+sub extensions() { @{$_[0]->{MT_extensions}} }
+sub encoding()   { $_[0]->{MT_encoding} }
+sub system()     { $_[0]->{MT_system} }
+
+=method charset
+[2.28] RFC6657 prescribes that IANA registrations for text category
+types explicitly state their default character-set.  MIME-Types contains
+a manually produced list of these defaults.
+
+This method may also return C<_REQUIRED>, when there is no default, or
+C<_FRAMED> when the charset is determined by the content.
+=cut
+
+sub charset()    { $_[0]->{MT_charset} }
 
 #-------------------------------------------
 
@@ -279,5 +293,23 @@ sub cmp($)
     $self->simplified cmp $type;
 }
 sub equals($) { $_[0]->cmp($_[1])==0 }
+
+=method defaultCharset
+As per RFC6657, all C<text/*> types must either specify a default charset
+in its IANA registration, or require the charset parameter.  Non-text
+types may require a charset as well.
+
+It is hard to extract this information from the IANA registration files
+automagically, so is manually maintained.
+=cut
+
+my %ctext;
+$ctext{$_} = 'US-ASCII' for qw/plain cql cql-expression cql-identifier css directory dns encaprtp enriched/;
+$ctext{$_} = 'UTF-8'    for qw/cache-manifest calendar csv csv-schema ecmascript/;
+$ctext{$_} = '_REQUIRED' for qw//;
+
+sub defaultCharset()
+{
+}
 
 1;
