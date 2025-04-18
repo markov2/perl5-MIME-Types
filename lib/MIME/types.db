@@ -1,4 +1,4 @@
-2322:EXTENSIONS
+2326:EXTENSIONS
 #;application/x-mathcad
 %;application/x-trash
 0fs;application/vnd.erofs
@@ -358,6 +358,7 @@ cl;application/simple-filter+xml
 cla;application/vnd.claymore
 class;application/vnd.dvb.dvbj
 cld;model/vnd.cld
+clip;image/vnd.clip
 clkk;application/vnd.crick.clicker.keyboard
 clkp;application/vnd.crick.clicker.palette
 clkt;application/vnd.crick.clicker.template
@@ -461,6 +462,7 @@ di;text/x-dsrc
 dia;application/x-dia-diagram
 dib;image/bmp
 dic;text/x-c
+did;application/did
 dif;video/dv
 diff;text/x-diff
 dii;application/dii
@@ -1015,6 +1017,7 @@ log;text/x-log
 loom;application/vnd.loom
 lostsyncxml;application/lostsync+xml
 lostxml;application/lost+xml
+lot;video/lottie+json
 lrf;application/octet-stream
 lrm;application/vnd.ms-lrm
 lrv;video/mp4
@@ -1966,6 +1969,7 @@ txd;application/vnd.genomatix.tuxedo
 txf;application/vnd.mobius.txf
 txt;text/plain
 txz;application/x-xz-compressed-tar
+typ;text/vnd.typst
 tzo;application/x-tzo
 u32;application/x-authorware-bin
 u3d;model/u3d
@@ -2171,7 +2175,7 @@ wspolicy;application/wspolicy+xml
 wsrc;application/x-wais-source
 wtb;application/vnd.webturbo
 wtk;application/x-wintalk
-wv;application/vnd.wv.csp+wbxml
+wv;application/vnd.wantverse
 wvc;audio/x-wavpack-correction
 wvp;audio/x-wavpack
 wvx;video/x-ms-wvx
@@ -2243,7 +2247,7 @@ xlsm;application/vnd.ms-excel.sheet.macroenabled.12
 xlsx;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 xlt;application/vnd.ms-excel
 xltm;application/vnd.ms-excel.template.macroenabled.12
-xltx;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+xltx;application/vnd.openxmlformats-officedocument.spreadsheetml.template
 xlv;application/x-excel
 xlw;application/vnd.ms-excel
 xm;audio/x-xm
@@ -2848,7 +2852,7 @@ x-zip-compressed;zip;;
 x-zmachine;z1,z2,z3,z4,z5,z6,z7,z8;;
 x-zoo;zoo;;
 
-647:application:I:
+649:application:I:
 1d-interleaved-parityfec;;;
 3gpdash-qoe-report+xml;;;
 3gpp-ims+xml;;;
@@ -2905,6 +2909,7 @@ cfw;;;
 cid-edhoc+cbor-seq;;;
 city+json-seq;;;
 cnrp+xml;;;
+coap-eap;;;
 coap-payload;;;
 concise-problem-details+cbor;;;
 cose-x509;;;
@@ -3061,6 +3066,7 @@ samlassertion+xml;;;
 samlmetadata+xml;;;
 sbe;;;
 scaip+xml;;;
+sdf+json;;;
 secevent+jwt;;;
 sep+xml;;;
 sep-exi;;;
@@ -3497,7 +3503,7 @@ yang-data+xml;;;
 yang-patch+json;;;
 yang-patch+xml;;;
 
-1064:application:I:E
+1066:application:I:E
 a2l;a2l;;
 aml;aml;;
 andrew-inset;ez;;
@@ -3556,6 +3562,7 @@ dialog-info+xml;xml;;
 dicom+json;json;;
 dicom+xml;xml;;
 dicom;dcm;;
+did;did;;
 dii;dii;;
 dit;dit;;
 dskpp+xml;xmls;;
@@ -4303,7 +4310,7 @@ vnd.openxmlformats-officedocument.spreadsheetml.revisionheaders+xml;xml;;
 vnd.openxmlformats-officedocument.spreadsheetml.revisionlog+xml;xml;;
 vnd.openxmlformats-officedocument.spreadsheetml.sharedstrings+xml;xml;;
 vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml;xml;;
-vnd.openxmlformats-officedocument.spreadsheetml.sheet;xltx,xlsx;base64;
+vnd.openxmlformats-officedocument.spreadsheetml.sheet;xlsx;base64;
 vnd.openxmlformats-officedocument.spreadsheetml.sheetmetadata+xml;xml;;
 vnd.openxmlformats-officedocument.spreadsheetml.styles+xml;xml;;
 vnd.openxmlformats-officedocument.spreadsheetml.table+xml;xml;;
@@ -4484,6 +4491,7 @@ vnd.visionary;vis;;
 vnd.vividence.scriptfile;vsc;;
 vnd.vocalshaper.vsp4;vsp4;;
 vnd.vsf;vsf;;
+vnd.wantverse;wv;;
 vnd.wap.sic;sic,wbxml;;
 vnd.wap.slc;slc,wbxml;;
 vnd.wap.wbxml;wbxml;;
@@ -4922,7 +4930,7 @@ vnd.cns.inf2;;;
 vnd.mix;;;
 vnd.svf;;;
 
-82:image:I:E
+83:image:I:E
 aces;exr;;
 apng;apng;;
 avci;avci;;
@@ -4973,6 +4981,7 @@ tiff-fx;TFX;;
 tiff;TIF,tiff;base64;
 vnd.adobe.photoshop;psd;;
 vnd.airzip.accelerator.azv;azv;;
+vnd.clip;clip;;
 vnd.dece.graphic;uvi,uvvi,uvg,uvvg;;
 vnd.dgn;dgn;;
 vnd.djvu;djvu,djv;;
@@ -5290,7 +5299,7 @@ vnd.latex-z;;;
 vnd.motorola.reflex;;;
 vnd.radisys.msml-basic-layout;;;
 
-72:text:I:E
+73:text:I:E
 cache-manifest;appcache,manifest;;UTF-8
 calendar;ics,icz,ifb,vcs;;UTF-8
 cql;CQL;;US-ASCII
@@ -5353,6 +5362,7 @@ vnd.si.uricatalogue;uric;;
 vnd.sosi;sos;;
 vnd.sun.j2me.app-descriptor;jad;8bit;
 vnd.trolltech.linguist;ts;;
+vnd.typst;typ;;
 vnd.vcf;vcf;;
 vnd.wap.si;si,xml;;
 vnd.wap.sl;sl,xml;;
@@ -5470,7 +5480,7 @@ vnd.nokia.videovoip;;;
 vp8;;;
 vp9;;;
 
-42:video:I:E
+43:video:I:E
 3gpp2;3g2,3gpp2,3gp2;base64;
 3gpp;3gp,3gpp,3ga;base64;
 dv;dif,dv;;
@@ -5480,6 +5490,7 @@ h264;h264;;
 iso.segment;m4s;;
 jpeg;jpgv;;
 jpm;jpm,jpgm;;
+lottie+json;lot;;
 matroska-3d;mk3d;;
 matroska;mkv;;
 mj2;mj2,mjp2;;

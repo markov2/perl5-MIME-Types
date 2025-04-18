@@ -357,6 +357,7 @@ cl;application/simple-filter+xml,message/imdn+xml
 cla;application/vnd.claymore
 class;application/vnd.dvb.dvbj,application/x-java-vm,application/x-java,application/x-java-byte-code,application/x-java-class
 cld;model/vnd.cld
+clip;image/vnd.clip
 clkk;application/vnd.crick.clicker.keyboard
 clkp;application/vnd.crick.clicker.palette
 clkt;application/vnd.crick.clicker.template
@@ -460,6 +461,7 @@ di;text/x-dsrc
 dia;application/x-dia-diagram
 dib;image/bmp
 dic;text/x-c
+did;application/did
 dif;video/dv,video/x-dv
 diff;text/x-diff,text/x-patch,text/plain
 dii;application/dii
@@ -1014,6 +1016,7 @@ log;text/x-log,text/plain
 loom;application/vnd.loom
 lostsyncxml;application/lostsync+xml
 lostxml;application/lost+xml
+lot;video/lottie+json
 lrf;application/octet-stream
 lrm;application/vnd.ms-lrm
 lrv;video/mp4
@@ -1965,6 +1968,7 @@ txd;application/vnd.genomatix.tuxedo
 txf;application/vnd.mobius.txf
 txt;text/plain
 txz;application/x-xz-compressed-tar
+typ;text/vnd.typst
 tzo;application/x-tzo
 u32;application/x-authorware-bin
 u3d;model/u3d
@@ -2170,7 +2174,7 @@ wspolicy;application/wspolicy+xml
 wsrc;application/x-wais-source
 wtb;application/vnd.webturbo
 wtk;application/x-wintalk
-wv;application/vnd.wv.csp+wbxml,audio/x-wavpack
+wv;application/vnd.wantverse,application/vnd.wv.csp+wbxml,audio/x-wavpack
 wvc;audio/x-wavpack-correction
 wvp;audio/x-wavpack
 wvx;video/x-ms-wvx,audio/x-ms-asx
@@ -2242,7 +2246,7 @@ xlsm;application/vnd.ms-excel.sheet.macroenabled.12
 xlsx;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 xlt;application/vnd.ms-excel,application/x-excel
 xltm;application/vnd.ms-excel.template.macroenabled.12
-xltx;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.spreadsheetml.template
+xltx;application/vnd.openxmlformats-officedocument.spreadsheetml.template
 xlv;application/x-excel
 xlw;application/vnd.ms-excel,application/x-excel,application/x-msexcel
 xm;audio/x-xm
