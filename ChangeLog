@@ -8,6 +8,9 @@ TODO:
 
 version 2.29:
 
+	Improvements:
+	- remove html generation and releases.
+
 version 2.28: Fri Apr 18 08:54:43 PM CEST 2025
 
 	Fixes:
