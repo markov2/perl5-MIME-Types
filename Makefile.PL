@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 use 5.016;
 
 # Use command 'oodist' to produce your whole software release.
-my $version  = '2.29';              #!!! scanned by bin/collect_types
+my $version  = '2.30';              #!!! scanned by bin/collect_types
 my $webpages = "../public_html";
 my $git      = "https://github.com/markov2/perl5-MIME-Types";
 my $publish  = "../public_html/mime-types";
