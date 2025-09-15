@@ -1,6 +1,6 @@
 use ExtUtils::MakeMaker;
 
-require 5.016;
+use 5.016;
 
 # Use command 'oodist' to produce your whole software release.
 my $version  = '2.29';              #!!! scanned by bin/collect_types

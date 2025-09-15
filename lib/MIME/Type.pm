@@ -143,7 +143,6 @@ sub init($)
 
 =method type
 Returns the long type of this object, for instance C<'text/plain'>
-
 =cut
 
 sub type() { $_[0]->{MT_type} }

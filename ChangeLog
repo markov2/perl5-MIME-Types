@@ -9,7 +9,7 @@ TODO:
 version 2.29:
 
 	Changes:
-	- require 5.16 (2012)
+	- require 5.16 (2012), remove xt/98perl.t
 
 	Improvements:
 	- remove html generation and releases.

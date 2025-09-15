@@ -13,5 +13,4 @@ t/21accept.t
 t/22accbest.t
 t/30export.t
 t/40mojo.t
-xt/98perl.t
 xt/99pod.t
