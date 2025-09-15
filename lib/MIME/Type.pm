@@ -216,15 +216,15 @@ to retrieve the same value.  However, that method is deprecated.
 
 =cut
 
-sub mediaType() { $_[0]->{MT_simplified} =~ m!^([\w.-]+)/! ? $1 : undef }
-sub mainType()  {shift->mediaType} # Backwards compatibility
+sub mediaType()  { $_[0]->{MT_simplified} =~ m!^([\w.-]+)/! ? $1 : undef }
+sub mainType()   { $_[0]->mediaType } # Backwards compatibility
 
 =method subType
 The sub type of the simplified mime.
 For C<'text/plain'> it will return C<'plain'>.
 =cut
 
-sub subType() { $_[0]->{MT_simplified} =~ m!/([\w+.-]+)$! ? $1 : undef }
+sub subType()    { $_[0]->{MT_simplified} =~ m!/([\w+.-]+)$! ? $1 : undef }
 
 =method isRegistered
 Mime-types which are not registered by IANA nor defined in RFCs shall
@@ -233,7 +233,7 @@ sub-type.  In case either one of the types starts with C<x-> this
 method will return false.
 =cut
 
-sub isRegistered() { lc shift->{MT_type} !~ m{^x\-|/x\-} }
+sub isRegistered() { lc $_[0]->{MT_type} !~ m{^x\-|/x\-} }
 
 =method isVendor
 [2.00] Return true when the type is defined by a vendor; the subtype

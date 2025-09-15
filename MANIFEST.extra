@@ -1,5 +1,4 @@
 MANIFEST.extra
-html/
 bin/collect-types
 bin/update-iana
 sources/from-apache

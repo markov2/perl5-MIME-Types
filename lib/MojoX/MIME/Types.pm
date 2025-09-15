@@ -1,12 +1,14 @@
-# This code is part of distribution MIME::Types.  Meta-POD processed with
-# OODoc into POD and HTML manual-pages.  See README.md
-# Copyright Mark Overmeer.  Licensed under the same terms as Perl itself.
+#oodist: *** DO NOT USE THIS VERSION FOR PRODUCTION ***
+#oodist: This file contains OODoc-style documentation which will get stripped
+#oodist: during its release in the distribution.  You can use this file for
+#oodist: testing, however the code of this development version may be broken!
 
 package MojoX::MIME::Types;
 use Mojo::Base -base;
 
 use MIME::Types   ();
 
+#--------------------
 =chapter NAME
 MojoX::MIME::Types - MIME Types for Mojolicious
 
@@ -25,12 +27,12 @@ MojoX::MIME::Types - MIME Types for Mojolicious
 =chapter DESCRIPTION
 
 [Added to MIME::Types 2.07]
-This module is a drop-in replacement for M<Mojolicious::Types>, but
+This module is a drop-in replacement for Mojolicious::Types, but
 with a more correct handling plus a complete list of types... a huge
 list of types.
 
 Some methods ignore information they receive: those parameters are
-accepted for compatibility with the M<Mojolicious::Types> interface,
+accepted for compatibility with the Mojolicious::Types interface,
 but should not contain useful information.
 
 Read the L</DETAILS> below, about how to connect this module into
@@ -42,7 +44,7 @@ Mojolicious and the differences you get.
 
 =c_method new %options
 Create the 'type' handler for Mojolicious.  When you do not specify your
-own MIME::Type object ($mime_type), it will be instantanted for you.
+own MIME::Type object (P<mime_types>), it will be instantanted for you.
 You create one yourself when you would like to pass some parameter to
 the object constructor.
 
@@ -52,7 +54,7 @@ Ignored.
 
 =option  mime_types MIME::Types-object
 =default mime_types <created internally>
-Pass your own prepared M<MIME::Types> object, when you need some
+Pass your own prepared MIME::Types object, when you need some
 instantiation parameters different from the defaults.
 
 =examples
@@ -66,51 +68,51 @@ instantiation parameters different from the defaults.
 =cut
 
 sub new(%)
-{   # base new() constructor incorrect: should call init()
-    my $self        = shift->SUPER::new(@_);
-    $self->{MMT_mt} = delete $self->{mime_types} || MIME::Types->new;
-    $self;
+{	# base new() constructor incorrect: should call init()
+	my $self        = shift->SUPER::new(@_);
+	$self->{MMT_mt} = delete $self->{mime_types} || MIME::Types->new;
+	$self;
 }
 
-#----------
+#--------------------
 =section Attributes
 
 =method mimeTypes
 Returns the internal mime types object.
 =cut
 
-sub mimeTypes() { shift->{MMT_mt} }
+sub mimeTypes() { $_[0]->{MMT_mt} }
 
 =method mapping [\%table]
-In M<Mojolicious::Types>, this attribute exposes the internal
+In Mojolicious::Types, this attribute exposes the internal
 administration of types, offering to change it with using a clean
 abstract interface.  That interface mistake bites now we have more
 complex internals.
 
 B<Avoid this method!>  The returned HASH is expensive to construct,
-changes passed via C<%table> are ignored: M<MIME::Types> is very complete!
+changes passed via %table are ignored: MIME::Types is very complete!
 =cut
 
 sub mapping(;$)
-{   my $self = shift;
-    return $self->{MMT_ext} if $self->{MMT_ext};
+{	my $self = shift;
+	return $self->{MMT_ext} if $self->{MMT_ext};
 
-    my %exttable;
-    my $t = MIME::Types->_MojoExtTable;
-    while(my ($ext, $type) = each %$t) { $exttable{$ext} = [$type] }
-    $self->{MMT_ext} = \%exttable;
+	my %exttable;
+	my $t = MIME::Types->_MojoExtTable;
+	while(my ($ext, $type) = each %$t) { $exttable{$ext} = [$type] }
+	$self->{MMT_ext} = \%exttable;
 }
 
 *types = \&mapping;  # renamed in release 6.0
 
-#----------
+#--------------------
 =section Actions
 
 =method detect $accept, [$prio]
 Returns a list of filename extensions.  The $accept header in HTTP can
 contain multiple types, with a priority indication ('q' attributes).
 The returned list contains a list with extensions, the extensions related
-to the highest priority type first.  The C<$prio>-flag is ignored.
+to the highest priority type first.  The $prio-flag is ignored.
 See M<MIME::Types::httpAccept()>.
 
 This detect() function is not the correct approach for the Accept header:
@@ -124,30 +126,30 @@ or M<MIME::Types::httpAcceptSelect()>.
 =cut
 
 sub detect($$;$)
-{   my ($self, $accept, $prio) = @_;
-    my $mt  = $self->mimeTypes;
-    my @ext = map $_->extensions, grep defined, map $mt->type($_),
-        grep !/\*/, $mt->httpAccept($accept);
-    \@ext;
+{	my ($self, $accept, $prio) = @_;
+	my $mt  = $self->mimeTypes;
+	my @ext = map $_->extensions, grep defined, map $mt->type($_),
+		grep !/\*/, $mt->httpAccept($accept);
+	\@ext;
 }
 
 =method type $ext, [$type|\@types]
 Returns the first type name for an extension $ext, unless you specify
 type names.
 
-When a single $type or an ARRAY of @types are specified, the C<$self>
+When a single $type or an ARRAY of @types are specified, the current
 object is returned.  Nothing is done with the provided info.
 =cut
 
 sub type($;$)
-{   my ($self, $ext, $types) = @_;
+{	my ($self, $ext, $types) = @_;
 
-    my $mt  = $self->mimeTypes;
-    defined $types
-        or return $mt->mimeTypeOf($ext);
+	my $mt  = $self->mimeTypes;
+	defined $types
+		or return $mt->mimeTypeOf($ext);
 
-    # stupid interface compatibility!
-    $self;
+	# stupid interface compatibility!
+	$self;
 }
 
 =method file_type $filename
@@ -163,7 +165,7 @@ sub file_type($) {
 
 =method content_type $controller, \%options
 Set a content type on the controller when not yet set.
-The C<%options> contains C<ext> or C<file> specify an file extension or file
+The %options contains C<ext> or C<file> specify an file extension or file
 name which is used to derive the content type.
 Added and marked EXPERIMENTAL in Mojo 7.94.
 =cut
@@ -179,14 +181,14 @@ sub content_type($;$) {
 	$headers->content_type($mt->mimeTypeOf($fn) || $mt->mimeTypeOf('txt'));
 }
 
-#---------------
+#--------------------
 =chapter DETAILS
 
 =section Why?
 
-The M<Mojolicious::Types> module has only very little knowledge about
+The Mojolicious::Types module has only very little knowledge about
 what is really needed to treat types correctly, and only contains a tiny
-list of extensions.  M<MIME::Types> tries to follow the standards
+list of extensions.  MIME::Types tries to follow the standards
 very closely and contains all types found in various lists on internet.
 
 =section How to use with Mojolicious
@@ -209,14 +211,14 @@ your own MIME::Types object first:
   my $types = MojoX::MIME::Types->new(mime_types => $mt);
   $self->types($types);
 
-In any case, you can reach the smart M<MIME::Types> object later as
+In any case, you can reach the smart MIME::Types object later as
 
   my $mt    = $app->types->mimeTypes;
   my $mime  = $mt->mimeTypeOf($filename);
- 
+
 =section How to use with Mojolicious::Lite
 
-The use in M<Mojolicious::Lite> applications is only slightly different
+The use in Mojolicious::Lite applications is only slightly different
 from above:
 
   app->types(MojoX::MIME::Types->new);
@@ -228,7 +230,7 @@ There are a few major difference with Mojolicious::Types:
 
 =over 4
 =item *
-the tables maintained by M<MIME::Types> are complete.  So: there shouldn't
+the tables maintained by MIME::Types are complete.  So: there shouldn't
 be a need to add your own types, not via C<types()>, not via C<type()>.
 All attempts to add types are ignored; better remove them from your code.
 

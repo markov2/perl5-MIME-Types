@@ -5,7 +5,7 @@ use strict;
 use HTML::Parser        ();
 use File::Glob          qw/bsd_glob/;
 use File::Basename      qw/basename dirname/;
-use File::Slurp::Tiny   qw/read_file/;
+use File::Slurper       qw/read_text/;
 use XML::LibXML::Simple qw/XMLin/;
 use List::Util          qw/first/;
 
@@ -25,35 +25,35 @@ my $history     = 'history';
 my $distributed = 'lib/MIME/types.db';
 
 my @iana_basetypes = qw{
-    text/plain
-    application/octet-stream
+	text/plain
+	application/octet-stream
 };
 my %iana_basetypes = map +($_ => 1), @iana_basetypes;
 
 my %preferred_mt = (
-    dat      => 'application/octet-stream',
+	dat      => 'application/octet-stream',
 
-    # https://tools.ietf.org/html/rfc4337#section-2
-    mp4      => 'video/mp4',
+	# https://tools.ietf.org/html/rfc4337#section-2
+	mp4      => 'video/mp4',
 
-    # https://tools.ietf.org/html/rfc3839#section-3.2
-    '3gpp'   => 'video/3gpp',
-    '3gp'    => 'video/3gpp',
+	# https://tools.ietf.org/html/rfc3839#section-3.2
+	'3gpp'   => 'video/3gpp',
+	'3gp'    => 'video/3gpp',
 
-    # There is now vnd.gentoo which officially takes 'tbz2';
-    tbz2     => 'application/x-gtar',
+	# There is now vnd.gentoo which officially takes 'tbz2';
+	tbz2     => 'application/x-gtar',
 
-    # Obsoleted in
-    # https://www.iana.org/assignments/media-types/application/vnd.youtube.yt
-    yt       => 'video/vnd.youtube.yt',
+	# Obsoleted in
+	# https://www.iana.org/assignments/media-types/application/vnd.youtube.yt
+	yt       => 'video/vnd.youtube.yt',
 
-    # Google "forgot" to register these
-    webm     => 'video/webm',
-    weba     => 'audio/webm',
+	# Google "forgot" to register these
+	webm     => 'video/webm',
+	weba     => 'audio/webm',
 
-    # Google was far too late registering this one at IANA
-    #XXX remove when IANA is publishing it
-    webp     => 'image/webp',
+	# Google was far too late registering this one at IANA
+	#XXX remove when IANA is publishing it
+	webp     => 'image/webp',
 );
 
 sub iana();
@@ -73,7 +73,7 @@ sub scan_dist_version();
 sub add_type($$$);
 
 -d $iana_root
-    or die "First run bin/update_iana\n";
+	or die "First run bin/update_iana\n";
 
 my $dist_version = scan_dist_version;
 print "*** producing for release $dist_version\n";
@@ -140,90 +140,91 @@ my %broken_iana_ext =
  );
 
 sub iana_templates()
-{   print "* processing iana template files\n";
+{	print "* processing iana template files\n";
 
-    # Find the template files from disk: some may have disappeared from
-    # the XML index.
+	# Find the template files from disk: some may have disappeared from
+	# the XML index.
 
-    foreach my $fn (bsd_glob "$iana_root/*/*")
-    {   -f $fn && $fn !~ /\.html$/ or next;
+	foreach my $fn (bsd_glob "$iana_root/*/*")
+	{	-f $fn && $fn !~ /\.html$/ or next;
 
-        my $minor = basename $fn;
-        my $major = basename dirname $fn;
-        my $type  = "$major/$minor";
+		my $minor = basename $fn;
+		my $major = basename dirname $fn;
+		my $type  = "$major/$minor";
 
-        my @exts;
-        my $exts  = $broken_iana_ext{$type};
+		my @exts;
+		my $exts  = $broken_iana_ext{$type};
 
-        $exts = $1
-            if ! defined $exts
-            && read_file($fn) =~ /file extension.*?\:[ \t]*(.*)/i;
+		$exts = $1
+			if ! defined $exts
+			&& read_text($fn) =~ /file extension.*?\:[ \t]*(.*)/i;
 
-        $exts = ''    # rarely refers to RFCs
-            if $exts && $exts =~ /^\s*See /;
+		$exts = ''    # rarely refers to RFCs
+			if $exts && $exts =~ /^\s*See /;
 
-        if($exts)
-        {   
-            if(@exts = $exts =~ m/\.([a-zA-Z0-9._+-]+)/g)
-            {   # clear indication with leading dots;
-            }
-            else
-            {   $exts =~ s/\([^)]*\)//g;
-                $exts =~ s/\b
-                        (?: n\/a
-                          | na
-                          | not[ ]applicable
-                          | not[ ]available
-                          | none[ ]defined
-                          | none
-                          | undef
-                          | undefined
-                          | unknown
-                          | do[ ]not[ ]apply
-                          | not[ ]designed[ ]yet
-                          | and
-                          | or
-                          )\b/ /gix;
-                @exts = $exts =~ m/([a-zA-Z0-9_+-]+)/g;
-                @exts = grep $_ ne '-', @exts;
-                @exts = () if @exts > 5;   # sometimes a sentence
-            }
-        }
+		if($exts)
+		{	
+			if(@exts = $exts =~ m/\.([a-zA-Z0-9._+-]+)/g)
+			{	# clear indication with leading dots;
+			}
+			else
+			{	$exts =~ s/\([^)]*\)//g;
+				$exts =~ s/\b (?:
+					n\/a
+				  | na
+				  | not[ ]applicable
+				  | not[ ]available
+				  | none[ ]defined
+				  | none
+				  | undef
+				  | undefined
+				  | unknown
+				  | do[ ]not[ ]apply
+				  | not[ ]designed[ ]yet
+				  | and
+				  | or
+				  )\b/ /gix;
+				@exts = $exts =~ m/([a-zA-Z0-9_+-]+)/g;
+				@exts = grep $_ ne '-', @exts;
+				@exts = () if @exts > 5;   # sometimes a sentence
+			}
+		}
 
-        my $info  = add_type $type, 'iana', \@exts;
-    }
+		add_type $type, 'iana', \@exts;
+	}
 
-    $last_count = keys %mimes;
-    print "  . found $last_count registered types\n";
+	$last_count = keys %mimes;
+	print "  . found $last_count registered types\n";
 }
 
 # Not all offical types have a description file, so we need the XML index
 # as well.  However, that does not contain filename extensions.
 
 sub iana_xml()
-{   print "* processing iana xml file\n";
+{	print "* processing iana xml file\n";
 
-    my $doc = XMLin "$iana_root/media-types.xml", KeyAttr => [];
-    my $registry = $doc->{registry} or die;
+	my $doc = XMLin "$iana_root/media-types.xml", KeyAttr => [];
+	my $registry = $doc->{registry} or die;
 
-    foreach my $group (@$registry)
-    {   my $major   = $group->{id};
-        foreach my $record ( @{$group->{record} || []} )
-        {   my $minor = $record->{name};
+	foreach my $group (@$registry)
+	{	my $major   = $group->{id};
+		foreach my $record ( @{$group->{record} || []} )
+		{	my $minor = $record->{name};
+			next if ref $minor eq 'HASH';   # name contains xml
 
-            next if ref $minor eq 'HASH';   # name contains xml
+			# Maybe we should leave them in, for backwards
+			# compatibility?
+			next if $minor =~ /OBSOLETE|DEPRECATED/;
 
-            # Maybe we should leave them in, for backwards
-            # compatibility?
-            next if $minor =~ /OBSOLETE|DEPRECATED/;
+			warn "XML ERROR $minor\n" if $minor =~ m!/!;
 
-            add_type "$major/$minor", 'iana', [];
-        }
-    }
+			add_type "$major/$minor", 'iana', [];
+		}
+	}
 
-    print "  . added ".(keys(%mimes) - $last_count)." types\n";
-    $last_count = keys %mimes;
-    print "  . now $last_count types\n";
+	print "  . added ".(keys(%mimes) - $last_count)." types\n";
+	$last_count = keys %mimes;
+	print "  . now $last_count types\n";
 }
 
 #
@@ -233,7 +234,7 @@ sub iana_xml()
 #
 
 sub my_own()
-{   print "* processing my old list\n";
+{	print "* processing my old list\n";
 
    # Exceptions
    # vms:text/plain;doc;8bit
@@ -242,21 +243,21 @@ sub my_own()
    # IE6 bug
    # image/pjpeg;;base64
 
-    open OWN, '<', $my_own or die $!;
-    while(<OWN>)
-    {   chomp;
-        s/\s+\#.*//;
-        next if /^#|^\s*$/;
-        my ($type, $ext, $enc) = split /\;/;
-        my @ext  = $ext ? (split /\,/, $ext) : ();
-        my $info = add_type $type, 'my_own', \@ext;
-        $info->{enc} = $enc if $enc;
-    }
-    close OWN;
+	open my $own, '<:encoding(us-ascii)', $my_own or die $!;
+	while(local $_ = $own->getline)
+	{	chomp;
+		s/\s+\#.*//;
+		next if /^#|^\s*$/;
+		my ($type, $ext, $enc) = split /\;/;
+		my @ext  = $ext ? (split /\,/, $ext) : ();
+		my $info = add_type $type, 'my_own', \@ext;
+		$info->{enc} = $enc if $enc;
+	}
+	$own->close;
 
-    print "  . added ".(keys(%mimes) - $last_count)." types\n";
-    $last_count = keys %mimes;
-    print "  . now $last_count types\n";
+	print "  . added ".(keys(%mimes) - $last_count)." types\n";
+	$last_count = keys %mimes;
+	print "  . now $last_count types\n";
 }
 
 #
@@ -266,24 +267,24 @@ sub my_own()
 # disk, based on the filename extension.
 
 sub apache()
-{   print "* processing apache\n";
+{	print "* processing apache\n";
 
-    my $found = 0;
+	my $found = 0;
 
-    open APACHE, '<', $apache or die $!;
-    while(<APACHE>)
-    {   chomp;
-        next if /^#|^\s*$/;
-        my ($type, $ext) = split ' ', $_, 2;
-        my @ext  = $ext ? (split ' ', $ext) : ();
-        my $info = add_type $type, 'apache', \@ext;
-        $found++;
-    }
-    close APACHE;
+	open my $fh, '<:encoding(us-ascii)', $apache or die $!;
+	while(local $_ = $fh->getline)
+	{	chomp;
+		next if /^#|^\s*$/;
+		my ($type, $ext) = split ' ', $_, 2;
+		my @ext  = $ext ? (split ' ', $ext) : ();
+		my $info = add_type $type, 'apache', \@ext;
+		$found++;
+	}
+	$fh->close;
 
-    print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
-    $last_count = keys %mimes;
-    print "  . now $last_count types\n";
+	print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
+	$last_count = keys %mimes;
+	print "  . now $last_count types\n";
 }
 
 #
@@ -294,25 +295,25 @@ sub apache()
 # out later.
 
 sub sitepoint()
-{   print "* processing sitepoint\n";
+{	print "* processing sitepoint\n";
 
-    my $found = 0;
+	my $found = 0;
 
-    open SITEP, '<', $sitepoint or die $!;
-    while(<SITEP>)
-    {   chomp;
-        next if /^#|^\s*$/;
-        my ($ext, $type, $comment) = split /\s+/;
+	open my $sitep, '<:encoding(us-ascii)', $sitepoint or die $!;
+	while(local $_ = $sitep->getline)
+	{	chomp;
+		next if /^#|^\s*$/;
+		my ($ext, $type, $comment) = split /\s+/;
 
-        $ext =~ s/^\.//;
-        my $info = add_type $type, 'sitepoint', [$ext];
-        $found++;
-    }
-    close SITEP;
+		$ext =~ s/^\.//;
+		my $info = add_type $type, 'sitepoint', [$ext];
+		$found++;
+	}
+	$sitep->close;
 
-    print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
-    $last_count = keys %mimes;
-    print "  . now $last_count types\n";
+	print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
+	$last_count = keys %mimes;
+	print "  . now $last_count types\n";
 }
 
 #
@@ -320,25 +321,25 @@ sub sitepoint()
 #
 
 sub stdicon()
-{   print "* processing stdicon\n";
+{	print "* processing stdicon\n";
 
-    my $found = 0;
+	my $found = 0;
 
-    open STDICON, '<', $stdicon or die $!;
-    while(<STDICON>)
-    {   chomp;
-        next if /^#|^\s*$/;
-        my ($ext, $type, $comment) = split /\s+/;
+	open my $fh, '<:encoding(us-ascii)', $stdicon or die $!;
+	while(local $_ = $fh->getline)
+	{	chomp;
+		next if /^#|^\s*$/;
+		my ($ext, $type, $comment) = split /\s+/;
 
-        $ext =~ s/^\.//;
-        add_type $type, 'stdicon', [$ext];
-        $found++;
-    }
-    close STDICON;
+		$ext =~ s/^\.//;
+		add_type $type, 'stdicon', [$ext];
+		$found++;
+	}
+	$fh->close;
 
-    print "  . added ".(keys(%mimes) - $last_count)." types from $found\n";
-    $last_count = keys %mimes;
-    print "  . now $last_count types\n";
+	print "  . added ".(keys(%mimes) - $last_count)." types from $found\n";
+	$last_count = keys %mimes;
+	print "  . now $last_count types\n";
 }
 
 
@@ -347,24 +348,24 @@ sub stdicon()
 #
 
 sub broofa()
-{   print "* processing broofa\n";
+{	print "* processing broofa\n";
 
-    my $found = 0;
+	my $found = 0;
 
-    open BROOFA, '<', $broofa or die $!;
-    while(<BROOFA>)
-    {   next if /^\#|^\s*$/;
-        chomp;
+	open my $fh, '<:encoding(us-ascii)', $broofa or die $!;
+	while(local $_ = $fh->getline)
+	{	next if /^\#|^\s*$/;
+		chomp;
 
-        my ($type, @ext) = split;
-        my $info = add_type $type, 'broofa', \@ext;
-        $found++;
-    }
-    close BROOFA;
+		my ($type, @ext) = split;
+		my $info = add_type $type, 'broofa', \@ext;
+		$found++;
+	}
+	$fh->close;
 
-    print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
-    $last_count = keys %mimes;
-    print "  . now $last_count types\n";
+	print "  . added ".(keys(%mimes) - $last_count)." new types from $found\n";
+	$last_count = keys %mimes;
+	print "  . now $last_count types\n";
 }
 
 #
@@ -372,25 +373,24 @@ sub broofa()
 #
 
 sub freedesktop()
-{   print "* processing freedesktop\n";
+{	print "* processing freedesktop\n";
 
-    my $c = XML::LibXML::Simple->new->XMLin($freedesktop);
-    my $mimes = $c->{'mime-type'} || [];
-    foreach my $record (@$mimes)
-    {   my $type = $record->{type} or die;
-        my $glob = $record->{glob} || [];
-        $glob    = [$glob] if ref $glob eq 'HASH';   # when only one pattern
-        my @patt = map +($_->{pattern} =~ /^\*\.(.*)/ ? $1 : ()), @$glob;
+	my $c = XML::LibXML::Simple->new->XMLin($freedesktop);
+	my $mimes = $c->{'mime-type'} || [];
+	foreach my $record (@$mimes)
+	{	my $type = $record->{type} or die;
+		my $glob = $record->{glob} || [];
+		$glob    = [$glob] if ref $glob eq 'HASH';   # when only one pattern
+		my @patt = map +($_->{pattern} =~ /^\*\.(.*)/ ? $1 : ()), @$glob;
 
-        # remove regex patterns
-        my @ext  = grep !/[^a-zA-Z0-9+\-]/, @patt;
-        my $info = add_type $type, 'freedesktop', \@ext;
-    }
+		# remove regex patterns
+		my @ext  = grep !/[^a-zA-Z0-9+\-]/, @patt;
+		my $info = add_type $type, 'freedesktop', \@ext;
+	}
 
-    print "  . added ".(keys(%mimes) - $last_count)." new types from "
-      . @$mimes . "\n";
-    $last_count = keys %mimes;
-    print "  . now $last_count types\n";
+	print "  . added ".(keys(%mimes) - $last_count)." new types from " . @$mimes . "\n";
+	$last_count = keys %mimes;
+	print "  . now $last_count types\n";
 }
 
 #
@@ -399,16 +399,18 @@ sub freedesktop()
 
 my %charsets;
 sub charset_defaults()
-{   print "* processing charset defaults\n";
+{	print "* processing charset defaults\n";
 
-    open CHARSETS, '<:encoding(utf-8)', $charsets or die $!;
-    while(<CHARSETS>)
-    {   s/[ \t]+\#.*//;
+	open my $fh, '<:encoding(utf-8)', $charsets or die $!;
+	while(local $_ = $fh->getline)
+	{	s/[ \t]+\#.*//;
 		next if /^\#|^\s*$/;
-        chomp;
+		chomp;
 		my ($type, $default) = split /\;/, $_, 2;
 		$charsets{$type} = $default;
 	}
+	$fh->close;
+
 	print '  . now '. (keys %charsets) . " defaults\n";
 }
 
@@ -418,69 +420,69 @@ sub charset_defaults()
 #
 
 my %simply_overrule = (
-    txt  => 'text/plain',
-    html => 'text/html',
-    bin  => 'application/octet-stream',
-    es   => 'text/ecmascript',  # RFC9239
-    mjs  => 'text/ecmascript',  # RFC9239
+	txt  => 'text/plain',
+	html => 'text/html',
+	bin  => 'application/octet-stream',
+	es   => 'text/ecmascript',  # RFC9239
+	mjs  => 'text/ecmascript',  # RFC9239
 );
 
 sub simplify()
-{   print "* simplifying\n";
+{	print "* simplifying\n";
 
-    ### Simplify Extensions
+	### Simplify Extensions
 
-    my %back = map +($_ => 1), @iana_basetypes;
-    foreach my $ext (keys %exts)
-    {   my %seen;
+	my %back = map +($_ => 1), @iana_basetypes;
+	foreach my $ext (keys %exts)
+	{	my %seen;
 
-        # It is hard to figure-out which type has preference for a certain
-        # filename extension.
-        if($simply_overrule{$ext})
-        {   # some situations cannot be resolved with login ;-)
-            $exts{$ext} = [ split ' ', $simply_overrule{$ext} ];
-            next;
-        }
+		# It is hard to figure-out which type has preference for a certain
+		# filename extension.
+		if($simply_overrule{$ext})
+		{	# some situations cannot be resolved with login ;-)
+			$exts{$ext} = [ split ' ', $simply_overrule{$ext} ];
+			next;
+		}
 
-        # De-duplicate extensions (case-insensitive)
-        my @types   = grep !$seen{lc $_}++, @{$exts{$ext}};
+		# De-duplicate extensions (case-insensitive)
+		my @types   = grep !$seen{lc $_}++, @{$exts{$ext}};
 
-        #  2. we try an official type which has the same minor.
+		#  2. we try an official type which has the same minor.
 
-        my $first = first { m!/${ext}$! && ! m/^(x-)/ } @types;
-        @types = grep { $_ ne $first } @types if defined $first;
+		my $first = first { m!/${ext}$! && ! m/^(x-)/ } @types;
+		@types = grep { $_ ne $first } @types if defined $first;
 
-        #  3. take the more specific over the less specific
-        my @last    = grep $back{lc $_}, @types;
+		#  3. take the more specific over the less specific
+		my @last    = grep $back{lc $_}, @types;
 
-        #  4. compose
-        $exts{$ext} =
-          [ ($first || ())
-          , (grep !$back{lc $_}, @types)
-          , @last
-          ];
-    }
+		#  4. compose
+		$exts{$ext} = +[
+			($first || ()),
+			(grep !$back{lc $_}, @types),
+			@last,
+		];
+	}
 
-    ### Simplify MIME types
+	### Simplify MIME types
  
-    foreach my $type (keys %mimes)
-    {   my $info = $mimes{$type};
+	foreach my $type (keys %mimes)
+	{	my $info = $mimes{$type};
 
-        # Remove double extensions (case-insensitive)
-        my %seen_ext;
-        my @ext = grep !$seen_ext{lc $_}++, @{$info->{ext} || []};
+		# Remove double extensions (case-insensitive)
+		my %seen_ext;
+		my @ext = grep !$seen_ext{lc $_}++, @{$info->{ext} || []};
 
-        # Insert extensions for base-types from the ext-list, because better
-        # to use a specific type than a generic type.
-        if($iana_basetypes{$type})
-        {   @ext = grep $type eq $exts{$_}[0], @ext;
-        }
+		# Insert extensions for base-types from the ext-list, because better
+		# to use a specific type than a generic type.
+		if($iana_basetypes{$type})
+		{	@ext = grep $type eq $exts{$_}[0], @ext;
+		}
 
-        $info->{ext} = \@ext;
-    }
+		$info->{ext} = \@ext;
+	}
 
-    #warn Dumper \%mimes, \%exts;
-    print "  . found ".(keys %exts)." extensions\n";
+	#warn Dumper \%mimes, \%exts;
+	print "  . found ".(keys %exts)." extensions\n";
 }
 
 #
@@ -488,95 +490,93 @@ sub simplify()
 #
 
 sub write_tables()
-{   print "* write $types_list\n";
-    open OUT, '>', $types_list or die $!;
-    foreach my $type (sort keys %mimes)
-    {   my $info = $mimes{$type};
-        my $ext  = join ",", @{$info->{ext}};
-        my $enc  = $info->{enc} || '';
-        print OUT "$type;$ext;$enc\n";
-    }
-    close OUT;
+{	print "* write $types_list\n";
 
-    print "* write $ext_list\n";
-    open OUT, '>', $ext_list or die $!;
-    foreach my $ext (sort keys %exts)
-    {   my $types = $exts{$ext};
-        print OUT $ext, ';', join(',', @$types), "\n";
-    }
-    close OUT;
+	open my $out, '>:encoding(UTF-8)', $types_list or die $!;
+	foreach my $type (sort keys %mimes)
+	{	my $info = $mimes{$type};
+		my $ext  = join ",", @{$info->{ext}};
+		my $enc  = $info->{enc} || '';
+		$out->print("$type;$ext;$enc\n");
+	}
+	$out->close;
+
+	print "* write $ext_list\n";
+	open $out, '>:encoding(UTF-8)', $ext_list or die $!;
+	foreach my $ext (sort keys %exts)
+	{	my $types = $exts{$ext};
+		$out->print($ext, ';', join(',', @$types), "\n");
+	}
+	$out->close;
 }
 
 sub write_distributed()
 {
-    my %sets;
-    foreach my $type (sort keys %mimes)
-    {   my $info   = $mimes{$type};
-        my ($major, $minor) = split m!/!, $type, 2;
-        my @ext    = @{$info->{ext} || []};
+	my %sets;
+	foreach my $type (sort keys %mimes)
+	{	my $info   = $mimes{$type};
+		my ($major, $minor) = split m!/!, $type, 2;
+		my @ext    = @{$info->{ext} || []};
 
-        my $isIANA = $major =~ m{^x-} || $minor =~ m{^x-} ? '' : 'I';
-        my $hasExt = @ext ? 'E' : '';
-        my $ext    = join ',', @ext;
-        my $enc    = $info->{enc} || '';
+		my $isIANA = $major =~ m{^x-} || $minor =~ m{^x-} ? '' : 'I';
+		my $hasExt = @ext ? 'E' : '';
+		my $ext    = join ',', @ext;
+		my $enc    = $info->{enc} || '';
 		my $char   = $charsets{$type} || '';
-        push @{$sets{"$major:$isIANA:$hasExt"}}, "$minor;$ext;$enc;$char";
-    }
+		push @{$sets{"$major:$isIANA:$hasExt"}}, "$minor;$ext;$enc;$char";
+	}
 
-    foreach my $ext (sort keys %exts)
-    {   my $types   = $exts{$ext};
-        my $pref_mt = $preferred_mt{$ext} || $types->[0];
-        push @{$sets{EXTENSIONS}}, join(';', $ext, $pref_mt); 
-    }
+	foreach my $ext (sort keys %exts)
+	{	my $types   = $exts{$ext};
+		my $pref_mt = $preferred_mt{$ext} || $types->[0];
+		push @{$sets{EXTENSIONS}}, join(';', $ext, $pref_mt); 
+	}
 
-    print "* write $distributed\n";
-    open OUT, '>:encoding(utf8)', $distributed or die "$distributed: $!";
-    foreach my $section (sort keys %sets)
-    {   my $records = $sets{$section};
-        print OUT join "\n"
-           , @$records.":$section"
-           , (sort @$records)
-           , '', '';
-    }
-    close OUT;
+	print "* write $distributed\n";
+	open my $out, '>:encoding(utf8)', $distributed or die "$distributed: $!";
+	foreach my $section (sort keys %sets)
+	{	my $records = $sets{$section};
+		$out->print(join "\n", @$records.":$section", (sort @$records), '', '');
+	}
+	$out->close;
 }
 
 sub keep_sources($)
-{   my $fn = shift . '.tjz';
-    print "* saving sources to $fn\n";
-    system "tar cf - sources/| bzip2 -9v >$fn" and die $!;
+{	my $fn = shift . '.tjz';
+	print "* saving sources to $fn\n";
+	system "tar cf - sources/| bzip2 -9v >$fn" and die $!;
 }
 
 my %iana_major;
 sub add_type($$$)
-{   my ($type, $from, $ext) = @_;
+{	my ($type, $from, $ext) = @_;
  
-    my $simple = lc $type;
-    my ($major, $minor) = $simple =~ m!^(?:x-)?([^/]+)/(?:x-)?(.+)$!;
-    if($from eq 'iana')
-    {   $iana_major{$major}++;
-    }
-    elsif(!$iana_major{$major})
-    {   $simple = "x-$major/x-$minor";
-    }
-    elsif(!$mimes{$simple} && $minor !~ m/^(vnd|prs|x)\./)
-    {   $simple = "$major/x-$minor";
-    }
+	my $simple = lc $type;
+	my ($major, $minor) = $simple =~ m!^(?:x-)?([^/]+)/(?:x-)?(.+)$!;
+	if($from eq 'iana')
+	{	$iana_major{$major}++;
+	}
+	elsif(!$iana_major{$major})
+	{	$simple = "x-$major/x-$minor";
+	}
+	elsif(!$mimes{$simple} && $minor !~ m/^(vnd|prs|x)\./)
+	{	$simple = "$major/x-$minor";
+	}
 
-    my $info   = $mimes{$simple} ||= {};
-    push @{$info->{ext}}, @$ext;
-    $info->{by}{$from}++;
+	my $info   = $mimes{$simple} ||= {};
+	push @{$info->{ext}}, @$ext;
+	$info->{by}{$from}++;
 
-    push @{$exts{$_}}, $simple for @$ext;
-    $info;
+	push @{$exts{$_}}, $simple for @$ext;
+	$info;
 }
 
 sub scan_dist_version()
-{   open my($mf), '<', 'Makefile.PL' or die $!;
-    while(<$mf>)
-    {   return $1 if m/\$version\s*\=\s*['"]([^'"]+)'\s*;/;
-    }
-    die "version not found";
+{	open my $mf, '<:encoding(UTF-8)', 'Makefile.PL' or die $!;
+	while(<$mf>)
+	{	return $1 if m/\$version\s*\=\s*['"]([^'"]+)'\s*;/;
+	}
+	die "version not found";
 }
 
 ### MAIN

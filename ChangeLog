@@ -8,9 +8,16 @@ TODO:
 
 version 2.29:
 
+	Changes:
+	- require 5.16 (2012)
+
 	Improvements:
 	- remove html generation and releases.
 	- ::Type->defaultCharset()
+	- remove use of bareword filehandle.
+	- File::Slurp::Tiny -> File::Slurper
+	- iana updates
+	- upgrades to OODoc 3.04
 
 version 2.28: Fri Apr 18 08:54:43 PM CEST 2025
 
