@@ -168,9 +168,9 @@ sub simplified(;$)
 
 	my $mime  = shift;
 
-	$mime =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!i ? lc "$1/$2"
-	  : $mime eq 'text' ? 'text/plain'         # some silly mailers...
-	  :   undef;
+	  $mime =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!i ? lc "$1/$2"
+	: $mime eq 'text' ? 'text/plain'         # some silly mailers...
+	:   $mime;                               # doesn't follow rules, f.i. one word
 }
 
 =method extensions

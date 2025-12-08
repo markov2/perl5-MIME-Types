@@ -8,6 +8,10 @@ TODO:
 
 version 2.30:
 
+	Fixes:
+	- no undef when simplifying illegal type
+	  github issue #15 [Todd Richmond]
+
 	Improvements:
 	- add bugtracker to meta
 	- better OO use of attributes.
