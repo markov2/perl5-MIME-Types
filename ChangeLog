@@ -10,6 +10,7 @@ version 2.30:
 
 	Improvements:
 	- add bugtracker to meta
+	- better OO use of attributes.
 
 version 2.29: Mon 15 Sep 12:51:21 CEST 2025
 

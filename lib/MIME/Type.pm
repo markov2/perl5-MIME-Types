@@ -125,7 +125,6 @@ sub init($)
 		or croak "ERROR: Type parameter is obligatory.";
 
 	$self->{MT_simplified} = $args->{simplified} || $self->simplified($type);
-
 	$self->{MT_extensions} = $args->{extensions} || [];
 
 	$self->{MT_encoding}
@@ -165,12 +164,12 @@ of the type.
 
 sub simplified(;$)
 {	my $thing = shift;
-	return $thing->{MT_simplified} unless @_;
+	@_ or return $thing->{MT_simplified};
 
 	my $mime  = shift;
 
 	$mime =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!i ? lc "$1/$2"
-	  : $mime eq 'text' ? 'text/plain'          # some silly mailers...
+	  : $mime eq 'text' ? 'text/plain'         # some silly mailers...
 	  :   undef;
 }
 
@@ -215,7 +214,7 @@ to retrieve the same value.  However, that method is deprecated.
 
 =cut
 
-sub mediaType()  { $_[0]->{MT_simplified} =~ m!^([\w.-]+)/! ? $1 : undef }
+sub mediaType()  { $_[0]->simplified =~ m!^([\w.-]+)/! ? $1 : undef }
 sub mainType()   { $_[0]->mediaType } # Backwards compatibility
 
 =method subType
@@ -223,7 +222,7 @@ The sub type of the simplified mime.
 For C<'text/plain'> it will return C<'plain'>.
 =cut
 
-sub subType()    { $_[0]->{MT_simplified} =~ m!/([\w+.-]+)$! ? $1 : undef }
+sub subType()    { $_[0]->simplified =~ m!/([\w+.-]+)$! ? $1 : undef }
 
 =method isRegistered
 Mime-types which are not registered by IANA nor defined in RFCs shall
@@ -232,7 +231,7 @@ sub-type.  In case either one of the types starts with C<x-> this
 method will return false.
 =cut
 
-sub isRegistered() { lc $_[0]->{MT_type} !~ m{^x\-|/x\-} }
+sub isRegistered() { lc($_[0]->type) !~ m{^x\-|/x\-} }
 
 =method isVendor
 [2.00] Return true when the type is defined by a vendor; the subtype
@@ -248,9 +247,9 @@ use; the subtype starts with C<x.>
 =cut
 
 # http://tools.ietf.org/html/rfc4288#section-3
-sub isVendor()       { $_[0]->{MT_simplified} =~ m!/vnd\.! }
-sub isPersonal()     { $_[0]->{MT_simplified} =~ m!/prs\.! }
-sub isExperimental() { $_[0]->{MT_simplified} =~ m!/x\.! }
+sub isVendor()       { $_[0]->simplified =~ m!/vnd\.! }
+sub isPersonal()     { $_[0]->simplified =~ m!/prs\.! }
+sub isExperimental() { $_[0]->simplified =~ m!/x\.! }
 
 =method isBinary
 Returns true when the type is not known to be text.  See M<isText()>.
@@ -263,8 +262,8 @@ Old name for M<isText()>.
 there is currently no record of attributes in this module... so we guess.
 =cut
 
-sub isBinary() { $_[0]->{MT_encoding} eq 'base64' }
-sub isText()   { $_[0]->{MT_encoding} ne 'base64' }
+sub isBinary() { $_[0]->encoding eq 'base64' }
+sub isText()   { $_[0]->encoding ne 'base64' }
 *isAscii = \&isText;
 
 =method isSignature
@@ -277,11 +276,11 @@ qw(application/pgp-keys application/pgp application/pgp-signature
 	application/pkcs10 application/pkcs7-mime application/pkcs7-signature
 	text/vCard);
 
-sub isSignature() { $sigs{ $_[0]->{MT_simplified}} }
+sub isSignature() { $sigs{$_[0]->simplified} }
 
 =method equals $string|$mime
-Compare this mime-type object with a STRING or other object.  In case of
-a STRING, simplification will take place.
+Compare this mime-type object with a type as $string or other $mime
+type object.  In case of a $string, simplification will take place.
 =cut
 
 sub cmp($)

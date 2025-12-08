@@ -113,8 +113,8 @@ sub _read_db($)
 	my $only_complete   = $args->{only_complete};
 	my $only_iana       = $args->{only_iana};
 
-	my $db              = $ENV{PERL_MIME_TYPE_DB} || $args->{db_file}
-	  || File::Spec->catfile(dirname(__FILE__), 'types.db');
+	my $db              = $ENV{PERL_MIME_TYPE_DB} || $args->{db_file} ||
+		File::Spec->catfile(dirname(__FILE__), 'types.db');
 
 	open my $dbh, '<:encoding(utf8)', $db
 		or die "cannot open type database in $db: $!\n";
@@ -357,7 +357,7 @@ sub httpAcceptBest($@)
 	{	$acc   =~ s/\s*\;.*//;    # remove attributes
 		my $m = $acc !~ s#/\*$## ? first { $_->equals($acc) } @_
 		      : $acc eq '*'      ? $_[0]     # $acc eq */*
-		      :   first { $_->mediaType eq $acc } @_;
+		      :    first { $_->mediaType eq $acc } @_;
 		return $m if defined $m;
 	}
 
