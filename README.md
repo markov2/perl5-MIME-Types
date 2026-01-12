@@ -1,5 +1,8 @@
 # MIME::Types
 
+Collected knowledge about Media Types, according to RFC6838 and
+registered by IANA. Some unregistered types are included as well.
+
   * My extended documentation: <http://perl.overmeer.net/CPAN/>
   * Development via GitHub: <https://github.com/markov2/perl5-MIME-Types>
   * Sponsor me: <https://markov.solutions/sponsor/index-en.html>
