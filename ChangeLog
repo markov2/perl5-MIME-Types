@@ -8,6 +8,10 @@ TODO:
 
 version 2.31:
 
+	Improvements:
+	- broken types produce application/octets
+	  github issue #15 [Todd Richmond]
+
 version 2.30: Mon  8 Dec 20:33:20 CET 2025
 
 	Fixes:

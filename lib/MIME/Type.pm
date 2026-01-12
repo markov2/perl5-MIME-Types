@@ -96,7 +96,6 @@ An array of extensions which are using this mime.
 
 =option  encoding '7bit'|'8bit'|'base64'|'quoted-printable'
 =default encoding <depends on type>
-
 How must this data be encoded to be transported safely.  The default
 depends on the type: mimes with as main type C<text/> will default
 to C<quoted-printable> and all other to C<base64>.
@@ -169,8 +168,8 @@ sub simplified(;$)
 	my $mime  = shift;
 
 	  $mime =~ m!^\s*(?:x\-)?([\w.+-]+)/(?:x\-)?([\w.+-]+)\s*$!i ? lc "$1/$2"
-	: $mime eq 'text' ? 'text/plain'         # some silly mailers...
-	:   $mime;                               # doesn't follow rules, f.i. one word
+	: $mime eq 'text' ? 'text/plain'    # some silly mailers...
+	:   'application/octets';           # doesn't follow rules, f.i. one word
 }
 
 =method extensions
@@ -209,9 +208,8 @@ sub charset()    { $_[0]->{MT_charset} }
 The media type of the simplified mime.
 For C<'text/plain'> it will return C<'text'>.
 
-For historical reasons, the C<'mainType'> method still can be used
+For historical reasons, the C<'mainType()'> method still can be used
 to retrieve the same value.  However, that method is deprecated.
-
 =cut
 
 sub mediaType()  { $_[0]->simplified =~ m!^([\w.-]+)/! ? $1 : undef }
