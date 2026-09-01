@@ -72,7 +72,7 @@ WriteMakefile
 				web  => "$git/issues",
 			},
 			homepage => $homepage,
-			license  => [ 'http//dev.perl.org/licenses/' ],
+			license  => [ 'http://dev.perl.org/licenses/' ],
 		},
 		prereqs => {
 			runtime => {
