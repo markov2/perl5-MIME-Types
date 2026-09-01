@@ -7,7 +7,7 @@ my $version  = '2.31';              #!!! scanned by bin/collect_types
 my $webpages = "../public_html";
 my $git      = "https://github.com/markov2/perl5-MIME-Types";
 my $publish  = "../public_html/mime-types";
-my $homepage = "http://perl.overmeer.net/CPAN/";
+my $homepage = "https://perl.overmeer.net/CPAN/";
 
 my %oodist   = (
 	oodoc_version => 3.05,
@@ -72,7 +72,7 @@ WriteMakefile
 				web  => "$git/issues",
 			},
 			homepage => $homepage,
-			license  => [ 'http://dev.perl.org/licenses/' ],
+			license  => [ 'https://dev.perl.org/licenses/' ],
 		},
 		prereqs => {
 			runtime => {
